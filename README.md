@@ -1,2 +1,2 @@
-# problems
+# Algorithm problems
 Solving Algorithm problems

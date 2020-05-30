@@ -2,7 +2,7 @@ import unittest
 
 
 class Solution:
-    # dp[i][j]
+    # dp[i][j] means whether or not it's panlindrome from i to j(including a[j])
     def longestPalindrome(self, s: str) -> str:
         if not s or len(s) == 1: return s
 

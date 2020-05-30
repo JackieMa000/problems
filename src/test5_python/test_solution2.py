@@ -2,6 +2,7 @@ import unittest
 
 
 class Solution:
+    # Expand around center
     def longestPalindrome(self, s: str) -> str:
         if not s or len(s) == 1: return s
         res = ''

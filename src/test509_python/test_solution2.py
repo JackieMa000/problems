@@ -2,24 +2,19 @@ import unittest
 
 
 class Solution:
-    # DP. Top Down
-    def fib(self, N: int) -> int:
-        if N <= 1: return N
-
     # DP 空间压缩
-    def fib_2(self, N: int) -> int:
+    def fib(self, N: int) -> int:
         if N <= 1: return N
 
         last_two, last_one = 0, 1
         res = 0
-
         for i in range(2, N + 1):
             res = last_one + last_two
             last_two, last_one = last_one, res
 
         return res
 
-    # DP. Buttom Up
+    # DP
     def fib_1(self, N: int) -> int:
         if N <= 1: return N
 

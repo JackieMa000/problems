@@ -12,7 +12,7 @@ class Solution:
     def minsum_dfs(self, triangle: List[List[int]], i: int, j: int, found: List[List[int]]) -> int:
         # terminator
         if i >= len(triangle): return 0
-        if not found[i][j] == sys.maxsize + 1: return found[i][j]
+        if found[i][j] != sys.maxsize + 1: return found[i][j]
         # Recursive
         down_left = self.minsum_dfs(triangle, i + 1, j, found)
         down_right = self.minsum_dfs(triangle, i + 1, j + 1, found)

@@ -16,10 +16,10 @@ class Solution:
 
     def solveDFS(self, board: List[List[str]], i: int, j: int) -> bool:
         # Terminator
-        if i == 9: return True
+        if i == self.m: return True
 
         # Recursive
-        if j == 9: return self.solveDFS(board, i + 1, 0)
+        if j == self.n: return self.solveDFS(board, i + 1, 0)
         if board[i][j] != '.': return self.solveDFS(board, i, j + 1)
         # fill in the board
         # loop 1~9

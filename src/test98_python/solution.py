@@ -16,22 +16,21 @@ class Solution1:
         return self.inorder(root.left) + [root.val] + self.inorder(root.right)
 
 
-# inorderBST.
-# Don't save array
 class Solution2:
+    # inorder dfs traversal, prev < cur. if prev >= cur: return False
+    # Don't save array
     def isValidBST(self, root: TreeNode) -> bool:
         self.prev = None
-        return self.helper(root)
+        return self.isValid_inorderDfs(root)
 
-    # Validate current node less than the prev node
-    def helper(self, root: TreeNode):
+    def isValid_inorderDfs(self, root: TreeNode):
         if root is None: return True
-        if not self.helper(root.left):
+        if not self.isValid_inorderDfs(root.left):
             return False
         if self.prev and self.prev.val >= root.val:
             return False
         self.prev = root
-        return self.helper(root.right)
+        return self.isValid_inorderDfs(root.right)
 
 
 # Recursion
@@ -41,6 +40,6 @@ class Solution3:
 
     def is_valid(self, root: TreeNode, lower_limit: float, upper_limit: float) -> bool:
         if root is None: return True
-        if root and root.val <= lower_limit: return False
-        if root and root.val >= upper_limit: return False
+        if lower_limit != float('-inf') and root.val <= lower_limit: return False
+        if upper_limit != float('inf') and root.val >= upper_limit: return False
         return self.is_valid(root.left, lower_limit, root.val) and self.is_valid(root.right, root.val, upper_limit)

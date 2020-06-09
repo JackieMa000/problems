@@ -1,7 +1,7 @@
 from unittest import TestCase
 
 from converter_python.converter import Converter
-from .solution import TreeNode, Solution1, Solution2, Solution3
+from test98_python.solution import TreeNode, Solution1, Solution2, Solution3
 
 
 class TestSolution1(TestCase):
@@ -78,4 +78,7 @@ class TestSolution3(TestCase):
 
     def test_inValidBST(self):
         root: TreeNode = self.converter.convert_array_to_tree([5, 1, 4, 0, 6, 3, 6])
+        self.assertFalse(self.solution.isValidBST(root))
+
+        root: TreeNode = self.converter.convert_array_to_tree([0, None, -1])
         self.assertFalse(self.solution.isValidBST(root))

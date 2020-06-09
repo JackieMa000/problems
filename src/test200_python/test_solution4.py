@@ -1,7 +1,7 @@
 import unittest
 from typing import List
 
-from quickUF import UnionFind
+from .quickUF import UnionFind
 
 
 class Solution:

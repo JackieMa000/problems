@@ -1,7 +1,7 @@
 from typing import List
 from unittest import TestCase
 
-from .converter import TreeNode, Converter
+from converter import TreeNode, Converter
 
 
 class TestConverter(TestCase):

@@ -1,7 +1,8 @@
 from unittest import TestCase
 
-from converter_python.converter import Converter
-from test102_python.solution import TreeNode, Solution1, Solution3, Solution2
+from levelOrder.solution import TreeNode, Solution1, Solution3, Solution2
+
+from converter.converter import Converter
 
 
 class TestSolution1(TestCase):

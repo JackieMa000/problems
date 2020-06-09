@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from converter.converter import Converter
+from converter import Converter
 from isValidBST.solution import TreeNode, Solution1, Solution2, Solution3
 
 

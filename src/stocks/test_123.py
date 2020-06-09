@@ -3,7 +3,7 @@
 import unittest
 from typing import List
 
-from stocks import common
+import common
 
 
 class Solution:

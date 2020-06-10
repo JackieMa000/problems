@@ -1,5 +1,5 @@
 import collections
-from typing import List
+from typing import List, Deque
 
 
 class TreeNode:
@@ -14,15 +14,15 @@ class Solution1:
     def levelOrder(self, root: TreeNode) -> List[List[int]]:
         if not root: return []
 
-        queue = collections.deque()
+        queue: Deque[TreeNode] = collections.deque()
         queue.append(root)
-        result = []
+        result: List[List[int]] = []
 
         while queue:
-            level_size = len(queue)
-            current_level = []
+            level_size: int = len(queue)
+            current_level: List[int] = []
             for _ in range(level_size):
-                node = queue.popleft()
+                node: TreeNode = queue.popleft()
                 current_level.append(node.val)
                 if node.left: queue.append(node.left)
                 if node.right: queue.append(node.right)
@@ -57,20 +57,13 @@ class Solution2:
 class Solution3:
     # DFS
     def levelOrder(self, root: TreeNode) -> List[List[int]]:
-        if not root: return []
-        self.result = []
-        self._dfs(0, root)
-        return self.result
+        result: List[List[int]] = []
+        self._dfs(0, root, result)
+        return result
 
-    def _dfs(self, level, root: TreeNode):
-        # Terminator case
+    def _dfs(self, level: int, root: TreeNode, result: List[List[int]]) -> None:
         if not root: return
-
-        # Process Logic
-        if len(self.result) < level + 1:
-            self.result.append([])
-        self.result[level].append(root.val)
-
-        # Recursive case
-        self._dfs(level + 1, root.left)
-        self._dfs(level + 1, root.right)
+        if len(result) - 1 < level: result.append([])
+        result[level].append(root.val)
+        self._dfs(level + 1, root.left, result)
+        self._dfs(level + 1, root.right, result)

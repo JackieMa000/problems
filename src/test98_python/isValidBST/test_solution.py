@@ -4,6 +4,10 @@ from converter import Converter
 from isValidBST.solution import TreeNode, Solution1, Solution2, Solution3
 
 
+# BST. Binary Search Tree Defination:
+# All the nodes on the left is smaller than the root node. All the nodes on the right
+# is bigger than the root node.
+
 class TestSolution1(TestCase):
     def setUp(self):
         self.solution = Solution1()
@@ -44,6 +48,9 @@ class TestSolution2(TestCase):
         self.assertFalse(self.solution.isValidBST(root))
 
         root: TreeNode = self.converter.convert_array_to_tree([5, 1, 6, -3, 2, 3, 7])
+        self.assertFalse(self.solution.isValidBST(root))
+
+        root: TreeNode = self.converter.convert_array_to_tree([1, 1])
         self.assertFalse(self.solution.isValidBST(root))
 
 

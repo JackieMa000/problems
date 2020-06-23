@@ -3,8 +3,7 @@ package converter;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class ConverterTest {
 
@@ -67,5 +66,26 @@ public class ConverterTest {
 
     private TreeNode generateTestTree() {
         return converter.convertArrayToTree(new int[]{3, 1, 5, 0, 2});
+    }
+
+    @Test
+    public void convertArrayToLinkedList() {
+        int[] array = {1, 2, 3, 4};
+        assertLinkedListEqualsArray(converter.convertArrayToLinkedList(array), array);
+    }
+
+    private void assertLinkedListEqualsArray(LinkedListNode root, int[] array) {
+        for (int value : array) {
+            assertEquals(value, root.val);
+            root = root.next;
+        }
+        assertNull(root);
+    }
+
+    @Test
+    public void convertLinkedListToArray() {
+        int[] expected = {1, 2, 3, 4};
+        LinkedListNode root = converter.convertArrayToLinkedList(expected);
+        assertArrayEquals(expected, converter.convertLinkedListToArray(root));
     }
 }

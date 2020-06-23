@@ -53,11 +53,46 @@ public class Converter {
     }
 
     protected int getArraySizeForTree(TreeNode root) {
-        // Could use my own pow algorithm.
+        // Todo: Could use my own pow algorithm.
         return (int) (pow(2, getTreeDepth(root)) - 1);
     }
 
     protected int getTreeDepth(TreeNode root) {
         return (root == null) ? 0 : 1 + max(getTreeDepth(root.left), getTreeDepth(root.right));
+    }
+
+    public LinkedListNode convertArrayToLinkedList(int[] array) {
+        LinkedListNode dummyNode = new LinkedListNode(0);
+        LinkedListNode root = new LinkedListNode(array[0]);
+        dummyNode.next = root;
+
+        for (int i = 1; i < array.length; i++) {
+            root.next = new LinkedListNode(array[i]);
+            root = root.next;
+        }
+
+        return dummyNode.next;
+    }
+
+    public int[] convertLinkedListToArray(LinkedListNode root) {
+        int[] array = new int[getLinkedListLength(root)];
+
+        int i = 0;
+        while (root != null) {
+            array[i] = root.val;
+            root = root.next;
+            i++;
+        }
+
+        return array;
+    }
+
+    private int getLinkedListLength(LinkedListNode root) {
+        int res = 0;
+        while (root != null) {
+            res++;
+            root = root.next;
+        }
+        return res;
     }
 }

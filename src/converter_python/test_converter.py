@@ -93,12 +93,12 @@ class TestConverter(TestCase):
         output = self.converter._get_array_size_for_tree(input)
 
         # Assert
-        // FixMe: Should equals to 7.
+        # FixMe: Should equals to 7.
         self.assertEqual(expected, output)
 
     def test_get_array_size_for_tree_1(self):
         root: TreeNode = self.converter.convert_array_to_tree([3, 1, 5, None, 2])
-        // FixMe: Should equals to 7.
+        # FixMe: Should equals to 7.
         self.assertEqual(8, self.converter._get_array_size_for_tree(root))
 
     def test_remove_last_none_from_array(self):

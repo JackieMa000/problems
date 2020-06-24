@@ -17,25 +17,21 @@ class Converter:
     def _generate_tree_from_array(self, array: List[int], root: TreeNode, i: int) -> None:
         n = len(array)
         lpos, rpos = 2 * i + 1, 2 * i + 2
-        if lpos < n and array[lpos] is not None:
+        if lpos < n and array[lpos]:
             root.left = TreeNode(array[lpos])
             self._generate_tree_from_array(array, root.left, lpos)
-        if rpos < n and array[rpos] is not None:
+        if rpos < n and array[rpos]:
             root.right = TreeNode(array[rpos])
             self._generate_tree_from_array(array, root.right, rpos)
 
-    # ToDo: make a short impl version
     def convert_tree_to_array(self, root: TreeNode) -> List[int]:
-        # ToDo: Better to change default None to 0
-        array: List[int] = [None] * (self._get_array_size_for_tree(root))
+        array: List[int] = [0] * (self._get_array_size_for_tree(root))
         self._generate_array_from_tree(root, 0, array)
         return self.array_rstrip(array)
 
     def _generate_array_from_tree(self, root: TreeNode, i: int, array: List[int]) -> None:
-        n: int = len(array)
-
         # Terminator
-        if not root or i >= n: return
+        if not root or i >= len(array): return
 
         # Process
         array[i] = root.val
@@ -45,8 +41,8 @@ class Converter:
         self._generate_array_from_tree(root.right, 2 * i + 2, array)
 
     def _get_array_size_for_tree(self, root: TreeNode) -> int:
-        # Todo: could use my pow
-        return pow(2, self._get_tree_depth_dfs(root))
+        # Todo: could use my own pow
+        return pow(2, self._get_tree_depth_dfs(root)) - 1
 
     def _get_tree_depth_dfs(self, root: TreeNode) -> int:
         if not root: return 0

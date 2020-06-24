@@ -9,110 +9,51 @@ class TestConverter(TestCase):
         self.converter: Converter = Converter()
 
     def test_convert_array_to_tree(self):
-        # Arrange
-        input: List[int] = [3, 1, 5, None, 2]
-        expected: List[int] = input
-
-        # Act
-        output: TreeNode = self.converter.convert_array_to_tree(input)
-
-        # Assert
-        self.assertTreeEqualsArray(output, 0, expected)
+        array: List[int] = [3, 1, 5, 0, 2]
+        actual: TreeNode = self.converter.convert_array_to_tree(array)
+        self.assertTreeEqualsArray(actual, 0, array)
 
     def test_convert_array_to_tree_1(self):
         nums: List[int] = [5, 1, 4, 0, 6, 3, 6]
         self.assertTreeEqualsArray(self.converter.convert_array_to_tree(nums), 0, nums)
 
     def assertTreeEqualsArray(self, root: TreeNode, i: int, array: List[int]) -> None:
-        n: int = len(array)
         # Terminator
-        if i >= n: return
+        if i >= len(array): return
 
         # Process
         if root is None:
-            self.assertEqual(root, array[i])
+            # self.assertEqual(root, array[i])
+            self.assertEqual(0, array[i])
             return
-
         self.assertEqual(root.val, array[i])
 
         # Recursive
-        lpos, rpos = 2 * i + 1, 2 * i + 2
-        # ToDo: No need to do this check.
-        if lpos < n:
-            self.assertTreeEqualsArray(root.left, lpos, array)
-        if rpos < n:
-            self.assertTreeEqualsArray(root.right, rpos, array)
+        self.assertTreeEqualsArray(root.left, 2 * i + 1, array)
+        self.assertTreeEqualsArray(root.right, 2 * i + 2, array)
 
     def test_convert_tree_to_array(self):
-        # Arrange
-        array: List[int] = [3, 1, 5, None, 2]
-        input: TreeNode = self.converter.convert_array_to_tree(array)
-        expected: List[int] = array
-
-        # Act
-        output = self.converter.convert_tree_to_array(input)
-
-        # Assert
-        self.assertEqual(expected, output)
-
-    def test_convert_tree_to_array_1(self):
-        root: TreeNode = self.converter.convert_array_to_tree([3, 1, 5, None, 2])
-        self.assertEqual([3, 1, 5, None, 2], self.converter.convert_tree_to_array(root))
+        array: List[int] = [3, 1, 5, 0, 2]
+        root: TreeNode = self.converter.convert_array_to_tree(array)
+        self.assertEqual(array, self.converter.convert_tree_to_array(root))
 
     def test_convert_tree_to_array_2(self):
         root: TreeNode = self.converter.convert_array_to_tree([5, 1, 4, 0, 6, 3, 6])
         self.assertEqual([5, 1, 4, 0, 6, 3, 6], self.converter.convert_tree_to_array(root))
 
     def test_convert_tree_to_array_3(self):
-        root: TreeNode = self.converter.convert_array_to_tree([5, 1, 4, None, None, 3, 6])
-        self.assertEqual([5, 1, 4, None, None, 3, 6], self.converter.convert_tree_to_array(root))
+        root: TreeNode = self.converter.convert_array_to_tree([5, 1, 4, 0, 0, 3, 6])
+        self.assertEqual([5, 1, 4, 0, 0, 3, 6], self.converter.convert_tree_to_array(root))
 
     def test_get_tree_depth_dfs(self):
-        # Arrange
-        array: List[int] = [3, 1, 5, None, 2]
+        array: List[int] = [3, 1, 5, 0, 2]
         input: TreeNode = self.converter.convert_array_to_tree(array)
-        expected: int = 3
-
-        # Act
-        output = self.converter._get_tree_depth_dfs(input)
-
-        # Assert
-        self.assertEqual(expected, output)
-
-    def test_get_tree_depth_dfs_1(self):
-        root: TreeNode = self.converter.convert_array_to_tree([3, 1, 5, None, 2])
-        self.assertEqual(3, self.converter._get_tree_depth_dfs(root))
+        self.assertEqual(3, self.converter._get_tree_depth_dfs(input))
 
     def test_get_array_size_for_tree(self):
-        # Arrange
-        array: List[int] = [3, 1, 5, None, 2]
-        input: TreeNode = self.converter.convert_array_to_tree(array)
-        expected: int = 8
+        root: TreeNode = self.converter.convert_array_to_tree([3, 1, 5, 0, 2])
+        self.assertEqual(7, self.converter._get_array_size_for_tree(root))
 
-        # Act
-        output = self.converter._get_array_size_for_tree(input)
-
-        # Assert
-        # FixMe: Should equals to 7.
-        self.assertEqual(expected, output)
-
-    def test_get_array_size_for_tree_1(self):
-        root: TreeNode = self.converter.convert_array_to_tree([3, 1, 5, None, 2])
-        # FixMe: Should equals to 7.
-        self.assertEqual(8, self.converter._get_array_size_for_tree(root))
-
-    def test_remove_last_none_from_array(self):
-        # ToDo: Should use 0 instead of None as default value.
-        # Arrange
-        array: List[int] = [3, 1, 5, None, 2, None, None]
-        expected: List[int] = [3, 1, 5, None, 2]
-
-        # Act
-        res: List[int] = self.converter.array_rstrip(array)
-
-        # Assert
-        self.assertEqual(expected, res)
-
-    def test_remove_last_none_from_array_1(self):
-        array: List[int] = [3, 1, 5, None, 2, None, None]
-        self.assertEqual([3, 1, 5, None, 2], self.converter.array_rstrip(array))
+    def test_remove_last_null_from_array(self):
+        array: List[int] = [3, 1, 5, 0, 2, 0, 0]
+        self.assertEqual(array, self.converter.array_rstrip(array))

@@ -26,6 +26,7 @@ class Converter:
 
     # ToDo: make a short impl version
     def convert_tree_to_array(self, root: TreeNode) -> List[int]:
+        # ToDo: Better to change default None to 0
         array: List[int] = [None] * (self._get_array_size_for_tree(root))
         self._generate_array_from_tree(root, 0, array)
         return self.array_rstrip(array)

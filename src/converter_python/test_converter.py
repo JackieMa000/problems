@@ -1,7 +1,8 @@
 from typing import List
 from unittest import TestCase
 
-from converter import TreeNode, Converter
+from converter import Converter
+from nodes import TreeNode, LinkedListNode
 
 
 class TestConverter(TestCase):
@@ -57,3 +58,19 @@ class TestConverter(TestCase):
     def test_remove_last_null_from_array(self):
         array: List[int] = [3, 1, 5, 0, 2, 0, 0]
         self.assertEqual(array, self.converter.array_rstrip(array))
+
+    def test_convert_array_to_linkedlist(self):
+        array: List[int] = [1, 2, 3, 4]
+        self.assert_linkedlist_equals_array(self.converter.convert_array_to_linkedlist(array), array)
+
+    def assert_linkedlist_equals_array(self, head: LinkedListNode, array: List[int]) -> None:
+        i = 0
+        while head:
+            self.assertEqual(array[i], head.val)
+            head = head.next; i += 1
+        self.assertEqual(len(array), i)
+
+    def test_convert_linkedlist_to_array(self):
+        array: List[int] = [1, 2, 3, 4]
+        head: LinkedListNode = self.converter.convert_array_to_linkedlist(array)
+        self.assertEqual(array, self.converter.convert_linkedlist_to_array(head))

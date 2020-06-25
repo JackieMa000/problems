@@ -1,11 +1,6 @@
 from typing import List
 
-
-class TreeNode:
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
+from nodes import TreeNode, LinkedListNode
 
 
 class Converter:
@@ -52,3 +47,23 @@ class Converter:
         while not array[(-1)]:
             array.pop(-1)
         return array
+
+    def convert_array_to_linkedlist(self, array: List[int]) -> LinkedListNode:
+        dummy_node: LinkedListNode = LinkedListNode(0)
+        head: LinkedListNode = LinkedListNode(array[0])
+        dummy_node.next = head
+
+        for i in range(1, len(array)):
+            head.next = LinkedListNode(array[i])
+            head = head.next
+
+        return dummy_node.next
+
+    def convert_linkedlist_to_array(self, head: LinkedListNode) -> List[int]:
+        res: List[int] = []
+
+        while head:
+            res.append(head.val)
+            head = head.next
+
+        return res

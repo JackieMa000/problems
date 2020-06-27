@@ -5,9 +5,12 @@ class TreeNode:
         self.right = None
 
 
-class LinkedListNode:
+class ListNode:
     def __init__(self, x: int):
         self.val: int = x
         self.next = None
 
-
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next

@@ -74,7 +74,7 @@ public class ConverterTest {
         assertLinkedListEqualsArray(converter.convertArrayToLinkedList(array), array);
     }
 
-    private void assertLinkedListEqualsArray(LinkedListNode root, int[] array) {
+    private void assertLinkedListEqualsArray(ListNode root, int[] array) {
         for (int value : array) {
             assertEquals(value, root.val);
             root = root.next;
@@ -85,7 +85,7 @@ public class ConverterTest {
     @Test
     public void convertLinkedListToArray() {
         int[] expected = {1, 2, 3, 4};
-        LinkedListNode root = converter.convertArrayToLinkedList(expected);
+        ListNode root = converter.convertArrayToLinkedList(expected);
         assertArrayEquals(expected, converter.convertLinkedListToArray(root));
     }
 }

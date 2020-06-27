@@ -61,20 +61,20 @@ public class Converter {
         return (root == null) ? 0 : 1 + max(getTreeDepth(root.left), getTreeDepth(root.right));
     }
 
-    public LinkedListNode convertArrayToLinkedList(int[] array) {
-        LinkedListNode dummyNode = new LinkedListNode(0);
-        LinkedListNode root = new LinkedListNode(array[0]);
+    public ListNode convertArrayToLinkedList(int[] array) {
+        ListNode dummyNode = new ListNode(0);
+        ListNode root = new ListNode(array[0]);
         dummyNode.next = root;
 
         for (int i = 1; i < array.length; i++) {
-            root.next = new LinkedListNode(array[i]);
+            root.next = new ListNode(array[i]);
             root = root.next;
         }
 
         return dummyNode.next;
     }
 
-    public int[] convertLinkedListToArray(LinkedListNode root) {
+    public int[] convertLinkedListToArray(ListNode root) {
         int[] array = new int[getLinkedListLength(root)];
 
         int i = 0;
@@ -87,7 +87,7 @@ public class Converter {
         return array;
     }
 
-    private int getLinkedListLength(LinkedListNode root) {
+    private int getLinkedListLength(ListNode root) {
         int res = 0;
         while (root != null) {
             res++;

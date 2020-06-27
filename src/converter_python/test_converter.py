@@ -2,7 +2,7 @@ from typing import List
 from unittest import TestCase
 
 from converter import Converter
-from nodes import TreeNode, LinkedListNode
+from nodes import TreeNode, ListNode
 
 
 class TestConverter(TestCase):
@@ -63,7 +63,7 @@ class TestConverter(TestCase):
         array: List[int] = [1, 2, 3, 4]
         self.assert_linkedlist_equals_array(self.converter.convert_array_to_linkedlist(array), array)
 
-    def assert_linkedlist_equals_array(self, head: LinkedListNode, array: List[int]) -> None:
+    def assert_linkedlist_equals_array(self, head: ListNode, array: List[int]) -> None:
         i = 0
         while head:
             self.assertEqual(array[i], head.val)
@@ -72,5 +72,5 @@ class TestConverter(TestCase):
 
     def test_convert_linkedlist_to_array(self):
         array: List[int] = [1, 2, 3, 4]
-        head: LinkedListNode = self.converter.convert_array_to_linkedlist(array)
+        head: ListNode = self.converter.convert_array_to_linkedlist(array)
         self.assertEqual(array, self.converter.convert_linkedlist_to_array(head))

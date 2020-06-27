@@ -1,6 +1,6 @@
 from typing import List
 
-from nodes import TreeNode, LinkedListNode
+from nodes import TreeNode, ListNode
 
 
 class Converter:
@@ -48,18 +48,18 @@ class Converter:
             array.pop(-1)
         return array
 
-    def convert_array_to_linkedlist(self, array: List[int]) -> LinkedListNode:
-        dummy_node: LinkedListNode = LinkedListNode(0)
-        head: LinkedListNode = LinkedListNode(array[0])
+    def convert_array_to_linkedlist(self, array: List[int]) -> ListNode:
+        dummy_node: ListNode = ListNode(0)
+        head: ListNode = ListNode(array[0])
         dummy_node.next = head
 
         for i in range(1, len(array)):
-            head.next = LinkedListNode(array[i])
+            head.next = ListNode(array[i])
             head = head.next
 
         return dummy_node.next
 
-    def convert_linkedlist_to_array(self, head: LinkedListNode) -> List[int]:
+    def convert_linkedlist_to_array(self, head: ListNode) -> List[int]:
         res: List[int] = []
 
         while head:

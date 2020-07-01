@@ -1,5 +1,8 @@
 package converter;
 
+import nodes.ListNode;
+import nodes.TreeNode;
+
 import java.util.Arrays;
 
 import static java.lang.Math.max;

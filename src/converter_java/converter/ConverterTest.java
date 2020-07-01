@@ -1,5 +1,7 @@
 package converter;
 
+import nodes.ListNode;
+import nodes.TreeNode;
 import org.junit.Before;
 import org.junit.Test;
 

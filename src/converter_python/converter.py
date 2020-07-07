@@ -49,6 +49,19 @@ class Converter:
         return array
 
     def convert_array_to_linkedlist(self, array: List[int]) -> ListNode:
+        '''
+        ToDo: support creating cyclic LinkedList
+
+        Use it something like this:
+        head: ListNode = Converter().convert_array_to_linkedlist(array, pos)
+
+        To represent a cycle in the given linked list, we use an integer pos which represents
+        the position (0-indexed) in the linked list where tail connects to. If pos is -1, then
+        there is no cycle in the linked list.
+
+        For more, refers to test141_python.test_solutions.py
+        https://leetcode.com/articles/linked-list-cycle/
+        '''
         dummy_node: ListNode = ListNode(0)
         head: ListNode = ListNode(array[0])
         dummy_node.next = head

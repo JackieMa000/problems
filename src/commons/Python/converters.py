@@ -4,7 +4,7 @@ from nodes import TreeNode, ListNode
 
 
 class Converter:
-    def convert_array_to_tree(self, array: List[int]) -> TreeNode:
+    def array_to_tree(self, array: List[int]) -> TreeNode:
         root: TreeNode = TreeNode(array[0])
         self._generate_tree_from_array(array, root, 0)
         return root
@@ -19,7 +19,7 @@ class Converter:
             root.right = TreeNode(array[rpos])
             self._generate_tree_from_array(array, root.right, rpos)
 
-    def convert_tree_to_array(self, root: TreeNode) -> List[int]:
+    def tree_to_array(self, root: TreeNode) -> List[int]:
         array: List[int] = [0] * (self._get_array_size_for_tree(root))
         self._generate_array_from_tree(root, 0, array)
         return self.array_rstrip(array)
@@ -48,7 +48,7 @@ class Converter:
             array.pop(-1)
         return array
 
-    def convert_array_to_linkedlist(self, array: List[int]) -> ListNode:
+    def array_to_linkedlist(self, array: List[int]) -> ListNode:
         '''
         ToDo: support creating cyclic LinkedList
 
@@ -72,7 +72,7 @@ class Converter:
 
         return dummy_node.next
 
-    def convert_linkedlist_to_array(self, head: ListNode) -> List[int]:
+    def linkedlist_to_array(self, head: ListNode) -> List[int]:
         res: List[int] = []
 
         while head:

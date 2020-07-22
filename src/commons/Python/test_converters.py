@@ -1,7 +1,7 @@
 from typing import List
 from unittest import TestCase
 
-from converter import Converter
+from converters import Converter
 from nodes import TreeNode, ListNode
 
 
@@ -11,12 +11,12 @@ class TestConverter(TestCase):
 
     def test_convert_array_to_tree(self):
         array: List[int] = [3, 1, 5, 0, 2]
-        actual: TreeNode = self.converter.convert_array_to_tree(array)
+        actual: TreeNode = self.converter.array_to_tree(array)
         self.assertTreeEqualsArray(actual, 0, array)
 
     def test_convert_array_to_tree_1(self):
         nums: List[int] = [5, 1, 4, 0, 6, 3, 6]
-        self.assertTreeEqualsArray(self.converter.convert_array_to_tree(nums), 0, nums)
+        self.assertTreeEqualsArray(self.converter.array_to_tree(nums), 0, nums)
 
     def assertTreeEqualsArray(self, root: TreeNode, i: int, array: List[int]) -> None:
         # Terminator
@@ -35,24 +35,24 @@ class TestConverter(TestCase):
 
     def test_convert_tree_to_array(self):
         array: List[int] = [3, 1, 5, 0, 2]
-        root: TreeNode = self.converter.convert_array_to_tree(array)
-        self.assertEqual(array, self.converter.convert_tree_to_array(root))
+        root: TreeNode = self.converter.array_to_tree(array)
+        self.assertEqual(array, self.converter.tree_to_array(root))
 
     def test_convert_tree_to_array_2(self):
-        root: TreeNode = self.converter.convert_array_to_tree([5, 1, 4, 0, 6, 3, 6])
-        self.assertEqual([5, 1, 4, 0, 6, 3, 6], self.converter.convert_tree_to_array(root))
+        root: TreeNode = self.converter.array_to_tree([5, 1, 4, 0, 6, 3, 6])
+        self.assertEqual([5, 1, 4, 0, 6, 3, 6], self.converter.tree_to_array(root))
 
     def test_convert_tree_to_array_3(self):
-        root: TreeNode = self.converter.convert_array_to_tree([5, 1, 4, 0, 0, 3, 6])
-        self.assertEqual([5, 1, 4, 0, 0, 3, 6], self.converter.convert_tree_to_array(root))
+        root: TreeNode = self.converter.array_to_tree([5, 1, 4, 0, 0, 3, 6])
+        self.assertEqual([5, 1, 4, 0, 0, 3, 6], self.converter.tree_to_array(root))
 
     def test_get_tree_depth_dfs(self):
         array: List[int] = [3, 1, 5, 0, 2]
-        input: TreeNode = self.converter.convert_array_to_tree(array)
+        input: TreeNode = self.converter.array_to_tree(array)
         self.assertEqual(3, self.converter._get_tree_depth_dfs(input))
 
     def test_get_array_size_for_tree(self):
-        root: TreeNode = self.converter.convert_array_to_tree([3, 1, 5, 0, 2])
+        root: TreeNode = self.converter.array_to_tree([3, 1, 5, 0, 2])
         self.assertEqual(7, self.converter._get_array_size_for_tree(root))
 
     def test_remove_last_null_from_array(self):
@@ -61,7 +61,7 @@ class TestConverter(TestCase):
 
     def test_convert_array_to_linkedlist(self):
         array: List[int] = [1, 2, 3, 4]
-        self.assert_linkedlist_equals_array(self.converter.convert_array_to_linkedlist(array), array)
+        self.assert_linkedlist_equals_array(self.converter.array_to_linkedlist(array), array)
 
     def assert_linkedlist_equals_array(self, head: ListNode, array: List[int]) -> None:
         i = 0
@@ -72,5 +72,5 @@ class TestConverter(TestCase):
 
     def test_convert_linkedlist_to_array(self):
         array: List[int] = [1, 2, 3, 4]
-        head: ListNode = self.converter.convert_array_to_linkedlist(array)
-        self.assertEqual(array, self.converter.convert_linkedlist_to_array(head))
+        head: ListNode = self.converter.array_to_linkedlist(array)
+        self.assertEqual(array, self.converter.linkedlist_to_array(head))

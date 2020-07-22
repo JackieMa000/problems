@@ -1,4 +1,4 @@
-package converter;
+package commons;
 
 import nodes.ListNode;
 import nodes.TreeNode;
@@ -9,7 +9,7 @@ import static java.lang.Math.max;
 import static java.lang.Math.pow;
 
 public class Converter {
-    public TreeNode convertArrayToTree(int[] array) {
+    public TreeNode ArrayToTree(int[] array) {
         TreeNode root = new TreeNode(array[0]);
         generateTreeFromArray(array, root, 0);
         return root;
@@ -28,7 +28,7 @@ public class Converter {
         }
     }
 
-    public int[] convertTreeToArray(TreeNode root) {
+    public int[] TreeToArray(TreeNode root) {
         int arraySize = getArraySizeForTree(root);
         int[] array = new int[arraySize];
         generateArrayFromTree(root, 0, array);
@@ -64,7 +64,8 @@ public class Converter {
         return (root == null) ? 0 : 1 + max(getTreeDepth(root.left), getTreeDepth(root.right));
     }
 
-    public ListNode convertArrayToLinkedList(int[] array) {
+//    ToDo No necessary to use "convert" prefix for the function name
+    public ListNode ArrayToLinkedList(int[] array) {
         ListNode dummyNode = new ListNode(0);
         ListNode root = new ListNode(array[0]);
         dummyNode.next = root;
@@ -77,7 +78,7 @@ public class Converter {
         return dummyNode.next;
     }
 
-    public int[] convertLinkedListToArray(ListNode root) {
+    public int[] LinkedListToArray(ListNode root) {
         int[] array = new int[getLinkedListLength(root)];
 
         int i = 0;

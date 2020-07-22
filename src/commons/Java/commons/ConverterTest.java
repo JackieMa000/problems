@@ -1,4 +1,4 @@
-package converter;
+package commons;
 
 import nodes.ListNode;
 import nodes.TreeNode;
@@ -18,13 +18,13 @@ public class ConverterTest {
 
     @Test
     public void convertArrayToTree() {
-        TreeNode actual = converter.convertArrayToTree(new int[]{3, 1, 5, 0, 2});
+        TreeNode actual = converter.ArrayToTree(new int[]{3, 1, 5, 0, 2});
         assertTreeEqualsArray(actual, new int[]{3, 1, 5, 0, 2}, 0);
     }
 
     @Test
     public void convertArrayToTree1() {
-        TreeNode actual = converter.convertArrayToTree(new int[]{5, 1, 4, 0, 6, 3, 6});
+        TreeNode actual = converter.ArrayToTree(new int[]{5, 1, 4, 0, 6, 3, 6});
         assertTreeEqualsArray(actual, new int[]{5, 1, 4, 0, 6, 3, 6}, 0);
     }
 
@@ -41,19 +41,19 @@ public class ConverterTest {
 
     @Test
     public void convertTreeToArray() {
-        assertArrayEquals(new int[]{3, 1, 5, 0, 2}, converter.convertTreeToArray(generateTestTree()));
+        assertArrayEquals(new int[]{3, 1, 5, 0, 2}, converter.TreeToArray(generateTestTree()));
     }
 
     @Test
     public void convertTreeToArray1() {
-        TreeNode root = converter.convertArrayToTree(new int[]{5, 1, 4, 0, 6, 3, 6});
-        assertArrayEquals(new int[]{5, 1, 4, 0, 6, 3, 6}, converter.convertTreeToArray(root));
+        TreeNode root = converter.ArrayToTree(new int[]{5, 1, 4, 0, 6, 3, 6});
+        assertArrayEquals(new int[]{5, 1, 4, 0, 6, 3, 6}, converter.TreeToArray(root));
     }
 
     @Test
     public void convertTreeToArray2() {
-        TreeNode root = converter.convertArrayToTree(new int[]{5, 1, 4, 0, 0, 3, 6});
-        assertArrayEquals(new int[]{5, 1, 4, 0, 0, 3, 6}, converter.convertTreeToArray(root));
+        TreeNode root = converter.ArrayToTree(new int[]{5, 1, 4, 0, 0, 3, 6});
+        assertArrayEquals(new int[]{5, 1, 4, 0, 0, 3, 6}, converter.TreeToArray(root));
     }
 
     @Test
@@ -67,13 +67,13 @@ public class ConverterTest {
     }
 
     private TreeNode generateTestTree() {
-        return converter.convertArrayToTree(new int[]{3, 1, 5, 0, 2});
+        return converter.ArrayToTree(new int[]{3, 1, 5, 0, 2});
     }
 
     @Test
     public void convertArrayToLinkedList() {
         int[] array = {1, 2, 3, 4};
-        assertLinkedListEqualsArray(converter.convertArrayToLinkedList(array), array);
+        assertLinkedListEqualsArray(converter.ArrayToLinkedList(array), array);
     }
 
     private void assertLinkedListEqualsArray(ListNode root, int[] array) {
@@ -87,7 +87,7 @@ public class ConverterTest {
     @Test
     public void convertLinkedListToArray() {
         int[] expected = {1, 2, 3, 4};
-        ListNode root = converter.convertArrayToLinkedList(expected);
-        assertArrayEquals(expected, converter.convertLinkedListToArray(root));
+        ListNode root = converter.ArrayToLinkedList(expected);
+        assertArrayEquals(expected, converter.LinkedListToArray(root));
     }
 }

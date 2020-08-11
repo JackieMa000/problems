@@ -4,3 +4,5 @@ info.txt
 .DS_Store
 .vscode/
 locals.cpp
+.editor/
+target/

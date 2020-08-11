@@ -5,3 +5,4 @@ info.txt
 .vscode/
 locals.cpp
 target/
+out/

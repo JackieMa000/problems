@@ -6,7 +6,7 @@ class Solution1:
     # Iterative
     def reverseKGroup(self, head: ListNode, k: int) -> ListNode:
         # Initialize
-        dummy: ListNode = ListNode();
+        dummy: ListNode = ListNode()
         dummy.next = head
         # Type inferred
         pre, cur = dummy, head

@@ -1,11 +1,11 @@
 
 from lib.lists.arrays import Array
 from nodes import ListNode
-from solutions import Solution1, Solution2
+from reverseKGroup.solutions import Solution1, Solution2
 from testing import DSATestCase
 
 
-class TestSolution1(DSATestCase):
+class Solution1TestCase(DSATestCase):
     def setUp(self):
         self.solution = Solution1()
         self.head: ListNode = Array([1, 2, 3, 4, 5]).to_singlylinkedlist()
@@ -20,7 +20,7 @@ class TestSolution1(DSATestCase):
         self.assertArrayEqualsLinkedList([3, 2, 1, 4, 5], self.solution.reverseKGroup(self.head, 3))
 
 
-class TestSolution2(DSATestCase):
+class Solution2TestCase(DSATestCase):
     def setUp(self):
         self.solution = Solution2()
         self.head = Array([1, 2, 3, 4, 5]).to_singlylinkedlist()

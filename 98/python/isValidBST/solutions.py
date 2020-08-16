@@ -1,29 +1,10 @@
-from typing import Optional
-
+from lib.trees import BinarySearchTree
 from nodes import BinaryTreeNode
 
 
-# LowerBound and UpperBound
-# BST Rule:
-# biggest on the left < root < smallest on the right
-# all the nodes on the left < root < all the nodes on the right
 class Solution1:
     def isValidBST(self, root: BinaryTreeNode) -> bool:
-        return self._is_valid(root, None, None)
-
-    def _is_valid(self, root: BinaryTreeNode, minNode: Optional[BinaryTreeNode],
-                  maxNode: Optional[BinaryTreeNode]) -> bool:
-        # Terminator
-        if not root: return True
-
-        # Lower Bound
-        if minNode and root.val <= minNode.val: return False
-
-        # Upper Bound
-        if maxNode and root.val >= maxNode.val: return False
-
-        # Recursive case
-        return self._is_valid(root.left, minNode, root) and self._is_valid(root.right, root, maxNode)
+        return BinarySearchTree(root).is_valid()
 
 
 # inorder traversal

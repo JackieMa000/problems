@@ -1,7 +1,7 @@
 from typing import List
 
 from lib.lists.arrays import Array
-from lib.trees import BinaryTree
+from lib.trees import BinaryTree, BinarySearchTree
 from nodes import BinaryTreeNode
 from testing import DSATestCase
 
@@ -40,3 +40,65 @@ class GetArraySizeForTreeTestCase(BinaryTreeTestCase):
     def test_case1(self):
         root: BinaryTreeNode = Array([3, 1, 5, 0, 2]).to_binary_tree()
         self.assertEqual(7, BinaryTree._get_array_size_for_tree(root))
+
+
+class BinarySearchTreeTestCase(BinaryTreeTestCase):
+    pass
+
+
+class PreorderTestCase(BinarySearchTreeTestCase):
+
+    def test_case1(self):
+        root: BinaryTreeNode = Array([2, 1]).to_binary_tree()
+        self.assertEqual([2, 1], BinarySearchTree(root).preorder())
+
+    def test_case2(self):
+        root: BinaryTreeNode = Array([2, 1, 3]).to_binary_tree()
+        self.assertEqual([2, 1, 3], BinarySearchTree(root).preorder())
+
+    def test_case3(self):
+        root: BinaryTreeNode = Array([3, 1, 5, 0, 2]).to_binary_tree()
+        self.assertEqual([3, 1, 2, 5], BinarySearchTree(root).preorder())
+
+
+class InorderTestCase(BinarySearchTreeTestCase):
+
+    def test_case1(self):
+        root: BinaryTreeNode = Array([2, 1]).to_binary_tree()
+        self.assertEqual([1, 2], BinarySearchTree(root).inorder())
+
+    def test_case2(self):
+        root: BinaryTreeNode = Array([2, 1, 3]).to_binary_tree()
+        self.assertEqual([1, 2, 3], BinarySearchTree(root).inorder())
+
+    def test_case3(self):
+        root: BinaryTreeNode = Array([3, 1, 5, 0, 2]).to_binary_tree()
+        self.assertEqual([1, 2, 3, 5], BinarySearchTree(root).inorder())
+
+
+class PostorderTestCase(BinarySearchTreeTestCase):
+
+    def test_case1(self):
+        root: BinaryTreeNode = Array([2, 1]).to_binary_tree()
+        self.assertEqual([1, 2], BinarySearchTree(root).postorder())
+
+    def test_case2(self):
+        root: BinaryTreeNode = Array([2, 1, 3]).to_binary_tree()
+        self.assertEqual([1, 3, 2], BinarySearchTree(root).postorder())
+
+    def test_case3(self):
+        root: BinaryTreeNode = Array([3, 1, 5, 0, 2]).to_binary_tree()
+        self.assertEqual([2, 1, 5, 3], BinarySearchTree(root).postorder())
+
+
+class IsValidTestCase(BinarySearchTreeTestCase):
+
+    def test_case1(self):
+        self.assertTrue(BinarySearchTree(Array([3, 1, 5, None, 2]).to_binary_tree()).is_valid())
+        self.assertTrue(BinarySearchTree(Array([5, 1, 8, 0, 2, 6, 9]).to_binary_tree()).is_valid())
+        self.assertTrue(BinarySearchTree(Array([5, 1, 6, -3, 2, None, 7]).to_binary_tree()).is_valid())
+
+    def test_case2(self):
+        self.assertFalse(BinarySearchTree(Array([5, 1, 4, 0, 6, 3, 6]).to_binary_tree()).is_valid())
+        self.assertFalse(BinarySearchTree(Array([0, None, -1]).to_binary_tree()).is_valid())
+        self.assertFalse(BinarySearchTree(Array([1, 1]).to_binary_tree()).is_valid())

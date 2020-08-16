@@ -1,3 +1,5 @@
+#include <vector>
+
 #include "nodes.h"
 
 #ifndef LIB_TREES_H
@@ -12,19 +14,41 @@ namespace lib
         virtual int depth() = 0;
     };
 
-    class BinaryTree : public Tree
+    class BinaryTree : Tree
     {
-    private:
-        const nodes::BinaryTreeNode *root;
+    protected:
+        nodes::BinaryTreeNode *root;
 
-        void destroy(const nodes::BinaryTreeNode *root);
+    private:
+        void destroy(nodes::BinaryTreeNode *root);
 
     public:
         BinaryTree(nodes::BinaryTreeNode *root);
-        ~BinaryTree();
+        virtual ~BinaryTree();
 
         int *toArray();
         int depth();
+    };
+
+    class BinarySearchTree : BinaryTree
+    {
+    private:
+        static std::vector<int> preorderDfs(nodes::BinaryTreeNode *root, std::vector<int> lst);
+        static std::vector<int> *inorderDfs(nodes::BinaryTreeNode *root, std::vector<int> *lst);
+        static std::vector<int> &postorderDfs(nodes::BinaryTreeNode *root, std::vector<int> &lst);
+
+        static bool isValidBST(nodes::BinaryTreeNode *root, nodes::BinaryTreeNode *minNode,
+                               nodes::BinaryTreeNode *maxNode);
+
+    public:
+        BinarySearchTree(nodes::BinaryTreeNode *root);
+        ~BinarySearchTree();
+
+        std::vector<int> preorder();
+        std::vector<int> *inorder();
+        std::vector<int> &postorder();
+
+        bool isValid();
     };
 
 } // namespace lib

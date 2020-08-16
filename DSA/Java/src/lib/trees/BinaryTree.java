@@ -8,7 +8,7 @@ import static java.lang.Math.pow;
 
 public class BinaryTree implements Tree {
 
-    private final BinaryTreeNode root;
+    protected final BinaryTreeNode root;
 
     public BinaryTree(BinaryTreeNode root) {
         this.root = root;
@@ -38,5 +38,11 @@ public class BinaryTree implements Tree {
     public int depth() {
         return (this.root == null) ? 0 : 1 + max(new BinaryTree(this.root.left).depth(),
                 new BinaryTree(this.root.right).depth());
+    }
+
+    @Override
+    public int size() {
+        // ToDo
+        return 0;
     }
 }

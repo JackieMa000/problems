@@ -8,9 +8,10 @@ namespace lib
 {
     class LinkedList : List
     {
-    public:
+    protected:
         nodes::ListNode *head;
 
+    public:
         LinkedList(nodes::ListNode *head);
         virtual ~LinkedList();
 

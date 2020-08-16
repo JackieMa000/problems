@@ -17,7 +17,7 @@ lib::LinkedList::~LinkedList()
 lib::SinglyLinkedList::SinglyLinkedList(nodes::ListNode *head) : LinkedList(head){};
 
 // reverse the nodes before a certain node
-nodes::ListNode *lib::SinglyLinkedList::reverseBefore(nodes::ListNode * node)
+nodes::ListNode *lib::SinglyLinkedList::reverseBefore(nodes::ListNode *node)
 {
     nodes::ListNode *pre, *cur, *next;
     pre = node;
@@ -33,4 +33,4 @@ nodes::ListNode *lib::SinglyLinkedList::reverseBefore(nodes::ListNode * node)
     return pre;
 };
 
-lib::DoublyLinkedList::DoublyLinkedList(nodes::ListNode * head) : LinkedList(head){};
+lib::DoublyLinkedList::DoublyLinkedList(nodes::ListNode *head) : LinkedList(head){};

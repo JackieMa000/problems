@@ -8,6 +8,9 @@
       <sourceFolder url="file://$MODULE_DIR$/../../../98/python" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../../25/python" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../../DSA/Python/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../235/python" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../236/python" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../InteliJ/out" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
       <excludeFolder url="file://$MODULE_DIR$/../../../.vscode" />
     </content>

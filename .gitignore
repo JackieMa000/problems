@@ -2,7 +2,6 @@
 info.md
 info.txt
 .DS_Store
-.vscode/
 locals.cpp
 target/
 out/

@@ -1,8 +1,9 @@
 from abc import ABCMeta, abstractmethod
 from typing import List, Optional
 
+from lib.queues import Queue
 from lib.utils import array_rstrip
-from nodes import BinaryTreeNode
+from nodes import BinaryTreeNode, TreeNode
 
 
 class Tree(metaclass=ABCMeta):
@@ -13,6 +14,18 @@ class Tree(metaclass=ABCMeta):
 
     @abstractmethod
     def depth(self) -> int:
+        pass
+
+    @abstractmethod
+    def size(self) -> int:
+        pass
+
+    @abstractmethod
+    def get_node_by_index(self, idx: int) -> TreeNode:
+        pass
+
+    @abstractmethod
+    def get_node_by_value(self, val: int) -> TreeNode:
         pass
 
 
@@ -46,6 +59,71 @@ class BinaryTree(Tree):
     def _get_array_size_for_tree(root: BinaryTreeNode) -> int:
         # Todo: could use my own pow
         return pow(2, BinaryTree(root).depth()) - 1
+
+    def get_node_by_index(self, idx: int) -> BinaryTreeNode:
+        return BinaryTree.get_node_by_idx_bfs(self._root, idx)
+
+    @staticmethod
+    def get_node_by_idx_bfs(root: BinaryTreeNode, idx: int) -> Optional[BinaryTreeNode]:
+        queue: Queue = Queue()
+
+        queue.append(root)
+        count: int = 0
+        while not queue.is_empty():
+            node = queue.pop()
+            count += 1
+            if (count - 1) == idx:
+                return node
+
+            if not node: continue
+            queue.append(node.left)
+            queue.append(node.right)
+
+        return None
+
+    def get_node_by_value(self, val: int) -> BinaryTreeNode:
+        return BinaryTree.get_node_by_val_bfs(self._root, val)
+
+    @staticmethod
+    def get_node_by_val_bfs(root: BinaryTreeNode, val: int) -> Optional[BinaryTreeNode]:
+        queue: Queue = Queue()
+        queue.add(root)
+        while not queue.is_empty():
+            node = queue.pop()
+            if not node: continue
+
+            if node.val == val: return node
+
+            queue.add(node.left)
+            queue.add(node.right)
+
+        return None
+
+    def size(self) -> int:
+        return BinaryTree.size_dfs(self._root)
+
+    @staticmethod
+    def size_bfs(root: BinaryTreeNode) -> int:
+        queue: Queue = Queue()
+        queue.add(root)
+        count: int = 0
+        while not queue.is_empty():
+            node = queue.pop()
+            if not node: continue
+            count += 1
+
+            queue.add(node.left)
+            queue.add(node.right)
+        return count
+
+    @staticmethod
+    def size_dfs(root: BinaryTreeNode) -> int:
+        count: int = 0
+        if root:
+            count += 1
+            count += BinaryTree.size_dfs(root.left)
+            count += BinaryTree.size_dfs(root.right)
+        return count
 
 
 class BinarySearchTree(BinaryTree):
@@ -105,4 +183,3 @@ class BinarySearchTree(BinaryTree):
         if minNode and root.val <= minNode.val: return False
         return BinarySearchTree._is_valid_bst(root.left, minNode, root) and \
                BinarySearchTree._is_valid_bst(root.right, root, maxNode)
-

@@ -5,7 +5,7 @@ import nodes.ListNode;
 
 public class LinkedList implements List {
 
-    ListNode head;
+    final ListNode head;
 
     public LinkedList(ListNode head) {
         this.head = head;
@@ -42,5 +42,10 @@ public class LinkedList implements List {
             cur = cur.next;
         }
         return cur;
+    }
+
+    public final ListNode getNodeByValue(int val) {
+        // ToDo
+        return null;
     }
 }

@@ -52,7 +52,7 @@ public class BinarySearchTree extends BinaryTree {
     public boolean isValid() {
         return isValidBST(this.root, null, null);
     }
-/*
+/**
  LowerBound and UpperBound.
 BST Rule:
  left(all nodes) < root < right(all nodes)

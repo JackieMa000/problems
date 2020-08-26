@@ -9,14 +9,14 @@ public class UtilsTest {
 
     public static class ArrayStripTrailingTest {
 
-        @Ignore
+        @Ignore("FixMe")
         @Test
 //        FixMe
         public void case1() {
             assertArrayEquals(new int[]{}, Utils.arrayStripTrailing(new int[]{}));
         }
 
-        @Ignore
+        @Ignore("FixMe")
         @Test
 //        FixMe
         public void case2() {

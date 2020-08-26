@@ -5,9 +5,11 @@ import nodes.ListNode;
 
 public class Array {
     private final int[] array;
+    public final int length;
 
     public Array(int[] array) {
         this.array = array;
+        this.length = this.array.length;
     }
 
     public ListNode toSinglyLinkedList() {
@@ -15,7 +17,7 @@ public class Array {
         ListNode head = new ListNode(this.array[0]);
         dummyNode.next = head;
 
-        for (int i = 1; i < this.array.length; i++) {
+        for (int i = 1; i < this.length; i++) {
             head.next = new ListNode(this.array[i]);
             head = head.next;
         }
@@ -24,8 +26,9 @@ public class Array {
     }
 
     public BinaryTreeNode toBinaryTree() {
+//      FixMe:  Edge case if array is empty
         BinaryTreeNode root = new BinaryTreeNode(this.array[0]);
-        generateTreeFromArray(this.array, this.array.length, root, 0);
+        generateTreeFromArray(this.array, this.length, root, 0);
         return root;
     }
 

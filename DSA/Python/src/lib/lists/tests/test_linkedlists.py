@@ -12,7 +12,7 @@ class LinkedListTestCase(DSATestCase):
 
 
 class SizeTestCase(LinkedListTestCase):
-    @skip('')
+    @skip("ToDo")
     def test_case1(self):
         # ToDo
         self.fail()

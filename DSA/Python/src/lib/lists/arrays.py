@@ -34,6 +34,8 @@ class Array:
         return dummy_node.next
 
     def to_binary_tree(self) -> BinaryTreeNode:
+        # FixMe: Could not handle the case 0 in array for null TreeNode
+        # FixMe: Could not handle the case when the array is empty.
         root: BinaryTreeNode = BinaryTreeNode(self._array[0])
         Array._generate_tree_from_array(self._array, self.length, root, 0)
         return root

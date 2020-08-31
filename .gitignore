@@ -6,3 +6,4 @@ locals.cpp
 target/
 out/
 *.pyc
+/build/

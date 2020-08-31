@@ -13,6 +13,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../../236/java" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../../.vscode" />
       <excludeFolder url="file://$MODULE_DIR$/../../DSA/Java/target" />
+      <excludeFolder url="file://$MODULE_DIR$/../../build" />
       <excludeFolder url="file://$MODULE_DIR$/../../common/Java/target" />
     </content>
     <orderEntry type="inheritedJdk" />

@@ -3,5 +3,16 @@
         "iosfwd": "cpp",
         "vector": "cpp",
         "includes": "cpp"
+    },
+    "cmake.sourceDirectory": "${workspaceFolder}/DSA/Cpp",
+    "cmake.debugConfig": {
+        "stopAtEntry": false,
+        "MIMode": "lldb",
+        "miDebuggerPath": "Users/Jackie/.vscode/extensions/ms-vscode.cpptools-0.29.0/debugAdapters/lldb/bin/lldb-mi",
+        "logging": {
+                "trace": true,
+                "engineLogging": true,
+                "traceResponse": true
+        }
     }
 }

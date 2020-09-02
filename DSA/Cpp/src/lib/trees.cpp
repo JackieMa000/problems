@@ -14,6 +14,19 @@ void lib::BinaryTree::destroy(nodes::BinaryTreeNode *root)
     delete root;
 };
 
+nodes::BinaryTreeNode *lib::BinaryTree::lowestCommonAncestor(nodes::BinaryTreeNode *p, nodes::BinaryTreeNode *q) {
+    return lowestCommonAncestorDfs(this->root, p, q);
+}
+nodes::BinaryTreeNode *lib::BinaryTree::lowestCommonAncestorDfs(nodes::BinaryTreeNode *root, 
+nodes::BinaryTreeNode *p, nodes::BinaryTreeNode *q) {
+    if (!root || p == root || q == root) return root;
+
+    nodes::BinaryTreeNode *left = lowestCommonAncestorDfs(root->left, p, q);
+    nodes::BinaryTreeNode *right = lowestCommonAncestorDfs(root->right, p, q);
+
+    return (left && right) ? root : !left ? right : left;
+}
+
 lib::BinarySearchTree::BinarySearchTree(nodes::BinaryTreeNode *root) : BinaryTree(root) {}
 
 std::vector<int> lib::BinarySearchTree::preorder()

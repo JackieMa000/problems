@@ -1,5 +1,6 @@
 #include "nodes.h"
 
+// FixMe: Redefination of nodes with nodes.h
 struct nodes::Node
 {
     int val = 0;

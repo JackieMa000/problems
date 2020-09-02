@@ -7,11 +7,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class BinaryTreeTest {
-
-    protected static BinaryTreeNode arrayToTree(int[] ary) {
-        return new Array(ary).toBinaryTree();
-    }
+public class BinaryTreeTest extends BinaryTreeServices {
 
     public static class GetNodeByIndexTest {
         @Test
@@ -119,5 +115,28 @@ public class BinaryTreeTest {
             return new BinaryTree(root).size();
         }
 
+    }
+
+    public static class LowestCommonAncestorTest {
+
+        private BinaryTreeNode getLowestCommonAncestor(BinaryTreeNode root, BinaryTreeNode p, BinaryTreeNode q) {
+            return new BinaryTree(root).lowestCommonAncestor(p, q);
+        }
+
+        @Test
+        public void case1() {
+            BinaryTreeNode root = arrayToTree(new int[]{3, 5, 1, 6, 2, 0, 8, 0, 0, 7, 4});
+            BinaryTreeNode p = getTreeNodeByValue(root, 5);
+            BinaryTreeNode q = getTreeNodeByValue(root, 1);
+            assertEquals(3, getLowestCommonAncestor(root, p, q).val);
+        }
+
+        @Test
+        public void case2() {
+            BinaryTreeNode root = arrayToTree(new int[]{3, 5, 1, 6, 2, 0, 8, 0, 0, 7, 4});
+            BinaryTreeNode p = getTreeNodeByValue(root, 5);
+            BinaryTreeNode q = getTreeNodeByValue(root, 4);
+            assertEquals(5, getLowestCommonAncestor(root, p, q).val);
+        }
     }
 }

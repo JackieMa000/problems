@@ -104,4 +104,24 @@ public class BinaryTree implements Tree {
 
         return null;
     }
+
+    public BinaryTreeNode lowestCommonAncestor(BinaryTreeNode p, BinaryTreeNode q) {
+        return lowestCommonAncestorDfs(this.root, p, q);
+    }
+
+    /**
+     * LCA Rule:
+     * 1. root is None
+     * 2. p or q is root -> root
+     * 3. p is on the left/right subtree, q is on the right/left subtree, respectively -> root
+     * 4. p and q both are on the left/right subtree, then go to the left/right for more searching.
+     */
+    private static BinaryTreeNode lowestCommonAncestorDfs(BinaryTreeNode root, BinaryTreeNode p, BinaryTreeNode q) {
+        if (root == null || p == root || q == root) return root;
+
+        BinaryTreeNode left = lowestCommonAncestorDfs(root.left, p, q);
+        BinaryTreeNode right = lowestCommonAncestorDfs(root.right, p, q);
+
+        return (left != null && right != null) ? root : left == null ? right : left;
+    }
 }

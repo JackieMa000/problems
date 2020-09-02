@@ -17,6 +17,10 @@ class BinaryTreeTestCase(TreeTestCase):
     def array_to_tree(ary: List[int]) -> BinaryTreeNode:
         return Array(ary).to_binary_tree()
 
+    @staticmethod
+    def get_tree_node_by_value(root: BinaryTreeNode, val: int) -> BinaryTreeNode:
+        return BinaryTree(root).get_node_by_value(val)
+
 
 class DepthTestCase(BinaryTreeTestCase):
     def test_case1(self):
@@ -103,6 +107,24 @@ class SizeTestCase(BinaryTreeTestCase):
 
     def get_tree_size(self, root):
         return BinaryTree(root).size()
+
+
+class LowestCommonAncestorTestCase(BinaryTreeTestCase):
+
+    def test_case1(self):
+        root: BinaryTreeNode = self.array_to_tree([3, 5, 1, 6, 2, 0, 8, 0, 0, 7, 4])
+        p: BinaryTreeNode = self.get_tree_node_by_value(root, 5)
+        q: BinaryTreeNode = self.get_tree_node_by_value(root, 1)
+        self.assertEqual(3, self.get_lowestCommonAncestor(root, p, q).val)
+
+    def test_case2(self):
+        root: BinaryTreeNode = self.array_to_tree([3, 5, 1, 6, 2, 0, 8, 0, 0, 7, 4])
+        p: BinaryTreeNode = self.get_tree_node_by_value(root, 5)
+        q: BinaryTreeNode = self.get_tree_node_by_value(root, 4)
+        self.assertEqual(5, self.get_lowestCommonAncestor(root, p, q).val)
+
+    def get_lowestCommonAncestor(self, root, p, q):
+        return BinaryTree(root).lowestCommonAncestor(p, q)
 
 
 class BinarySearchTreeTestCase(BinaryTreeTestCase):

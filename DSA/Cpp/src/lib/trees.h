@@ -21,6 +21,8 @@ namespace lib
 
     private:
         void destroy(nodes::BinaryTreeNode *root);
+        static nodes::BinaryTreeNode *lowestCommonAncestorDfs(nodes::BinaryTreeNode *root, 
+        nodes::BinaryTreeNode *p, nodes::BinaryTreeNode *q);
 
     public:
         BinaryTree(nodes::BinaryTreeNode *root);
@@ -28,6 +30,7 @@ namespace lib
 
         int *toArray();
         int depth();
+        nodes::BinaryTreeNode *lowestCommonAncestor(nodes::BinaryTreeNode *p, nodes::BinaryTreeNode *q);
     };
 
     class BinarySearchTree : BinaryTree

@@ -1,1 +1,3 @@
-add_subdirectory(adder)
+add_subdirectory(lib)
+add_subdirectory(testing)
+

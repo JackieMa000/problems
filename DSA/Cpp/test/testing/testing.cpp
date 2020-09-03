@@ -1,9 +1,12 @@
 #include "testing.h"
 
-namespace testing
+namespace dsa
 {
-    void DSATest::EXPECT_ARRAY_EQ(int ary1[], int ary2[])
+    namespace testing
     {
-        // ToDo
-    }
-} // namespace testing
+        void DSATest::EXPECT_ARRAY_EQ(int ary1[], int ary2[])
+        {
+            // ToDo
+        }
+    } // namespace testing
+} // namespace dsa

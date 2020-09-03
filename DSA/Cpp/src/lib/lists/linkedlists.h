@@ -9,34 +9,34 @@ namespace lib
     class LinkedList : List
     {
     protected:
-        nodes::ListNode *head;
+        dsa::nodes::ListNode *head;
 
     public:
-        LinkedList(nodes::ListNode *head);
+        LinkedList(dsa::nodes::ListNode *head);
         virtual ~LinkedList();
 
         int size() final;
         virtual int *toArray() final;
-        virtual nodes::ListNode *getNodeByIndex(int idx) const final;
+        virtual dsa::nodes::ListNode *getNodeByIndex(int idx) const final;
 
-        virtual nodes::ListNode *reverse();
+        virtual dsa::nodes::ListNode *reverse();
     };
 
     class SinglyLinkedList : LinkedList
     {
     public:
-        SinglyLinkedList(nodes::ListNode *head);
+        SinglyLinkedList(dsa::nodes::ListNode *head);
         ~SinglyLinkedList();
 
-        nodes::ListNode *reverse();
-        nodes::ListNode *reverseBefore(nodes::ListNode *node);
-        nodes::ListNode *reverseFromTo(nodes::ListNode *fnode, nodes::ListNode *tnode);
+        dsa::nodes::ListNode *reverse();
+        dsa::nodes::ListNode *reverseBefore(dsa::nodes::ListNode *node);
+        dsa::nodes::ListNode *reverseFromTo(dsa::nodes::ListNode *fnode, dsa::nodes::ListNode *tnode);
     };
 
     class DoublyLinkedList : LinkedList
     {
     public:
-        DoublyLinkedList(nodes::ListNode *head);
+        DoublyLinkedList(dsa::nodes::ListNode *head);
         ~DoublyLinkedList();
     };
 

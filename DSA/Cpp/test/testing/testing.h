@@ -3,13 +3,15 @@
 #ifndef TESTING_H
 #define TESTING_H
 
-namespace testing
+namespace dsa
 {
-    class DSATest : public ::testing::Test
+    namespace testing
     {
-    public:
-        void EXPECT_ARRAY_EQ(int ary1[], int ary2[]);
-    };
-} // namespace testing
-
+        class DSATest : public ::testing::Test
+        {
+        public:
+            void EXPECT_ARRAY_EQ(int ary1[], int ary2[]);
+        };
+    } // namespace testing
+} // namespace dsa
 #endif // TESTING_H

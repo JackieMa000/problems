@@ -1,45 +1,51 @@
 #include "nodes.h"
 
 // FixMe: Redefination of nodes with nodes.h
-struct nodes::Node
+namespace dsa
 {
-    int val = 0;
-
-    Node() {}
-    Node(int val) { this->val = val; }
-};
-
-struct nodes::ListNode : nodes::Node
-{
-    ListNode *next;
-    ListNode *next = nullptr;
-
-    ListNode() : nodes::Node() {}
-    ListNode(int val) : nodes::Node(val) {}
-    ListNode(int val, ListNode *next)
+    namespace nodes
     {
-        this->val = val;
-        this->next = next;
-    }
-};
+        struct Node
+        {
+            int val = 0;
 
-struct nodes::TreeNode : nodes::Node
-{
-    TreeNode() : nodes::Node() {}
-    TreeNode(int val) : nodes::Node(val) {}
-};
+            Node() {}
+            Node(int val) { this->val = val; }
+        };
 
-struct nodes::BinaryTreeNode : nodes::TreeNode
-{
-    BinaryTreeNode *left, *right;
-    BinaryTreeNode *left = nullptr, *right = nullptr;
+        struct ListNode : Node
+        {
+            ListNode *next;
+            ListNode *next = nullptr;
 
-    BinaryTreeNode() : nodes::TreeNode() {}
-    BinaryTreeNode(int val) : nodes::TreeNode(val) {}
-    BinaryTreeNode(int val, BinaryTreeNode *left, BinaryTreeNode *right)
-    {
-        this->val = val;
-        this->left = left;
-        this->right = right;
-    }
-};
+            ListNode() : Node() {}
+            ListNode(int val) : Node(val) {}
+            ListNode(int val, ListNode *next)
+            {
+                this->val = val;
+                this->next = next;
+            }
+        };
+
+        struct TreeNode : Node
+        {
+            TreeNode() : Node() {}
+            TreeNode(int val) : Node(val) {}
+        };
+
+        struct BinaryTreeNode : TreeNode
+        {
+            BinaryTreeNode *left, *right;
+            BinaryTreeNode *left = nullptr, *right = nullptr;
+
+            BinaryTreeNode() : TreeNode() {}
+            BinaryTreeNode(int val) : TreeNode(val) {}
+            BinaryTreeNode(int val, BinaryTreeNode *left, BinaryTreeNode *right)
+            {
+                this->val = val;
+                this->left = left;
+                this->right = right;
+            }
+        };
+    } // namespace nodes
+} // namespace dsa

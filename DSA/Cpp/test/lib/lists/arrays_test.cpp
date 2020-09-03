@@ -5,11 +5,11 @@ namespace lib
 {
     namespace
     {
-        class ArrayTest : public testing::DSATest
+        class ArrayTest : public dsa::testing::DSATest
         {
         };
 
-        class ArrayListTest : public testing::DSATest
+        class ArrayListTest : public dsa::testing::DSATest
         {
         };
 

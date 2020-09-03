@@ -1,29 +1,32 @@
 #include "lib/utils.h"
 #include "testing.h"
 
-namespace lib
+namespace dsa
 {
-    namespace utils
+    namespace lib
     {
-        namespace
+        namespace utils
         {
-            class ArrayRstripTest : public testing::DSATest
+            namespace
             {
-            };
+                class ArrayRstripTest : public dsa::testing::DSATest
+                {
+                };
 
-            TEST_F(ArrayRstripTest, case1)
-            {
-                // Arrange;
-                // Act;
-                int ary[] = {1, 2, 0};
-                int *actual = arrayRstrip(ary);
+                TEST_F(ArrayRstripTest, case1)
+                {
+                    // Arrange;
+                    // Act;
+                    int ary[] = {1, 2, 0};
+                    int *actual = arrayRstrip(ary);
 
-                // Assert;
-                int res = actual[1];
-                EXPECT_EQ(2, res);
-                // EXPECT_ARRAY_EQ(expected, actual);
-            }
+                    // Assert;
+                    int res = actual[1];
+                    EXPECT_EQ(2, res);
+                    // EXPECT_ARRAY_EQ(expected, actual);
+                }
 
-        } // namespace
-    }     // namespace utils
-} // namespace lib
+            } // namespace
+        }     // namespace utils
+    }         // namespace lib
+} // namespace dsa

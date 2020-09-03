@@ -1,10 +1,10 @@
 #include "nodes.h"
 #include "lib/lists/linkedlists.h"
 
-lib::LinkedList::LinkedList(nodes::ListNode *head) { this->head = head; }
+lib::LinkedList::LinkedList(dsa::nodes::ListNode *head) { this->head = head; }
 lib::LinkedList::~LinkedList()
 {
-    nodes::ListNode *cur, *next;
+    dsa::nodes::ListNode *cur, *next;
     cur = head;
     while (!cur)
     {
@@ -14,12 +14,12 @@ lib::LinkedList::~LinkedList()
     }
 };
 
-lib::SinglyLinkedList::SinglyLinkedList(nodes::ListNode *head) : LinkedList(head){};
+lib::SinglyLinkedList::SinglyLinkedList(dsa::nodes::ListNode *head) : LinkedList(head){};
 
 // reverse the nodes before a certain node
-nodes::ListNode *lib::SinglyLinkedList::reverseBefore(nodes::ListNode *node)
+dsa::nodes::ListNode *lib::SinglyLinkedList::reverseBefore(dsa::nodes::ListNode *node)
 {
-    nodes::ListNode *pre, *cur, *next;
+    dsa::nodes::ListNode *pre, *cur, *next;
     pre = node;
     cur = this->head;
 
@@ -33,4 +33,4 @@ nodes::ListNode *lib::SinglyLinkedList::reverseBefore(nodes::ListNode *node)
     return pre;
 };
 
-lib::DoublyLinkedList::DoublyLinkedList(nodes::ListNode *head) : LinkedList(head){};
+lib::DoublyLinkedList::DoublyLinkedList(dsa::nodes::ListNode *head) : LinkedList(head){};

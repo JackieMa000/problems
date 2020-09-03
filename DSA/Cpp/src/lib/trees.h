@@ -17,34 +17,34 @@ namespace lib
     class BinaryTree : Tree
     {
     protected:
-        nodes::BinaryTreeNode *root;
+        dsa::nodes::BinaryTreeNode *root;
 
     private:
-        void destroy(nodes::BinaryTreeNode *root);
-        static nodes::BinaryTreeNode *lowestCommonAncestorDfs(nodes::BinaryTreeNode *root, 
-        nodes::BinaryTreeNode *p, nodes::BinaryTreeNode *q);
+        void destroy(dsa::nodes::BinaryTreeNode *root);
+        static dsa::nodes::BinaryTreeNode *lowestCommonAncestorDfs(dsa::nodes::BinaryTreeNode *root, 
+        dsa::nodes::BinaryTreeNode *p, dsa::nodes::BinaryTreeNode *q);
 
     public:
-        BinaryTree(nodes::BinaryTreeNode *root);
+        BinaryTree(dsa::nodes::BinaryTreeNode *root);
         virtual ~BinaryTree();
 
         int *toArray();
         int depth();
-        nodes::BinaryTreeNode *lowestCommonAncestor(nodes::BinaryTreeNode *p, nodes::BinaryTreeNode *q);
+        dsa::nodes::BinaryTreeNode *lowestCommonAncestor(dsa::nodes::BinaryTreeNode *p, dsa::nodes::BinaryTreeNode *q);
     };
 
     class BinarySearchTree : BinaryTree
     {
     private:
-        static std::vector<int> preorderDfs(nodes::BinaryTreeNode *root, std::vector<int> lst);
-        static std::vector<int> *inorderDfs(nodes::BinaryTreeNode *root, std::vector<int> *lst);
-        static std::vector<int> &postorderDfs(nodes::BinaryTreeNode *root, std::vector<int> &lst);
+        static std::vector<int> preorderDfs(dsa::nodes::BinaryTreeNode *root, std::vector<int> lst);
+        static std::vector<int> *inorderDfs(dsa::nodes::BinaryTreeNode *root, std::vector<int> *lst);
+        static std::vector<int> &postorderDfs(dsa::nodes::BinaryTreeNode *root, std::vector<int> &lst);
 
-        static bool isValidBST(nodes::BinaryTreeNode *root, nodes::BinaryTreeNode *minNode,
-                               nodes::BinaryTreeNode *maxNode);
+        static bool isValidBST(dsa::nodes::BinaryTreeNode *root, dsa::nodes::BinaryTreeNode *minNode,
+                               dsa::nodes::BinaryTreeNode *maxNode);
 
     public:
-        BinarySearchTree(nodes::BinaryTreeNode *root);
+        BinarySearchTree(dsa::nodes::BinaryTreeNode *root);
         ~BinarySearchTree();
 
         std::vector<int> preorder();

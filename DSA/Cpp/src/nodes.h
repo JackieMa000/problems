@@ -1,40 +1,43 @@
 #ifndef NODES_H
 #define NODES_H
 
-namespace nodes
+namespace dsa
 {
-    struct Node
+    namespace nodes
     {
-        int val;
+        struct Node
+        {
+            int val;
 
-        Node();
-        Node(int val);
-    };
+            Node();
+            Node(int val);
+        };
 
-    struct ListNode : Node
-    {
-        ListNode *next;
+        struct ListNode : Node
+        {
+            ListNode *next;
 
-        ListNode();
-        ListNode(int val);
-        ListNode(int val, ListNode *next);
-    };
+            ListNode();
+            ListNode(int val);
+            ListNode(int val, ListNode *next);
+        };
 
-    struct TreeNode : Node
-    {
-        TreeNode();
-        TreeNode(int val);
-    };
+        struct TreeNode : Node
+        {
+            TreeNode();
+            TreeNode(int val);
+        };
 
-    struct BinaryTreeNode : TreeNode
-    {
-        BinaryTreeNode *left, *right;
+        struct BinaryTreeNode : TreeNode
+        {
+            BinaryTreeNode *left, *right;
 
-        BinaryTreeNode();
-        BinaryTreeNode(int val);
-        BinaryTreeNode(int val, ListNode *left, ListNode *right);
-    };
+            BinaryTreeNode();
+            BinaryTreeNode(int val);
+            BinaryTreeNode(int val, ListNode *left, ListNode *right);
+        };
 
-} // namespace nodes
+    } // namespace nodes
+} // namespace dsa
 
 #endif // NODES_H

@@ -15,8 +15,8 @@ namespace lib
         Array(int array[]);
         ~Array();
 
-        nodes::ListNode toSinglyLinkedList();
-        nodes::BinaryTreeNode toBinaryTree();
+        dsa::nodes::ListNode toSinglyLinkedList();
+        dsa::nodes::BinaryTreeNode toBinaryTree();
     };
 
     class ArrayList : List

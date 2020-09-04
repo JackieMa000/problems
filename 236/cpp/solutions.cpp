@@ -2,7 +2,7 @@
 #include "nodes.h"
 
 using lib::BinaryTree;
-using nodes::BinaryTreeNode;
+using dsa::nodes::BinaryTreeNode;
 
 class Solution
 {

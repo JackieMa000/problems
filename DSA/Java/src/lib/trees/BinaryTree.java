@@ -110,7 +110,7 @@ public class BinaryTree implements Tree {
     }
 
     /**
-     * LCA Rule:
+     * Binary Tree LCA Rule:
      * 1. root is None
      * 2. p or q is root -> root
      * 3. p is on the left/right subtree, q is on the right/left subtree, respectively -> root

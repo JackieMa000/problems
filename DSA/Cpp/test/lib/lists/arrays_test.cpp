@@ -9,6 +9,10 @@ namespace lib
         {
         };
 
+        TEST_F(ArrayTest, case2) {
+            EXPECT_EQ(1, 1);
+        }
+
         class ArrayListTest : public dsa::testing::DSATest
         {
         };

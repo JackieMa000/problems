@@ -100,7 +100,7 @@ class BinaryTree(Tree):
         return None
 
     def size(self) -> int:
-        return BinaryTree.size_dfs(self._root)
+        return BinaryTree._size_dfs(self._root)
 
     @staticmethod
     def size_bfs(root: BinaryTreeNode) -> int:
@@ -117,22 +117,22 @@ class BinaryTree(Tree):
         return count
 
     @staticmethod
-    def size_dfs(root: BinaryTreeNode) -> int:
+    def _size_dfs(root: BinaryTreeNode) -> int:
         count: int = 0
         if root:
             count += 1
-            count += BinaryTree.size_dfs(root.left)
-            count += BinaryTree.size_dfs(root.right)
+            count += BinaryTree._size_dfs(root.left)
+            count += BinaryTree._size_dfs(root.right)
         return count
 
     def lowestCommonAncestor(self, p: BinaryTreeNode, q: BinaryTreeNode) -> Optional[BinaryTreeNode]:
-        return BinaryTree.lowestCommonAncestor_dfs(self._root, p, q)
+        return BinaryTree._lowestCommonAncestor_dfs(self._root, p, q)
 
     @staticmethod
-    def lowestCommonAncestor_dfs(root: BinaryTreeNode, p: BinaryTreeNode, q: BinaryTreeNode) -> \
+    def _lowestCommonAncestor_dfs(root: BinaryTreeNode, p: BinaryTreeNode, q: BinaryTreeNode) -> \
             Optional[BinaryTreeNode]:
         """
-         LCA Rule:
+         Binary Tree LCA Rule:
          1. root is None
          2. p or q is root -> root
          3. p is on the left/right subtree, q is on the right/left subtree, respectively -> root
@@ -140,8 +140,8 @@ class BinaryTree(Tree):
         """
         if not root or p == root or q == root: return root
 
-        left = BinaryTree.lowestCommonAncestor_dfs(root.left, p, q)
-        right = BinaryTree.lowestCommonAncestor_dfs(root.right, p, q)
+        left = BinaryTree._lowestCommonAncestor_dfs(root.left, p, q)
+        right = BinaryTree._lowestCommonAncestor_dfs(root.right, p, q)
 
         return root if left and right else left or right
 
@@ -203,3 +203,30 @@ class BinarySearchTree(BinaryTree):
         if minNode and root.val <= minNode.val: return False
         return BinarySearchTree._is_valid_bst(root.left, minNode, root) and \
                BinarySearchTree._is_valid_bst(root.right, root, maxNode)
+
+    def lowestCommonAncestor(self, p: BinaryTreeNode, q: BinaryTreeNode) -> BinaryTreeNode:
+        """
+        BST LCA Rule:
+        1. if p < root < q or q < root < p -> root
+        2. if p < root and q < root -> goes to left subtree
+        3. if root < p and root < q -> goes to right subtree
+        """
+        return BinarySearchTree._lowestCommonAncestor_dfs(self._root, p, q)
+
+    @staticmethod
+    def _lowestCommonAncestor_dfs(root: BinaryTreeNode, p: BinaryTreeNode, q: BinaryTreeNode) -> BinaryTreeNode:
+        if p.val < root.val > q.val:
+            return BinarySearchTree._lowestCommonAncestor_dfs(root.left, p, q)
+        if p.val > root.val < q.val:
+            return BinarySearchTree._lowestCommonAncestor_dfs(root.right, p, q)
+        return root
+
+    @staticmethod
+    def _lowestCommonAncestor_bfs(root: BinaryTreeNode, p: BinaryTreeNode, q: BinaryTreeNode) -> BinaryTreeNode:
+        while root:
+            if p.val < root.val > q.val:
+                root = root.left
+            elif p.val > root.val < q.val:
+                root = root.right
+            else:
+                return root

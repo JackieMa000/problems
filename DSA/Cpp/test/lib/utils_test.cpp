@@ -26,6 +26,11 @@ namespace dsa
                     // EXPECT_ARRAY_EQ(expected, actual);
                 }
 
+                TEST_F(ArrayRstripTest, case2) {
+                    EXPECT_EQ(1, 1);
+                }
+
+
             } // namespace
         }     // namespace utils
     }         // namespace lib

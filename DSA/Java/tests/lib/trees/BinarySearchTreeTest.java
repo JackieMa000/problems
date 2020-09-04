@@ -102,4 +102,27 @@ public class BinarySearchTreeTest extends BinarySearchTreeServices {
             assertEquals(new ArrayList<>(Arrays.asList(2, 1, 5, 3)), new BinarySearchTree(root).postorder());
         }
     }
+
+    public static class LowestCommonAncestorTest {
+
+        private BinaryTreeNode getLowestCommonAncestor(BinaryTreeNode root, BinaryTreeNode p, BinaryTreeNode q) {
+            return new BinarySearchTree(root).lowestCommonAncestor(p, q);
+        }
+
+        @Test
+        public void case1() {
+            BinaryTreeNode root = arrayToTree(new int[]{6, 2, 8, 1, 4, 7, 9, 0, 0, 3, 5});
+            BinaryTreeNode p = getTreeNodeByValue(root, 2);
+            BinaryTreeNode q = getTreeNodeByValue(root, 8);
+            assertEquals(6, getLowestCommonAncestor(root, p, q).val);
+        }
+
+        @Test
+        public void case2() {
+            BinaryTreeNode root = arrayToTree(new int[]{6, 2, 8, 1, 4, 7, 9, 0, 0, 3, 5});
+            BinaryTreeNode p = getTreeNodeByValue(root, 2);
+            BinaryTreeNode q = getTreeNodeByValue(root, 4);
+            assertEquals(2, getLowestCommonAncestor(root, p, q).val);
+        }
+    }
 }

@@ -1,0 +1,8 @@
+.hide*
+info.md
+info.txt
+.DS_Store
+locals.cpp
+target/
+out/
+/build/

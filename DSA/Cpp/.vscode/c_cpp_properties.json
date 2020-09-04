@@ -3,8 +3,8 @@
         {
             "name": "clang",
             "includePath": [
-                "${workspaceFolder}/DSA/Cpp/src",
-                "${workspaceFolder}/DSA/Cpp/test/testing"
+                "${workspaceFolder}/src",
+                "${workspaceFolder}/test/testing"
             ],
             "defines": [],
             "macFrameworkPath": [

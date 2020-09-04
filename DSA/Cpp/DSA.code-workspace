@@ -8,7 +8,10 @@
 		"files.associations": {
 			"iosfwd": "cpp",
 			"vector": "cpp",
-			"includes": "cpp"
+			"includes": "cpp",
+			"type_traits": "cpp",
+			"bitset": "cpp",
+			"array": "cpp"
 		}
 	}
 }

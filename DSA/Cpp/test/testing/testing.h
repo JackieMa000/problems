@@ -10,8 +10,10 @@ namespace dsa
         class DSATest : public ::testing::Test
         {
         public:
-            void EXPECT_ARRAY_EQ(int ary1[], int ary2[]);
+            void EXPECT_ARRAY_EQ(int expected[], int expectedSize, int actual[], int actualSize);
+            void EXPECT_INT_EQ(int expected, int actual);
         };
+
     } // namespace testing
 } // namespace dsa
 

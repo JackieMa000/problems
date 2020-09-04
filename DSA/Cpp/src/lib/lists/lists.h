@@ -1,9 +1,12 @@
-namespace lib
+namespace dsa
 {
-    class List
+    namespace lib
     {
-    public:
-        virtual int size() = 0;
-    };
+        class List
+        {
+        public:
+            virtual int size() = 0;
+        };
 
-} // namespace lib
+    } // namespace lib
+} // namespace dsa

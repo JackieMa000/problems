@@ -34,7 +34,7 @@ namespace dsa
 
             BinaryTreeNode();
             BinaryTreeNode(int val);
-            BinaryTreeNode(int val, ListNode *left, ListNode *right);
+            BinaryTreeNode(int val, BinaryTreeNode *left, BinaryTreeNode *right);
         };
 
     } // namespace nodes

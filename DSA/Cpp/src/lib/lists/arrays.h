@@ -4,35 +4,38 @@
 #ifndef LIB_LISTS_ARRAYS_H
 #define LIB_LISTS_ARRAYS_H
 
-namespace lib
+namespace dsa
 {
-    class Array
+    namespace lib
     {
-    private:
-        const int *array;
+        class Array
+        {
+        private:
+            const int *array;
 
-    public:
-        Array(int array[]);
-        ~Array();
+        public:
+            Array(int array[]);
+            ~Array();
 
-        dsa::nodes::ListNode toSinglyLinkedList();
-        dsa::nodes::BinaryTreeNode toBinaryTree();
-    };
+            dsa::nodes::ListNode toSinglyLinkedList();
+            dsa::nodes::BinaryTreeNode toBinaryTree();
+        };
 
-    class ArrayList : List
-    {
-    private:
-        static const int DEFAULT_LENGTH = 10;
-        const int *lst;
+        class ArrayList : List
+        {
+        private:
+            static const int DEFAULT_LENGTH = 10;
+            const int *lst;
 
-    public:
-        ArrayList();
-        ArrayList(int array[]);
-        ~ArrayList();
+        public:
+            ArrayList();
+            ArrayList(int array[]);
+            ~ArrayList();
 
-        int size();
-    };
+            int size();
+        };
 
-} // namespace lib
+    } // namespace lib
+} // namespace dsa
 
 #endif

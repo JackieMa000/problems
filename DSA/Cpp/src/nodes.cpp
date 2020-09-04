@@ -1,51 +1,27 @@
 #include "nodes.h"
 
-// FixMe: Redefination of nodes with nodes.h
 namespace dsa
 {
     namespace nodes
     {
-        struct Node
+        Node::Node(int val) { this->val = val; }
+
+        ListNode::ListNode(int val) : Node(val) {}
+        ListNode::ListNode(int val, ListNode *next)
         {
-            int val = 0;
+            this->val = val;
+            this->next = next;
+        }
 
-            Node() {}
-            Node(int val) { this->val = val; }
-        };
+        TreeNode::TreeNode(int val) : Node(val) {}
 
-        struct ListNode : Node
+        BinaryTreeNode::BinaryTreeNode(int val) : TreeNode(val) {}
+        BinaryTreeNode::BinaryTreeNode(int val, BinaryTreeNode *left, BinaryTreeNode *right)
         {
-            ListNode *next;
-            ListNode *next = nullptr;
+            this->val = val;
+            this->left = left;
+            this->right = right;
+        }
 
-            ListNode() : Node() {}
-            ListNode(int val) : Node(val) {}
-            ListNode(int val, ListNode *next)
-            {
-                this->val = val;
-                this->next = next;
-            }
-        };
-
-        struct TreeNode : Node
-        {
-            TreeNode() : Node() {}
-            TreeNode(int val) : Node(val) {}
-        };
-
-        struct BinaryTreeNode : TreeNode
-        {
-            BinaryTreeNode *left, *right;
-            BinaryTreeNode *left = nullptr, *right = nullptr;
-
-            BinaryTreeNode() : TreeNode() {}
-            BinaryTreeNode(int val) : TreeNode(val) {}
-            BinaryTreeNode(int val, BinaryTreeNode *left, BinaryTreeNode *right)
-            {
-                this->val = val;
-                this->left = left;
-                this->right = right;
-            }
-        };
-    } // namespace nodes
+    }; // namespace nodes
 } // namespace dsa

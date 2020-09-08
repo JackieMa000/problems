@@ -35,7 +35,7 @@ class SinglyLinkedList(LinkedList):
         super().__init__(head)
 
     def reverse(self) -> ListNode:
-        pre: Union[ListNode, None] = None
+        pre = None
         cur: ListNode = self.head
         next: ListNode
         while cur:

@@ -10,7 +10,8 @@ class Solution2 {
 
     private ListNode recursion(ListNode head, ListNode prev) {
         if (head == null) return prev;
-        ListNode next = head.next;head.next = prev;
+        ListNode next = head.next;
+        head.next = prev;
         return recursion(next, head);
     }
 }

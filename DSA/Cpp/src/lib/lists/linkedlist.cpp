@@ -37,6 +37,21 @@ namespace dsa
             return pre;
         };
 
+        nodes::ListNode *SinglyLinkedList::reverse()
+        {
+            nodes::ListNode *pre, *cur, *next;
+            cur = this->head;
+
+            while (cur)
+            {
+                next = cur->next;
+                cur->next = pre;
+                pre = cur;
+                cur = next;
+            }
+            return pre;
+        }
+
         DoublyLinkedList::DoublyLinkedList(nodes::ListNode *head) : LinkedList(head){};
 
     } // namespace lib

@@ -3,7 +3,7 @@ package lib.trees;
 import lib.lists.arrays.Array;
 import nodes.BinaryTreeNode;
 
-public class BinaryTreeServices {
+public class BinaryTreeTestFX {
 
     public static BinaryTreeNode arrayToTree(int[] ary) {
         return new Array(ary).toBinaryTree();

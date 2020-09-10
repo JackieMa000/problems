@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
-public class BinarySearchTreeTest extends BinarySearchTreeServices {
+public class BinarySearchTreeTest extends BinarySearchTreeTestFX {
 
     public static class IsValidTest {
 

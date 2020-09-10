@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class BinaryTreeTest extends BinaryTreeServices {
+public class BinaryTreeTest extends BinaryTreeTestFX {
 
     public static class GetNodeByIndexTest {
         @Test

@@ -1,3 +1,6 @@
+#ifndef LIB_LISTS_LIST_H
+#define LIB_LISTS_LIST_H
+
 namespace dsa
 {
     namespace lib
@@ -10,3 +13,5 @@ namespace dsa
 
     } // namespace lib
 } // namespace dsa
+
+#endif

@@ -1,20 +1,36 @@
-#include "nodes.h"
 #include "lib/lists/arrays.h"
 
 namespace dsa
 {
     namespace lib
     {
-        Array::Array(int array[]) { this->array = array; };
-        Array::~Array() { delete[] array; }
+        Array::Array(int ary[], unsigned int length) : ary(ary), length(length) {}
+        // Array::~Array() {}
 
-        ArrayList::ArrayList()
+        nodes::ListNode *Array::toSinglyLinkedList()
         {
-            int array[DEFAULT_LENGTH];
-            this->lst = array;
-        };
-        ArrayList::ArrayList(int array[]) { this->lst = array; };
-        ArrayList::~ArrayList() { delete[] lst; }
+            nodes::ListNode *dummy = new nodes::ListNode();
+            nodes::ListNode *head = new nodes::ListNode(*this->ary);
+            dummy->next = head;
+
+            for (int i = 1; i < this->length; i++)
+            {
+                head->next = new nodes::ListNode(*(this->ary + i));
+                head = head->next;
+            }
+
+            return dummy->next;
+        }
+
+        // Copy the array based on the index range, including the end pos.
+        int *Array::copy(int start, int end)
+        {
+            int *ptr, res[end - start + 1];
+            ptr = res;
+            for (int i = start; i <= end; i++)
+                *(ptr + i) = *(this->ary + i);
+            return ptr;
+        }
 
     } // namespace lib
 } // namespace dsa

@@ -5,18 +5,35 @@ namespace dsa
 {
     namespace lib
     {
-        LinkedList::LinkedList(nodes::ListNode *head) { this->head = head; }
-        LinkedList::~LinkedList()
+        LinkedList::LinkedList(nodes::ListNode *head) : head(head) {}
+        void LinkedList::destroy()
         {
             nodes::ListNode *cur, *next;
-            cur = head;
-            while (!cur)
+            cur = this->head;
+            while (cur)
             {
                 next = cur->next;
                 delete cur;
                 cur = next;
             }
         };
+        int LinkedList::size()
+        {
+            // ToDo
+            return 0;
+        };
+
+        int *LinkedList::toArray()
+        {
+            // ToDo
+            int *res;
+            return res;
+        }
+        nodes::ListNode *LinkedList::getNodeByIndex(int idx) const {
+            // ToDo
+            nodes::ListNode *ls;
+            return ls;
+        }
 
         SinglyLinkedList::SinglyLinkedList(nodes::ListNode *head) : LinkedList(head){};
 
@@ -52,7 +69,7 @@ namespace dsa
             return pre;
         }
 
-        DoublyLinkedList::DoublyLinkedList(nodes::ListNode *head) : LinkedList(head){};
+        // DoublyLinkedList::DoublyLinkedList(nodes::ListNode *head) : LinkedList(head){};
 
     } // namespace lib
 } // namespace dsa

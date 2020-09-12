@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
 
+#include "nodes.h"
+
 #ifndef TESTING_H
 #define TESTING_H
 
@@ -9,9 +11,12 @@ namespace dsa
     {
         class DSATest : public ::testing::Test
         {
+        protected:
+            int static *copyArray(int ary[], int start, int end);
+
         public:
-            void EXPECT_ARRAY_EQ(int expected[], int expectedSize, int actual[], int actualSize);
-            void EXPECT_INT_EQ(int expected, int actual);
+            void EXPECT_ARRAY_EQ(int expected[], int expectedLength, int actual[], int actualLength);
+            void EXPECT_ARRAY_EQ_LINKEDLIST(int ary[], int length, nodes::ListNode *head);
         };
 
     } // namespace testing

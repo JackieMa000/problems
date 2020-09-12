@@ -1,4 +1,7 @@
 add_executable(arrays_test arrays_test.cpp)
 
-target_link_libraries(arrays_test test_main)
-target_link_libraries(arrays_test arrays)
+target_link_libraries(arrays_test
+nodes
+arrays 
+linkedlist
+test_main)

@@ -4,17 +4,17 @@ namespace dsa
 {
     namespace nodes
     {
-        Node::Node(int val) { this->val = val; }
+        Node::Node() : val(0) {}
+        Node::Node(int val) : val(val) {}
 
-        ListNode::ListNode(int val) : Node(val) {}
-        ListNode::ListNode(int val, ListNode *next)
-        {
-            this->val = val;
-            this->next = next;
-        }
+        ListNode::ListNode() : Node(0), next(nullptr) {}
+        ListNode::ListNode(int val) : Node(val), next(nullptr) {}
+        ListNode::ListNode(int val, ListNode *next) : Node(val), next(nullptr) {}
 
+        TreeNode::TreeNode() : Node() {}
         TreeNode::TreeNode(int val) : Node(val) {}
 
+        BinaryTreeNode::BinaryTreeNode() : TreeNode() {}
         BinaryTreeNode::BinaryTreeNode(int val) : TreeNode(val) {}
         BinaryTreeNode::BinaryTreeNode(int val, BinaryTreeNode *left, BinaryTreeNode *right)
         {

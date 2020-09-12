@@ -1,36 +1,58 @@
 #include "testing.h"
 #include "lib/lists/arrays.h"
+#include "lib/lists/linkedlists.h"
 
-namespace lib
+namespace dsa
 {
-    namespace
+    namespace lib
     {
-        class ArrayTest : public dsa::testing::DSATest
+        namespace
         {
-        };
+            class ArrayTest : public testing::DSATest
+            {
+            };
 
-        TEST_F(ArrayTest, case1)
-        {
-            EXPECT_EQ(1, 1);
-        }
+            class ToSinglyLinkedListTest : public ArrayTest
+            {
+            protected:
+                nodes::ListNode *createSinglyLinkedList(int ary[], int length)
+                {
+                    Array array(ary, length);
+                    return array.toSinglyLinkedList();
+                }
 
-        TEST_F(ArrayTest, case2)
-        {
-            EXPECT_INT_EQ(1, 1);
-        }
+                void destroySinglyLinkedList(nodes::ListNode *head)
+                {
+                    SinglyLinkedList ls(head);
+                    ls.destroy();
+                }
 
-        TEST_F(ArrayTest, case3)
-        {
-            int expected[] = {1, 2, 3};
-            int actual[] = {1, 2, 3};
-            int expectedSize = sizeof(expected)/4;
-            int actualSize = sizeof(actual)/4;
-            EXPECT_ARRAY_EQ(expected, expectedSize, actual, actualSize);
-        }
+                void run(int ary[], int length)
+                {
+                    nodes::ListNode *actual = createSinglyLinkedList(ary, length);
+                    EXPECT_ARRAY_EQ_LINKEDLIST(ary, length, actual);
+                    destroySinglyLinkedList(actual);
+                }
+            };
 
-        class ArrayListTest : public dsa::testing::DSATest
-        {
-        };
+            TEST_F(ArrayTest, case_array_eq)
+            {
+                int expected[] = {1, 2, 3}, actual[] = {1, 2, 3};
+                EXPECT_ARRAY_EQ(expected, sizeof(expected) / 4, actual, sizeof(actual) / 4);
+            }
 
-    } // namespace
-} // namespace lib
+            TEST_F(ToSinglyLinkedListTest, case1)
+            {
+                int ary[] = {1};
+                run(ary, sizeof(ary) / 4);
+            }
+
+            TEST_F(ToSinglyLinkedListTest, case2)
+            {
+                int ary[] = {1, 2, 3};
+                run(ary, sizeof(ary) / 4);
+            }
+
+        } // namespace
+    }     // namespace lib
+} // namespace dsa

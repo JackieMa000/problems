@@ -1,5 +1,4 @@
 #include "nodes.h"
-#include "lib/lists/lists.h"
 
 #ifndef LIB_LISTS_ARRAYS_H
 #define LIB_LISTS_ARRAYS_H
@@ -11,28 +10,17 @@ namespace dsa
         class Array
         {
         private:
-            const int *array;
+            int *ary;
 
         public:
-            Array(int array[]);
-            ~Array();
+            unsigned int length;
 
-            dsa::nodes::ListNode toSinglyLinkedList();
-            dsa::nodes::BinaryTreeNode toBinaryTree();
-        };
+            Array(int ary[], unsigned int length);
+            // ~Array();
 
-        class ArrayList : List
-        {
-        private:
-            static const int DEFAULT_LENGTH = 10;
-            const int *lst;
-
-        public:
-            ArrayList();
-            ArrayList(int array[]);
-            ~ArrayList();
-
-            int size();
+            nodes::ListNode *toSinglyLinkedList();
+            nodes::BinaryTreeNode *toBinaryTree();
+            int *copy(int start, int end);
         };
 
     } // namespace lib

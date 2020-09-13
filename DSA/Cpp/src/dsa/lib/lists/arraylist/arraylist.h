@@ -1,4 +1,4 @@
-#include "list.h"
+#include "dsa/lib/lists/list.h"
 
 #ifndef LIB_LISTS_ARRAYLIST_H
 #define LIB_LISTS_ARRAYLIST_H

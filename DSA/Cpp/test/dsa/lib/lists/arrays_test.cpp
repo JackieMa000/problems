@@ -1,6 +1,6 @@
 #include "dsa/testing/testing.h"
-#include "dsa/lib/lists/arrays.h"
-#include "dsa/lib/lists/linkedlists.h"
+#include "dsa/lib/lists/arrays/array.h"
+#include "dsa/lib/lists/linkedlists/sls.h"
 
 namespace dsa {
 namespace lib {

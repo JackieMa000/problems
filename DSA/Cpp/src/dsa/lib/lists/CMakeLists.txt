@@ -1,6 +1,6 @@
-add_library(arrays arrays.cpp)
-add_library(linkedlists linkedlists.cpp)
-add_library(arraylist arraylist.cpp)
+add_subdirectory(arrays)
+add_subdirectory(linkedlists)
+add_subdirectory(arraylist)
 
 add_custom_target(lists)
 add_dependencies(lists 

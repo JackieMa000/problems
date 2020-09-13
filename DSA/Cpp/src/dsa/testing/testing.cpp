@@ -1,5 +1,5 @@
 #include "testing.h"
-#include "dsa/lib/lists/arrays.h"
+#include "dsa/lib/lists/arrays/array.h"
 
 namespace dsa {
 namespace testing {

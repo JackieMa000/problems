@@ -1,5 +1,5 @@
 #include "dsa/testing/testing.h"
-#include "dsa/lib/lists/linkedlists.h"
+#include "dsa/lib/lists/linkedlists/ls.h"
 
 namespace dsa {
 namespace lib {

@@ -1,42 +1,14 @@
 #include <vector>
-#include "nodes.h"
 
-#ifndef LIB_TREES_H
-#define LIB_TREES_H
+#include "dsa/nodes.h"
+#include "bt.h"
+
+#ifndef LIB_TREES_BST_H
+#define LIB_TREES_BST_H
 
 namespace dsa {
 namespace lib {
-class Tree
-{
-public:
-    virtual int*
-    toArray() = 0;
-    virtual int
-    depth() = 0;
-};
-
-class BinaryTree : Tree
-{
-private:
-    void
-    destroy(nodes::BinaryTreeNode* root);
-    static nodes::BinaryTreeNode*
-    lowestCommonAncestorDfs(nodes::BinaryTreeNode* root, nodes::BinaryTreeNode* p, nodes::BinaryTreeNode* q);
-
-protected:
-    nodes::BinaryTreeNode* root;
-
-public:
-    BinaryTree(nodes::BinaryTreeNode* root);
-    virtual ~BinaryTree();
-
-    int*
-    toArray();
-    int
-    depth();
-    nodes::BinaryTreeNode*
-    lowestCommonAncestor(nodes::BinaryTreeNode* p, nodes::BinaryTreeNode* q);
-};
+namespace trees {
 
 class BinarySearchTree : BinaryTree
 {
@@ -75,6 +47,7 @@ public:
     lowestCommonAncestor(nodes::BinaryTreeNode* p, nodes::BinaryTreeNode* q);
 };
 
+}  // namespace trees
 }  // namespace lib
 }  // namespace dsa
 

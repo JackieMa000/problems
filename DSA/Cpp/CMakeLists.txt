@@ -23,7 +23,6 @@ set(EXTERNAL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/externals)
 include(${EXTERNAL_DIR}/gtest.cmake)
 
 include_directories(${CMAKE_SOURCE_DIR}/src)
-include_directories(${CMAKE_SOURCE_DIR}/test/testing)
 
 add_subdirectory(src)
 add_subdirectory(test)

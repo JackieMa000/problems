@@ -1,4 +1,4 @@
-#include "lib/lists/arraylist.h"
+#include "arraylist.h"
 
 namespace dsa
 {

@@ -1,10 +1,13 @@
-#include "testing.h"
-#include "lib/lists/arrays.h"
-#include "lib/lists/linkedlists.h"
+#include "dsa/testing/testing.h"
+#include "dsa/lib/lists/arrays.h"
+#include "dsa/lib/lists/linkedlists.h"
 
 namespace dsa {
 namespace lib {
+namespace lists {
+namespace arrays {
 namespace {
+
 class ArrayTest : public testing::DSATest
 {
 };
@@ -22,7 +25,7 @@ protected:
     void
     destroySinglyLinkedList(nodes::ListNode* head)
     {
-        SinglyLinkedList ls(head);
+        linkedlists::SinglyLinkedList ls(head);
         ls.destroy();
     }
 
@@ -54,5 +57,7 @@ TEST_F(ToSinglyLinkedListTest, case2)
 }
 
 }  // namespace
+}  // namespace arrays
+}  // namespace lists
 }  // namespace lib
 }  // namespace dsa

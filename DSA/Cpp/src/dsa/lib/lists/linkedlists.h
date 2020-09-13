@@ -1,11 +1,14 @@
-#include "nodes.h"
-#include "lib/lists/list.h"
+#include "dsa/nodes.h"
+#include "list.h"
 
 #ifndef LIB_LISTS_LINKEDLISTS_H
 #define LIB_LISTS_LINKEDLISTS_H
 
 namespace dsa {
 namespace lib {
+namespace lists {
+namespace linkedlists {
+
 class LinkedList : List
 {
 protected:
@@ -17,13 +20,12 @@ public:
 
     int
     size() final;
+
     virtual int*
     toArray() final;
-    virtual nodes::ListNode*
-    getNodeByIndex(int idx) const final;
 
     virtual nodes::ListNode*
-    reverse() = 0;
+    getNodeByIndex(int idx) const final;
 
     void
     destroy();
@@ -37,10 +39,13 @@ public:
 
     nodes::ListNode*
     reverse();
+    
     nodes::ListNode*
     reverseBefore(nodes::ListNode* node);
+
     nodes::ListNode*
     reverseFromTo(nodes::ListNode* fnode, nodes::ListNode* tnode);
+
 };
 
 class DoublyLinkedList : public LinkedList
@@ -48,8 +53,13 @@ class DoublyLinkedList : public LinkedList
 public:
     DoublyLinkedList(nodes::ListNode* head);
     // ~DoublyLinkedList();
+
+    nodes::ListNode*
+    reverse();
 };
 
+}  // namespace linkedlists
+}  // namespace lists
 }  // namespace lib
 }  // namespace dsa
 

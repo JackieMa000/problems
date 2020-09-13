@@ -1,11 +1,13 @@
 #include <gtest/gtest.h>
-#include "nodes.h"
+
+#include "dsa/nodes.h"
 
 #ifndef TESTING_H
 #define TESTING_H
 
 namespace dsa {
 namespace testing {
+
 class DSATest : public ::testing::Test
 {
 protected:

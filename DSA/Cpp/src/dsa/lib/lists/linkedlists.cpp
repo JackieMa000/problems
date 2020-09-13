@@ -1,11 +1,15 @@
-#include "nodes.h"
-#include "lib/lists/linkedlists.h"
+#include "linkedlists.h"
+#include "dsa/nodes.h"
 
 namespace dsa {
 namespace lib {
+namespace lists {
+namespace linkedlists {
+
 LinkedList::LinkedList(nodes::ListNode* head) : head(head)
 {
 }
+
 void
 LinkedList::destroy()
 {
@@ -18,6 +22,7 @@ LinkedList::destroy()
         cur = next;
     }
 };
+
 int
 LinkedList::size()
 {
@@ -32,6 +37,7 @@ LinkedList::toArray()
     int* res;
     return res;
 }
+
 nodes::ListNode*
 LinkedList::getNodeByIndex(int idx) const
 {
@@ -76,8 +82,17 @@ SinglyLinkedList::reverse()
     return pre;
 }
 
-// DoublyLinkedList::DoublyLinkedList(nodes::ListNode *head) :
-// LinkedList(head){};
+DoublyLinkedList::DoublyLinkedList(nodes::ListNode* head) : LinkedList(head){};
 
+nodes::ListNode*
+DoublyLinkedList::reverse()
+{
+    // ToDo
+    nodes::ListNode* ls;
+    return ls;
+}
+
+}  // namespace linkedlists
+}  // namespace lists
 }  // namespace lib
 }  // namespace dsa

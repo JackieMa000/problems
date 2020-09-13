@@ -1,8 +1,9 @@
 #include "testing.h"
-#include "lib/lists/arrays.h"
+#include "dsa/lib/lists/arrays.h"
 
 namespace dsa {
 namespace testing {
+
 void
 DSATest::EXPECT_ARRAY_EQ(int expected[], int expectedLength, int actual[], int actualLength)
 {
@@ -18,10 +19,10 @@ DSATest::EXPECT_ARRAY_EQ(int expected[], int expectedLength, int actual[], int a
         << "\n expected array on index " << expectedLength - 1 << " = " << expected[expectedLength - 1]
         << "\n actual array on index " << actualLength - 1 << " = " << actual[actualLength - 1];
 
-    lib::Array expArray(expected, expectedLength);
+    lib::lists::arrays::Array expArray(expected, expectedLength);
     int* newExpected = expArray.copy(0, expectedLength - 2);
 
-    lib::Array actArray(actual, actualLength);
+    lib::lists::arrays::Array actArray(actual, actualLength);
     int* newActual = actArray.copy(0, actualLength - 2);
 
     EXPECT_ARRAY_EQ(newExpected, expectedLength - 1, newActual, actualLength - 1);

@@ -1,4 +1,4 @@
-#include "lib/lists/list.h"
+#include "list.h"
 
 #ifndef LIB_LISTS_ARRAYLIST_H
 #define LIB_LISTS_ARRAYLIST_H

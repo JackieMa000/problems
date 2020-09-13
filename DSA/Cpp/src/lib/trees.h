@@ -1,70 +1,81 @@
 #include <vector>
-
 #include "nodes.h"
 
 #ifndef LIB_TREES_H
 #define LIB_TREES_H
 
-namespace dsa
+namespace dsa {
+namespace lib {
+class Tree
 {
-    namespace lib
-    {
-        class Tree
-        {
-        public:
-            virtual int *toArray() = 0;
-            virtual int depth() = 0;
-        };
+public:
+    virtual int*
+    toArray() = 0;
+    virtual int
+    depth() = 0;
+};
 
-        class BinaryTree : Tree
-        {
-        protected:
-            nodes::BinaryTreeNode *root;
+class BinaryTree : Tree
+{
+protected:
+    nodes::BinaryTreeNode* root;
 
-        private:
-            void destroy(nodes::BinaryTreeNode *root);
-            static nodes::BinaryTreeNode *lowestCommonAncestorDfs(nodes::BinaryTreeNode *root,
-                                                                  nodes::BinaryTreeNode *p, nodes::BinaryTreeNode *q);
+private:
+    void
+    destroy(nodes::BinaryTreeNode* root);
+    static nodes::BinaryTreeNode*
+    lowestCommonAncestorDfs(nodes::BinaryTreeNode* root, nodes::BinaryTreeNode* p, nodes::BinaryTreeNode* q);
 
-        public:
-            BinaryTree(nodes::BinaryTreeNode *root);
-            virtual ~BinaryTree();
+public:
+    BinaryTree(nodes::BinaryTreeNode* root);
+    virtual ~BinaryTree();
 
-            int *toArray();
-            int depth();
-            nodes::BinaryTreeNode *lowestCommonAncestor(nodes::BinaryTreeNode *p, nodes::BinaryTreeNode *q);
-        };
+    int*
+    toArray();
+    int
+    depth();
+    nodes::BinaryTreeNode*
+    lowestCommonAncestor(nodes::BinaryTreeNode* p, nodes::BinaryTreeNode* q);
+};
 
-        class BinarySearchTree : BinaryTree
-        {
-        private:
-            static std::vector<int> preorderDfs(nodes::BinaryTreeNode *root, std::vector<int> lst);
-            static std::vector<int> *inorderDfs(nodes::BinaryTreeNode *root, std::vector<int> *lst);
-            static std::vector<int> &postorderDfs(nodes::BinaryTreeNode *root, std::vector<int> &lst);
+class BinarySearchTree : BinaryTree
+{
+private:
+    static std::vector<int>
+    preorderDfs(nodes::BinaryTreeNode* root, std::vector<int> lst);
+    static std::vector<int>*
+    inorderDfs(nodes::BinaryTreeNode* root, std::vector<int>* lst);
+    static std::vector<int>&
+    postorderDfs(nodes::BinaryTreeNode* root, std::vector<int>& lst);
 
-            static bool isValidBST(nodes::BinaryTreeNode *root, nodes::BinaryTreeNode *minNode,
-                                   nodes::BinaryTreeNode *maxNode);
+    static bool
+    isValidBST(nodes::BinaryTreeNode* root, nodes::BinaryTreeNode* minNode, nodes::BinaryTreeNode* maxNode);
 
-            static nodes::BinaryTreeNode *lowestCommonAncestorDfs(nodes::BinaryTreeNode *root,
-                                                                  nodes::BinaryTreeNode *p, nodes::BinaryTreeNode *q);
+    static nodes::BinaryTreeNode*
+    lowestCommonAncestorDfs(nodes::BinaryTreeNode* root, nodes::BinaryTreeNode* p, nodes::BinaryTreeNode* q);
 
-            static nodes::BinaryTreeNode *lowestCommonAncestorBfs(nodes::BinaryTreeNode *root,
-                                                                  nodes::BinaryTreeNode *p, nodes::BinaryTreeNode *q);
+    static nodes::BinaryTreeNode*
+    lowestCommonAncestorBfs(nodes::BinaryTreeNode* root, nodes::BinaryTreeNode* p, nodes::BinaryTreeNode* q);
 
-        public:
-            BinarySearchTree(nodes::BinaryTreeNode *root);
-            ~BinarySearchTree();
+public:
+    BinarySearchTree(nodes::BinaryTreeNode* root);
+    ~BinarySearchTree();
 
-            std::vector<int> preorder();
-            std::vector<int> *inorder();
-            std::vector<int> &postorder();
+    std::vector<int>
+    preorder();
+    std::vector<int>*
+    inorder();
+    std::vector<int>&
+    postorder();
 
-            bool isValid();
+    bool
+    isValid();
 
-            nodes::BinaryTreeNode *lowestCommonAncestor(nodes::BinaryTreeNode *p, nodes::BinaryTreeNode *q);
-        };
+    nodes::BinaryTreeNode*
+    lowestCommonAncestor(nodes::BinaryTreeNode* p, nodes::BinaryTreeNode* q);
+};
 
-    } // namespace lib
-} // namespace dsa
+}  // namespace lib
+}  // namespace dsa
 
 #endif

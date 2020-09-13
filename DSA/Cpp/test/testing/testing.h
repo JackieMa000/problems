@@ -1,25 +1,25 @@
 #include <gtest/gtest.h>
-
 #include "nodes.h"
 
 #ifndef TESTING_H
 #define TESTING_H
 
-namespace dsa
+namespace dsa {
+namespace testing {
+class DSATest : public ::testing::Test
 {
-    namespace testing
-    {
-        class DSATest : public ::testing::Test
-        {
-        protected:
-            int static *copyArray(int ary[], int start, int end);
+protected:
+    int static*
+    copyArray(int ary[], int start, int end);
 
-        public:
-            void EXPECT_ARRAY_EQ(int expected[], int expectedLength, int actual[], int actualLength);
-            void EXPECT_ARRAY_EQ_LINKEDLIST(int ary[], int length, nodes::ListNode *head);
-        };
+public:
+    void
+    EXPECT_ARRAY_EQ(int expected[], int expectedLength, int actual[], int actualLength);
+    void
+    EXPECT_ARRAY_EQ_LINKEDLIST(int ary[], int length, nodes::ListNode* head);
+};
 
-    } // namespace testing
-} // namespace dsa
+}  // namespace testing
+}  // namespace dsa
 
-#endif // TESTING_H
+#endif  // TESTING_H

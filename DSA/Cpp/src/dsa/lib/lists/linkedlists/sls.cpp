@@ -1,9 +1,6 @@
 #include "sls.h"
 
-namespace dsa {
-namespace lib {
-namespace lists {
-namespace linkedlists {
+namespace dsa::lib::lists::linkedlists {
 
 SinglyLinkedList::SinglyLinkedList(nodes::ListNode* head) : LinkedList(head){};
 
@@ -41,7 +38,10 @@ SinglyLinkedList::reverse()
     return pre;
 }
 
-}  // namespace linkedlists
-}  // namespace lists
-}  // namespace lib
-}  // namespace dsa
+nodes::ListNode*
+SinglyLinkedList::reverseFromTo(nodes::ListNode* fnode, nodes::ListNode* tnode)
+{
+    return nullptr;
+}
+
+}  // namespace dsa::lib::lists::linkedlists

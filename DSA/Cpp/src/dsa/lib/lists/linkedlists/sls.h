@@ -3,10 +3,7 @@
 #ifndef LIB_LISTS_LINKEDLISTS_SLS_H
 #define LIB_LISTS_LINKEDLISTS_SLS_H
 
-namespace dsa {
-namespace lib {
-namespace lists {
-namespace linkedlists {
+namespace dsa::lib::lists::linkedlists {
 
 class SinglyLinkedList : public LinkedList
 {
@@ -24,9 +21,6 @@ public:
     reverseFromTo(nodes::ListNode* fnode, nodes::ListNode* tnode);
 };
 
-}  // namespace linkedlists
-}  // namespace lists
-}  // namespace lib
-}  // namespace dsa
+}  // namespace dsa::lib::lists::linkedlists
 
 #endif

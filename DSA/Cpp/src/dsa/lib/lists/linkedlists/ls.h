@@ -4,10 +4,7 @@
 #ifndef LIB_LISTS_LINKEDLISTS_LS_H
 #define LIB_LISTS_LINKEDLISTS_LS_H
 
-namespace dsa {
-namespace lib {
-namespace lists {
-namespace linkedlists {
+namespace dsa::lib::lists::linkedlists {
 
 class LinkedList : List
 {
@@ -16,7 +13,6 @@ protected:
 
 public:
     LinkedList(nodes::ListNode* head);
-    // virtual ~LinkedList();
 
     int
     size() final;
@@ -31,9 +27,6 @@ public:
     destroy();
 };
 
-}  // namespace linkedlists
-}  // namespace lists
-}  // namespace lib
 }  // namespace dsa
 
 #endif

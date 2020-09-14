@@ -1,9 +1,6 @@
 #include "ls.h"
 
-namespace dsa {
-namespace lib {
-namespace lists {
-namespace linkedlists {
+namespace dsa::lib::lists::linkedlists {
 
 LinkedList::LinkedList(nodes::ListNode* head) : head(head)
 {
@@ -45,7 +42,4 @@ LinkedList::getNodeByIndex(int idx) const
     return ls;
 }
 
-}  // namespace linkedlists
-}  // namespace lists
-}  // namespace lib
-}  // namespace dsa
+}  // namespace dsa::lib::lists::linkedlists

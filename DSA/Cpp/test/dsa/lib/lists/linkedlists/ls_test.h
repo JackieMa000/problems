@@ -6,7 +6,13 @@
 namespace dsa::lib::lists::linkedlists {
 namespace {
 
-class LinkedListTest : public testing::DSATest {
+ class LinkedListTest : public testing::DSATest {
+ protected:
+    static nodes::ListNode *
+    createSinglyLinkedList(int *ary, unsigned int length);
+
+    static void
+    destroyLinkedList(nodes::ListNode *head);
 };
 
 class ToArrayTest : public LinkedListTest {

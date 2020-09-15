@@ -18,7 +18,7 @@ public:
     ArrayList(int ary[]);
     ~ArrayList();
 
-    int
+    unsigned int
     size();
 };
 

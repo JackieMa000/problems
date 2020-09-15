@@ -7,16 +7,16 @@ namespace dsa::lib::lists::arrays {
 namespace {
 
 class ArrayTest : public testing::DSATest {
+ protected:
+    static nodes::ListNode *
+    createSinglyLinkedList(int *ary, unsigned int length);
+
+    static void
+    destroyLinkedList(nodes::ListNode *head);
 };
 
 class ToSinglyLinkedListTest : public ArrayTest {
  protected:
-    static nodes::ListNode *
-    createSinglyLinkedList(int ary[], int length);
-
-    static void
-    destroySinglyLinkedList(nodes::ListNode *head);
-
     static void
     run(int ary[], int length);
 };

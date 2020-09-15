@@ -15,14 +15,14 @@ public:
 
     Array(int ary[], unsigned int length);
 
-    nodes::ListNode*
+    nodes::ListNode *
     toSinglyLinkedList();
 
     nodes::BinaryTreeNode*
     toBinaryTree();
 
-    int*
-    copy(int start, int end);
+    int *
+    copy(int *p_ary, unsigned int start, unsigned int end);
 };
 
 }  // namespace dsa::lib::lists::arrays

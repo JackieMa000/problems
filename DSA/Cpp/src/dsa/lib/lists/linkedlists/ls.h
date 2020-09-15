@@ -7,17 +7,17 @@
 
 namespace dsa::lib::lists::linkedlists {
 
-class LinkedList : List {
+class LinkedList : public List {
  protected:
     nodes::ListNode *head;
 
  public:
     LinkedList(nodes::ListNode *head);
 
-    int
+    unsigned int
     size() final;
 
-    virtual std::tuple<int, int *>
+    virtual std::tuple<unsigned int, int *>
     toArray() final;
 
     virtual nodes::ListNode *

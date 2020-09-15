@@ -2,18 +2,19 @@
 #include "dsa/lib/lists/arrays/array.h"
 #include "dsa/lib/lists/linkedlists/sls.h"
 
+
 namespace dsa::lib::lists::arrays {
 namespace {
 
 nodes::ListNode *
-ToSinglyLinkedListTest::createSinglyLinkedList(int ary[], int length) {
+ArrayTest::createSinglyLinkedList(int *ary, unsigned int length) {
     Array array(ary, length);
     return array.toSinglyLinkedList();
 }
 
 void
-ToSinglyLinkedListTest::destroySinglyLinkedList(nodes::ListNode *head) {
-    linkedlists::SinglyLinkedList ls(head);
+ArrayTest::destroyLinkedList(nodes::ListNode *head) {
+    linkedlists::LinkedList ls(head);
     ls.destroy();
 }
 
@@ -21,7 +22,7 @@ void
 ToSinglyLinkedListTest::run(int ary[], int length) {
     nodes::ListNode *actual = createSinglyLinkedList(ary, length);
     EXPECT_ARRAY_EQ_LINKEDLIST(ary, length, actual);
-    destroySinglyLinkedList(actual);
+    destroyLinkedList(actual);
 }
 
 TEST_F(ArrayTest, case_array_eq) {

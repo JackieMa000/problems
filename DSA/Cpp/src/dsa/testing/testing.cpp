@@ -4,12 +4,12 @@
 namespace dsa::testing {
 
 void
-DSATest::EXPECT_ARRAY_EQ(int *expected, int expectedLength, int *actual, int actualLength) {
+DSATest::EXPECT_ARRAY_EQ(int *expected, unsigned int expectedLength, int *actual, unsigned int actualLength) {
     EXPECT_EQ(expectedLength, actualLength)
                     << "Array lengths not equal"
                     << "\n expectedLength: " << expectedLength << "\n actualLength: " << actualLength;
 
-    if (expectedLength <= 0 || actualLength <= 0 || expectedLength != actualLength)
+    if (expectedLength == 0 || actualLength == 0 || expectedLength != actualLength)
         return;
 
     EXPECT_EQ(*(expected + (expectedLength - 1)), *(actual + (actualLength - 1)))
@@ -17,13 +17,17 @@ DSATest::EXPECT_ARRAY_EQ(int *expected, int expectedLength, int *actual, int act
                     << "\n expected array on index " << expectedLength - 1 << " = " << expected[expectedLength - 1]
                     << "\n actual array on index " << actualLength - 1 << " = " << actual[actualLength - 1];
 
-    lib::lists::arrays::Array expArray(expected, expectedLength);
-    int *newExpected = expArray.copy(0, expectedLength - 2);
+    if (expectedLength > 1 && actualLength > 1) {
+        int newExpected[expectedLength - 1];
+        lib::lists::arrays::Array expArray(expected, expectedLength);
+        expArray.copy(newExpected, 0, expectedLength - 2);
 
-    lib::lists::arrays::Array actArray(actual, actualLength);
-    int *newActual = actArray.copy(0, actualLength - 2);
+        int newActual[actualLength - 1];
+        lib::lists::arrays::Array actArray(actual, actualLength);
+        actArray.copy(newActual, 0, actualLength - 2);
 
-    EXPECT_ARRAY_EQ(newExpected, expectedLength - 1, newActual, actualLength - 1);
+        EXPECT_ARRAY_EQ(newExpected, expectedLength - 1, newActual, actualLength - 1);
+    }
 }
 
 void

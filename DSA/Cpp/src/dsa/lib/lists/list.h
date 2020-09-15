@@ -5,7 +5,7 @@ namespace dsa::lib::lists {
 
 class List {
  public:
-    virtual int
+    virtual unsigned int
     size() = 0;
 };
 

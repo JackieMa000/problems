@@ -16,7 +16,7 @@ LinkedList::destroy() {
     }
 };
 
-int
+unsigned int
 LinkedList::size() {
     nodes::ListNode *cur = this->head;
     int len = 0;
@@ -27,7 +27,7 @@ LinkedList::size() {
     return len;
 };
 
-std::tuple<int, int *>
+std::tuple<unsigned int, int *>
 LinkedList::toArray() {
     int *res;
     int ary[this->size()];

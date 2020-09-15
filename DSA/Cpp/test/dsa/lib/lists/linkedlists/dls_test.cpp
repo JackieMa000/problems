@@ -1,13 +1,7 @@
-#include "dls_test.h"
+#include "dls_test_fx.hpp"
 
-namespace dsa {
-namespace lib {
-namespace lists {
-namespace linkedlists {
+namespace dsa::lib::lists::linkedlists {
 namespace {
 
 }  // namespace
-}  // namespace linkedlists
-}  // namespace lists
-}  // namespace lib
 }  // namespace dsa

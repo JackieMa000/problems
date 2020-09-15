@@ -1,9 +1,6 @@
 #include "dls.h"
 
-namespace dsa {
-namespace lib {
-namespace lists {
-namespace linkedlists {
+namespace dsa::lib::lists::linkedlists {
 
 DoublyLinkedList::DoublyLinkedList(nodes::ListNode* head) : LinkedList(head){};
 
@@ -15,7 +12,4 @@ DoublyLinkedList::reverse()
     return ls;
 }
 
-}  // namespace linkedlists
-}  // namespace lists
-}  // namespace lib
 }  // namespace dsa

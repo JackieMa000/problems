@@ -1,7 +1,7 @@
-#include "dsa/nodes.h"
-
 #ifndef LIB_LISTS_ARRAYS_H
 #define LIB_LISTS_ARRAYS_H
+
+#include "dsa/nodes.h"
 
 namespace dsa::lib::lists::arrays {
 

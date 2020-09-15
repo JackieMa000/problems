@@ -4,6 +4,6 @@ add_test(NAME utils_test COMMAND utils_test)
 add_test(NAME ArrayTest COMMAND array_test)
 
 ###### linkedlists Test ####
-add_test(NAME LinkedListTest COMMAND LinkedListTest)
-add_test(NAME singlyLinkedlist_test COMMAND singlyLinkedlist_test)
-add_test(NAME doublyLinkedlist_test COMMAND doublyLinkedlist_test)
+add_test(NAME LinkedListTest COMMAND linkedlist_test)
+add_test(NAME SinglyLinkedlistTest COMMAND singlyLinkedlist_test)
+add_test(NAME DoublyLinkedlistTest COMMAND doublyLinkedlist_test)

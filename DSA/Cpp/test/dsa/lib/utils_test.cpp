@@ -1,10 +1,9 @@
 #include "dsa/testing/testing.h"
 #include "dsa/lib/utils.h"
 
-namespace dsa {
-namespace lib {
-namespace utils {
+namespace dsa::lib::utils {
 namespace {
+
 class ArrayRstripTest : public dsa::testing::DSATest
 {
 };
@@ -28,6 +27,4 @@ TEST_F(ArrayRstripTest, case2)
 }
 
 }  // namespace
-}  // namespace utils
-}  // namespace lib
 }  // namespace dsa

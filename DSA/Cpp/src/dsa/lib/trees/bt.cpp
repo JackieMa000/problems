@@ -1,8 +1,6 @@
 #include "bt.h"
 
-namespace dsa {
-namespace lib {
-namespace trees {
+namespace dsa::lib::trees {
 
 BinaryTree::BinaryTree(nodes::BinaryTreeNode* root)
 {
@@ -41,6 +39,4 @@ BinaryTree::lowestCommonAncestorDfs(nodes::BinaryTreeNode* root, nodes::BinaryTr
     return (left && right) ? root : !left ? right : left;
 }
 
-}  // namespace trees
-}  // namespace lib
-}  // namespace dsa
+}  // namespace dsa::lib::trees

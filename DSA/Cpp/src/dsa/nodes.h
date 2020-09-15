@@ -1,15 +1,14 @@
 #ifndef NODES_H
 #define NODES_H
 
-namespace dsa {
-namespace nodes {
+namespace dsa::nodes {
 
 struct Node
 {
     int val;
 
     Node();
-    Node(int val);
+    explicit Node(int val);
 };
 
 struct ListNode : Node
@@ -17,14 +16,14 @@ struct ListNode : Node
     ListNode* next;
 
     ListNode();
-    ListNode(int val);
+    explicit ListNode(int val);
     ListNode(int val, ListNode* next);
 };
 
 struct TreeNode : Node
 {
     TreeNode();
-    TreeNode(int val);
+    explicit TreeNode(int val);
 };
 
 struct BinaryTreeNode : TreeNode
@@ -32,11 +31,10 @@ struct BinaryTreeNode : TreeNode
     BinaryTreeNode *left, *right;
 
     BinaryTreeNode();
-    BinaryTreeNode(int val);
+    explicit BinaryTreeNode(int val);
     BinaryTreeNode(int val, BinaryTreeNode* left, BinaryTreeNode* right);
 };
 
-}  // namespace nodes
-}  // namespace dsa
+}  // namespace dsa::nodes
 
 #endif  // NODES_H

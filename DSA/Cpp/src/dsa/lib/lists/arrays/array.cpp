@@ -1,20 +1,16 @@
 #include "array.h"
 
-namespace dsa {
-namespace lib {
-namespace lists {
-namespace arrays {
+namespace dsa::lib::lists::arrays {
 
 Array::Array(int ary[], unsigned int length) : ary(ary), length(length)
 {
 }
-// Array::~Array() {}
 
 nodes::ListNode*
 Array::toSinglyLinkedList()
 {
-    nodes::ListNode* dummy = new nodes::ListNode();
-    nodes::ListNode* head = new nodes::ListNode(*this->ary);
+    auto* dummy = new nodes::ListNode();
+    auto* head = new nodes::ListNode(*this->ary);
     dummy->next = head;
 
     for (int i = 1; i < this->length; i++)
@@ -37,7 +33,4 @@ Array::copy(int start, int end)
     return ptr;
 }
 
-}  // namespace arrays
-}  // namespace lists
-}  // namespace lib
-}  // namespace dsa
+}  // namespace dsa::lib::lists::arrays

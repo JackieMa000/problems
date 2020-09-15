@@ -1,14 +1,12 @@
 #include <vector>
 
-#include "dsa/nodes.h"
 #include "bt.h"
+#include "dsa/nodes.h"
 
 #ifndef LIB_TREES_BST_H
 #define LIB_TREES_BST_H
 
-namespace dsa {
-namespace lib {
-namespace trees {
+namespace dsa::lib::trees {
 
 class BinarySearchTree : BinaryTree
 {
@@ -31,7 +29,6 @@ private:
 
 public:
     BinarySearchTree(nodes::BinaryTreeNode* root);
-    ~BinarySearchTree();
 
     std::vector<int>
     preorder();
@@ -47,8 +44,6 @@ public:
     lowestCommonAncestor(nodes::BinaryTreeNode* p, nodes::BinaryTreeNode* q);
 };
 
-}  // namespace trees
-}  // namespace lib
-}  // namespace dsa
+}  // namespace dsa::lib::trees
 
 #endif

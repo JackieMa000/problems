@@ -9,3 +9,4 @@ out/
 experiment/
 /cmake-build-debug/
 /Testing/
+/cmake-build-debug-coverage/

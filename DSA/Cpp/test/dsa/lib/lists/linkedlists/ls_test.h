@@ -1,14 +1,15 @@
-#include "dsa/lib/lists/linkedlists/ls.h"
-#include "dsa/testing/testing.h"
-
 #ifndef LIB_LISTS_LINKEDLISTS_LS_TEST_H
 #define LIB_LISTS_LINKEDLISTS_LS_TEST_H
+
+#include <dsa/testing/testing.h>
 
 namespace dsa::lib::lists::linkedlists {
 namespace {
 
-class LinkedListTest : public testing::DSATest
-{
+class LinkedListTest : public testing::DSATest {
+};
+
+class ToArrayTest : public LinkedListTest {
 };
 
 }  // namespace

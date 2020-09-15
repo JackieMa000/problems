@@ -1,8 +1,6 @@
 #include "bst.h"
 
-namespace dsa {
-namespace lib {
-namespace trees {
+namespace dsa::lib::trees {
 
 BinarySearchTree::BinarySearchTree(nodes::BinaryTreeNode* root) : BinaryTree(root)
 {
@@ -68,12 +66,12 @@ BinarySearchTree::isValid()
 {
     return isValidBST(this->root, nullptr, nullptr);
 }
-/*
-LowerBound and UpperBound.
-BST Rule:
-left(all nodes) < root < right(all nodes)
-Biggest on the left < root < smallest on the right
-*/
+/**
+ *LowerBound and UpperBound.
+ * BST Rule:
+ * left(all nodes) < root < right(all nodes)
+ * Biggest on the left < root < smallest on the right
+ */
 bool
 BinarySearchTree::isValidBST(
     nodes::BinaryTreeNode* root,
@@ -112,9 +110,9 @@ BinarySearchTree::lowestCommonAncestorDfs(
     nodes::BinaryTreeNode* p,
     nodes::BinaryTreeNode* q)
 {
-    return (p->val < root->val && q->val < root->val)
-        ? lowestCommonAncestorDfs(root->left, p, q)
-        : (root->val < p->val && root->val < q->val) ? lowestCommonAncestorDfs(root->right, p, q) : root;
+    return (p->val < root->val && q->val < root->val) ? lowestCommonAncestorDfs(root->left, p, q)
+    : (root->val < p->val && root->val < q->val)      ? lowestCommonAncestorDfs(root->right, p, q)
+                                                      : root;
 }
 
 nodes::BinaryTreeNode*
@@ -135,6 +133,4 @@ BinarySearchTree::lowestCommonAncestorBfs(
     return root;
 }
 
-}  // namespace trees
-}  // namespace lib
-}  // namespace dsa
+}  // namespace dsa::lib::trees

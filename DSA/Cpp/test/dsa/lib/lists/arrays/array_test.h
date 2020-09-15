@@ -6,24 +6,22 @@
 namespace dsa::lib::lists::arrays {
 namespace {
 
-class ArrayTest : public testing::DSATest
-{
+class ArrayTest : public testing::DSATest {
 };
 
-class ToSinglyLinkedListTest : public ArrayTest
-{
-protected:
-    static nodes::ListNode*
+class ToSinglyLinkedListTest : public ArrayTest {
+ protected:
+    static nodes::ListNode *
     createSinglyLinkedList(int ary[], int length);
 
     static void
-    destroySinglyLinkedList(nodes::ListNode* head);
+    destroySinglyLinkedList(nodes::ListNode *head);
 
-    void
+    static void
     run(int ary[], int length);
 };
 
 }  // namespace
-}  // namespace dsa
+}  // namespace dsa::lib::lists::arrays
 
 #endif

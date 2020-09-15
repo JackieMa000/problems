@@ -1,23 +1,22 @@
+#include <dsa/lib/lists/arrays/array.h>
+#include <dsa/lib/lists/linkedlists/ls.h>
 #include "ls_test.h"
-#include "dsa/lib/lists/arrays/array.h"
 
 namespace dsa::lib::lists::linkedlists {
 namespace {
 
-TEST_F(LinkedListTest, case1)
-{
-    // ToDo
-    // Arrange;
-    int ary[] = {1, 2, 3};
-    arrays::Array array(ary, sizeof(ary) / 4);
-    nodes::ListNode* head = array.toSinglyLinkedList();
+TEST_F(ToArrayTest, case1) {
+    int expAry[] = {1, 2, 3};
+    int expLen = sizeof(expAry) / 4;
 
-    // Act;
+    arrays::Array array(expAry, expLen);
+    nodes::ListNode *head = array.toSinglyLinkedList();
+
     LinkedList ls(head);
-    int* actual = ls.toArray();
+    auto[actLen, actAry] = ls.toArray();
 
-    // Assert;
-    // EXPECT_ARRAY_EQ(ary, 3, actual, 3);
+    EXPECT_ARRAY_EQ(expAry, expLen, actAry, actLen);
+
 }
 
 }  // namespace

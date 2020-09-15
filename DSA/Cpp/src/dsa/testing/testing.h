@@ -5,23 +5,17 @@
 #ifndef TESTING_H
 #define TESTING_H
 
-namespace dsa {
-namespace testing {
+namespace dsa::testing {
 
-class DSATest : public ::testing::Test
-{
-protected:
-    int static*
-    copyArray(int ary[], int start, int end);
+class DSATest : public ::testing::Test {
+ protected:
+    void
+    EXPECT_ARRAY_EQ(int *expected, int expectedLength, int *actual, int actualLength);
 
-public:
-    void
-    EXPECT_ARRAY_EQ(int expected[], int expectedLength, int actual[], int actualLength);
-    void
-    EXPECT_ARRAY_EQ_LINKEDLIST(int ary[], int length, nodes::ListNode* head);
+    static void
+    EXPECT_ARRAY_EQ_LINKEDLIST(int ary[], int length, nodes::ListNode *head);
 };
 
-}  // namespace testing
-}  // namespace dsa
+}  // namespace dsa::testing
 
 #endif  // TESTING_H

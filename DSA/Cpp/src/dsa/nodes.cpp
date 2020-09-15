@@ -19,7 +19,7 @@ ListNode::ListNode(int val) : Node(val), next(nullptr)
 {
 }
 
-ListNode::ListNode(int val, ListNode* next) : Node(val), next(nullptr)
+ListNode::ListNode(int val, ListNode* next) : Node(val), next(next)
 {
 }
 
@@ -31,11 +31,11 @@ TreeNode::TreeNode(int val) : Node(val)
 {
 }
 
-BinaryTreeNode::BinaryTreeNode() : TreeNode()
+BinaryTreeNode::BinaryTreeNode() : TreeNode(), left(nullptr), right(nullptr)
 {
 }
 
-BinaryTreeNode::BinaryTreeNode(int val) : TreeNode(val)
+BinaryTreeNode::BinaryTreeNode(int val) : TreeNode(val), left(nullptr), right(nullptr)
 {
 }
 

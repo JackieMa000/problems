@@ -1,26 +1,26 @@
-add_executable(linkedlist_test
-ls_test.cpp)
+add_executable(LinkedListTest
+        ls_test.cpp)
 
 add_executable(singlyLinkedlist_test
-sls_test.cpp)
+        sls_test.cpp)
 
 add_executable(doublyLinkedlist_test
-dls_test.cpp)
+        dls_test.cpp)
 
-target_link_libraries(linkedlist_test
-nodes
-linkedlists
-arrays
-test_main)
+target_link_libraries(LinkedListTest
+        nodes
+        linkedlists
+        arrays
+        test_main)
 
 target_link_libraries(singlyLinkedlist_test
-nodes
-linkedlists
-arrays
-test_main)
+        nodes
+        linkedlists
+        arrays
+        test_main)
 
 target_link_libraries(doublyLinkedlist_test
-nodes
-linkedlists
-arrays
-test_main)
+        nodes
+        linkedlists
+        arrays
+        test_main)

@@ -4,9 +4,7 @@
 #ifndef LIB_TREES_BT_H
 #define LIB_TREES_BT_H
 
-namespace dsa {
-namespace lib {
-namespace trees {
+namespace dsa::lib::trees {
 
 class BinaryTree : Tree
 {
@@ -27,12 +25,10 @@ public:
     toArray();
     int
     depth();
-    nodes::BinaryTreeNode*
+    virtual nodes::BinaryTreeNode*
     lowestCommonAncestor(nodes::BinaryTreeNode* p, nodes::BinaryTreeNode* q);
 };
 
-}  // namespace trees
-}  // namespace lib
-}  // namespace dsa
+}  // namespace dsa::lib::trees
 
 #endif

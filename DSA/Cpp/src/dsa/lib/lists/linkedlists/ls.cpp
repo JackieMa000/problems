@@ -2,17 +2,14 @@
 
 namespace dsa::lib::lists::linkedlists {
 
-LinkedList::LinkedList(nodes::ListNode* head) : head(head)
-{
+LinkedList::LinkedList(nodes::ListNode *head) : head(head) {
 }
 
 void
-LinkedList::destroy()
-{
+LinkedList::destroy() {
     nodes::ListNode *cur, *next;
     cur = this->head;
-    while (cur)
-    {
+    while (cur) {
         next = cur->next;
         delete cur;
         cur = next;
@@ -20,25 +17,37 @@ LinkedList::destroy()
 };
 
 int
-LinkedList::size()
-{
-    // ToDo
-    return 0;
+LinkedList::size() {
+    nodes::ListNode *cur = this->head;
+    int len = 0;
+    while (cur) {
+        len++;
+        cur = cur->next;
+    }
+    return len;
 };
 
-int*
-LinkedList::toArray()
-{
-    // ToDo
-    int* res;
-    return res;
+std::tuple<int, int *>
+LinkedList::toArray() {
+    int *res;
+    int ary[this->size()];
+    res = ary;
+
+    nodes::ListNode *cur = this->head;
+    int i = 0;
+    while (cur) {
+        *(res + i) = cur->val;
+        cur = cur->next;
+        i++;
+    }
+
+    return {this->size(), res};
 }
 
-nodes::ListNode*
-LinkedList::getNodeByIndex(int idx) const
-{
+nodes::ListNode *
+LinkedList::getNodeByIndex(int idx) const {
     // ToDo
-    nodes::ListNode* ls;
+    nodes::ListNode *ls;
     return ls;
 }
 

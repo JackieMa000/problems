@@ -1,4 +1,4 @@
-#include <dsa/lib/lists/linkedlists/ls.h>
+#include <dsa/lib/lists/linkedlists/sls.h>
 #include "sls_test_fx.hpp"
 
 namespace dsa::lib::lists::linkedlists {
@@ -9,7 +9,7 @@ TEST_F(SinglyLinkedListTest, case1) {
     unsigned int expLen = sizeof(expAry) / 4;
     nodes::ListNode *head = createSinglyLinkedList(expAry, expLen);
 
-    LinkedList ls(head);
+    SinglyLinkedList ls(head);
     auto[actLen, actAry] = ls.toArray();
 
     EXPECT_ARRAY_EQ(expAry, expLen, actAry, actLen);

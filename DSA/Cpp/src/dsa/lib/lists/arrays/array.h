@@ -5,24 +5,20 @@
 
 namespace dsa::lib::lists::arrays {
 
-class Array
-{
-private:
-    int* ary;
+class Array {
+ private:
+    int *ary;
+    static void generateTreeFromArray(int *ary, unsigned int length, nodes::BinaryTreeNode *root, unsigned int i);
 
-public:
+ public:
     unsigned int length;
 
     Array(int ary[], unsigned int length);
 
-    nodes::ListNode *
-    toSinglyLinkedList();
+    nodes::ListNode *toSinglyLinkedList();
+    nodes::BinaryTreeNode *toBinaryTree();
 
-    nodes::BinaryTreeNode*
-    toBinaryTree();
-
-    int *
-    copy(int *p_ary, unsigned int start, unsigned int end);
+    int *copy(int *p_ary, unsigned int start, unsigned int end);
 };
 
 }  // namespace dsa::lib::lists::arrays

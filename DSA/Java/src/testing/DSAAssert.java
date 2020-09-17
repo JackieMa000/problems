@@ -17,15 +17,18 @@ public class DSAAssert {
         assertNull(head);
     }
 
-    public static void assertTreeEqualsArray(BinaryTreeNode root, int[] array, int i) {
-//        ToDo: refactor
+    public static void assertArrayEqualsTree(int[] array, BinaryTreeNode root) {
+        assertArrayEqualsTreeDfs(array, root, 0);
+    }
+
+    private static void assertArrayEqualsTreeDfs(int[] array, BinaryTreeNode root, int i) {
         if (i >= array.length) return;
         if (root == null) {
             assertEquals(0, array[i]);
             return;
         }
         assertEquals(root.val, array[i]);
-        assertTreeEqualsArray(root.left, array, 2 * i + 1);
-        assertTreeEqualsArray(root.right, array, 2 * i + 2);
+        assertArrayEqualsTreeDfs(array, root.left, 2 * i + 1);
+        assertArrayEqualsTreeDfs(array, root.right, 2 * i + 2);
     }
 }

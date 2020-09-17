@@ -19,16 +19,20 @@ public class LinkedListTest {
 
         @Test
         public void case1() {
-            ListNode head = new Array(new int[]{1}).toSinglyLinkedList();
+            ListNode head = getSinglyLinkedList(new int[]{1});
             ListNode actual = new LinkedList(head).getNodeByIndex(0);
             assertEquals(1, actual.val);
         }
 
         @Test
         public void case2() {
-            ListNode head = new Array(new int[]{1, 2, 3}).toSinglyLinkedList();
+            ListNode head = getSinglyLinkedList(new int[]{1, 2, 3});
             ListNode actual = new LinkedList(head).getNodeByIndex(2);
             assertEquals(3, actual.val);
+        }
+
+        private ListNode getSinglyLinkedList(int[] ary) {
+            return new Array(ary).toSinglyLinkedList();
         }
     }
 }

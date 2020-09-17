@@ -1,3 +1,3 @@
-add_library(trees 
-bt.cpp
-bst.cpp)
+add_library(trees
+        bt.cpp
+        bst.cpp)

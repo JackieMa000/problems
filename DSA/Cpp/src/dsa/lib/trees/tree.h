@@ -1,21 +1,14 @@
 #ifndef LIB_TREES_TREE_H
 #define LIB_TREES_TREE_H
 
-namespace dsa {
-namespace lib {
-namespace trees {
+namespace dsa::lib::trees {
 
-class Tree
-{
-public:
-    virtual int*
-    toArray() = 0;
-    virtual int
-    depth() = 0;
+class Tree {
+ public:
+    virtual std::tuple<unsigned int, int *> toArray() = 0;
+    virtual int depth() = 0;
 };
 
-}  // namespace trees
-}  // namespace lib
 }  // namespace dsa
 
 #endif

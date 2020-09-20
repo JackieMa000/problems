@@ -10,8 +10,8 @@ namespace dsa::lib::lists {
 class ListTest : public testing::DSATest {
  protected:
     static nodes::ListNode *
-    createSinglyLinkedList(int *ary, unsigned int length) {
-        arrays::Array array(ary, length);
+    createSinglyLinkedList(int *ary, unsigned long size) {
+        arrays::Array array(ary, size);
         return array.toSinglyLinkedList();
     }
 

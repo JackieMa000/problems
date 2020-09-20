@@ -3,29 +3,31 @@
 
 namespace dsa::testing {
 
-void DSATest::EXPECT_ARRAY_EQ(int *expected, unsigned int expectedLength, int *actual, unsigned int actualLength) {
-    EXPECT_EQ(expectedLength, actualLength)
-                    << "Array lengths not equal"
-                    << "\n expectedLength: " << expectedLength << "\n actualLength: " << actualLength;
+void DSATest::EXPECT_ARRAY_EQ(int *expected, size_t expectedSize, int *actual, size_t actualSize) {
+    unsigned int expectedLength = expectedSize / 4, actualLength = actualSize / 4;
 
-    if (expectedLength == 0 || actualLength == 0 || expectedLength != actualLength)
-        return;
+    EXPECT_EQ(expectedSize, actualSize)
+                    << "Array sizes not equal"
+                    << "\n expectedSize: " << expectedSize << "\n actualSize: " << actualSize;
+
+    if (expectedSize == 0 || actualSize == 0 || expectedSize != actualSize) return;
 
     EXPECT_EQ(*(expected + (expectedLength - 1)), *(actual + (actualLength - 1)))
                     << "Arrays not equal"
-                    << "\n expected array on index " << expectedLength - 1 << " = " << expected[expectedLength - 1]
-                    << "\n actual array on index " << actualLength - 1 << " = " << actual[actualLength - 1];
+                    << "\n expected array on index " << expectedLength - 1 << " = "
+                    << *(expected + (expectedLength - 1))
+                    << "\n actual array on index " << actualLength - 1 << " = " << *(actual + (actualLength - 1));
 
     if (expectedLength > 1 && actualLength > 1) {
         int newExpected[expectedLength - 1];
-        lib::lists::arrays::Array expArray(expected, expectedLength);
+        lib::lists::arrays::Array expArray(expected, expectedSize);
         expArray.copy(newExpected, 0, expectedLength - 2);
 
         int newActual[actualLength - 1];
-        lib::lists::arrays::Array actArray(actual, actualLength);
+        lib::lists::arrays::Array actArray(actual, actualSize);
         actArray.copy(newActual, 0, actualLength - 2);
 
-        EXPECT_ARRAY_EQ(newExpected, expectedLength - 1, newActual, actualLength - 1);
+        EXPECT_ARRAY_EQ(newExpected, expectedSize - 4, newActual, actualSize - 4);
     }
 }
 

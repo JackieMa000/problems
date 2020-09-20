@@ -27,8 +27,7 @@ LinkedList::size() {
     return len;
 };
 
-std::tuple<unsigned int, int *>
-LinkedList::toArray() {
+std::tuple<size_t, int *> LinkedList::toArray() {
     int *res;
     int ary[this->size()];
     res = ary;
@@ -41,11 +40,10 @@ LinkedList::toArray() {
         i++;
     }
 
-    return {this->size(), res};
+    return {this->size() * 4, res};
 }
 
-nodes::ListNode *
-LinkedList::getNodeByIndex(int idx) const {
+nodes::ListNode *LinkedList::getNodeByIndex(int idx) const {
     // ToDo
     nodes::ListNode *ls;
     return ls;

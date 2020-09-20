@@ -13,7 +13,7 @@ class Array {
  public:
     unsigned int length;
 
-    Array(int ary[], unsigned int length);
+    Array(int *ary, unsigned long size);
 
     nodes::ListNode *toSinglyLinkedList();
     nodes::BinaryTreeNode *toBinaryTree();

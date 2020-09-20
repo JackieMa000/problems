@@ -1,3 +1,6 @@
+#include <dsa/lib/utils.h>
+#include <algorithm>
+#include <cmath>
 #include "bt.h"
 
 namespace dsa::lib::trees {
@@ -24,11 +27,29 @@ nodes::BinaryTreeNode *BinaryTree::lowestCommonAncestorDfs(nodes::BinaryTreeNode
 }
 
 std::tuple<unsigned int, int *> BinaryTree::toArray() {
-    return std::tuple<unsigned int, int *>();
-}
-int BinaryTree::depth() {
 //    ToDo
-    return 0;
+//    return std::tuple<unsigned int, int *>();
+
+    unsigned int arySize = getArraySizeForBinaryTree(this->root);
+    int ary[arySize];
+    generateArrayFromTree(this->root, 0, ary, arySize);
+    return utils::arrayRstrip(ary, 0);
+}
+unsigned int BinaryTree::getArraySizeForBinaryTree(nodes::BinaryTreeNode *root) {
+//    ToDo
+//    return 0;
+
+    BinaryTree bt(root);
+    return (int) pow(2, bt.depth()) - 1;
+}
+void BinaryTree::generateArrayFromTree(nodes::BinaryTreeNode *root, int i, int *ary, unsigned int length) {
+//    ToDo
+}
+unsigned int BinaryTree::depth() {
+    return depthDfs(this->root);
+}
+unsigned int BinaryTree::depthDfs(nodes::BinaryTreeNode *root) {
+    return (!root) ? 0 : (1 + std::max(depthDfs(root->left), depthDfs(root->right)));
 }
 
 }  // namespace dsa::lib::trees

@@ -12,19 +12,13 @@ class LinkedList : public List {
     nodes::ListNode *head;
 
  public:
-    LinkedList(nodes::ListNode *head);
+    explicit LinkedList(nodes::ListNode *head);
 
-    unsigned int
-    size() final;
+    unsigned int size() final;
+    virtual std::tuple<size_t, int *> toArray() final;
+    virtual nodes::ListNode *getNodeByIndex(int idx) const final;
 
-    virtual std::tuple<unsigned int, int *>
-    toArray() final;
-
-    virtual nodes::ListNode *
-    getNodeByIndex(int idx) const final;
-
-    void
-    destroy();
+    void destroy();
 };
 
 }  // namespace dsa::lib::lists::linkedlists

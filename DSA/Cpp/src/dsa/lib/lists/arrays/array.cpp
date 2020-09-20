@@ -2,7 +2,7 @@
 
 namespace dsa::lib::lists::arrays {
 
-Array::Array(int ary[], unsigned int length) : ary(ary), length(length) {
+Array::Array(int *ary, unsigned long size) : ary(ary), length(size / 4) {
 }
 
 nodes::ListNode *Array::toSinglyLinkedList() {

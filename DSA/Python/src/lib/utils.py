@@ -14,12 +14,12 @@ def array_rstrip(array: List[int]) -> List[int]:
 
 
 def _array_rstrip_it(array: List[int]) -> List[int]:
-    if len(array) == 0 or (len(array) == 1 and array[0] == 0): return []
+    if not len(array) or (len(array) == 1 and array[0] == 0): return []
     while not array[(-1)]: array.pop(-1)
     return array
 
 
 def _array_rstrip_dfs(array: List[int]) -> List[int]:
-    if len(array) == 0 or (len(array) == 1 and array[0] == 0): return []
+    if not len(array) or (len(array) == 1 and array[0] == 0): return []
     if array[-1] != 0: return array
     return _array_rstrip_dfs(array[:-1])

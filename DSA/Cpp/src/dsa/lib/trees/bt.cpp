@@ -28,12 +28,12 @@ nodes::BinaryTreeNode *BinaryTree::lowestCommonAncestorDfs(nodes::BinaryTreeNode
 
 std::tuple<unsigned int, int *> BinaryTree::toArray() {
 //    ToDo
-//    return std::tuple<unsigned int, int *>();
+    return std::tuple<unsigned int, int *>();
 
-    unsigned int arySize = getArraySizeForBinaryTree(this->root);
-    int ary[arySize];
-    generateArrayFromTree(this->root, 0, ary, arySize);
-    return utils::arrayRstrip(ary, 0);
+//    unsigned int arySize = getArraySizeForBinaryTree(this->root);
+//    int ary[arySize];
+//    generateArrayFromTree(this->root, 0, ary, arySize);
+//    return utils::arrayRstrip(ary, 0, nullptr);
 }
 unsigned int BinaryTree::getArraySizeForBinaryTree(nodes::BinaryTreeNode *root) {
 //    ToDo

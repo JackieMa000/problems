@@ -1,5 +1,5 @@
 ######### Utils Test ##############
-add_test(NAME Utils_test COMMAND utils_test)
+add_test(NAME UtilsTest COMMAND utils_test)
 
 ######### Arrays Test #############
 add_test(NAME ArrayTest COMMAND array_test)

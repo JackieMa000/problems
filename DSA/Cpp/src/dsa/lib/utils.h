@@ -5,9 +5,8 @@
 
 namespace dsa::lib::utils {
 
-std::tuple<size_t, int *> arrayRstrip(int *ary, size_t size);
-std::tuple<size_t, int *> arrayRstripIt(int ary[], size_t size);
-std::tuple<size_t, int *> arrayRstripDfs(int ary[], size_t size);
+std::tuple<size_t, int *> arrayRstrip(int *srcAry, size_t size, int *desAry);
+std::tuple<size_t, int *> arrayRstripIt(int srcAry[], size_t size, int desAry[]);
 
 }  // namespace dsa
 

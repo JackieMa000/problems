@@ -5,33 +5,29 @@ namespace dsa::lib::utils {
 namespace {
 
 TEST_F(ArrayRstripTest, empty_array) {
-    int input[] = {}, expected[] = {}, desAry[0];
-    auto[actSize, actAry] = utils::arrayRstrip(input, sizeof(input), desAry);
-    EXPECT_ARRAY_EQ(expected, sizeof(expected), actAry, actSize);
+    int ary[] = {}, expected[] = {};
+    length_t actLen = utils::arrayRstrip(ary, sizeof(ary) / sizeof(ary[0]));
+    EXPECT_ARRAY_EQ(expected, sizeof(expected) / sizeof(expected[0]), ary, actLen);
 }
-
 TEST_F(ArrayRstripTest, length1_element0) {
-    int input[] = {0}, expected[] = {}, desAry[0];
-    auto[actSize, actAry] = utils::arrayRstrip(input, sizeof(input), desAry);
-    EXPECT_ARRAY_EQ(expected, sizeof(expected), actAry, actSize);
+    int ary[] = {0}, expected[] = {};
+    length_t actLen = utils::arrayRstrip(ary, sizeof(ary) / sizeof(ary[0]));
+    EXPECT_ARRAY_EQ(expected, sizeof(expected) / sizeof(expected[0]), ary, actLen);
 }
-
 TEST_F(ArrayRstripTest, last_element_not0) {
-    int input[] = {1, 2}, expected[] = {1, 2}, desAry[0];
-    auto[actSize, actAry] = utils::arrayRstrip(input, sizeof(input), desAry);
-    EXPECT_ARRAY_EQ(expected, sizeof(expected), actAry, actSize);
+    int ary[] = {1, 2}, expected[] = {1, 2};
+    length_t actLen = utils::arrayRstrip(ary, sizeof(ary) / sizeof(ary[0]));
+    EXPECT_ARRAY_EQ(expected, sizeof(expected) / sizeof(expected[0]), ary, actLen);
 }
-
 TEST_F(ArrayRstripTest, last_element0_case1) {
-    int input[] = {1, 2, 0}, expected[] = {1, 2}, desAry[0];
-    auto[actSize, actAry] = utils::arrayRstrip(input, sizeof(input), desAry);
-    EXPECT_ARRAY_EQ(expected, sizeof(expected), actAry, actSize);
+    int ary[] = {1, 2, 0}, expected[] = {1, 2};
+    length_t actLen = utils::arrayRstrip(ary, sizeof(ary) / sizeof(ary[0]));
+    EXPECT_ARRAY_EQ(expected, sizeof(expected) / sizeof(expected[0]), ary, actLen);
 }
-
 TEST_F(ArrayRstripTest, last_element0_case2) {
-    int input[] = {1, 0, 2, 0, 0}, expected[] = {1, 0, 2}, desAry[0];
-    auto[actSize, actAry] = utils::arrayRstrip(input, sizeof(input), desAry);
-    EXPECT_ARRAY_EQ(expected, sizeof(expected), actAry, actSize);
+    int ary[] = {1, 0, 2, 0, 0}, expected[] = {1, 0, 2};
+    length_t actLen = utils::arrayRstrip(ary, sizeof(ary) / sizeof(ary[0]));
+    EXPECT_ARRAY_EQ(expected, sizeof(expected) / sizeof(expected[0]), ary, actLen);
 }
 
 }  // namespace

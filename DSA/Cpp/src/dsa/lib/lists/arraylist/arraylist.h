@@ -3,27 +3,21 @@
 #ifndef LIB_LISTS_ARRAYLIST_H
 #define LIB_LISTS_ARRAYLIST_H
 
-namespace dsa {
-namespace lib {
-namespace lists {
+namespace dsa::lib::lists {
 
-class ArrayList : List
-{
-private:
+class ArrayList : List {
+ private:
     static const int DEFAULT_LENGTH = 10;
-    const int* lst;
+    const int *lst;
 
-public:
+ public:
     ArrayList();
-    ArrayList(int ary[]);
+    explicit ArrayList(int ary[]);
     ~ArrayList();
 
-    unsigned int
-    size();
+    length_t length() override;
 };
 
-}  // namespace lists
-}  // namespace lib
 }  // namespace dsa
 
 #endif

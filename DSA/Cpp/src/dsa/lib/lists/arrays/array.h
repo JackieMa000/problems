@@ -1,24 +1,24 @@
 #ifndef LIB_LISTS_ARRAYS_H
 #define LIB_LISTS_ARRAYS_H
 
+#include "dsa/dsadef.h"
 #include "dsa/nodes.h"
 
 namespace dsa::lib::lists::arrays {
 
 class Array {
  private:
-    int *ary;
-    static void generateTreeFromArray(int *ary, unsigned int length, nodes::BinaryTreeNode *root, unsigned int i);
+    static void generateTreeFromArray(int *ary, length_t length, nodes::BinaryTreeNode *root, pos_t i);
 
  public:
-    unsigned int length;
+    int *ary;
+    length_t length;
 
-    Array(int *ary, unsigned long size);
+    Array(int *ary, length_t length);
+    [[nodiscard]] nodes::ListNode *toSinglyLinkedList() const;
+    [[nodiscard]] nodes::BinaryTreeNode *toBinaryTree() const;
 
-    nodes::ListNode *toSinglyLinkedList();
-    nodes::BinaryTreeNode *toBinaryTree();
-
-    int *copy(int *p_ary, unsigned int start, unsigned int end);
+//    int *copy(int *p_ary, unsigned int start, unsigned int end);
 };
 
 }  // namespace dsa::lib::lists::arrays

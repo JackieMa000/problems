@@ -1,11 +1,11 @@
 #ifndef LIB_UTILS_H
 #define LIB_UTILS_H
 
-#include <tuple>
+#include "dsa/dsadef.h"
 
 namespace dsa::lib::utils {
 
-std::tuple<size_t, int *> arrayRstrip(int *srcAry, size_t size, int *desAry);
+length_t arrayRstrip(const int *ary, length_t length);
 
 }  // namespace dsa
 

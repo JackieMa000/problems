@@ -13,9 +13,12 @@ ArrayList::ArrayList(int ary[])
 {
     this->lst = ary;
 };
-ArrayList::~ArrayList()
-{
+ArrayList::~ArrayList() {
     delete[] lst;
+}
+length_t ArrayList::length() {
+//    ToDo
+    return 0;
 }
 
 }  // namespace lists

@@ -4,6 +4,4 @@ add_executable(binary_tree_test
 target_link_libraries(binary_tree_test
         arrays
         trees
-        utils
-        test_main
-        )
+        test_main)

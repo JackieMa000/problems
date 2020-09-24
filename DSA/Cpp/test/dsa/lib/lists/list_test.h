@@ -9,16 +9,10 @@ namespace dsa::lib::lists {
 
 class ListTest : public testing::DSATest {
  protected:
-    static nodes::ListNode *
-    createSinglyLinkedList(int *ary, unsigned long size) {
-        arrays::Array array(ary, size);
-        return array.toSinglyLinkedList();
-    }
 
-    static void
-    destroyLinkedList(nodes::ListNode *head) {
+    static void destroyLinkedList(nodes::ListNode *head) {
         linkedlists::LinkedList ls(head);
-        ls.destroy();
+        ls.destroy(nullptr);
     }
 };
 

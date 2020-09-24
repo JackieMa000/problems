@@ -12,9 +12,8 @@ class BinaryTree : Tree {
     static nodes::BinaryTreeNode *lowestCommonAncestorDfs(nodes::BinaryTreeNode *root,
                                                           nodes::BinaryTreeNode *p,
                                                           nodes::BinaryTreeNode *q);
-    static unsigned int getArraySizeForBinaryTree(nodes::BinaryTreeNode *root);
-    static void generateArrayFromTree(nodes::BinaryTreeNode *root, int i, int *ary, unsigned int length);
-    static unsigned int depthDfs(nodes::BinaryTreeNode *root);
+    static void generateArrayFromTree(nodes::BinaryTreeNode *root, pos_t i, int *ary, length_t length);
+    static depth_t depthDfs(nodes::BinaryTreeNode *root);
 
  protected:
     nodes::BinaryTreeNode *root;
@@ -24,9 +23,10 @@ class BinaryTree : Tree {
 
     static void destroy(nodes::BinaryTreeNode *root);
 
-    std::tuple<unsigned int, int *> toArray() override;
-    unsigned int depth() override;
+    std::tuple<length_t, int *> toArray() override;
+    depth_t depth() override;
     virtual nodes::BinaryTreeNode *lowestCommonAncestor(nodes::BinaryTreeNode *p, nodes::BinaryTreeNode *q);
+    static length_t getArraySizeForBinaryTree(nodes::BinaryTreeNode *root);
 };
 
 }  // namespace dsa::lib::trees

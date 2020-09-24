@@ -5,31 +5,29 @@ namespace dsa::lib::lists::linkedlists {
 LinkedList::LinkedList(nodes::ListNode *head) : head(head) {
 }
 
-void
-LinkedList::destroy() {
+void LinkedList::destroy(nodes::ListNode *head) {
     nodes::ListNode *cur, *next;
-    cur = this->head;
+    cur = head;
     while (cur) {
         next = cur->next;
         delete cur;
         cur = next;
     }
-};
+}
 
-unsigned int
-LinkedList::size() {
+length_t LinkedList::length() {
     nodes::ListNode *cur = this->head;
-    int len = 0;
+    length_t len = 0;
     while (cur) {
         len++;
         cur = cur->next;
     }
     return len;
-};
+}
 
-std::tuple<size_t, int *> LinkedList::toArray() {
+std::tuple<length_t, int *> LinkedList::toArray() {
     int *res;
-    int ary[this->size()];
+    int ary[this->length()];
     res = ary;
 
     nodes::ListNode *cur = this->head;
@@ -40,7 +38,7 @@ std::tuple<size_t, int *> LinkedList::toArray() {
         i++;
     }
 
-    return {this->size() * 4, res};
+    return {this->length(), res};
 }
 
 nodes::ListNode *LinkedList::getNodeByIndex(int idx) const {

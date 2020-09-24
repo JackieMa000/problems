@@ -14,11 +14,11 @@ class LinkedList : public List {
  public:
     explicit LinkedList(nodes::ListNode *head);
 
-    unsigned int size() final;
-    virtual std::tuple<size_t, int *> toArray() final;
+    length_t length() final;
+    virtual std::tuple<length_t, int *> toArray() final;
     virtual nodes::ListNode *getNodeByIndex(int idx) const final;
 
-    void destroy();
+    static void destroy(nodes::ListNode *head);
 };
 
 }  // namespace dsa::lib::lists::linkedlists

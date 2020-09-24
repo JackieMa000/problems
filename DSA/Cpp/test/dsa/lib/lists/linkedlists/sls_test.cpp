@@ -6,14 +6,14 @@ namespace {
 
 TEST_F(SinglyLinkedListTest, case1) {
     int expAry[] = {1, 2, 3};
-    size_t expSize = sizeof(expAry);
-    nodes::ListNode *head = createSinglyLinkedList(expAry, expSize);
+    length_t expLen = sizeof(expAry) / sizeof(expAry[0]);
+    arrays::Array array(expAry, expLen);
+    nodes::ListNode *head = array.toSinglyLinkedList();
 
     SinglyLinkedList ls(head);
-    auto[actSize, actAry] = ls.toArray();
+    auto[actLen, actAry] = ls.toArray();
 
-    EXPECT_ARRAY_EQ(expAry, expSize, actAry, actSize);
-
+    EXPECT_ARRAY_EQ(expAry, expLen, actAry, actLen);
     destroyLinkedList(head);
 }
 

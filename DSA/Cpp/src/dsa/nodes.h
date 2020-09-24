@@ -3,36 +3,32 @@
 
 namespace dsa::nodes {
 
-struct Node
-{
+struct Node {
     int val;
 
     Node();
     explicit Node(int val);
 };
 
-struct ListNode : Node
-{
-    ListNode* next;
+struct ListNode : Node {
+    ListNode *next;
 
     ListNode();
     explicit ListNode(int val);
-    ListNode(int val, ListNode* next);
+    ListNode(int val, ListNode *next);
 };
 
-struct TreeNode : Node
-{
+struct TreeNode : Node {
     TreeNode();
     explicit TreeNode(int val);
 };
 
-struct BinaryTreeNode : TreeNode
-{
+struct BinaryTreeNode : TreeNode {
     BinaryTreeNode *left, *right;
 
     BinaryTreeNode();
     explicit BinaryTreeNode(int val);
-    BinaryTreeNode(int val, BinaryTreeNode* left, BinaryTreeNode* right);
+    BinaryTreeNode(int val, BinaryTreeNode *left, BinaryTreeNode *right);
 };
 
 }  // namespace dsa::nodes

@@ -26,29 +26,30 @@ nodes::BinaryTreeNode *BinaryTree::lowestCommonAncestorDfs(nodes::BinaryTreeNode
     return (left && right) ? root : !left ? right : left;
 }
 
-std::tuple<unsigned int, int *> BinaryTree::toArray() {
-//    ToDo
-    return std::tuple<unsigned int, int *>();
+std::tuple<length_t, int *> BinaryTree::toArray() {
+    length_t length = getArraySizeForBinaryTree(root);
+    int *ary = new int[length];
+    for (int i = 0; i < length; ++i) *(ary + i) = 0;
 
-//    unsigned int arySize = getArraySizeForBinaryTree(this->root);
-//    int ary[arySize];
-//    generateArrayFromTree(this->root, 0, ary, arySize);
-//    return utils::arrayRstrip(ary, 0, nullptr);
+    generateArrayFromTree(root, 0, ary, length);
+    return {(utils::arrayRstrip(ary, length)), ary};
 }
-unsigned int BinaryTree::getArraySizeForBinaryTree(nodes::BinaryTreeNode *root) {
-//    ToDo
-//    return 0;
+void BinaryTree::generateArrayFromTree(nodes::BinaryTreeNode *root, pos_t i, int *ary, length_t length) {
+    if (!root || i >= length) return;
+    *(ary + i) = root->val;
+    generateArrayFromTree(root->left, 2 * i + 1, ary, length);
+    generateArrayFromTree(root->right, 2 * i + 2, ary, length);
+}
 
+length_t BinaryTree::getArraySizeForBinaryTree(nodes::BinaryTreeNode *root) {
     BinaryTree bt(root);
-    return (int) pow(2, bt.depth()) - 1;
+    return (length_t) (pow(2, bt.depth()) - 1);
 }
-void BinaryTree::generateArrayFromTree(nodes::BinaryTreeNode *root, int i, int *ary, unsigned int length) {
-//    ToDo
-}
-unsigned int BinaryTree::depth() {
+
+depth_t BinaryTree::depth() {
     return depthDfs(this->root);
 }
-unsigned int BinaryTree::depthDfs(nodes::BinaryTreeNode *root) {
+depth_t BinaryTree::depthDfs(nodes::BinaryTreeNode *root) {
     return (!root) ? 0 : (1 + std::max(depthDfs(root->left), depthDfs(root->right)));
 }
 

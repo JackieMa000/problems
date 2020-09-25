@@ -5,3 +5,4 @@ target_link_libraries(utils_test
 
 add_subdirectory(lists)
 add_subdirectory(trees)
+add_subdirectory(arrays)

@@ -9,7 +9,7 @@ class SinglyLinkedListTest : public LinkedListTest {
  protected:
     static void run(int *ary, length_t length) {
         arrays::Array array(ary, length);
-        nodes::ListNode *head = array.toSinglyLinkedList();
+        ListNode *head = array.toSinglyLinkedList();
 
         SinglyLinkedList ls(head);
         auto[actLen, actAry] = ls.toArray();

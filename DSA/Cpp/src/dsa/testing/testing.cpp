@@ -1,4 +1,3 @@
-#include <algorithm>
 #include "testing.h"
 
 namespace dsa::testing {
@@ -17,17 +16,7 @@ void DSATest::EXPECT_ARRAY_EQ(int *expected, length_t expectedLength, int *actua
                     << "\n actual array on index " << actualLength - 1 << " = " << *(actual + (actualLength - 1));
 
     if (expectedLength > 1 && actualLength > 1) {
-        int newExpected[expectedLength - 1];
-//        lib::lists::arrays::Array expArray(expected, expectedSize);
-//        expArray.copy(newExpected, 0, expectedLength - 2);
-        std::copy(expected, expected + (expectedLength - 1), newExpected);
-
-        int newActual[actualLength - 1];
-//        lib::lists::arrays::Array actArray(actual, actualSize);
-//        actArray.copy(newActual, 0, actualLength - 2);
-        std::copy(actual, actual + (actualLength - 1), newActual);
-
-        EXPECT_ARRAY_EQ(newExpected, expectedLength - 1, newActual, actualLength - 1);
+        EXPECT_ARRAY_EQ(expected, expectedLength - 1, actual, actualLength - 1);
     }
 }
 

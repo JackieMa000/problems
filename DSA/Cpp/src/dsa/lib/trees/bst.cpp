@@ -1,4 +1,5 @@
 #include "bst.h"
+#include "dsa/lib/libdef.h"
 
 namespace dsa::lib::trees {
 

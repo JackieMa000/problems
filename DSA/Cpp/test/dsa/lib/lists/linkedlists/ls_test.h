@@ -2,7 +2,7 @@
 #define LIB_LISTS_LINKEDLISTS_LS_TEST_H
 
 #include <dsa/lib/lists/list_test.h>
-#include <dsa/lib/lists/arrays/array.h>
+#include <dsa/lib/arrays/array.h>
 #include <dsa/lib/lists/linkedlists/ls.h>
 
 namespace dsa::lib::lists::linkedlists {
@@ -12,7 +12,7 @@ class ToArrayTest : public LinkedListTest {
  protected:
     static void run(int *ary, length_t length) {
         arrays::Array array(ary, length);
-        nodes::ListNode *head = array.toSinglyLinkedList();
+        ListNode *head = array.toSinglyLinkedList();
 
         LinkedList ls(head);
         auto[actLen, actAry] = ls.toArray();
@@ -25,7 +25,7 @@ class LengthTest : public LinkedListTest {
  protected:
     static void run(int *ary, length_t length) {
         arrays::Array array(ary, length);
-        nodes::ListNode *head = array.toSinglyLinkedList();
+        ListNode *head = array.toSinglyLinkedList();
 
         LinkedList ls(head);
         auto actual = ls.length();

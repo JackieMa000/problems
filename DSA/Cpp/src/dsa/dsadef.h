@@ -3,6 +3,8 @@
 
 #include <cstddef>
 
+namespace dsa {
+
 // Length of array ,LinkedList, Tree. Represents how many nodes inside.
 typedef unsigned long length_t;
 
@@ -11,5 +13,7 @@ typedef unsigned int depth_t;
 
 // Position of a node in an array, LinkedList, Tree.
 typedef unsigned int pos_t;
+
+}
 
 #endif //DSA_SRC_DSA_DSADEF_H_

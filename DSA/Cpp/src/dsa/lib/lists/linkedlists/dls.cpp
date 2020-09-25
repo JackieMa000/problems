@@ -2,11 +2,11 @@
 
 namespace dsa::lib::lists::linkedlists {
 
-DoublyLinkedList::DoublyLinkedList(nodes::ListNode *head) : LinkedList(head) {}
+DoublyLinkedList::DoublyLinkedList(ListNode *head) : LinkedList(head) {}
 
-nodes::ListNode *DoublyLinkedList::reverse() {
+ListNode *DoublyLinkedList::reverse() {
     // ToDo
-    nodes::ListNode *ls;
+    ListNode *ls;
     return ls;
 }
 

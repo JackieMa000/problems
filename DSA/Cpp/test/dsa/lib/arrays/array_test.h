@@ -3,7 +3,7 @@
 
 #include <dsa/lib/lists/list_test.h>
 #include <dsa/lib/trees/bt.h>
-#include <dsa/lib/lists/arrays/array.h>
+#include <dsa/lib/arrays/array.h>
 #include <dsa/lib/lists/linkedlists/ls.h>
 
 namespace dsa::lib::lists::arrays {
@@ -29,6 +29,8 @@ class ToBinaryTreeTest : public ArrayTest {
         trees::BinaryTree::destroy(root);
     }
 };
+
+class RStripTest : public ArrayTest {};
 
 }  // namespace dsa::lib::lists::arrays
 

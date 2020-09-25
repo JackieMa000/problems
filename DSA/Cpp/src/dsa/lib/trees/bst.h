@@ -3,10 +3,10 @@
 
 #include <vector>
 #include "bt.h"
+#include "dsa/lib/libdef.h"
 
 namespace dsa::lib::trees {
 
-typedef nodes::BinaryTreeNode BinaryTreeNode;
 class BinarySearchTree : BinaryTree {
  public:
     explicit BinarySearchTree(BinaryTreeNode *root);

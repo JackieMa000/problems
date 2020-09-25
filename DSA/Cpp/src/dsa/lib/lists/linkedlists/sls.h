@@ -7,11 +7,11 @@ namespace dsa::lib::lists::linkedlists {
 
 class SinglyLinkedList : public LinkedList {
  public:
-    explicit SinglyLinkedList(nodes::ListNode *head);
+    explicit SinglyLinkedList(ListNode *head);
 
-    nodes::ListNode *reverse();
-    nodes::ListNode *reverseBefore(nodes::ListNode *node);
-    nodes::ListNode *reverseFromTo(nodes::ListNode *fnode, nodes::ListNode *tnode);
+    ListNode *reverse();
+    ListNode *reverseBefore(ListNode *node);
+    ListNode *reverseFromTo(ListNode *fnode, ListNode *tnode);
 };
 
 }  // namespace dsa::lib::lists::linkedlists

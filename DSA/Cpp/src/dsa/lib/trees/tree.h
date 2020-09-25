@@ -1,7 +1,7 @@
 #ifndef LIB_TREES_TREE_H
 #define LIB_TREES_TREE_H
 
-#include <dsa/dsadef.h>
+#include <dsa/lib/libdef.h>
 
 namespace dsa::lib::trees {
 

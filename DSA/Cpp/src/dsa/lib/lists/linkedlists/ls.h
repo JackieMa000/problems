@@ -9,16 +9,16 @@ namespace dsa::lib::lists::linkedlists {
 
 class LinkedList : public List {
  protected:
-    nodes::ListNode *head;
+    ListNode *head;
 
  public:
-    explicit LinkedList(nodes::ListNode *head);
+    explicit LinkedList(ListNode *head);
 
     length_t length() final;
     virtual std::tuple<length_t, int *> toArray() final;
-    virtual nodes::ListNode *getNodeByIndex(int idx) const final;
+    virtual ListNode *getNodeByIndex(int idx) const final;
 
-    static void destroy(nodes::ListNode *head);
+    static void destroy(ListNode *head);
 };
 
 }  // namespace dsa::lib::lists::linkedlists

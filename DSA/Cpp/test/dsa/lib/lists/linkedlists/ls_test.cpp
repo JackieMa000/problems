@@ -1,4 +1,4 @@
-#include "linked_list_test.h"
+#include "ls_test.h"
 
 namespace dsa::lib::lists::linkedlists {
 namespace {

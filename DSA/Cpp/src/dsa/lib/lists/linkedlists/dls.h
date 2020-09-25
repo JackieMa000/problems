@@ -7,11 +7,9 @@ namespace dsa::lib::lists::linkedlists {
 
 class DoublyLinkedList : public LinkedList {
  public:
-    DoublyLinkedList(nodes::ListNode *head);
-    // ~DoublyLinkedList();
+    explicit DoublyLinkedList(nodes::ListNode *head);
 
-    nodes::ListNode *
-    reverse();
+    nodes::ListNode *reverse();
 };
 
 }  // namespace dsa

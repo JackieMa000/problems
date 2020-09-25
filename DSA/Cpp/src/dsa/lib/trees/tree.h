@@ -2,6 +2,7 @@
 #define LIB_TREES_TREE_H
 
 #include <dsa/dsadef.h>
+
 namespace dsa::lib::trees {
 
 class Tree {

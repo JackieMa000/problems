@@ -2,11 +2,10 @@
 
 namespace dsa::lib::lists::linkedlists {
 
-SinglyLinkedList::SinglyLinkedList(nodes::ListNode *head) : LinkedList(head) {};
+SinglyLinkedList::SinglyLinkedList(nodes::ListNode *head) : LinkedList(head) {}
 
 // reverse the nodes before a certain node
-nodes::ListNode *
-SinglyLinkedList::reverseBefore(nodes::ListNode *node) {
+nodes::ListNode *SinglyLinkedList::reverseBefore(nodes::ListNode *node) {
     nodes::ListNode *pre, *cur, *next;
     pre = node;
     cur = this->head;
@@ -18,10 +17,9 @@ SinglyLinkedList::reverseBefore(nodes::ListNode *node) {
         cur = next;
     }
     return pre;
-};
+}
 
-nodes::ListNode *
-SinglyLinkedList::reverse() {
+nodes::ListNode *SinglyLinkedList::reverse() {
     nodes::ListNode *pre, *cur, *next;
     cur = this->head;
 
@@ -34,8 +32,8 @@ SinglyLinkedList::reverse() {
     return pre;
 }
 
-nodes::ListNode *
-SinglyLinkedList::reverseFromTo(nodes::ListNode *fnode, nodes::ListNode *tnode) {
+nodes::ListNode *SinglyLinkedList::reverseFromTo(nodes::ListNode *fnode, nodes::ListNode *tnode) {
+//    ToDo
     return nullptr;
 }
 

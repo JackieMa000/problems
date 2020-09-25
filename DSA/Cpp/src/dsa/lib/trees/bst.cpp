@@ -2,13 +2,13 @@
 
 namespace dsa::lib::trees {
 
-BinarySearchTree::BinarySearchTree(nodes::BinaryTreeNode *root) : BinaryTree(root) {}
+BinarySearchTree::BinarySearchTree(BinaryTreeNode *root) : BinaryTree(root) {}
 
 std::vector<int> BinarySearchTree::preorder() {
     std::vector<int> lst;
     return preorderDfs(this->root, lst);
 }
-std::vector<int> BinarySearchTree::preorderDfs(nodes::BinaryTreeNode *root, std::vector<int> lst) {
+std::vector<int> BinarySearchTree::preorderDfs(BinaryTreeNode *root, std::vector<int> lst) {
     if (root) {
         lst.push_back(root->val);
         preorderDfs(root->left, lst);
@@ -22,7 +22,7 @@ std::vector<int> *BinarySearchTree::inorder() {
     lst = new std::vector<int>();
     return inorderDfs(this->root, lst);
 }
-std::vector<int> *BinarySearchTree::inorderDfs(nodes::BinaryTreeNode *root, std::vector<int> *lst) {
+std::vector<int> *BinarySearchTree::inorderDfs(BinaryTreeNode *root, std::vector<int> *lst) {
     if (root) {
         inorderDfs(root->left, lst);
         lst->push_back(root->val);
@@ -35,7 +35,7 @@ std::vector<int> &BinarySearchTree::postorder() {
     std::vector<int> lst;
     return postorderDfs(this->root, lst);
 }
-std::vector<int> &BinarySearchTree::postorderDfs(nodes::BinaryTreeNode *root, std::vector<int> &lst) {
+std::vector<int> &BinarySearchTree::postorderDfs(BinaryTreeNode *root, std::vector<int> &lst) {
     if (root) {
         postorderDfs(root->left, lst);
         postorderDfs(root->right, lst);
@@ -53,9 +53,9 @@ bool BinarySearchTree::isValid() {
  * left(all nodes) < root < right(all nodes)
  * Biggest on the left < root < smallest on the right
  */
-bool BinarySearchTree::isValidBST(nodes::BinaryTreeNode *root,
-                                  nodes::BinaryTreeNode *minNode,
-                                  nodes::BinaryTreeNode *maxNode) {
+bool BinarySearchTree::isValidBST(BinaryTreeNode *root,
+                                  BinaryTreeNode *minNode,
+                                  BinaryTreeNode *maxNode) {
     if (!root) return true;
 
     // Biggest on the left, Upper Bound
@@ -73,22 +73,20 @@ bool BinarySearchTree::isValidBST(nodes::BinaryTreeNode *root,
  * 2. if p < root and q < root -> goes to left subtree
  * 3. if root < p and root < q -> goes to right subtree
  */
-nodes::BinaryTreeNode *BinarySearchTree::lowestCommonAncestor(nodes::BinaryTreeNode *p, nodes::BinaryTreeNode *q) {
+BinaryTreeNode *BinarySearchTree::lowestCommonAncestor(BinaryTreeNode *p, BinaryTreeNode *q) {
     return lowestCommonAncestorDfs(this->root, p, q);
 }
 
-nodes::BinaryTreeNode *BinarySearchTree::lowestCommonAncestorDfs(nodes::BinaryTreeNode *root,
-                                                                 nodes::BinaryTreeNode *p,
-                                                                 nodes::BinaryTreeNode *q) {
-    return (p->val < root->val && q->val < root->val) ? lowestCommonAncestorDfs(root->left, p, q)
-                                                      : (root->val < p->val && root->val < q->val)
-                                                        ? lowestCommonAncestorDfs(root->right, p, q)
-                                                        : root;
+BinaryTreeNode *BinarySearchTree::lowestCommonAncestorDfs(BinaryTreeNode *root,
+                                                          BinaryTreeNode *p,
+                                                          BinaryTreeNode *q) {
+    return (p->val < root->val && q->val < root->val) ? lowestCommonAncestorDfs(root->left, p, q) :
+           (root->val < p->val && root->val < q->val) ? lowestCommonAncestorDfs(root->right, p, q) : root;
 }
 
-nodes::BinaryTreeNode *BinarySearchTree::lowestCommonAncestorBfs(nodes::BinaryTreeNode *root,
-                                                                 nodes::BinaryTreeNode *p,
-                                                                 nodes::BinaryTreeNode *q) {
+BinaryTreeNode *BinarySearchTree::lowestCommonAncestorBfs(BinaryTreeNode *root,
+                                                          BinaryTreeNode *p,
+                                                          BinaryTreeNode *q) {
     while (root) {
         if (p->val < root->val && q->val < root->val) root = root->left;
         else if (root->val < p->val && root->val < q->val) root = root->right;

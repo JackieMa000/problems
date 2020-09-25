@@ -1,18 +1,14 @@
 #include "arraylist.h"
 
-namespace dsa {
-namespace lib {
-namespace lists {
+namespace dsa::lib::lists {
 
-ArrayList::ArrayList()
-{
-    int array[DEFAULT_LENGTH];
-    this->lst = array;
-};
-ArrayList::ArrayList(int ary[])
-{
+ArrayList::ArrayList() {
+    int ary[DEFAULT_LENGTH];
     this->lst = ary;
-};
+}
+ArrayList::ArrayList(const int ary[]) {
+    this->lst = ary;
+}
 ArrayList::~ArrayList() {
     delete[] lst;
 }
@@ -21,6 +17,4 @@ length_t ArrayList::length() {
     return 0;
 }
 
-}  // namespace lists
-}  // namespace lib
 }  // namespace dsa

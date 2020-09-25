@@ -2,14 +2,14 @@
 #define LIB_TREES_BST_H
 
 #include <vector>
-
 #include "bt.h"
 
 namespace dsa::lib::trees {
 
+typedef nodes::BinaryTreeNode BinaryTreeNode;
 class BinarySearchTree : BinaryTree {
  public:
-    explicit BinarySearchTree(nodes::BinaryTreeNode *root);
+    explicit BinarySearchTree(BinaryTreeNode *root);
 
     std::vector<int> preorder();
     std::vector<int> *inorder();
@@ -17,17 +17,19 @@ class BinarySearchTree : BinaryTree {
 
     bool isValid();
 
-    nodes::BinaryTreeNode *lowestCommonAncestor(nodes::BinaryTreeNode *p, nodes::BinaryTreeNode *q) override;
+    BinaryTreeNode *lowestCommonAncestor(BinaryTreeNode *p, BinaryTreeNode *q) override;
 
  private:
-    static std::vector<int> preorderDfs(nodes::BinaryTreeNode *root, std::vector<int> lst);
-    static std::vector<int> *inorderDfs(nodes::BinaryTreeNode *root, std::vector<int> *lst);
-    static std::vector<int> &postorderDfs(nodes::BinaryTreeNode *root, std::vector<int> &lst);
-    static bool isValidBST(nodes::BinaryTreeNode *root, nodes::BinaryTreeNode *minNode, nodes::BinaryTreeNode *maxNode);
-    static nodes::BinaryTreeNode *
-    lowestCommonAncestorDfs(nodes::BinaryTreeNode *root, nodes::BinaryTreeNode *p, nodes::BinaryTreeNode *q);
-    static nodes::BinaryTreeNode *
-    lowestCommonAncestorBfs(nodes::BinaryTreeNode *root, nodes::BinaryTreeNode *p, nodes::BinaryTreeNode *q);
+    static std::vector<int> preorderDfs(BinaryTreeNode *root, std::vector<int> lst);
+    static std::vector<int> *inorderDfs(BinaryTreeNode *root, std::vector<int> *lst);
+    static std::vector<int> &postorderDfs(BinaryTreeNode *root, std::vector<int> &lst);
+    static bool isValidBST(BinaryTreeNode *root, BinaryTreeNode *minNode, BinaryTreeNode *maxNode);
+    static BinaryTreeNode *lowestCommonAncestorDfs(BinaryTreeNode *root,
+                                                   BinaryTreeNode *p,
+                                                   BinaryTreeNode *q);
+    static BinaryTreeNode *lowestCommonAncestorBfs(BinaryTreeNode *root,
+                                                   BinaryTreeNode *p,
+                                                   BinaryTreeNode *q);
 
 };
 

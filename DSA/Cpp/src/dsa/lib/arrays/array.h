@@ -4,7 +4,7 @@
 #include "dsa/lib/libdef.h"
 #include "dsa/nodes.h"
 
-namespace dsa::lib::lists::arrays {
+namespace dsa::lib::arrays {
 
 class Array {
  private:
@@ -22,6 +22,6 @@ class Array {
 
 length_t rStrip(const int *ary, length_t length);
 
-}  // namespace dsa::lib::lists::arrays
+}  // namespace dsa::lib::arrays
 
 #endif

@@ -7,7 +7,6 @@
 namespace dsa::lib {
 
 typedef nodes::BinaryTreeNode BinaryTreeNode;
-
 typedef nodes::ListNode ListNode;
 }
 

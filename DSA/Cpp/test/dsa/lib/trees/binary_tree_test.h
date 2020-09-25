@@ -11,7 +11,7 @@ class BinaryTreeTest : public TreeTest {};
 class ToArrayTest : public BinaryTreeTest {
  protected:
     inline static BinaryTreeNode *generateTreeFromArray(int *ary, length_t length) {
-        lists::arrays::Array array(ary, length);
+        arrays::Array array(ary, length);
         return array.toBinaryTree();
     }
     inline static std::tuple<length_t, int *> toArray(BinaryTreeNode *root) {
@@ -36,7 +36,7 @@ class DepthTest : public BinaryTreeTest {
     }
 
     static BinaryTreeNode *generateTreeFromArray(int *ary, length_t length) {
-        lists::arrays::Array array(ary, length);
+        arrays::Array array(ary, length);
         return array.toBinaryTree();
     }
 };
@@ -44,7 +44,7 @@ class DepthTest : public BinaryTreeTest {
 class GetArraySizeForBinaryTree : public BinaryTreeTest {
  protected:
     static length_t act(int *ary, length_t length) {
-        lists::arrays::Array array(ary, length);
+        arrays::Array array(ary, length);
         return BinaryTree::getArraySizeForBinaryTree(array.toBinaryTree());
     }
 };

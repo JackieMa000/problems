@@ -1,6 +1,6 @@
 #include <algorithm>
 #include <cmath>
-#include <dsa/lib/arrays/array.h>
+#include <dsa/lib/utils.h>
 #include "bt.h"
 
 namespace dsa::lib::trees {
@@ -32,7 +32,7 @@ std::tuple<length_t, int *> BinaryTree::toArray() {
     for (int i = 0; i < length; ++i) *(ary + i) = 0;
 
     generateArrayFromTree(root, 0, ary, length);
-    return {(lists::arrays::rStrip(ary, length)), ary};
+    return {(utils::arrayRstrip(ary, length)), ary};
 }
 void BinaryTree::generateArrayFromTree(BinaryTreeNode *root, pos_t i, int *ary, length_t length) {
     if (!root || i >= length) return;

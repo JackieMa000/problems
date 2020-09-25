@@ -1,14 +1,14 @@
 #ifndef LIB_LISTS_ARRAYS_ARRAY_TEST_H
 #define LIB_LISTS_ARRAYS_ARRAY_TEST_H
 
-#include <dsa/lib/lists/list_test.h>
 #include <dsa/lib/trees/bt.h>
 #include <dsa/lib/arrays/array.h>
 #include <dsa/lib/lists/linkedlists/ls.h>
+#include <dsa/testing/testing.h>
 
-namespace dsa::lib::lists::arrays {
+namespace dsa::lib::arrays {
 
-class ArrayTest : public ListTest {};
+class ArrayTest : public testing::DSATest {};
 
 class ToSinglyLinkedListTest : public ArrayTest {
  protected:
@@ -16,7 +16,7 @@ class ToSinglyLinkedListTest : public ArrayTest {
         Array array(ary, length);
         auto head = array.toSinglyLinkedList();
         EXPECT_ARRAY_EQ_LINKEDLIST(ary, length, head);
-        linkedlists::LinkedList::destroy(head);
+        lists::linkedlists::LinkedList::destroy(head);
     }
 };
 
@@ -32,6 +32,6 @@ class ToBinaryTreeTest : public ArrayTest {
 
 class RStripTest : public ArrayTest {};
 
-}  // namespace dsa::lib::lists::arrays
+}  // namespace dsa::lib::arrays
 
 #endif

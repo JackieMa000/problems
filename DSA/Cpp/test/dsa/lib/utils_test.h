@@ -6,6 +6,7 @@
 namespace dsa::lib::utils {
 
 class UtilsTest : public testing::DSATest {};
+class ArrayRstripTest : public UtilsTest {};
 
 }
 

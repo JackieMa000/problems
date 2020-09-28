@@ -15,7 +15,7 @@ class LinkedList : public List {
     explicit LinkedList(ListNode *head);
 
     length_t length() final;
-    virtual std::tuple<length_t, int *> toArray() final;
+    [[nodiscard]] virtual std::tuple<length_t, int *> toArray() final;
     virtual ListNode *getNodeByIndex(int idx) const final;
 
     static void destroy(ListNode *head);

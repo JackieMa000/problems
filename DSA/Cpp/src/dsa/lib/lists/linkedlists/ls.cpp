@@ -26,19 +26,16 @@ length_t LinkedList::length() {
 }
 
 std::tuple<length_t, int *> LinkedList::toArray() {
-    int *res;
-    int ary[this->length()];
-    res = ary;
+    int *ary = new int[this->length()];
 
     ListNode *cur = this->head;
     int i = 0;
     while (cur) {
-        *(res + i) = cur->val;
+        *(ary + i) = cur->val;
         cur = cur->next;
         i++;
     }
-
-    return {this->length(), res};
+    return {this->length(), ary};
 }
 
 ListNode *LinkedList::getNodeByIndex(int idx) const {

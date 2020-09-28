@@ -1,5 +1,4 @@
 from typing import List
-from unittest import skip
 
 from lib.lists.arrays import Array
 from lib.lists.linkedlists import SinglyLinkedList, LinkedList
@@ -8,14 +7,24 @@ from testing import DSATestCase
 
 
 class LinkedListTestCase(DSATestCase):
-    pass
+    @staticmethod
+    def generateSinglyLinkedListFromArray(ary: List[int]):
+        return Array(ary).to_singly_linkedList()
 
 
 class SizeTestCase(LinkedListTestCase):
-    @skip("ToDo")
+    @staticmethod
+    def get_size(head: ListNode):
+        return LinkedList(head).size()
+
     def test_case1(self):
-        # ToDo
-        self.fail()
+        self.assertEqual(1, self.get_size(self.generateSinglyLinkedListFromArray([1])))
+
+    def test_case2(self):
+        self.assertEqual(3, self.get_size(self.generateSinglyLinkedListFromArray([1, 2, 3])))
+
+    def test_case3(self):
+        self.assertEqual(4, self.get_size(self.generateSinglyLinkedListFromArray([1, 2, 3, 4])))
 
 
 class GetNodeByIndexTestCase(LinkedListTestCase):

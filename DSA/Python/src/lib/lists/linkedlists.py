@@ -1,4 +1,4 @@
-from typing import List as tList, Union
+from typing import List as tList
 
 from lib.lists.lists import List
 from nodes import ListNode
@@ -9,8 +9,12 @@ class LinkedList(List):
         self.head = head
 
     def size(self) -> int:
-        # ToDo
-        pass
+        cur: ListNode = self.head
+        len: int = 0
+        while cur:
+            len += 1
+            cur = cur.next
+        return len
 
     def to_array(self) -> tList[int]:
         cur = self.head

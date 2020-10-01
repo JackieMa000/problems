@@ -3,6 +3,28 @@
 namespace dsa::lib::arrays {
 namespace {
 
+class ToSinglyLinkedListTest : public ArrayTest {
+ protected:
+    static void run(int *ary, length_t length) {
+        Array array(ary, length);
+        auto head = array.toSinglyLinkedList();
+        EXPECT_ARRAY_EQ_LINKEDLIST(ary, length, head);
+        lists::linkedlists::LinkedList::destroy(head);
+    }
+};
+
+class ToBinaryTreeTest : public ArrayTest {
+ protected:
+    static void run(int *ary, length_t length) {
+        Array array(ary, length);
+        auto root = array.toBinaryTree();
+        EXPECT_ARRAY_EQ_TREE(ary, length, root);
+        trees::BinaryTree::destroy(root);
+    }
+};
+
+class RStripTest : public ArrayTest {};
+
 TEST_F(ToSinglyLinkedListTest, case1) {
     int ary[] = {1};
     run(ary, sizeof(ary) / sizeof(ary[0]));

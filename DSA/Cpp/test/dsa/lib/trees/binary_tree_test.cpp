@@ -4,6 +4,47 @@
 namespace dsa::lib::trees {
 namespace {
 
+class ToArrayTest : public BinaryTreeTest {
+ protected:
+    inline static BinaryTreeNode *generateTreeFromArray(int *ary, length_t length) {
+        arrays::Array array(ary, length);
+        return array.toBinaryTree();
+    }
+    inline static std::tuple<length_t, int *> toArray(BinaryTreeNode *root) {
+        BinaryTree bt(root);
+        return bt.toArray();
+    }
+    inline static void run(int ary[], length_t length) {
+        BinaryTreeNode *root = generateTreeFromArray(ary, length);
+        auto[actLen, actAry] = toArray(root);
+        EXPECT_ARRAY_EQ(ary, length, actAry, actLen);
+
+        BinaryTree::destroy(root);
+        delete[] actAry;
+    }
+};
+
+class DepthTest : public BinaryTreeTest {
+ protected:
+    static depth_t getTreeDepth(BinaryTreeNode *root) {
+        BinaryTree bt(root);
+        return bt.depth();
+    }
+
+    static BinaryTreeNode *generateTreeFromArray(int *ary, length_t length) {
+        arrays::Array array(ary, length);
+        return array.toBinaryTree();
+    }
+};
+
+class GetArraySizeForBinaryTree : public BinaryTreeTest {
+ protected:
+    static length_t act(int *ary, length_t length) {
+        arrays::Array array(ary, length);
+        return BinaryTree::getArraySizeForBinaryTree(array.toBinaryTree());
+    }
+};
+
 TEST_F(ToArrayTest, case1) {
     int ary[] = {1, 2, 3};
     run(ary, sizeof(ary) / sizeof(ary[0]));

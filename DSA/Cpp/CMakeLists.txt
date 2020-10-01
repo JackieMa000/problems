@@ -14,6 +14,8 @@ set(CMAKE_CXX_STANDARD 17)
 
 # add_definitions(-std=c++17)
 
+# Turn on debug mode
+include(debug.cmake)
 
 # Enable cMake's CTest
 include(CTest)
@@ -27,4 +29,4 @@ include_directories(${CMAKE_SOURCE_DIR}/test)
 
 add_subdirectory(src)
 add_subdirectory(test)
-# add_subdirectory(experiment)
+#add_subdirectory(experiment)

@@ -4,6 +4,8 @@
 namespace dsa::lib::utils {
 namespace {
 
+class ArrayRstripTest : public UtilsTest {};
+
 TEST_F(ArrayRstripTest, empty_array) {
     int ary[] = {}, expected[] = {};
     length_t actLen = utils::arrayRstrip(ary, sizeof(ary) / sizeof(ary[0]));

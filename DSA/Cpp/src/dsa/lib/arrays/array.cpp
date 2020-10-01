@@ -5,16 +5,16 @@ namespace dsa::lib::arrays {
 Array::Array(int *ary, length_t length) : ary(ary), length(length) {}
 
 ListNode *Array::toSinglyLinkedList() const {
-    auto *dummy = new nodes::ListNode();
+    nodes::ListNode dummy;
     auto *head = new nodes::ListNode(*this->ary);
-    dummy->next = head;
+    dummy.next = head;
 
     for (int i = 1; i < this->length; i++) {
         head->next = new nodes::ListNode(*(this->ary + i));
         head = head->next;
     }
 
-    return dummy->next;
+    return dummy.next;
 }
 
 BinaryTreeNode *Array::toBinaryTree() const {

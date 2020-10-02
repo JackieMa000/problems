@@ -24,6 +24,7 @@ class ToArrayTest : public BinaryTreeTest {
     }
 };
 
+//FixMe: Memory Leak
 class DepthTest : public BinaryTreeTest {
  protected:
     static depth_t getTreeDepth(BinaryTreeNode *root) {
@@ -37,6 +38,7 @@ class DepthTest : public BinaryTreeTest {
     }
 };
 
+//FixMe: Memory Leak
 class GetArraySizeForBinaryTree : public BinaryTreeTest {
  protected:
     static length_t act(int *ary, length_t length) {

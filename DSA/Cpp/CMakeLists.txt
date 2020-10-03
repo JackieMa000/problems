@@ -14,8 +14,8 @@ set(CMAKE_CXX_STANDARD 17)
 
 # add_definitions(-std=c++17)
 
-# Turn on google sanitizer for debugging
-#include(sanitizer.cmake)
+# Turn on sanitizer for debugging
+include(sanitizer.cmake)
 
 # Enable cMake's CTest
 include(CTest)

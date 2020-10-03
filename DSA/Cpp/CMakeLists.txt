@@ -21,7 +21,7 @@ include(sanitizer.cmake)
 include(CTest)
 
 # Dependencies: Solving external package dependencies
-set(EXTERNAL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/externals)
+set(EXTERNAL_DIR ${CMAKE_SOURCE_DIR}/externals)
 include(${EXTERNAL_DIR}/gtest.cmake)
 
 include_directories(${CMAKE_SOURCE_DIR}/src)

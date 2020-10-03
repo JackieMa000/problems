@@ -144,24 +144,6 @@
 }
 
 {
-   testing::internal::ColoredPrintf(testing::internal::GTestColor, char const*, ...)
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:malloc
-   fun:__smakebuf
-   fun:__swsetup
-   fun:__v2printf
-   fun:vfprintf_l
-   fun:_ZN7testing8internalL13ColoredPrintfENS0_10GTestColorEPKcz
-   fun:_ZN7testing8internal27PrettyUnitTestResultPrinter20OnTestIterationStartERKNS_8UnitTestEi
-   fun:_ZN7testing8internal17TestEventRepeater20OnTestIterationStartERKNS_8UnitTestEi
-   fun:_ZN7testing8internal12UnitTestImpl11RunAllTestsEv
-   fun:_ZN7testing8internal38HandleSehExceptionsInMethodIfSupportedINS0_12UnitTestImplEbEET0_PT_MS4_FS3_vEPKc
-   fun:_ZN7testing8internal35HandleExceptionsInMethodIfSupportedINS0_12UnitTestImplEbEET0_PT_MS4_FS3_vEPKc
-   fun:_ZN7testing8UnitTest3RunEv
-}
-
-{
    Suppression
    Memcheck:Leak
    match-leak-kinds: possible
@@ -177,4 +159,22 @@
    fun:libSystem_initializer
    fun:_ZN16ImageLoaderMachO18doModInitFunctionsERKN11ImageLoader11LinkContextE
    fun:_ZN16ImageLoaderMachO16doInitializationERKN11ImageLoader11LinkContextE
+}
+
+{
+   testing::internal::ColoredPrintf(testing::internal::GTestColor, char const*, ...)
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   fun:__smakebuf
+   fun:__swsetup
+   fun:__v2printf
+   fun:vfprintf_l
+   fun:_ZN7testing8internal13ColoredPrintfENS0_10GTestColorEPKcz
+   fun:_ZN7testing8internal27PrettyUnitTestResultPrinter20OnTestIterationStartERKNS_8UnitTestEi
+   fun:_ZN7testing8internal17TestEventRepeater20OnTestIterationStartERKNS_8UnitTestEi
+   fun:_ZN7testing8internal12UnitTestImpl11RunAllTestsEv
+   fun:_ZN7testing8internal38HandleSehExceptionsInMethodIfSupportedINS0_12UnitTestImplEbEET0_PT_MS4_FS3_vEPKc
+   fun:_ZN7testing8internal35HandleExceptionsInMethodIfSupportedINS0_12UnitTestImplEbEET0_PT_MS4_FS3_vEPKc
+   fun:_ZN7testing8UnitTest3RunEv
 }

@@ -68,8 +68,9 @@ class IsValidTestCase(BinarySearchTreeTestFX):
 
 class LowestCommonAncestorBST(BinarySearchTreeTestFX):
 
-    def get_lowestCommonAncestor(self, root: BinaryTreeNode, p: BinaryTreeNode, q: BinaryTreeNode) -> BinaryTreeNode:
-        return BinarySearchTree(root).lowestCommonAncestor(p, q)
+    @staticmethod
+    def get_lowestCommonAncestor(root: BinaryTreeNode, p: BinaryTreeNode, q: BinaryTreeNode) -> BinaryTreeNode:
+        return BinarySearchTree(root).lowest_common_ancestor(p, q)
 
     def test_case1(self):
         root: BinaryTreeNode = self.array_to_tree([6, 2, 8, 1, 4, 7, 9, 0, 0, 3, 5])

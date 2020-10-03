@@ -61,7 +61,8 @@ class GetNodeByIndexTestCase(BinaryTreeTestFX):
     def test_case3(self):
         self.assertEqual(2, self.get_tree_node_by_idx(self.array_to_tree([3, 1, 5, 0, 2]), 4).val)
 
-    def get_tree_node_by_idx(self, root: BinaryTreeNode, i: int) -> BinaryTreeNode:
+    @staticmethod
+    def get_tree_node_by_idx(root: BinaryTreeNode, i: int) -> BinaryTreeNode:
         return BinaryTree(root).get_node_by_index(i)
 
 
@@ -78,7 +79,8 @@ class GetNodeByValueTestCase(BinaryTreeTestFX):
     def test_case3(self):
         self.assertEqual(2, self.get_tree_node_by_val(self.array_to_tree([3, 1, 5, 0, 2]), 2).val)
 
-    def get_tree_node_by_val(self, root: BinaryTreeNode, val: int):
+    @staticmethod
+    def get_tree_node_by_val(root: BinaryTreeNode, val: int):
         return BinaryTree(root).get_node_by_value(val)
 
 
@@ -94,14 +96,15 @@ class SizeTestCase(BinaryTreeTestFX):
     def test_case3(self):
         self.assertEqual(4, self.get_tree_size(self.array_to_tree([3, 1, 5, 0, 2])))
 
-    @skip("FixMe: Couldn not handle this case")
+    @skip("FixMe: Could not handle this case")
     def test_case5(self):
         # FixMe: Couldn't handle this case
         root: BinaryTreeNode = BinaryTreeNode()
-        actual : int = self.get_tree_size(root)
+        actual: int = self.get_tree_size(root)
         self.assertEqual(0, actual)
 
-    def get_tree_size(self, root):
+    @staticmethod
+    def get_tree_size(root):
         return BinaryTree(root).size()
 
 
@@ -119,5 +122,6 @@ class LowestCommonAncestorTestCase(BinaryTreeTestFX):
         q: BinaryTreeNode = self.get_tree_node_by_value(root, 4)
         self.assertEqual(5, self.get_lowestCommonAncestor(root, p, q).val)
 
-    def get_lowestCommonAncestor(self, root, p, q):
-        return BinaryTree(root).lowestCommonAncestor(p, q)
+    @staticmethod
+    def get_lowestCommonAncestor(root, p, q):
+        return BinaryTree(root).lowest_common_ancestor(p, q)

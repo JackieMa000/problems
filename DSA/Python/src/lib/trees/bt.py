@@ -102,11 +102,11 @@ class BinaryTree(Tree):
             count += BinaryTree._size_dfs(root.right)
         return count
 
-    def lowestCommonAncestor(self, p: BinaryTreeNode, q: BinaryTreeNode) -> Optional[BinaryTreeNode]:
-        return BinaryTree._lowestCommonAncestor_dfs(self._root, p, q)
+    def lowest_common_ancestor(self, p: BinaryTreeNode, q: BinaryTreeNode) -> Optional[BinaryTreeNode]:
+        return BinaryTree._lowest_common_ancestor_dfs(self._root, p, q)
 
     @staticmethod
-    def _lowestCommonAncestor_dfs(root: BinaryTreeNode, p: BinaryTreeNode, q: BinaryTreeNode) -> \
+    def _lowest_common_ancestor_dfs(root: BinaryTreeNode, p: BinaryTreeNode, q: BinaryTreeNode) -> \
             Optional[BinaryTreeNode]:
         """
          Binary Tree LCA Rule:
@@ -117,7 +117,7 @@ class BinaryTree(Tree):
         """
         if not root or p == root or q == root: return root
 
-        left = BinaryTree._lowestCommonAncestor_dfs(root.left, p, q)
-        right = BinaryTree._lowestCommonAncestor_dfs(root.right, p, q)
+        left = BinaryTree._lowest_common_ancestor_dfs(root.left, p, q)
+        right = BinaryTree._lowest_common_ancestor_dfs(root.right, p, q)
 
         return root if left and right else left or right

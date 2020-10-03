@@ -23,3 +23,7 @@ class Stack(list):
 
     def add(self, item) -> None:
         super().append(item)
+
+
+class PriorityQueue(list):
+    pass

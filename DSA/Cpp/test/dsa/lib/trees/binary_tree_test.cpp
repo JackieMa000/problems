@@ -6,25 +6,20 @@ namespace {
 
 class ToArrayTest : public BinaryTreeTest {
  protected:
-    inline static BinaryTreeNode *generateTreeFromArray(int *ary, length_t length) {
-        arrays::Array array(ary, length);
-        return array.toBinaryTree();
-    }
-    inline static std::tuple<length_t, int *> toArray(BinaryTreeNode *root) {
+    [[nodiscard]] inline static std::tuple<length_t, int *> toArray(BinaryTreeNode *root) {
         BinaryTree bt(root);
         return bt.toArray();
     }
+
     inline static void run(int ary[], length_t length) {
         BinaryTreeNode *root = generateTreeFromArray(ary, length);
         auto[actLen, actAry] = toArray(root);
         EXPECT_ARRAY_EQ(ary, length, actAry, actLen);
-
         BinaryTree::destroy(root);
         delete[] actAry;
     }
 };
 
-//FixMe: Memory Leak
 class DepthTest : public BinaryTreeTest {
  protected:
     static depth_t getTreeDepth(BinaryTreeNode *root) {
@@ -32,18 +27,21 @@ class DepthTest : public BinaryTreeTest {
         return bt.depth();
     }
 
-    static BinaryTreeNode *generateTreeFromArray(int *ary, length_t length) {
-        arrays::Array array(ary, length);
-        return array.toBinaryTree();
+    static void run(int *ary, length_t length, depth_t expected) {
+        BinaryTreeNode *root = generateTreeFromArray(ary, length);
+        auto actual = getTreeDepth(root);
+        EXPECT_EQ(expected, actual);
+        BinaryTree::destroy(root);
     }
 };
 
-//FixMe: Memory Leak
-class GetArraySizeForBinaryTree : public BinaryTreeTest {
+class GetArraySizeForBinaryTreeTest : public BinaryTreeTest {
  protected:
-    static length_t act(int *ary, length_t length) {
-        arrays::Array array(ary, length);
-        return BinaryTree::getArraySizeForBinaryTree(array.toBinaryTree());
+    static void run(int *ary, length_t length, length_t expected) {
+        BinaryTreeNode *root = generateTreeFromArray(ary, length);
+        auto actual = BinaryTree::getArraySizeForBinaryTree(root);
+        EXPECT_EQ(expected, actual);
+        BinaryTree::destroy(root);
     }
 };
 
@@ -62,39 +60,32 @@ TEST_F(ToArrayTest, case3) {
 
 TEST_F(DepthTest, case1) {
     int ary[] = {1};
-    auto actual = getTreeDepth(generateTreeFromArray(ary, sizeof(ary) / sizeof(ary[0])));
-    EXPECT_EQ(1, actual);
+    run(ary, sizeof(ary) / sizeof(ary[0]), 1);
 }
 TEST_F(DepthTest, case2) {
     int ary[] = {1, 2, 3};
-    auto actual = getTreeDepth(generateTreeFromArray(ary, sizeof(ary) / sizeof(ary[0])));
-    EXPECT_EQ(2, actual);
+    run(ary, sizeof(ary) / sizeof(ary[0]), 2);
 }
 TEST_F(DepthTest, case3) {
     int ary[] = {5, 1, 4, 0, 0, 3, 6};
-    auto actual = getTreeDepth(generateTreeFromArray(ary, sizeof(ary) / sizeof(ary[0])));
-    EXPECT_EQ(3, actual);
+    run(ary, sizeof(ary) / sizeof(ary[0]), 3);
 }
 
-TEST_F(GetArraySizeForBinaryTree, case1) {
+TEST_F(GetArraySizeForBinaryTreeTest, case1) {
     int ary[] = {1};
-    auto actual = act(ary, sizeof(ary) / sizeof(ary[0]));
-    EXPECT_EQ(1, actual);
+    run(ary, sizeof(ary) / sizeof(ary[0]), 1);
 }
-TEST_F(GetArraySizeForBinaryTree, case2) {
+TEST_F(GetArraySizeForBinaryTreeTest, case2) {
     int ary[] = {1, 2};
-    auto actual = act(ary, sizeof(ary) / sizeof(ary[0]));
-    EXPECT_EQ(3, actual);
+    run(ary, sizeof(ary) / sizeof(ary[0]), 3);
 }
-TEST_F(GetArraySizeForBinaryTree, case3) {
+TEST_F(GetArraySizeForBinaryTreeTest, case3) {
     int ary[] = {1, 2, 3};
-    auto actual = act(ary, sizeof(ary) / sizeof(ary[0]));
-    EXPECT_EQ(3, actual);
+    run(ary, sizeof(ary) / sizeof(ary[0]), 3);
 }
-TEST_F(GetArraySizeForBinaryTree, case4) {
+TEST_F(GetArraySizeForBinaryTreeTest, case4) {
     int ary[] = {3, 1, 5, 0, 2};
-    auto actual = act(ary, sizeof(ary) / sizeof(ary[0]));
-    EXPECT_EQ(7, actual);
+    run(ary, sizeof(ary) / sizeof(ary[0]), 7);
 }
 
 }

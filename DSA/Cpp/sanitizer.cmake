@@ -1,6 +1,6 @@
 # Address Sanitizers
 # Overlap with Valgrind
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
 
 # UndefinedBehaviourSanitizer
 # Valgrind doesn't support it.

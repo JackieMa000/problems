@@ -38,9 +38,7 @@ public class LinkedList implements List {
 
     public final ListNode getNodeByIndex(int idx) {
         ListNode cur = this.head;
-        for (int i = 0; i < idx; i++) {
-            cur = cur.next;
-        }
+        for (int i = 0; i < idx; i++) cur = cur.next;
         return cur;
     }
 

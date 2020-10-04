@@ -29,19 +29,18 @@ class SizeTestCase(LinkedListTestCase):
 
 class GetNodeByIndexTestCase(LinkedListTestCase):
     def test_case1(self):
-        head: ListNode = Array([1, 2, 3, 4, 5]).to_singly_linkedList()
-        ls: LinkedList = LinkedList(head)
-        self.assertEqual(3, ls.get_node_by_index(2).val)
+        self.assertEqual(3, self.get_node_by_index(self.generateSinglyLinkedListFromArray([1, 2, 3, 4, 5]), 2).val)
 
     def test_case2(self):
-        head: ListNode = Array([1, 2, 3, 4, 5]).to_singly_linkedList()
-        ls: LinkedList = LinkedList(head)
-        self.assertEqual(1, ls.get_node_by_index(0).val)
+        self.assertEqual(1, self.get_node_by_index(self.generateSinglyLinkedListFromArray([1, 2, 3, 4, 5]), 0).val)
 
     def test_case3(self):
-        head: ListNode = Array([1, 2, 3, 4, 5]).to_singly_linkedList()
+        self.assertEqual(5, self.get_node_by_index(self.generateSinglyLinkedListFromArray([1, 2, 3, 4, 5]), 4).val)
+
+    @staticmethod
+    def get_node_by_index(head: ListNode, idx: int) -> ListNode:
         ls: LinkedList = LinkedList(head)
-        self.assertEqual(5, ls.get_node_by_index(4).val)
+        return ls.get_node_by_index(idx)
 
 
 class SinglyLinkedListTestCase(LinkedListTestCase):

@@ -1,3 +1,4 @@
+#include <cassert>
 #include "ls.h"
 
 namespace dsa::lib::lists::linkedlists {
@@ -40,7 +41,10 @@ std::tuple<length_t, int *> LinkedList::toArray() {
 
 ListNode *LinkedList::getNodeByIndex(int idx) const {
     ListNode *cur = this->head;
-    for (int i = 0; cur && i < idx; ++i) { cur = cur->next; }
+    for (int i = 0; i < idx; ++i) {
+        assert(cur != nullptr);
+        cur = cur->next;
+    }
     return cur;
 }
 

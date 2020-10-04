@@ -8,15 +8,14 @@
 namespace dsa::lib::lists::linkedlists {
 
 class LinkedList : public List {
- protected:
+ public:
     ListNode *head;
 
- public:
     explicit LinkedList(ListNode *head);
 
     length_t length() final;
     [[nodiscard]] virtual std::tuple<length_t, int *> toArray() final;
-    virtual ListNode *getNodeByIndex(int idx) const final;
+    [[nodiscard]] virtual ListNode *getNodeByIndex(int idx) const final;
 
     static void destroy(ListNode *head);
 };

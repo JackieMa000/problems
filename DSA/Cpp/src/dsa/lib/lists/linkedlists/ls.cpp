@@ -39,9 +39,9 @@ std::tuple<length_t, int *> LinkedList::toArray() {
 }
 
 ListNode *LinkedList::getNodeByIndex(int idx) const {
-    // ToDo
-    ListNode *ls;
-    return ls;
+    ListNode *cur = this->head;
+    for (int i = 0; cur && i < idx; ++i) { cur = cur->next; }
+    return cur;
 }
 
 }  // namespace dsa::lib::lists::linkedlists

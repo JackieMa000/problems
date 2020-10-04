@@ -8,7 +8,6 @@ class ToArrayTest : public LinkedListTest {
     static void run(int *ary, length_t length) {
         ListNode *head = generateSinglyLinkedListFromArray(ary, length);
         auto[actLen, actAry] = toArray(head);
-
         EXPECT_ARRAY_EQ(ary, length, actAry, actLen);
 
         LinkedList::destroy(head);
@@ -20,6 +19,18 @@ class ToArrayTest : public LinkedListTest {
         return ls.toArray();
     }
 };
+TEST_F(ToArrayTest, case1) {
+    int ary[] = {1};
+    run(ary, sizeof(ary) / sizeof(ary[0]));
+}
+TEST_F(ToArrayTest, case2) {
+    int ary[] = {1, 2};
+    run(ary, sizeof(ary) / sizeof(ary[0]));
+}
+TEST_F(ToArrayTest, case3) {
+    int ary[] = {1, 2, 3};
+    run(ary, sizeof(ary) / sizeof(ary[0]));
+}
 
 class LengthTest : public LinkedListTest {
  protected:
@@ -35,20 +46,6 @@ class LengthTest : public LinkedListTest {
         return ls.length();
     }
 };
-
-TEST_F(ToArrayTest, case1) {
-    int ary[] = {1};
-    run(ary, sizeof(ary) / sizeof(ary[0]));
-}
-TEST_F(ToArrayTest, case2) {
-    int ary[] = {1, 2};
-    run(ary, sizeof(ary) / sizeof(ary[0]));
-}
-TEST_F(ToArrayTest, case3) {
-    int ary[] = {1, 2, 3};
-    run(ary, sizeof(ary) / sizeof(ary[0]));
-}
-
 TEST_F(LengthTest, case1) {
     int ary[] = {1};
     run(ary, 1);
@@ -60,6 +57,33 @@ TEST_F(LengthTest, case2) {
 TEST_F(LengthTest, case3) {
     int ary[] = {1, 2, 3, 4};
     run(ary, 4);
+}
+
+class GetNodeByIndexTest : public LinkedListTest {
+ protected:
+    static void run(int *ary, length_t length, int idx, int expected) {
+        ListNode *head = generateSinglyLinkedListFromArray(ary, length);
+        ListNode *actual = getNode(idx, head);
+        EXPECT_EQ(expected, actual->val);
+        LinkedList::destroy(head);
+    }
+    static ListNode *getNode(int idx, ListNode *head) {
+        LinkedList ls(head);
+        ListNode *actual = ls.getNodeByIndex(idx);
+        return actual;
+    }
+};
+TEST_F(GetNodeByIndexTest, case1) {
+    int ary[] = {1, 2, 3};
+    run(ary, sizeof(ary) / sizeof(ary[0]), 0, 1);
+}
+TEST_F(GetNodeByIndexTest, case2) {
+    int ary[] = {1, 2, 3};
+    run(ary, sizeof(ary) / sizeof(ary[0]), 2, 3);
+}
+TEST_F(GetNodeByIndexTest, case3) {
+    int ary[] = {1};
+    run(ary, sizeof(ary) / sizeof(ary[0]), 0, 1);
 }
 
 }  // namespace

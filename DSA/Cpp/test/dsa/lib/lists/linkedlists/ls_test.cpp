@@ -69,8 +69,7 @@ class GetNodeByIndexTest : public LinkedListTest {
     }
     static ListNode *getNode(int idx, ListNode *head) {
         LinkedList ls(head);
-        ListNode *actual = ls.getNodeByIndex(idx);
-        return actual;
+        return ls.getNodeByIndex(idx);
     }
 };
 TEST_F(GetNodeByIndexTest, case1) {

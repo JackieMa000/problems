@@ -39,8 +39,7 @@ class GetNodeByIndexTestCase(LinkedListTestCase):
 
     @staticmethod
     def get_node_by_index(head: ListNode, idx: int) -> ListNode:
-        ls: LinkedList = LinkedList(head)
-        return ls.get_node_by_index(idx)
+        return LinkedList(head).get_node_by_index(idx)
 
 
 class SinglyLinkedListTestCase(LinkedListTestCase):

@@ -10,11 +10,11 @@ class LinkedList(List):
 
     def size(self) -> int:
         cur: ListNode = self.head
-        len: int = 0
+        n: int = 0
         while cur:
-            len += 1
+            n += 1
             cur = cur.next
-        return len
+        return n
 
     def to_array(self) -> tList[int]:
         cur = self.head
@@ -29,7 +29,13 @@ class LinkedList(List):
     def get_node_by_index(self, idx: int) -> ListNode:
         cur: ListNode = self.head
         for _ in range(idx):
+            if not cur: break
             cur = cur.next
+        return cur
+
+    def get_node_by_value(self, val: int) -> ListNode:
+        cur: ListNode = self.head
+        while cur and cur.val != val: cur = cur.next
         return cur
 
 

@@ -14,6 +14,7 @@ class ToArrayTest : public LinkedListTest {
         delete[] actAry;
     }
 
+ private:
     static std::tuple<length_t, int *> toArray(ListNode *head) {
         LinkedList ls(head);
         return ls.toArray();
@@ -41,6 +42,7 @@ class LengthTest : public LinkedListTest {
         LinkedList::destroy(head);
     }
 
+ private:
     static length_t getLength(ListNode *head) {
         LinkedList ls(head);
         return ls.length();
@@ -83,6 +85,43 @@ TEST_F(GetNodeByIndexTest, case2) {
 TEST_F(GetNodeByIndexTest, case3) {
     int ary[] = {1};
     run(ary, sizeof(ary) / sizeof(ary[0]), 0, 1);
+}
+TEST_F(GetNodeByIndexTest, indexNotExist) {
+    int ary[] = {1};
+    ListNode *head = generateSinglyLinkedListFromArray(ary, sizeof(ary) / sizeof(ary[0]));
+    ListNode *actual = getNode(2, head);
+    EXPECT_EQ(nullptr, actual);
+    LinkedList::destroy(head);
+}
+
+class GetNodeByValueTest : public LinkedListTest {
+ protected:
+    static void run(int *ary, length_t length, int val, int expected) {
+        ListNode *head = generateSinglyLinkedListFromArray(ary, length);
+        ListNode *actual = getNode(val, head);
+        EXPECT_EQ(expected, actual->val);
+        LinkedList::destroy(head);
+    }
+    static ListNode *getNode(int val, ListNode *head) {
+        LinkedList ls(head);
+        return ls.getNodeByValue(val);
+    }
+
+};
+TEST_F(GetNodeByValueTest, case1) {
+    int ary[] = {1};
+    run(ary, sizeof(ary) / sizeof(ary[0]), 1, 1);
+}
+TEST_F(GetNodeByValueTest, case2) {
+    int ary[] = {1, 2, 3};
+    run(ary, sizeof(ary) / sizeof(ary[0]), 3, 3);
+}
+TEST_F(GetNodeByValueTest, valueNotExist) {
+    int ary[] = {1};
+    ListNode *head = generateSinglyLinkedListFromArray(ary, sizeof(ary) / sizeof(ary[0]));
+    ListNode *actual = getNode(2, head);
+    EXPECT_EQ(nullptr, actual);
+    LinkedList::destroy(head);
 }
 
 }  // namespace

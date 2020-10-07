@@ -1,4 +1,3 @@
-#include <cassert>
 #include "ls.h"
 
 namespace dsa::lib::lists::linkedlists {
@@ -18,33 +17,26 @@ void LinkedList::destroy(ListNode *head) {
 
 length_t LinkedList::length() {
     ListNode *cur = this->head;
-    length_t len = 0;
-    while (cur) {
-        len++;
-        cur = cur->next;
-    }
-    return len;
+    length_t n;
+    for (n = 0; cur; n++) { cur = cur->next; }
+    return n;
 }
 
 std::tuple<length_t, int *> LinkedList::toArray() {
     int *ary = new int[this->length()];
-
     ListNode *cur = this->head;
-    int i = 0;
-    while (cur) {
-        *(ary + i) = cur->val;
-        cur = cur->next;
-        i++;
-    }
+    for (int i = 0; cur; i++, cur = cur->next) { *(ary + i) = cur->val; }
     return {this->length(), ary};
 }
 
 ListNode *LinkedList::getNodeByIndex(int idx) const {
     ListNode *cur = this->head;
-    for (int i = 0; i < idx; ++i) {
-        assert(cur != nullptr);
-        cur = cur->next;
-    }
+    for (int i = 0; i < idx && cur; ++i) { cur = cur->next; }
+    return cur;
+}
+ListNode *LinkedList::getNodeByValue(int val) const {
+    ListNode *cur = this->head;
+    while (cur && cur->val != val) { cur = cur->next; }
     return cur;
 }
 

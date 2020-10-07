@@ -14,36 +14,27 @@ public class LinkedList implements List {
     @Override
     public final int size() {
         ListNode cur = this.head;
-        int len = 0;
-        while (cur != null) {
-            len++;
-            cur = cur.next;
-        }
-        return len;
+        int n;
+        for (n = 0; cur != null; n++) cur = cur.next;
+        return n;
     }
 
     public final int[] toArray() {
         ListNode cur = this.head;
         int[] res = new int[this.size()];
-
-        int i = 0;
-        while (cur != null) {
-            res[i] = cur.val;
-            cur = cur.next;
-            i++;
-        }
-
+        for (int i = 0; cur != null; i++, cur = cur.next) res[i] = cur.val;
         return res;
     }
 
-    public final ListNode getNodeByIndex(int idx) {
+    public ListNode getNodeByIndex(int idx) {
         ListNode cur = this.head;
-        for (int i = 0; i < idx; i++) cur = cur.next;
+        for (int i = 0; i < idx && cur != null; i++) cur = cur.next;
         return cur;
     }
 
-    public final ListNode getNodeByValue(int val) {
-        // ToDo
-        return null;
+    public ListNode getNodeByValue(int val) {
+        ListNode cur = this.head;
+        while (cur != null && cur.val != val) cur = cur.next;
+        return cur;
     }
 }

@@ -12,12 +12,12 @@ class LinkedList : public List {
     ListNode *head;
 
     explicit LinkedList(ListNode *head);
+    static void destroy(ListNode *head);
 
     length_t length() final;
     [[nodiscard]] virtual std::tuple<length_t, int *> toArray() final;
-    [[nodiscard]] virtual ListNode *getNodeByIndex(int idx) const final;
-
-    static void destroy(ListNode *head);
+    [[nodiscard]] ListNode *getNodeByIndex(int idx) const;
+    [[nodiscard]] ListNode *getNodeByValue(int val) const;
 };
 
 }  // namespace dsa::lib::lists::linkedlists

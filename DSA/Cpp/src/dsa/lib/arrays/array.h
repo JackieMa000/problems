@@ -2,7 +2,7 @@
 #define LIB_LISTS_ARRAYS_H
 
 #include "dsa/lib/libdef.h"
-#include "dsa/nodes.h"
+#include "dsa/nodes/nodes.h"
 
 namespace dsa::lib::arrays {
 

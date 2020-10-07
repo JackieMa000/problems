@@ -3,7 +3,7 @@
 
 #include <tuple>
 #include <dsa/lib/lists/list.h>
-#include <dsa/nodes.h>
+#include <dsa/nodes/nodes.h>
 
 namespace dsa::lib::lists::linkedlists {
 

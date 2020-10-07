@@ -2,7 +2,7 @@
 #define LIB_TREES_BT_H
 
 #include <tuple>
-#include "dsa/nodes.h"
+#include "dsa/nodes/nodes.h"
 #include "tree.h"
 
 namespace dsa::lib::trees {

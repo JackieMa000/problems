@@ -3,7 +3,7 @@
 
 #include <gtest/gtest.h>
 #include <dsa/dsadef.h>
-#include "dsa/nodes.h"
+#include "dsa/nodes/nodes.h"
 
 namespace dsa::testing {
 

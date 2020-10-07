@@ -2,7 +2,7 @@
 #define DSA_SRC_DSA_LIB_LIBDEF_H_
 
 #include <dsa/dsadef.h>
-#include <dsa/nodes.h>
+#include <dsa/nodes/nodes.h>
 
 namespace dsa::lib {
 

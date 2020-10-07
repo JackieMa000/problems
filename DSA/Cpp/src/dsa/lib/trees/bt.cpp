@@ -1,6 +1,6 @@
 #include <algorithm>
 #include <cmath>
-#include <dsa/lib/utils.h>
+#include <dsa/lib/utils/utils.h>
 #include "bt.h"
 
 namespace dsa::lib::trees {

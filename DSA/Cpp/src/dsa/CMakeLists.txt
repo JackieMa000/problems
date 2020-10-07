@@ -1,3 +1,3 @@
-add_library(nodes nodes.cpp)
+add_subdirectory(nodes)
 
 add_subdirectory(lib)

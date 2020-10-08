@@ -17,10 +17,7 @@ class Array {
     Array(int *ary, length_t length);
     [[nodiscard]] ListNode *toSinglyLinkedList() const;
     [[nodiscard]] BinaryTreeNode *toBinaryTree() const;
-
 };
-
-length_t rStrip(const int *ary, length_t length);
 
 }  // namespace dsa::lib::arrays
 

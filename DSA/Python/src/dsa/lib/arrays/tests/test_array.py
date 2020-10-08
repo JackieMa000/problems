@@ -13,8 +13,8 @@ class ArrayTestCase(DSATestCase):
 
 class ToSinglyLinkedListTestCase(ArrayTestCase):
     def test_case1(self):
-        array: List[int] = [1, 2, 3, 4]
-        self.assertArrayEqualsLinkedList(array, Array(array).to_singly_linkedList())
+        ary: List[int] = [1, 2, 3, 4]
+        self.assertArrayEqualsLinkedList(ary, Array(ary).to_singly_linkedList())
 
 
 class ToCyclicSinglyLinkedListTestCase(ArrayTestCase):
@@ -61,6 +61,12 @@ class ToBinaryTreeTestCase(ArrayTestCase):
     def test_case3(self):
         self.assert_array([5, 1, 0, 6, 0, 0])
 
+    def test_case5(self):
+        self.assert_array([1, 0])
+
+    def test_null_node(self):
+        self.assertIsNone(Array([0]).to_binary_tree())
+
     def assert_array(self, nums: List[int]) -> None:
-        tree = Array(nums).to_binary_tree()
-        self.assertArrayEqualsTree(nums, tree)
+        root = Array(nums).to_binary_tree()
+        self.assertArrayEqualsTree(nums, root)

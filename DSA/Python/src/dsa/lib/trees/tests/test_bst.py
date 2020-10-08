@@ -56,13 +56,13 @@ class PostorderTestCase(BinarySearchTreeTestFX):
 class IsValidTestCase(BinarySearchTreeTestFX):
 
     def test_case1(self):
-        self.assertTrue(BinarySearchTree(Array([3, 1, 5, None, 2]).to_binary_tree()).is_valid())
+        self.assertTrue(BinarySearchTree(Array([3, 1, 5, 0, 2]).to_binary_tree()).is_valid())
         self.assertTrue(BinarySearchTree(Array([5, 1, 8, 0, 2, 6, 9]).to_binary_tree()).is_valid())
-        self.assertTrue(BinarySearchTree(Array([5, 1, 6, -3, 2, None, 7]).to_binary_tree()).is_valid())
+        self.assertTrue(BinarySearchTree(Array([5, 1, 6, -3, 2, 0, 7]).to_binary_tree()).is_valid())
+        self.assertTrue(BinarySearchTree(Array([0, 0, -1]).to_binary_tree()).is_valid())
 
     def test_case2(self):
         self.assertFalse(BinarySearchTree(Array([5, 1, 4, 0, 6, 3, 6]).to_binary_tree()).is_valid())
-        self.assertFalse(BinarySearchTree(Array([0, None, -1]).to_binary_tree()).is_valid())
         self.assertFalse(BinarySearchTree(Array([1, 1]).to_binary_tree()).is_valid())
 
 

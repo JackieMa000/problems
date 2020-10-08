@@ -1,4 +1,4 @@
-from typing import List as tList
+from typing import List as tList, Optional
 
 from dsa.lib.lists.linkedlists.sls import SinglyLinkedList
 from dsa.nodes import ListNode, BinaryTreeNode
@@ -6,16 +6,16 @@ from dsa.nodes import ListNode, BinaryTreeNode
 
 class Array:
 
-    def __init__(self, array: tList[int]):
-        self._array = array
+    def __init__(self, ary: tList[int]):
+        self._ary = ary
 
     def to_singly_linkedList(self) -> ListNode:
         dummy_node: ListNode = ListNode(0)
-        head: ListNode = ListNode(self._array[0])
+        head: ListNode = ListNode(self._ary[0])
         dummy_node.next = head
 
         for i in range(1, self.length):
-            head.next = ListNode(self._array[i])
+            head.next = ListNode(self._ary[i])
             head = head.next
 
         return dummy_node.next
@@ -35,9 +35,10 @@ class Array:
 
         return head
 
-    def to_binary_tree(self) -> BinaryTreeNode:
-        root: BinaryTreeNode = BinaryTreeNode(self._array[0])
-        Array._generate_tree_from_array(self._array, self.length, root, 0)
+    def to_binary_tree(self) -> Optional[BinaryTreeNode]:
+        if not self._ary[0]: return None
+        root: BinaryTreeNode = BinaryTreeNode(self._ary[0])
+        Array._generate_tree_from_array(self._ary, self.length, root, 0)
         return root
 
     @staticmethod
@@ -51,5 +52,5 @@ class Array:
             Array._generate_tree_from_array(array, n, root.right, rpos)
 
     @property
-    def length(self):
-        return len(self._array)
+    def length(self) -> int:
+        return len(self._ary)

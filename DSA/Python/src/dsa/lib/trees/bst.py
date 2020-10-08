@@ -46,6 +46,8 @@ class BinarySearchTree(BinaryTree):
         """
         LowerBound and UpperBound
         BST Rule:
+            Empty Tree(null)
+            Only a root node without children
             all the nodes on the left < root < all the nodes on the right.
             biggest on the left < root < smallest on the right.
         """

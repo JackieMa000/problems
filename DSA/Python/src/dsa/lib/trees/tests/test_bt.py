@@ -51,8 +51,7 @@ class GetNodeByIndexTestCase(BinaryTreeTestFX):
     def test_case1(self):
         self.assertIsNone(self.get_tree_node_by_idx(BinaryTreeNode(), 2))
         self.assertIsNone(self.get_tree_node_by_idx(self.array_to_tree([1]), 1))
-        # ToDo
-        # self.assertIsNone(self.get_tree_node_by_idx(self.array_to_tree([1, 0, 3]), 1))
+        self.assertIsNone(self.get_tree_node_by_idx(self.array_to_tree([1, 0, 3]), 1))
 
     def test_case2(self):
         self.assertEqual(1, self.get_tree_node_by_idx(self.array_to_tree([1]), 0).val)
@@ -95,13 +94,6 @@ class SizeTestCase(BinaryTreeTestFX):
 
     def test_case3(self):
         self.assertEqual(4, self.get_tree_size(self.array_to_tree([3, 1, 5, 0, 2])))
-
-    @skip("FixMe: Could not handle this case")
-    def test_case5(self):
-        # FixMe: Couldn't handle this case
-        root: BinaryTreeNode = BinaryTreeNode()
-        actual: int = self.get_tree_size(root)
-        self.assertEqual(0, actual)
 
     @staticmethod
     def get_tree_size(root):

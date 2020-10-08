@@ -5,21 +5,21 @@ import dsa.nodes.BinaryTreeNode;
 import dsa.nodes.ListNode;
 
 public class Array {
-    private final int[] array;
+    private final int[] ary;
     public final int length;
 
-    public Array(int[] array) {
-        this.array = array;
-        this.length = this.array.length;
+    public Array(int[] ary) {
+        this.ary = ary;
+        this.length = ary.length;
     }
 
     public ListNode toSinglyLinkedList() {
         ListNode dummyNode = new ListNode(0);
-        ListNode head = new ListNode(this.array[0]);
+        ListNode head = new ListNode(this.ary[0]);
         dummyNode.next = head;
 
         for (int i = 1; i < this.length; i++) {
-            head.next = new ListNode(this.array[i]);
+            head.next = new ListNode(this.ary[i]);
             head = head.next;
         }
 
@@ -44,20 +44,21 @@ public class Array {
     }
 
     public BinaryTreeNode toBinaryTree() {
-        BinaryTreeNode root = new BinaryTreeNode(this.array[0]);
-        generateTreeFromArray(this.array, this.length, root, 0);
+        if (this.ary[0] == 0) return null;
+        BinaryTreeNode root = new BinaryTreeNode(this.ary[0]);
+        generateTreeFromArray(this.ary, this.length, root, 0);
         return root;
     }
 
-    private static void generateTreeFromArray(int[] array, int n, BinaryTreeNode root, int i) {
+    private static void generateTreeFromArray(int[] ary, int n, BinaryTreeNode root, int i) {
         int lpos = 2 * i + 1, rpos = 2 * i + 2;
-        if (lpos < n && array[lpos] != 0) {
-            root.left = new BinaryTreeNode(array[lpos]);
-            generateTreeFromArray(array, n, root.left, lpos);
+        if (lpos < n && ary[lpos] != 0) {
+            root.left = new BinaryTreeNode(ary[lpos]);
+            generateTreeFromArray(ary, n, root.left, lpos);
         }
-        if (rpos < n && array[rpos] != 0) {
-            root.right = new BinaryTreeNode(array[rpos]);
-            generateTreeFromArray(array, n, root.right, rpos);
+        if (rpos < n && ary[rpos] != 0) {
+            root.right = new BinaryTreeNode(ary[rpos]);
+            generateTreeFromArray(ary, n, root.right, rpos);
         }
     }
 }

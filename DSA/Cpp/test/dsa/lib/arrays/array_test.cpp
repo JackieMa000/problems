@@ -17,11 +17,11 @@ class ToSinglyLinkedListTest : public ArrayTest {
 };
 TEST_F(ToSinglyLinkedListTest, case1) {
     int ary[] = {1};
-    run(ary, aryLength(ary));
+    run(ary, getArrayLength(ary));
 }
 TEST_F(ToSinglyLinkedListTest, case2) {
     int ary[] = {1, 2, 3};
-    run(ary, aryLength(ary));
+    run(ary, getArrayLength(ary));
 }
 
 class ToBinaryTreeTest : public ArrayTest {
@@ -35,24 +35,24 @@ class ToBinaryTreeTest : public ArrayTest {
 };
 TEST_F(ToBinaryTreeTest, case1) {
     int ary[] = {1, 2, 3};
-    run(ary, aryLength(ary));
+    run(ary, getArrayLength(ary));
 }
 
 TEST_F(ToBinaryTreeTest, case2) {
     int ary[] = {3, 1, 5, 0, 2};
-    run(ary, aryLength(ary));
+    run(ary, getArrayLength(ary));
 }
 TEST_F(ToBinaryTreeTest, case3) {
     int ary[] = {5, 1, 4, 0, 6, 3, 6};
-    run(ary, aryLength(ary));
+    run(ary, getArrayLength(ary));
 }
 TEST_F(ToBinaryTreeTest, case4) {
     int ary[] = {1, 0};
-    run(ary, aryLength(ary));
+    run(ary, getArrayLength(ary));
 }
 TEST_F(ToBinaryTreeTest, nullNode) {
     int ary[] = {0};
-    Array array(ary, aryLength(ary));
+    Array array(ary, getArrayLength(ary));
     EXPECT_EQ(nullptr, array.toBinaryTree());
 }
 

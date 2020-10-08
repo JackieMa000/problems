@@ -19,7 +19,7 @@ class ToArrayTest : public SinglyLinkedListTest {
 
 TEST_F(ToArrayTest, case1) {
     int ary[] = {1, 2, 3};
-    run(ary, aryLength(ary));
+    run(ary, getArrayLength(ary));
 }
 
 }  // namespace

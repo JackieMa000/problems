@@ -6,10 +6,7 @@ void DSATest::EXPECT_ARRAY_EQ(int *expected, length_t expectedLength, int *actua
     expectArrayEQDfs(expected, expectedLength, actual, actualLength);
 
 }
-void DSATest::expectArrayEQDfs(const int *expected,
-                               length_t expectedLength,
-                               const int *actual,
-                               length_t actualLength) {
+void DSATest::expectArrayEQDfs(const int *expected, length_t expectedLength, const int *actual, length_t actualLength) {
     EXPECT_EQ(expectedLength, actualLength)
                     << "Array lengths not equal"
                     << "\n expectedLength: " << expectedLength << "\n actualLength: " << actualLength;

@@ -9,7 +9,7 @@ namespace dsa::lib {
 typedef nodes::BinaryTreeNode BinaryTreeNode;
 typedef nodes::ListNode ListNode;
 
-#define getArrayLength(ary) sizeof(ary)/sizeof(ary[0])
+#define aryLength(ary) sizeof(ary)/sizeof(ary[0])
 
 }
 

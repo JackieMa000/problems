@@ -47,45 +47,45 @@ class GetArraySizeForBinaryTreeTest : public BinaryTreeTest {
 
 TEST_F(ToArrayTest, case1) {
     int ary[] = {1, 2, 3};
-    run(ary, getArrayLength(ary));
+    run(ary, aryLength(ary));
 }
 TEST_F(ToArrayTest, case2) {
     int ary[] = {3, 1, 5, 0, 2};
-    run(ary, getArrayLength(ary));
+    run(ary, aryLength(ary));
 }
 TEST_F(ToArrayTest, case3) {
     int ary[] = {5, 1, 4, 0, 6, 3, 6};
-    run(ary, getArrayLength(ary));
+    run(ary, aryLength(ary));
 }
 
 TEST_F(DepthTest, case1) {
     int ary[] = {1};
-    run(ary, getArrayLength(ary), 1);
+    run(ary, aryLength(ary), 1);
 }
 TEST_F(DepthTest, case2) {
     int ary[] = {1, 2, 3};
-    run(ary, getArrayLength(ary), 2);
+    run(ary, aryLength(ary), 2);
 }
 TEST_F(DepthTest, case3) {
     int ary[] = {5, 1, 4, 0, 0, 3, 6};
-    run(ary, getArrayLength(ary), 3);
+    run(ary, aryLength(ary), 3);
 }
 
 TEST_F(GetArraySizeForBinaryTreeTest, case1) {
     int ary[] = {1};
-    run(ary, getArrayLength(ary), 1);
+    run(ary, aryLength(ary), 1);
 }
 TEST_F(GetArraySizeForBinaryTreeTest, case2) {
     int ary[] = {1, 2};
-    run(ary, getArrayLength(ary), 3);
+    run(ary, aryLength(ary), 3);
 }
 TEST_F(GetArraySizeForBinaryTreeTest, case3) {
     int ary[] = {1, 2, 3};
-    run(ary, getArrayLength(ary), 3);
+    run(ary, aryLength(ary), 3);
 }
 TEST_F(GetArraySizeForBinaryTreeTest, case4) {
     int ary[] = {3, 1, 5, 0, 2};
-    run(ary, getArrayLength(ary), 7);
+    run(ary, aryLength(ary), 7);
 }
 
 }

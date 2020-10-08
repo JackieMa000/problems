@@ -3,6 +3,13 @@
 namespace dsa::testing {
 
 void DSATest::EXPECT_ARRAY_EQ(int *expected, length_t expectedLength, int *actual, length_t actualLength) {
+    expectArrayEQDfs(expected, expectedLength, actual, actualLength);
+
+}
+void DSATest::expectArrayEQDfs(const int *expected,
+                               length_t expectedLength,
+                               const int *actual,
+                               length_t actualLength) {
     EXPECT_EQ(expectedLength, actualLength)
                     << "Array lengths not equal"
                     << "\n expectedLength: " << expectedLength << "\n actualLength: " << actualLength;
@@ -16,7 +23,7 @@ void DSATest::EXPECT_ARRAY_EQ(int *expected, length_t expectedLength, int *actua
                     << "\n actual array on index " << actualLength - 1 << " = " << *(actual + (actualLength - 1));
 
     if (expectedLength > 1 && actualLength > 1) {
-        EXPECT_ARRAY_EQ(expected, expectedLength - 1, actual, actualLength - 1);
+        expectArrayEQDfs(expected, expectedLength - 1, actual, actualLength - 1);
     }
 }
 
@@ -33,10 +40,10 @@ void DSATest::EXPECT_ARRAY_EQ_LINKEDLIST(int *ary, length_t length, nodes::ListN
 }
 
 void DSATest::EXPECT_ARRAY_EQ_TREE(int *ary, length_t length, nodes::BinaryTreeNode *root) {
-    EXPECT_ARRAY_EQ_TREE_DFS(ary, length, root, 0);
+    expectArrayEQTreeDfs(ary, length, root, 0);
 }
 
-void DSATest::EXPECT_ARRAY_EQ_TREE_DFS(int *ary, length_t length, nodes::BinaryTreeNode *root, pos_t i) {
+void DSATest::expectArrayEQTreeDfs(int *ary, length_t length, nodes::BinaryTreeNode *root, pos_t i) {
     // ToDo: Add error message for failed test.
     if (i >= length) return;
     if (!root) {
@@ -44,8 +51,8 @@ void DSATest::EXPECT_ARRAY_EQ_TREE_DFS(int *ary, length_t length, nodes::BinaryT
         return;
     }
     EXPECT_EQ(root->val, *(ary + i));
-    EXPECT_ARRAY_EQ_TREE_DFS(ary, length, root->left, 2 * i + 1);
-    EXPECT_ARRAY_EQ_TREE_DFS(ary, length, root->right, 2 * i + 2);
+    expectArrayEQTreeDfs(ary, length, root->left, 2 * i + 1);
+    expectArrayEQTreeDfs(ary, length, root->right, 2 * i + 2);
 }
 
 }  // namespace dsa::testing

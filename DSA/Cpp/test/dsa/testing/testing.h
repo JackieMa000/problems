@@ -14,7 +14,11 @@ class DSATest : public ::testing::Test {
     static void EXPECT_ARRAY_EQ_TREE(int *ary, length_t length, nodes::BinaryTreeNode *root);
 
  private:
-    static void EXPECT_ARRAY_EQ_TREE_DFS(int *ary, length_t length, nodes::BinaryTreeNode *root, pos_t i);
+    static void expectArrayEQTreeDfs(int *ary, length_t length, nodes::BinaryTreeNode *root, pos_t i);
+    static void expectArrayEQDfs(const int *expected,
+                                 length_t expectedLength,
+                                 const int *actual,
+                                 length_t actualLength);
 };
 
 }  // namespace dsa::testing

@@ -8,7 +8,7 @@ from dsa.testing import DSATestCase
 
 class LinkedListTestCase(DSATestCase):
     @staticmethod
-    def generateSinglyLinkedListFromArray(ary: List[int]):
+    def array_to_linkedlist(ary: List[int]):
         return Array(ary).to_singly_linkedList()
 
 
@@ -18,27 +18,27 @@ class SizeTestCase(LinkedListTestCase):
         return LinkedList(head).size()
 
     def test_case1(self):
-        self.assertEqual(1, self.get_size(self.generateSinglyLinkedListFromArray([1])))
+        self.assertEqual(1, self.get_size(self.array_to_linkedlist([1])))
 
     def test_case2(self):
-        self.assertEqual(3, self.get_size(self.generateSinglyLinkedListFromArray([1, 2, 3])))
+        self.assertEqual(3, self.get_size(self.array_to_linkedlist([1, 2, 3])))
 
     def test_case3(self):
-        self.assertEqual(4, self.get_size(self.generateSinglyLinkedListFromArray([1, 2, 3, 4])))
+        self.assertEqual(4, self.get_size(self.array_to_linkedlist([1, 2, 3, 4])))
 
 
 class GetNodeByIndexTestCase(LinkedListTestCase):
     def test_case1(self):
-        self.assertEqual(3, self.get_node_by_index(self.generateSinglyLinkedListFromArray([1, 2, 3, 4, 5]), 2).val)
+        self.assertEqual(3, self.get_node_by_index(self.array_to_linkedlist([1, 2, 3, 4, 5]), 2).val)
 
     def test_case2(self):
-        self.assertEqual(1, self.get_node_by_index(self.generateSinglyLinkedListFromArray([1, 2, 3, 4, 5]), 0).val)
+        self.assertEqual(1, self.get_node_by_index(self.array_to_linkedlist([1, 2, 3, 4, 5]), 0).val)
 
     def test_case3(self):
-        self.assertEqual(5, self.get_node_by_index(self.generateSinglyLinkedListFromArray([1, 2, 3, 4, 5]), 4).val)
+        self.assertEqual(5, self.get_node_by_index(self.array_to_linkedlist([1, 2, 3, 4, 5]), 4).val)
 
     def test_index_not_exist(self):
-        self.assertIsNone(self.get_node_by_index(self.generateSinglyLinkedListFromArray([1]), 2))
+        self.assertIsNone(self.get_node_by_index(self.array_to_linkedlist([1]), 2))
 
     @staticmethod
     def get_node_by_index(head: ListNode, idx: int) -> ListNode:
@@ -47,13 +47,13 @@ class GetNodeByIndexTestCase(LinkedListTestCase):
 
 class GetNodeByValueTest(LinkedListTestCase):
     def test_case1(self):
-        self.assertEqual(1, self.get_node(self.generateSinglyLinkedListFromArray([1]), 1).val)
+        self.assertEqual(1, self.get_node(self.array_to_linkedlist([1]), 1).val)
 
     def test_case2(self):
-        self.assertEqual(3, self.get_node(self.generateSinglyLinkedListFromArray([1, 2, 3]), 3).val)
+        self.assertEqual(3, self.get_node(self.array_to_linkedlist([1, 2, 3]), 3).val)
 
     def test_value_not_exist(self):
-        self.assertIsNone(self.get_node(self.generateSinglyLinkedListFromArray([1]), 2))
+        self.assertIsNone(self.get_node(self.array_to_linkedlist([1]), 2))
 
     @staticmethod
     def get_node(head: ListNode, val: int) -> ListNode:

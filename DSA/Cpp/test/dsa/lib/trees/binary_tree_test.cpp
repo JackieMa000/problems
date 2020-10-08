@@ -12,7 +12,7 @@ class ToArrayTest : public BinaryTreeTest {
     }
 
     inline static void run(int ary[], length_t length) {
-        BinaryTreeNode *root = generateTreeFromArray(ary, length);
+        BinaryTreeNode *root = arrayToTree(ary, length);
         auto[actLen, actAry] = toArray(root);
         EXPECT_ARRAY_EQ(ary, length, actAry, actLen);
         BinaryTree::destroy(root);
@@ -28,7 +28,7 @@ class DepthTest : public BinaryTreeTest {
     }
 
     static void run(int *ary, length_t length, depth_t expected) {
-        BinaryTreeNode *root = generateTreeFromArray(ary, length);
+        BinaryTreeNode *root = arrayToTree(ary, length);
         auto actual = getTreeDepth(root);
         EXPECT_EQ(expected, actual);
         BinaryTree::destroy(root);
@@ -38,7 +38,7 @@ class DepthTest : public BinaryTreeTest {
 class GetArraySizeForBinaryTreeTest : public BinaryTreeTest {
  protected:
     static void run(int *ary, length_t length, length_t expected) {
-        BinaryTreeNode *root = generateTreeFromArray(ary, length);
+        BinaryTreeNode *root = arrayToTree(ary, length);
         auto actual = BinaryTree::getArraySizeForBinaryTree(root);
         EXPECT_EQ(expected, actual);
         BinaryTree::destroy(root);
@@ -47,45 +47,45 @@ class GetArraySizeForBinaryTreeTest : public BinaryTreeTest {
 
 TEST_F(ToArrayTest, case1) {
     int ary[] = {1, 2, 3};
-    run(ary, sizeof(ary) / sizeof(ary[0]));
+    run(ary, aryLength(ary));
 }
 TEST_F(ToArrayTest, case2) {
     int ary[] = {3, 1, 5, 0, 2};
-    run(ary, sizeof(ary) / sizeof(ary[0]));
+    run(ary, aryLength(ary));
 }
 TEST_F(ToArrayTest, case3) {
     int ary[] = {5, 1, 4, 0, 6, 3, 6};
-    run(ary, sizeof(ary) / sizeof(ary[0]));
+    run(ary, aryLength(ary));
 }
 
 TEST_F(DepthTest, case1) {
     int ary[] = {1};
-    run(ary, sizeof(ary) / sizeof(ary[0]), 1);
+    run(ary, aryLength(ary), 1);
 }
 TEST_F(DepthTest, case2) {
     int ary[] = {1, 2, 3};
-    run(ary, sizeof(ary) / sizeof(ary[0]), 2);
+    run(ary, aryLength(ary), 2);
 }
 TEST_F(DepthTest, case3) {
     int ary[] = {5, 1, 4, 0, 0, 3, 6};
-    run(ary, sizeof(ary) / sizeof(ary[0]), 3);
+    run(ary, aryLength(ary), 3);
 }
 
 TEST_F(GetArraySizeForBinaryTreeTest, case1) {
     int ary[] = {1};
-    run(ary, sizeof(ary) / sizeof(ary[0]), 1);
+    run(ary, aryLength(ary), 1);
 }
 TEST_F(GetArraySizeForBinaryTreeTest, case2) {
     int ary[] = {1, 2};
-    run(ary, sizeof(ary) / sizeof(ary[0]), 3);
+    run(ary, aryLength(ary), 3);
 }
 TEST_F(GetArraySizeForBinaryTreeTest, case3) {
     int ary[] = {1, 2, 3};
-    run(ary, sizeof(ary) / sizeof(ary[0]), 3);
+    run(ary, aryLength(ary), 3);
 }
 TEST_F(GetArraySizeForBinaryTreeTest, case4) {
     int ary[] = {3, 1, 5, 0, 2};
-    run(ary, sizeof(ary) / sizeof(ary[0]), 7);
+    run(ary, aryLength(ary), 7);
 }
 
 }

@@ -6,7 +6,7 @@ namespace {
 class ToArrayTest : public LinkedListTest {
  protected:
     static void run(int *ary, length_t length) {
-        ListNode *head = generateSinglyLinkedListFromArray(ary, length);
+        ListNode *head = arrayToLinkedlist(ary, length);
         auto[actLen, actAry] = toArray(head);
         EXPECT_ARRAY_EQ(ary, length, actAry, actLen);
 
@@ -22,21 +22,21 @@ class ToArrayTest : public LinkedListTest {
 };
 TEST_F(ToArrayTest, case1) {
     int ary[] = {1};
-    run(ary, sizeof(ary) / sizeof(ary[0]));
+    run(ary, aryLength(ary));
 }
 TEST_F(ToArrayTest, case2) {
     int ary[] = {1, 2};
-    run(ary, sizeof(ary) / sizeof(ary[0]));
+    run(ary, aryLength(ary));
 }
 TEST_F(ToArrayTest, case3) {
     int ary[] = {1, 2, 3};
-    run(ary, sizeof(ary) / sizeof(ary[0]));
+    run(ary, aryLength(ary));
 }
 
 class LengthTest : public LinkedListTest {
  protected:
     static void run(int *ary, length_t length) {
-        ListNode *head = generateSinglyLinkedListFromArray(ary, length);
+        ListNode *head = arrayToLinkedlist(ary, length);
         length_t actual = getLength(head);
         EXPECT_EQ(length, actual);
         LinkedList::destroy(head);
@@ -64,7 +64,7 @@ TEST_F(LengthTest, case3) {
 class GetNodeByIndexTest : public LinkedListTest {
  protected:
     static void run(int *ary, length_t length, int idx, int expected) {
-        ListNode *head = generateSinglyLinkedListFromArray(ary, length);
+        ListNode *head = arrayToLinkedlist(ary, length);
         ListNode *actual = getNode(idx, head);
         EXPECT_EQ(expected, actual->val);
         LinkedList::destroy(head);
@@ -76,19 +76,19 @@ class GetNodeByIndexTest : public LinkedListTest {
 };
 TEST_F(GetNodeByIndexTest, case1) {
     int ary[] = {1, 2, 3};
-    run(ary, sizeof(ary) / sizeof(ary[0]), 0, 1);
+    run(ary, aryLength(ary), 0, 1);
 }
 TEST_F(GetNodeByIndexTest, case2) {
     int ary[] = {1, 2, 3};
-    run(ary, sizeof(ary) / sizeof(ary[0]), 2, 3);
+    run(ary, aryLength(ary), 2, 3);
 }
 TEST_F(GetNodeByIndexTest, case3) {
     int ary[] = {1};
-    run(ary, sizeof(ary) / sizeof(ary[0]), 0, 1);
+    run(ary, aryLength(ary), 0, 1);
 }
 TEST_F(GetNodeByIndexTest, indexNotExist) {
     int ary[] = {1};
-    ListNode *head = generateSinglyLinkedListFromArray(ary, sizeof(ary) / sizeof(ary[0]));
+    ListNode *head = arrayToLinkedlist(ary, aryLength(ary));
     ListNode *actual = getNode(2, head);
     EXPECT_EQ(nullptr, actual);
     LinkedList::destroy(head);
@@ -97,7 +97,7 @@ TEST_F(GetNodeByIndexTest, indexNotExist) {
 class GetNodeByValueTest : public LinkedListTest {
  protected:
     static void run(int *ary, length_t length, int val, int expected) {
-        ListNode *head = generateSinglyLinkedListFromArray(ary, length);
+        ListNode *head = arrayToLinkedlist(ary, length);
         ListNode *actual = getNode(val, head);
         EXPECT_EQ(expected, actual->val);
         LinkedList::destroy(head);
@@ -110,15 +110,15 @@ class GetNodeByValueTest : public LinkedListTest {
 };
 TEST_F(GetNodeByValueTest, case1) {
     int ary[] = {1};
-    run(ary, sizeof(ary) / sizeof(ary[0]), 1, 1);
+    run(ary, aryLength(ary), 1, 1);
 }
 TEST_F(GetNodeByValueTest, case2) {
     int ary[] = {1, 2, 3};
-    run(ary, sizeof(ary) / sizeof(ary[0]), 3, 3);
+    run(ary, aryLength(ary), 3, 3);
 }
 TEST_F(GetNodeByValueTest, valueNotExist) {
     int ary[] = {1};
-    ListNode *head = generateSinglyLinkedListFromArray(ary, sizeof(ary) / sizeof(ary[0]));
+    ListNode *head = arrayToLinkedlist(ary, aryLength(ary));
     ListNode *actual = getNode(2, head);
     EXPECT_EQ(nullptr, actual);
     LinkedList::destroy(head);

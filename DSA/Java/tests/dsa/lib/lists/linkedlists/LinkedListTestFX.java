@@ -4,7 +4,7 @@ import dsa.lib.arrays.Array;
 import dsa.nodes.ListNode;
 
 public class LinkedListTestFX {
-    protected static ListNode generateSinglyLinkedListFromArray(int[] ary) {
+    protected static ListNode arrayToLinkedlist(int[] ary) {
         return new Array(ary).toSinglyLinkedList();
     }
 }

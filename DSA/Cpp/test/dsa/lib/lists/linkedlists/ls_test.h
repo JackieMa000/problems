@@ -9,7 +9,7 @@ namespace dsa::lib::lists::linkedlists {
 
 class LinkedListTest : public ListTest {
  protected:
-    static ListNode *generateSinglyLinkedListFromArray(int *ary, length_t length) {
+    static ListNode *arrayToLinkedlist(int *ary, length_t length) {
         arrays::Array array(ary, length);
         return array.toSinglyLinkedList();
     }

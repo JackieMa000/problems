@@ -1,7 +1,7 @@
 from typing import List
 
 
-def array_rstrip(array: List[int]) -> List[int]:
+def array_rstrip(ary: List[int]) -> List[int]:
     """
     Remove the trailing 0s from an array
     Rule:
@@ -10,16 +10,16 @@ def array_rstrip(array: List[int]) -> List[int]:
     3. Array last element is not 0 -> return array
     4. Array length is bigger than 1, last element is 0 -> remove the trailing 0s by loop.
     """
-    return _array_rstrip_it(array)
+    return _array_rstrip_it(ary)
 
 
-def _array_rstrip_it(array: List[int]) -> List[int]:
-    if not len(array) or (len(array) == 1 and array[0] == 0): return []
-    while not array[(-1)]: array.pop(-1)
-    return array
+def _array_rstrip_it(ary: List[int]) -> List[int]:
+    if not len(ary) or (len(ary) == 1 and ary[0] == 0): return []
+    while not ary[(-1)]: ary.pop(-1)
+    return ary
 
 
-def _array_rstrip_dfs(array: List[int]) -> List[int]:
-    if not len(array) or (len(array) == 1 and array[0] == 0): return []
-    if array[-1] != 0: return array
-    return _array_rstrip_dfs(array[:-1])
+def _array_rstrip_dfs(ary: List[int]) -> List[int]:
+    if not len(ary) or (len(ary) == 1 and ary[0] == 0): return []
+    if ary[-1] != 0: return ary
+    return _array_rstrip_dfs(ary[:-1])

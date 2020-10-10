@@ -1,11 +1,11 @@
 #ifndef DSA_TEST_DSA_LIB_UTILS_TEST_H_
 #define DSA_TEST_DSA_LIB_UTILS_TEST_H_
 
-#include "dsa/testing/testing.h"
+#include <dsa/lib/lib_test.h>
 
 namespace dsa::lib::utils {
 
-class UtilsTest : public testing::DSATest {};
+class UtilsTest : public LibTest {};
 
 }
 

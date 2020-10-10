@@ -3,21 +3,21 @@ from unittest import skip
 
 from dsa.lib.arrays.array import Array
 from dsa.lib.lists.linkedlists.sls import SinglyLinkedList
+from dsa.lib.tests.test_lib import LibTestCase
 from dsa.nodes import ListNode
-from dsa.testing import DSATestCase
 
 
-class ArrayTestCase(DSATestCase):
+class ArrayTestCase(LibTestCase):
     pass
 
 
-class ToSinglyLinkedListTestCase(ArrayTestCase):
+class ToSinglyLinkedListTest(ArrayTestCase):
     def test_case1(self):
         ary: List[int] = [1, 2, 3, 4]
         self.assertArrayEqualsLinkedList(ary, Array(ary).to_singly_linkedList())
 
 
-class ToCyclicSinglyLinkedListTestCase(ArrayTestCase):
+class ToCyclicSinglyLinkedListTest(ArrayTestCase):
     """
             public void case1() {
             ListNode head = getCyclicSinglyLinkedList(new int[]{3, 2, 1, -1}, 1);
@@ -51,22 +51,29 @@ class ToCyclicSinglyLinkedListTestCase(ArrayTestCase):
         return Array(ary).to_cyclic_singly_linkedList(pos)
 
 
-class ToBinaryTreeTestCase(ArrayTestCase):
+class ToBinaryTreeTest(ArrayTestCase):
+    def test_empty_array(self):
+        self.assertIsNone(self.to_binary_tree([]))
+
+    def test_length1_element0(self):
+        self.assertIsNone(self.to_binary_tree([0]))
+
     def test_case1(self):
-        self.assert_array([3, 1, 5, 0, 2])
+        ary = [3, 1, 5, 0, 2]
+        self.assertArrayEqualsTree(ary, self.to_binary_tree(ary))
 
     def test_case2(self):
-        self.assert_array([5, 1, 4, 0, 6, 3, 6])
+        ary = [5, 1, 4, 0, 6, 3, 6]
+        self.assertArrayEqualsTree(ary, self.to_binary_tree(ary))
 
     def test_case3(self):
-        self.assert_array([5, 1, 0, 6, 0, 0])
+        ary = [5, 1, 0, 6, 0, 0]
+        self.assertArrayEqualsTree(ary, self.to_binary_tree(ary))
 
     def test_case5(self):
-        self.assert_array([1, 0])
+        ary = [1, 0]
+        self.assertArrayEqualsTree(ary, self.to_binary_tree(ary))
 
-    def test_null_node(self):
-        self.assertIsNone(Array([0]).to_binary_tree())
-
-    def assert_array(self, nums: List[int]) -> None:
-        root = Array(nums).to_binary_tree()
-        self.assertArrayEqualsTree(nums, root)
+    @staticmethod
+    def to_binary_tree(ary):
+        return Array(ary).to_binary_tree()

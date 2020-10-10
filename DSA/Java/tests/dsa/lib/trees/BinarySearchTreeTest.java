@@ -111,7 +111,7 @@ public class BinarySearchTreeTest extends BinarySearchTreeTestFX {
 
         @Test
         public void case1() {
-            BinaryTreeNode root = arrayToTree(new int[]{6, 2, 8, 1, 4, 7, 9, 0, 0, 3, 5});
+            BinaryTreeNode root = arrayToBinaryTree(new int[]{6, 2, 8, 1, 4, 7, 9, 0, 0, 3, 5});
             BinaryTreeNode p = getTreeNodeByValue(root, 2);
             BinaryTreeNode q = getTreeNodeByValue(root, 8);
             assertEquals(6, getLowestCommonAncestor(root, p, q).val);
@@ -119,7 +119,7 @@ public class BinarySearchTreeTest extends BinarySearchTreeTestFX {
 
         @Test
         public void case2() {
-            BinaryTreeNode root = arrayToTree(new int[]{6, 2, 8, 1, 4, 7, 9, 0, 0, 3, 5});
+            BinaryTreeNode root = arrayToBinaryTree(new int[]{6, 2, 8, 1, 4, 7, 9, 0, 0, 3, 5});
             BinaryTreeNode p = getTreeNodeByValue(root, 2);
             BinaryTreeNode q = getTreeNodeByValue(root, 4);
             assertEquals(2, getLowestCommonAncestor(root, p, q).val);

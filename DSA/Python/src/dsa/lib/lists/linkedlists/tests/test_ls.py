@@ -2,11 +2,11 @@ from typing import List
 
 from dsa.lib.arrays.array import Array
 from dsa.lib.lists.linkedlists.ls import LinkedList
+from dsa.lib.lists.tests.test_list import ListTestCase
 from dsa.nodes import ListNode
-from dsa.testing import DSATestCase
 
 
-class LinkedListTestCase(DSATestCase):
+class LinkedListTestCase(ListTestCase):
     @staticmethod
     def array_to_linkedlist(ary: List[int]):
         return Array(ary).to_singly_linkedList()

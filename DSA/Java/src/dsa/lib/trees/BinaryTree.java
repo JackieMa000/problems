@@ -19,6 +19,7 @@ public class BinaryTree implements Tree {
 
     @Override
     public int[] toArray() {
+        if (this.root == null) return null;
         int arraySize = getArraySizeForBinaryTree(this.root);
         int[] array = new int[arraySize];
         generateArrayFromTree(this.root, 0, array);

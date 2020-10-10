@@ -26,13 +26,17 @@ BinaryTreeNode *BinaryTree::lowestCommonAncestorDfs(BinaryTreeNode *root,
     return (left && right) ? root : !left ? right : left;
 }
 
-std::tuple<length_t, int *> BinaryTree::toArray() {
-    length_t length = getArraySizeForBinaryTree(root);
-    int *ary = new int[length];
-    for (int i = 0; i < length; ++i) *(ary + i) = 0;
+arrayStruct BinaryTree::toArray() {
+    arrayStruct as{0, nullptr};
+    if (this->root) {
+        length_t length = getArraySizeForBinaryTree(root);
+        int *ary = new int[length];
+        for (int i = 0; i < length; ++i) *(ary + i) = 0;
 
-    generateArrayFromTree(root, 0, ary, length);
-    return {(utils::arrayRstrip(ary, length)), ary};
+        generateArrayFromTree(root, 0, ary, length);
+        as = {utils::arrayRstrip(ary, length), ary};
+    }
+    return as;
 }
 void BinaryTree::generateArrayFromTree(BinaryTreeNode *root, pos_t i, int *ary, length_t length) {
     if (!root || i >= length) return;

@@ -18,7 +18,7 @@ ListNode *Array::toSinglyLinkedList() const {
 }
 
 BinaryTreeNode *Array::toBinaryTree() const {
-    if (!*this->ary) return nullptr;
+    if (!this->length || !*this->ary) return nullptr;
     auto *root = new nodes::BinaryTreeNode(*this->ary);
     generateTreeFromArray(this->ary, this->length, root, 0);
     return root;

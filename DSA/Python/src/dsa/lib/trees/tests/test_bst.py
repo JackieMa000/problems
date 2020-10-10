@@ -1,10 +1,10 @@
 from dsa.lib.arrays.array import Array
 from dsa.lib.trees.bst import BinarySearchTree
-from dsa.lib.trees.tests.test_bt import BinaryTreeTestFX
+from dsa.lib.trees.tests.test_bt import BinaryTreeTestCase
 from dsa.nodes import BinaryTreeNode
 
 
-class BinarySearchTreeTestFX(BinaryTreeTestFX):
+class BinarySearchTreeTestFX(BinaryTreeTestCase):
     pass
 
 
@@ -73,13 +73,13 @@ class LowestCommonAncestorBST(BinarySearchTreeTestFX):
         return BinarySearchTree(root).lowest_common_ancestor(p, q)
 
     def test_case1(self):
-        root: BinaryTreeNode = self.array_to_tree([6, 2, 8, 1, 4, 7, 9, 0, 0, 3, 5])
+        root: BinaryTreeNode = self.array_to_binary_tree([6, 2, 8, 1, 4, 7, 9, 0, 0, 3, 5])
         p: BinaryTreeNode = self.get_tree_node_by_value(root, 2)
         q: BinaryTreeNode = self.get_tree_node_by_value(root, 8)
         self.assertEqual(6, self.get_lowestCommonAncestor(root, p, q).val)
 
     def test_case2(self):
-        root: BinaryTreeNode = self.array_to_tree([6, 2, 8, 1, 4, 7, 9, 0, 0, 3, 5])
+        root: BinaryTreeNode = self.array_to_binary_tree([6, 2, 8, 1, 4, 7, 9, 0, 0, 3, 5])
         p: BinaryTreeNode = self.get_tree_node_by_value(root, 2)
         q: BinaryTreeNode = self.get_tree_node_by_value(root, 4)
         self.assertEqual(2, self.get_lowestCommonAncestor(root, p, q).val)

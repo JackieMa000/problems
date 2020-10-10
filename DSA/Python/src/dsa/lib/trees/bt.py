@@ -11,7 +11,8 @@ class BinaryTree(Tree):
     def __init__(self, root: BinaryTreeNode):
         self._root = root
 
-    def to_array(self) -> List[int]:
+    def to_array(self) -> Optional[List[int]]:
+        if not self._root: return None
         array: List[int] = [0] * (BinaryTree._get_array_size_for_tree(self._root))
         BinaryTree._generate_array_from_tree(self._root, 0, array)
         return array_rstrip(array)

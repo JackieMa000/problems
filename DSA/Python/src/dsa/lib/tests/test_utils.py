@@ -1,8 +1,8 @@
 import dsa.lib.utils
-from dsa.testing import DSATestCase
+from dsa.lib.tests.test_lib import LibTestCase
 
 
-class ArrayRstripTestCase(DSATestCase):
+class ArrayRstripTestCase(LibTestCase):
     def test_empty_array(self):
         self.assertEqual([], dsa.lib.utils.array_rstrip([]))
 

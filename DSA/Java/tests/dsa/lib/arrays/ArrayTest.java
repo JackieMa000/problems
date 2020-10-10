@@ -9,7 +9,7 @@ import static dsa.testing.DSAAssert.assertArrayEqualsLinkedList;
 import static dsa.testing.DSAAssert.assertArrayEqualsTree;
 import static org.junit.Assert.assertNull;
 
-public class ArrayTest {
+public class ArrayTest extends ArrayTestFx {
 
     public static class toSinglyLinkedListTest {
         @Test
@@ -50,23 +50,32 @@ public class ArrayTest {
 
     public static class toBinaryTreeTest {
         @Test
+        public void emptyArray() {
+            assertNull(arrayToBinaryTree(new int[]{}));
+        }
+
+        @Test
+        public void length1Element0() {
+            assertNull(arrayToBinaryTree(new int[]{0}));
+        }
+
+        @Test
         public void case1() {
-            assertArrayEqualsTree(new int[]{3, 1, 5, 0, 2}, new Array(new int[]{3, 1, 5, 0, 2}).toBinaryTree());
+            int[] array = {3, 1, 5, 0, 2};
+            assertArrayEqualsTree(array, arrayToBinaryTree(array));
         }
 
         @Test
         public void case2() {
-            assertArrayEqualsTree(new int[]{5, 1, 4, 0, 6, 3, 6}, new Array(new int[]{5, 1, 4, 0, 6, 3, 6}).toBinaryTree());
+            int[] array = {5, 1, 4, 0, 6, 3, 6};
+            assertArrayEqualsTree(array, arrayToBinaryTree(array));
         }
 
         @Test
         public void case3() {
-            assertArrayEqualsTree(new int[]{1, 0}, new Array(new int[]{1, 0}).toBinaryTree());
+            int[] ary = {1, 0};
+            assertArrayEqualsTree(ary, arrayToBinaryTree(ary));
         }
 
-        @Test
-        public void nullNode() {
-            assertNull(new Array(new int[]{0}).toBinaryTree());
-        }
     }
 }

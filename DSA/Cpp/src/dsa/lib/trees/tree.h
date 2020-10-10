@@ -7,7 +7,7 @@ namespace dsa::lib::trees {
 
 class Tree {
  public:
-    virtual std::tuple<length_t, int *> toArray() = 0;
+    virtual arrayStruct toArray() = 0;
     virtual depth_t depth() = 0;
 };
 

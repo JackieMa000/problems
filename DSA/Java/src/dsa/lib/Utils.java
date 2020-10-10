@@ -11,25 +11,25 @@ public class Utils {
      * 4. Array length is bigger than 1, last element is 0 -> remove the trailing 0s by loop.
      */
     //    Remove all the trailing 0s from an array
-    public static int[] arrayStripTrailing(int[] array) {
-        return arrayStripTrailingIt(array);
+    public static int[] arrayStripTrailing(int[] ary) {
+        return arrayStripTrailingIt(ary);
     }
 
-    private static int[] arrayStripTrailingIt(int[] array) {
-        int n = array.length;
-        if (n == 0 || (n == 1 && array[0] == 0)) return new int[0];
-        if (array[n - 1] != 0) return array;
+    private static int[] arrayStripTrailingIt(int[] ary) {
+        int n = ary.length;
+        if (n == 0 || (n == 1 && ary[0] == 0)) return new int[0];
+        if (ary[n - 1] != 0) return ary;
 
         int newLength = n - 1;
-        while (newLength > 0 && array[newLength - 1] == 0) newLength--;
-        return Arrays.copyOf(array, newLength);
+        while (newLength > 0 && ary[newLength - 1] == 0) newLength--;
+        return Arrays.copyOf(ary, newLength);
     }
 
-    private static int[] arrayStripTrailingDfs(int[] array) {
-        int n = array.length;
-        if (n == 0 || (n == 1 && array[0] == 0)) return new int[0];
-        if (array[n - 1] != 0) return array;
+    private static int[] arrayStripTrailingDfs(int[] ary) {
+        int n = ary.length;
+        if (n == 0 || (n == 1 && ary[0] == 0)) return new int[0];
+        if (ary[n - 1] != 0) return ary;
 
-        return arrayStripTrailingDfs(Arrays.copyOf(array, n - 1));
+        return arrayStripTrailingDfs(Arrays.copyOf(ary, n - 1));
     }
 }

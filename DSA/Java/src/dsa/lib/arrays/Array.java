@@ -44,7 +44,7 @@ public class Array {
     }
 
     public BinaryTreeNode toBinaryTree() {
-        if (this.ary[0] == 0) return null;
+        if (this.ary.length == 0 || this.ary[0] == 0) return null;
         BinaryTreeNode root = new BinaryTreeNode(this.ary[0]);
         generateTreeFromArray(this.ary, this.length, root, 0);
         return root;

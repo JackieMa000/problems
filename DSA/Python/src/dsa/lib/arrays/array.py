@@ -36,7 +36,7 @@ class Array:
         return head
 
     def to_binary_tree(self) -> Optional[BinaryTreeNode]:
-        if not self._ary[0]: return None
+        if not self.length or not self._ary[0]: return None
         root: BinaryTreeNode = BinaryTreeNode(self._ary[0])
         Array._generate_tree_from_array(self._ary, self.length, root, 0)
         return root

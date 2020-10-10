@@ -27,17 +27,26 @@ TEST_F(ToSinglyLinkedListTest, case2) {
 class ToBinaryTreeTest : public ArrayTest {
  protected:
     static void run(int *ary, length_t length) {
-        Array array(ary, length);
-        auto root = array.toBinaryTree();
+        BinaryTreeNode *root = arrayToBinaryTree(ary, length);
         EXPECT_ARRAY_EQ_TREE(ary, length, root);
         trees::BinaryTree::destroy(root);
     }
+    static void expectNull(int *ary, length_t length) {
+        EXPECT_EQ(nullptr, arrayToBinaryTree(ary, length));
+    }
 };
+TEST_F(ToBinaryTreeTest, emptyArray) {
+    int ary[] = {};
+    expectNull(ary, aryLength(ary));
+}
+TEST_F(ToBinaryTreeTest, length1Element0) {
+    int ary[] = {0};
+    expectNull(ary, aryLength(ary));
+}
 TEST_F(ToBinaryTreeTest, case1) {
     int ary[] = {1, 2, 3};
     run(ary, aryLength(ary));
 }
-
 TEST_F(ToBinaryTreeTest, case2) {
     int ary[] = {3, 1, 5, 0, 2};
     run(ary, aryLength(ary));
@@ -49,11 +58,6 @@ TEST_F(ToBinaryTreeTest, case3) {
 TEST_F(ToBinaryTreeTest, case4) {
     int ary[] = {1, 0};
     run(ary, aryLength(ary));
-}
-TEST_F(ToBinaryTreeTest, nullNode) {
-    int ary[] = {0};
-    Array array(ary, aryLength(ary));
-    EXPECT_EQ(nullptr, array.toBinaryTree());
 }
 
 }  // namespace

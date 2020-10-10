@@ -1,8 +1,6 @@
 #ifndef LIB_TREES_BT_H
 #define LIB_TREES_BT_H
 
-#include <tuple>
-#include "dsa/nodes/nodes.h"
 #include "tree.h"
 
 namespace dsa::lib::trees {
@@ -23,7 +21,7 @@ class BinaryTree : Tree {
 
     static void destroy(BinaryTreeNode *root);
 
-    std::tuple<length_t, int *> toArray() override;
+    arrayStruct toArray() override;
     depth_t depth() override;
     virtual BinaryTreeNode *lowestCommonAncestor(BinaryTreeNode *p, BinaryTreeNode *q);
     static length_t getArraySizeForBinaryTree(BinaryTreeNode *root);

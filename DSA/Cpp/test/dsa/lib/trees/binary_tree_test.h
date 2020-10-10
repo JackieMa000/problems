@@ -6,13 +6,7 @@
 
 namespace dsa::lib::trees {
 
-class BinaryTreeTest : public TreeTest {
- protected:
-    [[nodiscard]] static BinaryTreeNode *arrayToTree(int *ary, length_t length) {
-        arrays::Array array(ary, length);
-        return array.toBinaryTree();
-    }
-};
+class BinaryTreeTest : public TreeTest {};
 
 }
 

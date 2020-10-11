@@ -9,7 +9,9 @@ class Array:
     def __init__(self, ary: tList[int]):
         self._ary = ary
 
-    def to_singly_linkedList(self) -> ListNode:
+    def to_singly_linkedList(self) -> Optional[ListNode]:
+        if not self.length or not self._ary[0]: return None
+
         dummy_node: ListNode = ListNode(0)
         head: ListNode = ListNode(self._ary[0])
         dummy_node.next = head

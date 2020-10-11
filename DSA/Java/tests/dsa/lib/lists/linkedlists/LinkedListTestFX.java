@@ -5,7 +5,7 @@ import dsa.lib.lists.ListFX;
 import dsa.nodes.ListNode;
 
 public class LinkedListTestFX extends ListFX {
-    protected static ListNode arrayToLinkedlist(int[] ary) {
+    protected static ListNode arrayToSinglyLinkedlist(int[] ary) {
         return new Array(ary).toSinglyLinkedList();
     }
 }

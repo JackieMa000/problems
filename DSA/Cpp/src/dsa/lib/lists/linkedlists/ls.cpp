@@ -22,11 +22,15 @@ length_t LinkedList::length() {
     return n;
 }
 
-std::tuple<length_t, int *> LinkedList::toArray() {
-    int *ary = new int[this->length()];
-    ListNode *cur = this->head;
-    for (int i = 0; cur; i++, cur = cur->next) { *(ary + i) = cur->val; }
-    return {this->length(), ary};
+arrayStruct LinkedList::toArray() {
+    arrayStruct as{0, nullptr};
+    if (this->head) {
+        int *ary = new int[this->length()];
+        ListNode *cur = this->head;
+        for (int i = 0; cur; i++, cur = cur->next) { *(ary + i) = cur->val; }
+        as = {this->length(), ary};
+    }
+    return as;
 }
 
 ListNode *LinkedList::getNodeByIndex(int idx) const {

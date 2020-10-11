@@ -9,9 +9,16 @@ class SinglyLinkedListTestCase(LinkedListTestCase):
 
 
 class ToArrayTestCase(SinglyLinkedListTestCase):
+    def test_null_list(self):
+        self.assertIsNone(self.to_array(None))
+
     def test_case1(self):
-        head: ListNode = Array([1, 2, 3, 4]).to_singly_linkedList()
-        self.assertEqual([1, 2, 3, 4], SinglyLinkedList(head).to_array())
+        ary = [1, 2, 3, 4]
+        self.assertEqual(ary, self.to_array(self.array_to_singly_linkedlist(ary)))
+
+    @staticmethod
+    def to_array(head):
+        return SinglyLinkedList(head).to_array()
 
 
 class ReverseTestCase(SinglyLinkedListTestCase):

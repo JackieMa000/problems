@@ -14,6 +14,7 @@ public class Array {
     }
 
     public ListNode toSinglyLinkedList() {
+        if (this.length == 0 || this.ary[0] == 0) return null;
         ListNode dummyNode = new ListNode(0);
         ListNode head = new ListNode(this.ary[0]);
         dummyNode.next = head;

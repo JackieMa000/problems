@@ -13,9 +13,24 @@ public class ArrayTest extends ArrayTestFx {
 
     public static class toSinglyLinkedListTest {
         @Test
+        public void emptyArray() {
+            assertNull(toLinkedList(new int[]{}));
+        }
+
+        @Test
+        public void firstElement0() {
+            assertNull(toLinkedList(new int[]{0}));
+            assertNull(toLinkedList(new int[]{0, 1}));
+        }
+
+        @Test
         public void case1() {
             int[] ary = {1, 2, 3, 4};
-            assertArrayEqualsLinkedList(ary, new Array(ary).toSinglyLinkedList());
+            assertArrayEqualsLinkedList(ary, toLinkedList(ary));
+        }
+
+        private ListNode toLinkedList(int[] ary) {
+            return new Array(ary).toSinglyLinkedList();
         }
     }
 
@@ -55,8 +70,9 @@ public class ArrayTest extends ArrayTestFx {
         }
 
         @Test
-        public void length1Element0() {
+        public void firstElement0() {
             assertNull(arrayToBinaryTree(new int[]{0}));
+            assertNull(arrayToBinaryTree(new int[]{0, 1}));
         }
 
         @Test

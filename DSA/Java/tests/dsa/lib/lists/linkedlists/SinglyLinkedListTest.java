@@ -2,18 +2,27 @@ package dsa.lib.lists.linkedlists;
 
 import dsa.lib.arrays.Array;
 import dsa.nodes.ListNode;
-import org.junit.Assert;
 import org.junit.Test;
 
-import static dsa.testing.DSAAssert.assertArrayEqualsLinkedList;
+import static dsa.testing.DSAAssert.*;
+import static org.junit.Assert.*;
 
-public class SinglyLinkedListTest {
+public class SinglyLinkedListTest extends SinglyLinkedListTestFX {
 
     public static class ToArrayTest {
         @Test
+        public void nullList() {
+            assertNull(toArray(null));
+        }
+
+        @Test
         public void case1() {
-            ListNode head = new Array(new int[]{1, 2, 3, 4}).toSinglyLinkedList();
-            Assert.assertArrayEquals(new int[]{1, 2, 3, 4}, new SinglyLinkedList(head).toArray());
+            int[] ary = {1, 2, 3, 4};
+            assertArrayEquals(ary, toArray(arrayToSinglyLinkedlist(ary)));
+        }
+
+        private int[] toArray(ListNode head) {
+            return new SinglyLinkedList(head).toArray();
         }
     }
 

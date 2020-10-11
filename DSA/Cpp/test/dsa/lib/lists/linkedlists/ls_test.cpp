@@ -6,20 +6,24 @@ namespace {
 class ToArrayTest : public LinkedListTest {
  protected:
     static void run(int *ary, length_t length) {
-        ListNode *head = arrayToLinkedlist(ary, length);
-        auto[actLen, actAry] = toArray(head);
-        EXPECT_ARRAY_EQ(ary, length, actAry, actLen);
+        ListNode *head = arrayToSinglyLinkedlist(ary, length);
+        auto actual = toArray(head);
+        EXPECT_ARRAY_EQ(ary, length, actual.ary, actual.length);
 
         LinkedList::destroy(head);
-        delete[] actAry;
+        delete[] actual.ary;
     }
 
- private:
-    static std::tuple<length_t, int *> toArray(ListNode *head) {
+    static arrayStruct toArray(ListNode *head) {
         LinkedList ls(head);
         return ls.toArray();
     }
 };
+TEST_F(ToArrayTest, nullList) {
+    auto actual = toArray(nullptr);
+    EXPECT_EQ(0, actual.length);
+    EXPECT_EQ(nullptr, actual.ary);
+}
 TEST_F(ToArrayTest, case1) {
     int ary[] = {1};
     run(ary, aryLength(ary));
@@ -36,7 +40,7 @@ TEST_F(ToArrayTest, case3) {
 class LengthTest : public LinkedListTest {
  protected:
     static void run(int *ary, length_t length) {
-        ListNode *head = arrayToLinkedlist(ary, length);
+        ListNode *head = arrayToSinglyLinkedlist(ary, length);
         length_t actual = getLength(head);
         EXPECT_EQ(length, actual);
         LinkedList::destroy(head);
@@ -64,7 +68,7 @@ TEST_F(LengthTest, case3) {
 class GetNodeByIndexTest : public LinkedListTest {
  protected:
     static void run(int *ary, length_t length, int idx, int expected) {
-        ListNode *head = arrayToLinkedlist(ary, length);
+        ListNode *head = arrayToSinglyLinkedlist(ary, length);
         ListNode *actual = getNode(idx, head);
         EXPECT_EQ(expected, actual->val);
         LinkedList::destroy(head);
@@ -88,7 +92,7 @@ TEST_F(GetNodeByIndexTest, case3) {
 }
 TEST_F(GetNodeByIndexTest, indexNotExist) {
     int ary[] = {1};
-    ListNode *head = arrayToLinkedlist(ary, aryLength(ary));
+    ListNode *head = arrayToSinglyLinkedlist(ary, aryLength(ary));
     ListNode *actual = getNode(2, head);
     EXPECT_EQ(nullptr, actual);
     LinkedList::destroy(head);
@@ -97,7 +101,7 @@ TEST_F(GetNodeByIndexTest, indexNotExist) {
 class GetNodeByValueTest : public LinkedListTest {
  protected:
     static void run(int *ary, length_t length, int val, int expected) {
-        ListNode *head = arrayToLinkedlist(ary, length);
+        ListNode *head = arrayToSinglyLinkedlist(ary, length);
         ListNode *actual = getNode(val, head);
         EXPECT_EQ(expected, actual->val);
         LinkedList::destroy(head);
@@ -118,7 +122,7 @@ TEST_F(GetNodeByValueTest, case2) {
 }
 TEST_F(GetNodeByValueTest, valueNotExist) {
     int ary[] = {1};
-    ListNode *head = arrayToLinkedlist(ary, aryLength(ary));
+    ListNode *head = arrayToSinglyLinkedlist(ary, aryLength(ary));
     ListNode *actual = getNode(2, head);
     EXPECT_EQ(nullptr, actual);
     LinkedList::destroy(head);

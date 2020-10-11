@@ -19,8 +19,7 @@ class ToArrayTest : public BinaryTreeTest {
     }
 };
 TEST_F(ToArrayTest, nullTree) {
-    BinaryTree bt(nullptr);
-    auto actual = bt.toArray();
+    auto actual = toArray(nullptr);
     EXPECT_EQ(0, actual.length);
     EXPECT_EQ(nullptr, actual.ary);
 }

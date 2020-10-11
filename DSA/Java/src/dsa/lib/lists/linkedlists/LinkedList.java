@@ -20,6 +20,7 @@ public class LinkedList implements List {
     }
 
     public final int[] toArray() {
+        if (this.head == null) return null;
         ListNode cur = this.head;
         int[] res = new int[this.size()];
         for (int i = 0; cur != null; i++, cur = cur.next) res[i] = cur.val;

@@ -1,4 +1,4 @@
-from typing import List as tList
+from typing import List as tList, Optional
 
 from dsa.lib.lists.lists import List
 from dsa.nodes import ListNode
@@ -16,7 +16,8 @@ class LinkedList(List):
             cur = cur.next
         return n
 
-    def to_array(self) -> tList[int]:
+    def to_array(self) -> Optional[tList[int]]:
+        if not self.head: return None
         cur = self.head
         res: tList[int] = []
 

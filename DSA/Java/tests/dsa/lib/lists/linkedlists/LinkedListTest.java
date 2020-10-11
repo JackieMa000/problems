@@ -15,17 +15,17 @@ public class LinkedListTest extends LinkedListTestFX {
 
         @Test
         public void case1() {
-            assertEquals(1, getSize(arrayToLinkedlist(new int[]{1})));
+            assertEquals(1, getSize(arrayToSinglyLinkedlist(new int[]{1})));
         }
 
         @Test
         public void case2() {
-            assertEquals(3, getSize(arrayToLinkedlist(new int[]{1, 2, 3})));
+            assertEquals(3, getSize(arrayToSinglyLinkedlist(new int[]{1, 2, 3})));
         }
 
         @Test
         public void case3() {
-            assertEquals(4, getSize(arrayToLinkedlist(new int[]{1, 2, 3, 4})));
+            assertEquals(4, getSize(arrayToSinglyLinkedlist(new int[]{1, 2, 3, 4})));
         }
     }
 
@@ -33,17 +33,17 @@ public class LinkedListTest extends LinkedListTestFX {
 
         @Test
         public void case1() {
-            assertEquals(1, getNodeByIndex(arrayToLinkedlist(new int[]{1}), 0).val);
+            assertEquals(1, getNodeByIndex(arrayToSinglyLinkedlist(new int[]{1}), 0).val);
         }
 
         @Test
         public void case2() {
-            assertEquals(3, getNodeByIndex(arrayToLinkedlist(new int[]{1, 2, 3}), 2).val);
+            assertEquals(3, getNodeByIndex(arrayToSinglyLinkedlist(new int[]{1, 2, 3}), 2).val);
         }
 
         @Test
         public void indexNotExist() {
-            assertNull(getNodeByIndex(arrayToLinkedlist(new int[]{1}), 2));
+            assertNull(getNodeByIndex(arrayToSinglyLinkedlist(new int[]{1}), 2));
         }
 
         private ListNode getNodeByIndex(ListNode head, int idx) {
@@ -55,17 +55,17 @@ public class LinkedListTest extends LinkedListTestFX {
     public static class GetNodeByValueTest {
         @Test
         public void case1() {
-            assertEquals(1, getNodeByValue(arrayToLinkedlist(new int[]{1}), 1).val);
+            assertEquals(1, getNodeByValue(arrayToSinglyLinkedlist(new int[]{1}), 1).val);
         }
 
         @Test
         public void case2() {
-            assertEquals(2, getNodeByValue(arrayToLinkedlist(new int[]{1, 2, 3}), 2).val);
+            assertEquals(2, getNodeByValue(arrayToSinglyLinkedlist(new int[]{1, 2, 3}), 2).val);
         }
 
         @Test
         public void valueNotExist() {
-            assertNull(getNodeByValue(arrayToLinkedlist(new int[]{1}), 4));
+            assertNull(getNodeByValue(arrayToSinglyLinkedlist(new int[]{1}), 4));
         }
 
         private ListNode getNodeByValue(ListNode head, int val) {

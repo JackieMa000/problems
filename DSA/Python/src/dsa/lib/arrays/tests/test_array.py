@@ -12,9 +12,20 @@ class ArrayTestCase(LibTestCase):
 
 
 class ToSinglyLinkedListTest(ArrayTestCase):
+    def test_empty_array(self):
+        self.assertIsNone(self.toList([]))
+
+    def test_first_element0(self):
+        self.assertIsNone(self.toList([0]))
+        self.assertIsNone(self.toList([0, 1]))
+
     def test_case1(self):
         ary: List[int] = [1, 2, 3, 4]
-        self.assertArrayEqualsLinkedList(ary, Array(ary).to_singly_linkedList())
+        self.assertArrayEqualsLinkedList(ary, self.toList(ary))
+
+    @staticmethod
+    def toList(ary):
+        return Array(ary).to_singly_linkedList()
 
 
 class ToCyclicSinglyLinkedListTest(ArrayTestCase):
@@ -47,7 +58,8 @@ class ToCyclicSinglyLinkedListTest(ArrayTestCase):
     def get_linkedList_node_by_index(head: ListNode, idx: int) -> ListNode:
         return SinglyLinkedList(head).get_node_by_index(idx)
 
-    def _get_cyclic_singly_linkedList(self, ary: List[int], pos: int) -> ListNode:
+    @staticmethod
+    def _get_cyclic_singly_linkedList(ary: List[int], pos: int) -> ListNode:
         return Array(ary).to_cyclic_singly_linkedList(pos)
 
 
@@ -55,8 +67,9 @@ class ToBinaryTreeTest(ArrayTestCase):
     def test_empty_array(self):
         self.assertIsNone(self.to_binary_tree([]))
 
-    def test_length1_element0(self):
+    def test_first_element0(self):
         self.assertIsNone(self.to_binary_tree([0]))
+        self.assertIsNone(self.to_binary_tree([0, 1]))
 
     def test_case1(self):
         ary = [3, 1, 5, 0, 2]

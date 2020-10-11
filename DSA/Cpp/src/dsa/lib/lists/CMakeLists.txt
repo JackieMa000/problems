@@ -1,2 +1,1 @@
 add_subdirectory(linkedlists)
-add_subdirectory(arraylist)

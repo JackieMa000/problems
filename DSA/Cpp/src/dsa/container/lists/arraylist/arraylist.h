@@ -1,7 +1,7 @@
-#ifndef LIB_LISTS_ARRAYLIST_H
-#define LIB_LISTS_ARRAYLIST_H
+#ifndef DSA_CONTAINER_LISTS_ARRAYLIST_H
+#define DSA_CONTAINER_LISTS_ARRAYLIST_H
 
-#include "dsa/lib/lists/list.h"
+#include <dsa/container/lists/list.h>
 
 namespace dsa::lib::lists {
 

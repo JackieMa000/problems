@@ -1,6 +1,6 @@
 from typing import List as tList
 
-from dsa.lib.lists.lists import List
+from dsa.container.lists.lists import List
 
 
 class ArrayList(List):

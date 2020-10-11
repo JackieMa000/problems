@@ -8,10 +8,6 @@ public class ArrayList implements List {
         this.lst = new int[DEFAULT_LENGTH];
     }
 
-    public ArrayList(int[] array) {
-        this.lst = array;
-    }
-
     @Override
     public int size() {
         return 0;

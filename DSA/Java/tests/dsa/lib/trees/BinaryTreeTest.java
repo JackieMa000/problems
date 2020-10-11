@@ -2,7 +2,6 @@ package dsa.lib.trees;
 
 import dsa.lib.arrays.Array;
 import dsa.nodes.BinaryTreeNode;
-import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

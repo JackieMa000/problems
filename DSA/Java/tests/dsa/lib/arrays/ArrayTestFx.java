@@ -1,6 +1,6 @@
 package dsa.lib.arrays;
 
-import dsa.lib.FX;
+import dsa.lib.LibFX;
 
-public class ArrayTestFx extends FX {
+public class ArrayTestFx extends LibFX {
 }

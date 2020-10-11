@@ -2,18 +2,10 @@
 
 namespace dsa::lib::lists {
 
-ArrayList::ArrayList() {
-    int ary[DEFAULT_LENGTH];
-    this->lst = ary;
-}
-ArrayList::ArrayList(const int ary[]) {
-    this->lst = ary;
-}
-ArrayList::~ArrayList() {
-    delete[] lst;
-}
+ArrayList::ArrayList() : lst(new int[DEFAULT_LENGTH]) {}
+ArrayList::~ArrayList() { delete[] lst; }
 length_t ArrayList::length() {
-//    ToDo
+//    ToDo: Waiting for the DSA container
     return 0;
 }
 

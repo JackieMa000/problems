@@ -5,14 +5,13 @@
 
 namespace dsa::lib::lists {
 
-class ArrayList : List {
+class ArrayList : public List {
  private:
     static const length_t DEFAULT_LENGTH = 10;
     const int *lst;
 
  public:
     ArrayList();
-    explicit ArrayList(const int ary[]);
     ~ArrayList();
 
     length_t length() override;

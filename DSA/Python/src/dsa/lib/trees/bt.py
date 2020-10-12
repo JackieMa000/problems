@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from dsa.lib.lists.queues import Queue
+from dsa.container.lists.queues import Queue
 from dsa.lib.trees.tree import Tree
 from dsa.lib.utils import array_rstrip
 from dsa.nodes import BinaryTreeNode

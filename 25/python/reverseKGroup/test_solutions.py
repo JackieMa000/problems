@@ -8,7 +8,7 @@ from testing import DSATestCase
 class Solution1TestCase(DSATestCase):
     def setUp(self):
         self.solution = Solution1()
-        self.head: ListNode = Array([1, 2, 3, 4, 5]).to_singlylinkedlist()
+        self.head: ListNode = Array([1, 2, 3, 4, 5]).to_singly_linkedList()
 
     def test_reverse_1group(self):
         self.assertArrayEqualsLinkedList([1, 2, 3, 4, 5], self.solution.reverseKGroup(self.head, 1))
@@ -23,7 +23,7 @@ class Solution1TestCase(DSATestCase):
 class Solution2TestCase(DSATestCase):
     def setUp(self):
         self.solution = Solution2()
-        self.head = Array([1, 2, 3, 4, 5]).to_singlylinkedlist()
+        self.head = Array([1, 2, 3, 4, 5]).to_singly_linkedList()
 
     def test_reverse_1group(self):
         self.assertArrayEqualsLinkedList([1, 2, 3, 4, 5], self.solution.reverseKGroup(self.head, 1))

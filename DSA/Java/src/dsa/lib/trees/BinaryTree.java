@@ -38,11 +38,6 @@ public class BinaryTree implements Tree {
     }
 
     @Override
-    public int[] toArray() {
-        return new int[0];
-    }
-
-    @Override
     public int depth() {
         return depthDfs(this.root);
     }

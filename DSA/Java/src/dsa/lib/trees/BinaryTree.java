@@ -17,7 +17,6 @@ public class BinaryTree implements Tree {
         this.root = root;
     }
 
-    @Override
     public int[] toArrayInt() {
         if (this.root == null) return null;
         int arraySize = getArraySizeForBinaryTree(this.root);
@@ -36,6 +35,11 @@ public class BinaryTree implements Tree {
     protected static int getArraySizeForBinaryTree(BinaryTreeNode root) {
         // Todo: Could use my own pow algorithm.
         return (int) (pow(2, new BinaryTree(root).depth()) - 1);
+    }
+
+    @Override
+    public int[] toArray() {
+        return new int[0];
     }
 
     @Override

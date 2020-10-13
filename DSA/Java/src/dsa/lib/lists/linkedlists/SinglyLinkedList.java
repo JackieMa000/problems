@@ -36,8 +36,8 @@ public class SinglyLinkedList extends LinkedList {
         return pre;
     }
 
+    //      Reverse the dsa.nodes range fnode tnode, doesn't include the *tnode* node.
     public ListNode reverseFromTo(ListNode fnode, ListNode tnode) {
-//      Reverse the dsa.nodes range fnode tnode, doesn't include the *tnode* node.
         ListNode dummy = new ListNode();
         dummy.next = this.head;
         ListNode groupPre = dummy;

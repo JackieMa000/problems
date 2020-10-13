@@ -6,17 +6,19 @@ namespace {
 class ToArrayTest : public SinglyLinkedListTest {
  protected:
     static void run(int *ary, length_t length) {
-        arrays::Array array(ary, length);
-        ListNode *head = array.toSinglyLinkedList();
+        ListNode *head = arrayToSinglyLinkedlist(ary, length);
+        arrayStruct actual = toArray(head);
+        EXPECT_ARRAY_EQ(ary, length, actual.ary, actual.length);
 
-        SinglyLinkedList ls(head);
-        auto[actLen, actAry] = ls.toArray();
-
-        EXPECT_ARRAY_EQ(ary, length, actAry, actLen);
         LinkedList::destroy(head);
+        delete[] actual.ary;
+    }
+    static arrayStruct toArray(ListNode *head) {
+        SinglyLinkedList ls(head);
+        arrayStruct actual = ls.toArray();
+        return actual;
     }
 };
-
 TEST_F(ToArrayTest, case1) {
     int ary[] = {1, 2, 3};
     run(ary, aryLength(ary));

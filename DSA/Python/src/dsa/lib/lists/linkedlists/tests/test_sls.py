@@ -1,4 +1,3 @@
-from dsa.lib.arrays.array import Array
 from dsa.lib.lists.linkedlists.sls import SinglyLinkedList
 from dsa.lib.lists.linkedlists.tests.test_ls import LinkedListTestCase
 from dsa.nodes import ListNode
@@ -8,7 +7,7 @@ class SinglyLinkedListTestCase(LinkedListTestCase):
     pass
 
 
-class ToArrayTestCase(SinglyLinkedListTestCase):
+class ToArrayTest(SinglyLinkedListTestCase):
     def test_null_list(self):
         self.assertIsNone(self.to_array(None))
 
@@ -21,55 +20,51 @@ class ToArrayTestCase(SinglyLinkedListTestCase):
         return SinglyLinkedList(head).to_array()
 
 
-class ReverseTestCase(SinglyLinkedListTestCase):
+class ReverseTest(SinglyLinkedListTestCase):
     def test_case1(self):
-        head: ListNode = Array([1]).to_singly_linkedList()
-        self.assertArrayEqualsLinkedList([1], SinglyLinkedList(head).reverse())
+        self.assertArrayEqualsLinkedList([1], self.reverse(self.array_to_singly_linkedlist([1])))
 
     def test_case2(self):
-        head: ListNode = Array([1, 2, 3]).to_singly_linkedList()
-        self.assertArrayEqualsLinkedList([3, 2, 1], SinglyLinkedList(head).reverse())
+        self.assertArrayEqualsLinkedList([3, 2, 1], self.reverse(self.array_to_singly_linkedlist([1, 2, 3])))
+
+    @staticmethod
+    def reverse(head):
+        return SinglyLinkedList(head).reverse()
 
 
-class ReverseBeforeTestCase(SinglyLinkedListTestCase):
+class ReverseBeforeTest(SinglyLinkedListTestCase):
     def test_case1(self):
-        head: ListNode = Array([1, 2, 3, 4, 5]).to_singly_linkedList()
-        ls: SinglyLinkedList = SinglyLinkedList(head)
-        node: ListNode = ls.get_node_by_index(2)
-        self.assertArrayEqualsLinkedList([2, 1, 3, 4, 5], ls.reverse_before(node))
+        head = self.array_to_singly_linkedlist([1, 2, 3, 4, 5])
+        self.assertArrayEqualsLinkedList([2, 1, 3, 4, 5], self.reverseBeforeIndex(head, 2))
 
     def test_case2(self):
-        head: ListNode = Array([1, 2, 3, 4, 5]).to_singly_linkedList()
+        head: ListNode = self.array_to_singly_linkedlist([1, 2, 3, 4, 5])
+        self.assertArrayEqualsLinkedList([4, 3, 2, 1, 5], self.reverseBeforeIndex(head, 4))
+
+    @staticmethod
+    def reverseBeforeIndex(head: ListNode, i: int):
         ls: SinglyLinkedList = SinglyLinkedList(head)
-        node: ListNode = ls.get_node_by_index(4)
-        self.assertArrayEqualsLinkedList([4, 3, 2, 1, 5], ls.reverse_before(node))
+        return ls.reverse_before(ls.get_node_by_index(i))
 
 
-class ReverseFromToTestCase(SinglyLinkedListTestCase):
+class ReverseFromToTest(SinglyLinkedListTestCase):
     def test_case1(self):
-        head: ListNode = Array([1, 2, 3, 4, 5]).to_singly_linkedList()
-        ls: SinglyLinkedList = SinglyLinkedList(head)
-        fnode: ListNode = ls.get_node_by_index(2)
-        tnode: ListNode = ls.get_node_by_index(4)
-        self.assertArrayEqualsLinkedList([1, 2, 4, 3, 5], ls.reverse_from_to(fnode, tnode))
+        head: ListNode = self.array_to_singly_linkedlist([1, 2, 3, 4, 5])
+        self.assertArrayEqualsLinkedList([1, 2, 4, 3, 5], self.reverse_from_to(head, 2, 4))
 
     def test_case2(self):
-        head: ListNode = Array([1, 2, 3, 4, 5, 6]).to_singly_linkedList()
-        ls: SinglyLinkedList = SinglyLinkedList(head)
-        fnode: ListNode = ls.get_node_by_index(2)
-        tnode: ListNode = ls.get_node_by_index(4)
-        self.assertArrayEqualsLinkedList([1, 2, 4, 3, 5, 6], ls.reverse_from_to(fnode, tnode))
+        head: ListNode = self.array_to_singly_linkedlist([1, 2, 3, 4, 5, 6])
+        self.assertArrayEqualsLinkedList([1, 2, 4, 3, 5, 6], self.reverse_from_to(head, 2, 4))
 
     def test_case3(self):
-        head: ListNode = Array([1, 2, 3]).to_singly_linkedList()
-        ls: SinglyLinkedList = SinglyLinkedList(head)
-        fnode: ListNode = ls.get_node_by_index(0)
-        tnode: ListNode = ls.get_node_by_index(1)
-        self.assertArrayEqualsLinkedList([1, 2, 3], ls.reverse_from_to(fnode, tnode))
+        head: ListNode = self.array_to_singly_linkedlist([1, 2, 3])
+        self.assertArrayEqualsLinkedList([1, 2, 3], self.reverse_from_to(head, 0, 1))
 
     def test_case4(self):
-        head: ListNode = Array([1, 2, 3]).to_singly_linkedList()
+        head: ListNode = self.array_to_singly_linkedlist([1, 2, 3])
+        self.assertArrayEqualsLinkedList([2, 1, 3], self.reverse_from_to(head, 0, 2))
+
+    @staticmethod
+    def reverse_from_to(head: ListNode, from_idx: int, to_idx: int):
         ls: SinglyLinkedList = SinglyLinkedList(head)
-        fnode: ListNode = ls.get_node_by_index(0)
-        tnode: ListNode = ls.get_node_by_index(2)
-        self.assertArrayEqualsLinkedList([2, 1, 3], ls.reverse_from_to(fnode, tnode))
+        return ls.reverse_from_to(ls.get_node_by_index(from_idx), ls.get_node_by_index(to_idx))

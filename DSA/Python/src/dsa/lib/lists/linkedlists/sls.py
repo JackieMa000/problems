@@ -10,22 +10,22 @@ class SinglyLinkedList(LinkedList):
     def reverse(self) -> ListNode:
         pre = None
         cur: ListNode = self.head
-        next: ListNode
+        next_: ListNode
         while cur:
-            next = cur.next
+            next_ = cur.next
             cur.next = pre
-            pre, cur = cur, next
+            pre, cur = cur, next_
         return pre
 
     def reverse_before(self, node: ListNode) -> ListNode:
         # Reverse the LinkedList nodes before a certain node, doesn't  reverse the certain node
         pre: ListNode = node
         cur: ListNode = self.head
-        next: ListNode
+        next_: ListNode
         while cur is not node:
-            next = cur.next
+            next_ = cur.next
             cur.next = pre
-            pre, cur = cur, next
+            pre, cur = cur, next_
         return pre
 
     def reverse_from_to(self, fnode: ListNode, tnode: ListNode) -> ListNode:

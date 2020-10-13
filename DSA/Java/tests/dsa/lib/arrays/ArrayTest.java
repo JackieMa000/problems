@@ -30,7 +30,7 @@ public class ArrayTest extends ArrayTestFx {
         }
 
         private ListNode toLinkedList(int[] ary) {
-            return new Array(ary).toSinglyLinkedList();
+            return new ArrayInt(ary).toSinglyLinkedList();
         }
     }
 
@@ -59,7 +59,7 @@ public class ArrayTest extends ArrayTestFx {
         }
 
         private ListNode getCyclicSinglyLinkedList(int[] ary, int pos) {
-            return new Array(ary).toCyclicSinglyLinkedList(pos);
+            return new ArrayInt(ary).toCyclicSinglyLinkedList(pos);
         }
     }
 

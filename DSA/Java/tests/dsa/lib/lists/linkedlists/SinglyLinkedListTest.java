@@ -22,7 +22,7 @@ public class SinglyLinkedListTest extends SinglyLinkedListTestFX {
         }
 
         private int[] toArray(ListNode head) {
-            return new SinglyLinkedList(head).toArray();
+            return new SinglyLinkedList(head).toArrayInt();
         }
     }
 

@@ -1,6 +1,6 @@
 package dsa.lib.trees;
 
-import dsa.lib.arrays.Array;
+import dsa.lib.arrays.ArrayInt;
 import dsa.nodes.BinaryTreeNode;
 import org.junit.Test;
 
@@ -60,7 +60,7 @@ public class BinaryTreeTest extends BinaryTreeTestFX {
     public static class DepthTest {
         @Test
         public void case1() {
-            BinaryTreeNode root = new Array(new int[]{5, 1, 4, 0, 0, 3, 6}).toBinaryTree();
+            BinaryTreeNode root = new ArrayInt(new int[]{5, 1, 4, 0, 0, 3, 6}).toBinaryTree();
             assertEquals(3, new BinaryTree(root).depth());
         }
     }
@@ -90,14 +90,14 @@ public class BinaryTreeTest extends BinaryTreeTestFX {
         }
 
         private int[] toArray(BinaryTreeNode root) {
-            return new BinaryTree(root).toArray();
+            return new BinaryTree(root).toArrayInt();
         }
     }
 
     public static class GetArraySizeForBinaryTreeTest {
         @Test
         public void case1() {
-            BinaryTreeNode root = new Array(new int[]{3, 1, 5, 0, 2}).toBinaryTree();
+            BinaryTreeNode root = new ArrayInt(new int[]{3, 1, 5, 0, 2}).toBinaryTree();
             assertEquals(7, BinaryTree.getArraySizeForBinaryTree(root));
         }
     }

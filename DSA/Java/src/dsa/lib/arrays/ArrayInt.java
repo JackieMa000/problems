@@ -4,11 +4,11 @@ import dsa.lib.lists.linkedlists.SinglyLinkedList;
 import dsa.nodes.BinaryTreeNode;
 import dsa.nodes.ListNode;
 
-public class Array {
+public class ArrayInt {
     private final int[] ary;
     public final int length;
 
-    public Array(int[] ary) {
+    public ArrayInt(int[] ary) {
         this.ary = ary;
         this.length = ary.length;
     }

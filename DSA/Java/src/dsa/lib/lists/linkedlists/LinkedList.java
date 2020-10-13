@@ -19,7 +19,7 @@ public class LinkedList implements List {
         return n;
     }
 
-    public final int[] toArray() {
+    public final int[] toArrayInt() {
         if (this.head == null) return null;
         ListNode cur = this.head;
         int[] res = new int[this.size()];

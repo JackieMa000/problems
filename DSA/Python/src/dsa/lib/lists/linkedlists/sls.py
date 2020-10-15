@@ -30,10 +30,10 @@ class SinglyLinkedList(LinkedList):
 
     def reverse_from_to(self, fnode: ListNode, tnode: ListNode) -> ListNode:
         # Reverse a group of nodes from fnode to tnode, doesn't reverse the tnode node.
+        cur: ListNode = self.head
         dummy: ListNode = ListNode()
-        dummy.next = self.head
+        dummy.next = cur
         group_pre: ListNode = dummy
-        pre, cur = tnode, self.head
 
         # 1. Get the group previous node
         while cur is not fnode:

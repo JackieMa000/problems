@@ -24,7 +24,7 @@ public class SinglyLinkedList extends LinkedList {
         return pre;
     }
 
-    //    reverse the dsa.nodes before a certain node
+    //    reverse the nodes before a certain node
     public ListNode reverseBefore(ListNode node) {
         ListNode pre = node, cur = this.head, next;
         while (cur != node) {
@@ -36,12 +36,12 @@ public class SinglyLinkedList extends LinkedList {
         return pre;
     }
 
-    //      Reverse the dsa.nodes range fnode tnode, doesn't include the *tnode* node.
+    //      Reverse the nodes range fnode tnode, doesn't include the *tnode* node.
     public ListNode reverseFromTo(ListNode fnode, ListNode tnode) {
-        ListNode dummy = new ListNode();
-        dummy.next = this.head;
-        ListNode groupPre = dummy;
         ListNode cur = this.head;
+        ListNode dummy = new ListNode();
+        dummy.next = cur;
+        ListNode groupPre = dummy;
 
 //      1. Search for the fnode node. Get the group previous node;
         while (cur != fnode) {
@@ -49,7 +49,7 @@ public class SinglyLinkedList extends LinkedList {
             cur = cur.next;
         }
 
-//      2. Reverse the group dsa.nodes;
+//      2. Reverse the group nodes;
 //        Append the reversed group dsa.nodes tnode the groupPre
         groupPre.next = new SinglyLinkedList(fnode).reverseBefore(tnode);
 

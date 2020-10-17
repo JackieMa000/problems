@@ -1,46 +1,42 @@
 from typing import List as tList, Optional
 
-from dsa.lib.lists.linkedlists.sls import SinglyLinkedList
 from dsa.nodes import ListNode, BinaryTreeNode
 
 
 class Array:
-
     def __init__(self, ary: tList[int]):
-        self._ary = ary
+        self.ary = ary
 
     def to_singly_linkedList(self) -> Optional[ListNode]:
-        if not self.length or not self._ary[0]: return None
+        return self.to_cyclic_singly_linkedList(-1)
 
-        dummy_node: ListNode = ListNode(0)
-        head: ListNode = ListNode(self._ary[0])
-        dummy_node.next = head
-
-        for i in range(1, self.length):
-            head.next = ListNode(self._ary[i])
-            head = head.next
-
-        return dummy_node.next
-
-    def to_cyclic_singly_linkedList(self, pos: int) -> ListNode:
+    def to_cyclic_singly_linkedList(self, pos: int) -> Optional[ListNode]:
         """
         To represent a cycle in the given linked list, we use an integer pos which represents
         the position (0-indexed) in the linked list where tail connects to. If pos is -1, then
         there is no cycle in the linked list.
         """
-        head: ListNode = self.to_singly_linkedList()
+        if not self.length or not self.ary[0]: return None
 
-        if pos != -1:
-            ls: SinglyLinkedList = SinglyLinkedList(head)
-            tail: ListNode = ls.get_node_by_index(ls.size() - 1)
-            tail.next = ls.get_node_by_index(pos)
+        dummy: ListNode = ListNode()
+        head: ListNode = ListNode(self.ary[0])
+        dummy.next = head
+        cycle_entry_node: ListNode = head
 
-        return head
+        for i in range(1, self.length):
+            node = ListNode(self.ary[i])
+            head.next = node
+            if i == pos: cycle_entry_node = node
+            head = head.next
+
+        if pos >= 0: head.next = cycle_entry_node
+
+        return dummy.next
 
     def to_binary_tree(self) -> Optional[BinaryTreeNode]:
-        if not self.length or not self._ary[0]: return None
-        root: BinaryTreeNode = BinaryTreeNode(self._ary[0])
-        Array._generate_tree_from_array(self._ary, self.length, root, 0)
+        if not self.length or not self.ary[0]: return None
+        root: BinaryTreeNode = BinaryTreeNode(self.ary[0])
+        Array._generate_tree_from_array(self.ary, self.length, root, 0)
         return root
 
     @staticmethod
@@ -55,4 +51,4 @@ class Array:
 
     @property
     def length(self) -> int:
-        return len(self._ary)
+        return len(self.ary)

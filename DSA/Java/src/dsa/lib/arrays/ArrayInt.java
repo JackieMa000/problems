@@ -1,11 +1,10 @@
 package dsa.lib.arrays;
 
-import dsa.lib.lists.linkedlists.SinglyLinkedList;
 import dsa.nodes.BinaryTreeNode;
 import dsa.nodes.ListNode;
 
 public class ArrayInt {
-    private final int[] ary;
+    public final int[] ary;
     public final int length;
 
     public ArrayInt(int[] ary) {
@@ -14,17 +13,7 @@ public class ArrayInt {
     }
 
     public ListNode toSinglyLinkedList() {
-        if (this.length == 0 || this.ary[0] == 0) return null;
-        ListNode dummyNode = new ListNode(0);
-        ListNode head = new ListNode(this.ary[0]);
-        dummyNode.next = head;
-
-        for (int i = 1; i < this.length; i++) {
-            head.next = new ListNode(this.ary[i]);
-            head = head.next;
-        }
-
-        return dummyNode.next;
+        return toCyclicSinglyLinkedList(-1);
     }
 
     /**
@@ -33,15 +22,22 @@ public class ArrayInt {
      * there is no cycle in the linked list.
      */
     public ListNode toCyclicSinglyLinkedList(int pos) {
-        ListNode head = this.toSinglyLinkedList();
+        if (this.length == 0 || this.ary[0] == 0) return null;
+        ListNode dummy = new ListNode();
+        ListNode head = new ListNode(this.ary[0]);
+        dummy.next = head;
+        ListNode cycleEntryNode = head;
 
-        if (pos != -1) {
-            SinglyLinkedList ls = new SinglyLinkedList(head);
-            ListNode tail = ls.getNodeByIndex(ls.size() - 1);
-            tail.next = ls.getNodeByIndex(pos);
+        for (int i = 1; i < this.length; i++) {
+            ListNode node = new ListNode(this.ary[i]);
+            head.next = node;
+            if (i == pos) cycleEntryNode = node;
+            head = head.next;
         }
 
-        return head;
+        if (pos >= 0) head.next = cycleEntryNode;
+
+        return dummy.next;
     }
 
     public BinaryTreeNode toBinaryTree() {

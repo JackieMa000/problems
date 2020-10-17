@@ -14,6 +14,15 @@ void LinkedList::destroy(ListNode *head) {
         cur = next;
     }
 }
+void LinkedList::destroyCyclic(ListNode *head, int nums) {
+    ListNode *cur, *next;
+    cur = head;
+    for (int i = 0; cur && i < nums; ++i) {
+        next = cur->next;
+        delete cur;
+        cur = next;
+    }
+}
 
 length_t LinkedList::length() {
     ListNode *cur = this->head;

@@ -1,12 +1,11 @@
 package dsa.lib.arrays;
 
-import dsa.lib.lists.linkedlists.SinglyLinkedList;
 import dsa.nodes.ListNode;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
 import static dsa.testing.DSAAssert.assertArrayEqualsLinkedList;
 import static dsa.testing.DSAAssert.assertArrayEqualsTree;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 public class ArrayTest extends ArrayTestFx {
@@ -37,25 +36,33 @@ public class ArrayTest extends ArrayTestFx {
     public static class toCyclicSinglyLinkedListTest {
 
         @Test
-        public void case1() {
-            ListNode head = getCyclicSinglyLinkedList(new int[]{3, 2, 1, -1}, 1);
-            assertEquals(2, getLinkedListNodeByIndex(head, 4).val);
+        public void posMinus() {
+            int[] ary = {1, 2, 3};
+            assertArrayEqualsLinkedList(ary, getCyclicSinglyLinkedList(ary, -1));
         }
 
         @Test
-        public void case2() {
+        public void posMinus1() {
+            int[] ary = {1, 2, 3};
+            assertArrayEqualsLinkedList(ary, getCyclicSinglyLinkedList(ary, -2));
+        }
+
+        @Test
+        public void case1() {
             ListNode head = getCyclicSinglyLinkedList(new int[]{1, 2}, 0);
             assertEquals(2, getLinkedListNodeByIndex(head, 3).val);
         }
 
         @Test
-        public void case3() {
-            ListNode head = getCyclicSinglyLinkedList(new int[]{1}, -1);
-            assertEquals(1, new SinglyLinkedList(head).size());
+        public void case2() {
+            ListNode head = getCyclicSinglyLinkedList(new int[]{1, 2, 3}, 1);
+            assertEquals(2, getLinkedListNodeByIndex(head, 3).val);
         }
 
-        private static ListNode getLinkedListNodeByIndex(ListNode head, int idx) {
-            return new SinglyLinkedList(head).getNodeByIndex(idx);
+        @Test
+        public void case3() {
+            ListNode head = getCyclicSinglyLinkedList(new int[]{1, 2, 3}, 2);
+            assertEquals(3, getLinkedListNodeByIndex(head, 4).val);
         }
 
         private ListNode getCyclicSinglyLinkedList(int[] ary, int pos) {

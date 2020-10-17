@@ -40,6 +40,44 @@ TEST_F(ToSinglyLinkedListTest, case2) {
     run(ary, aryLength(ary));
 }
 
+class ToCyclicSinglyLinkedListTest : public ArrayTest {
+ protected:
+    static void run(int *ary, length_t length, int pos, int expected, int idx) {
+        ListNode *actual = toCyclicSingyLinkedList(ary, length, pos);
+        EXPECT_EQ(expected, getLinkedListNodeByIndex(actual, idx)->val);
+        lists::linkedlists::LinkedList::destroyCyclic(actual, length);
+    }
+    static ListNode *toCyclicSingyLinkedList(int *ary, length_t length, int pos) {
+        Array array(ary, length);
+        return array.toCyclicSinglyLinkedList(pos);
+    }
+    static void runPosMinus(int *ary, length_t length, int pos) {
+        ListNode *actual = toCyclicSingyLinkedList(ary, length, pos);
+        EXPECT_ARRAY_EQ_LINKEDLIST(ary, length, actual);
+        lists::linkedlists::LinkedList::destroyCyclic(actual, length);
+    }
+};
+TEST_F(ToCyclicSinglyLinkedListTest, posMinus) {
+    int ary[] = {1, 2, 3};
+    runPosMinus(ary, aryLength(ary), -1);
+}
+TEST_F(ToCyclicSinglyLinkedListTest, posMinus1) {
+    int ary[] = {1, 2, 3};
+    runPosMinus(ary, aryLength(ary), -2);
+}
+TEST_F(ToCyclicSinglyLinkedListTest, case1) {
+    int ary[] = {1, 2, 3};
+    run(ary, aryLength(ary), 0, 1, 3);
+}
+TEST_F(ToCyclicSinglyLinkedListTest, case2) {
+    int ary[] = {1, 2, 3};
+    run(ary, aryLength(ary), 1, 2, 3);
+}
+TEST_F(ToCyclicSinglyLinkedListTest, case3) {
+    int ary[] = {1, 2, 3};
+    run(ary, aryLength(ary), 2, 3, 2);
+}
+
 class ToBinaryTreeTest : public ArrayTest {
  protected:
     static void run(int *ary, length_t length) {

@@ -1,8 +1,6 @@
 from typing import List
-from unittest import skip
 
 from dsa.lib.arrays.array import Array
-from dsa.lib.lists.linkedlists.sls import SinglyLinkedList
 from dsa.lib.tests.test_lib import LibTestCase
 from dsa.nodes import ListNode
 
@@ -29,34 +27,22 @@ class ToSinglyLinkedListTest(ArrayTestCase):
 
 
 class ToCyclicSinglyLinkedListTest(ArrayTestCase):
-    """
-            public void case1() {
-            ListNode head = getCyclicSinglyLinkedList(new int[]{3, 2, 1, -1}, 1);
-            assertEquals(2, getLinkedListNodeByIndex(head, 4).val);
-        }
 
-        @Test
-        public void case2() {
-            ListNode head = getCyclicSinglyLinkedList(new int[]{1, 2}, 0);
-            assertEquals(2, getLinkedListNodeByIndex(head, 3).val);
-        }
+    def test_pos_minus(self):
+        self.assertArrayEqualsLinkedList([1, 2, 3], self._get_cyclic_singly_linkedList([1, 2, 3], -1))
+        self.assertArrayEqualsLinkedList([1, 2, 3], self._get_cyclic_singly_linkedList([1, 2, 3], -5))
 
-        @Test
-        public void case3() {
-            ListNode head = getCyclicSinglyLinkedList(new int[]{1}, -1);
-            assertEquals(1, new SinglyLinkedList(head).size());
-        }
-
-    """
-
-    @skip('todo')
     def test_case1(self):
-        head: ListNode = self._get_cyclic_singly_linkedList([3, 2, 1, -1], 1)
+        head: ListNode = self._get_cyclic_singly_linkedList([1, 2, 3], 0)
+        self.assertEqual(1, self.get_linkedList_node_by_index(head, 3).val)
+
+    def test_case2(self):
+        head: ListNode = self._get_cyclic_singly_linkedList([1, 2, 3, -1], 1)
         self.assertEqual(2, self.get_linkedList_node_by_index(head, 4).val)
 
-    @staticmethod
-    def get_linkedList_node_by_index(head: ListNode, idx: int) -> ListNode:
-        return SinglyLinkedList(head).get_node_by_index(idx)
+    def test_case3(self):
+        head: ListNode = self._get_cyclic_singly_linkedList([1, 2, 3], 2)
+        self.assertEqual(3, self.get_linkedList_node_by_index(head, 4).val)
 
     @staticmethod
     def _get_cyclic_singly_linkedList(ary: List[int], pos: int) -> ListNode:

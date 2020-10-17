@@ -4,6 +4,8 @@
 #include <dsa/testing/testing.h>
 #include <dsa/lib/arrays/array.h>
 #include <dsa/lib/lists/linkedlists/ls.h>
+#include <dsa/lib/trees/bt.h>
+#include <dsa/lib/lists/linkedlists/sls.h>
 
 namespace dsa::lib {
 
@@ -16,6 +18,10 @@ class LibTest : public testing::DSATest {
     static ListNode *arrayToSinglyLinkedlist(int *ary, length_t length) {
         arrays::Array array(ary, length);
         return array.toSinglyLinkedList();
+    }
+    static ListNode *getLinkedListNodeByIndex(ListNode *head, pos_t i) {
+        lists::linkedlists::SinglyLinkedList ls(head);
+        return ls.getNodeByIndex(i);
     }
 };
 

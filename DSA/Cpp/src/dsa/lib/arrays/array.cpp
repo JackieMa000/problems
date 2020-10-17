@@ -5,15 +5,24 @@ namespace dsa::lib::arrays {
 Array::Array(int *ary, length_t length) : ary(ary), length(length) {}
 
 ListNode *Array::toSinglyLinkedList() const {
+    return this->toCyclicSinglyLinkedList(-1);
+}
+
+ListNode *Array::toCyclicSinglyLinkedList(int pos) const {
     if (!this->length || !*this->ary) return nullptr;
     ListNode dummy;
     auto *head = new ListNode(*this->ary);
     dummy.next = head;
+    ListNode *cycleEntryNode = head;
 
     for (int i = 1; i < this->length; i++) {
-        head->next = new ListNode(*(this->ary + i));
+        auto *node = new ListNode(*(this->ary + i));
+        head->next = node;
+        if (i == pos) cycleEntryNode = node;
         head = head->next;
     }
+
+    if (pos >= 0) head->next = cycleEntryNode;
 
     return dummy.next;
 }

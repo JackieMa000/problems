@@ -18,8 +18,8 @@ class LinkedList : public List {
     [[nodiscard]] virtual arrayStruct toArray() final;
     [[nodiscard]] ListNode *getNodeByIndex(int idx) const;
     [[nodiscard]] ListNode *getNodeByValue(int val) const;
-//    Destroy the LinkedList when it is a cycle. nums: how many nodes in the LinkedList
-    static void destroyCyclic(ListNode *head, int nums);
+//    Destroy the a cyclic LinkedList. length: the length of the LinkedList
+    static void destroyCycle(ListNode *head, length_t length);
 };
 
 }  // namespace dsa::lib::lists::linkedlists

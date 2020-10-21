@@ -8,8 +8,6 @@ namespace dsa::lib::lists::linkedlists {
 class DoublyLinkedList : public LinkedList {
  public:
     explicit DoublyLinkedList(ListNode *head);
-
-    ListNode *reverse();
 };
 
 }  // namespace dsa

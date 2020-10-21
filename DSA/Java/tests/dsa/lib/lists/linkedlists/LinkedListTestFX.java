@@ -8,4 +8,8 @@ public class LinkedListTestFX extends ListFX {
     protected static ListNode arrayToSinglyLinkedlist(int[] ary) {
         return new ArrayInt(ary).toSinglyLinkedList();
     }
+
+    protected static ListNode arrayToCyclicSinglyLinkedlist(int[] ary, int pos) {
+        return new ArrayInt(ary).toCyclicSinglyLinkedList(pos);
+    }
 }

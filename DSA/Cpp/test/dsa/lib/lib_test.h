@@ -3,7 +3,6 @@
 
 #include <dsa/testing/testing.h>
 #include <dsa/lib/arrays/array.h>
-#include <dsa/lib/lists/linkedlists/ls.h>
 #include <dsa/lib/trees/bt.h>
 #include <dsa/lib/lists/linkedlists/sls.h>
 
@@ -19,9 +18,13 @@ class LibTest : public testing::DSATest {
         arrays::Array array(ary, length);
         return array.toSinglyLinkedList();
     }
-    static ListNode *getLinkedListNodeByIndex(ListNode *head, pos_t i) {
+    static ListNode *arrayToCyclicSinglyLinkedlist(int *ary, length_t length, pos_t pos) {
+        arrays::Array array(ary, length);
+        return array.toCyclicSinglyLinkedList(pos);
+    }
+    static ListNode *getLinkedListNodeByIndex(ListNode *head, pos_t idx) {
         lists::linkedlists::SinglyLinkedList ls(head);
-        return ls.getNodeByIndex(i);
+        return ls.getNodeByIndex(idx);
     }
 };
 

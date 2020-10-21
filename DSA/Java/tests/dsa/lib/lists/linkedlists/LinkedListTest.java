@@ -3,74 +3,92 @@ package dsa.lib.lists.linkedlists;
 import dsa.nodes.ListNode;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static dsa.testing.DSAAssert.assertArrayEqualsLinkedList;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class LinkedListTest extends LinkedListTestFX {
 
-    public static class SizeTest {
-
-        private int getSize(ListNode head) {
-            return new LinkedList(head).size();
-        }
-
+    public static class hasCycleTest {
         @Test
         public void case1() {
-            assertEquals(1, getSize(arrayToSinglyLinkedlist(new int[]{1})));
+            assertFalse(hasCycle(arrayToSinglyLinkedlist(new int[]{1, 2})));
         }
 
         @Test
         public void case2() {
-            assertEquals(3, getSize(arrayToSinglyLinkedlist(new int[]{1, 2, 3})));
+            assertTrue(hasCycle(arrayToCyclicSinglyLinkedlist(new int[]{1, 2}, 0)));
         }
 
         @Test
         public void case3() {
-            assertEquals(4, getSize(arrayToSinglyLinkedlist(new int[]{1, 2, 3, 4})));
+            assertTrue(hasCycle(arrayToCyclicSinglyLinkedlist(new int[]{3, 2, 0, 4}, 1)));
+        }
+
+        private boolean hasCycle(ListNode head) {
+            return new LinkedList(head).hasCycle();
         }
     }
 
-    public static class GetNodeByIndexTest {
-
+    public static class ReverseTest {
         @Test
         public void case1() {
-            assertEquals(1, getNodeByIndex(arrayToSinglyLinkedlist(new int[]{1}), 0).val);
+            ListNode head = arrayToSinglyLinkedlist(new int[]{1});
+            assertArrayEqualsLinkedList(new int[]{1}, reverse(head));
         }
 
         @Test
         public void case2() {
-            assertEquals(3, getNodeByIndex(arrayToSinglyLinkedlist(new int[]{1, 2, 3}), 2).val);
+            ListNode head = arrayToSinglyLinkedlist(new int[]{1, 2, 3});
+            assertArrayEqualsLinkedList(new int[]{3, 2, 1}, reverse(head));
         }
 
-        @Test
-        public void indexNotExist() {
-            assertNull(getNodeByIndex(arrayToSinglyLinkedlist(new int[]{1}), 2));
+        private ListNode reverse(ListNode head) {
+            return new LinkedList(head).reverse();
         }
-
-        private ListNode getNodeByIndex(ListNode head, int idx) {
-            return new LinkedList(head).getNodeByIndex(idx);
-        }
-
     }
 
-    public static class GetNodeByValueTest {
+    public static class ReverseBeforeTest {
         @Test
         public void case1() {
-            assertEquals(1, getNodeByValue(arrayToSinglyLinkedlist(new int[]{1}), 1).val);
+            ListNode head = arrayToSinglyLinkedlist(new int[]{1, 2, 3});
+            assertArrayEqualsLinkedList(new int[]{1, 2, 3}, reverseBeforeIndex(head, 0));
         }
 
         @Test
         public void case2() {
-            assertEquals(2, getNodeByValue(arrayToSinglyLinkedlist(new int[]{1, 2, 3}), 2).val);
+            ListNode head = arrayToSinglyLinkedlist(new int[]{1, 2, 3});
+            assertArrayEqualsLinkedList(new int[]{2, 1, 3}, reverseBeforeIndex(head, 2));
+        }
+
+        private ListNode reverseBeforeIndex(ListNode head, int idx) {
+            LinkedList ls = new LinkedList(head);
+            return ls.reverseBefore(ls.getNodeByIndex(idx));
+        }
+    }
+
+    public static class ReverseFromToTest {
+        @Test
+        public void case1() {
+            ListNode head = reverseFromTo(arrayToSinglyLinkedlist(new int[]{1, 2}), 0, 0);
+            assertArrayEqualsLinkedList(new int[]{1, 2}, head);
         }
 
         @Test
-        public void valueNotExist() {
-            assertNull(getNodeByValue(arrayToSinglyLinkedlist(new int[]{1}), 4));
+        public void case2() {
+            ListNode head = reverseFromTo(arrayToSinglyLinkedlist(new int[]{1, 2, 3, 4, 5}), 0, 4);
+            assertArrayEqualsLinkedList(new int[]{4, 3, 2, 1, 5}, head);
         }
 
-        private ListNode getNodeByValue(ListNode head, int val) {
-            return new LinkedList(head).getNodeByValue(val);
+        @Test
+        public void case3() {
+            ListNode head = reverseFromTo(arrayToSinglyLinkedlist(new int[]{1, 2, 3, 4, 5}), 1, 4);
+            assertArrayEqualsLinkedList(new int[]{1, 4, 3, 2, 5}, head);
         }
 
+        private ListNode reverseFromTo(ListNode head, int from, int to) {
+            LinkedList ls = new LinkedList(head);
+            return ls.reverseFromTo(ls.getNodeByIndex(from), ls.getNodeByIndex(to));
+        }
     }
 }

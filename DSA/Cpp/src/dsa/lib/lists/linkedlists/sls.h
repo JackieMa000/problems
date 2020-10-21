@@ -9,9 +9,6 @@ class SinglyLinkedList : public LinkedList {
  public:
     explicit SinglyLinkedList(ListNode *head);
 
-    ListNode *reverse();
-    ListNode *reverseBefore(ListNode *node);
-    ListNode *reverseFromTo(ListNode *fnode, ListNode *tnode);
 };
 
 }  // namespace dsa::lib::lists::linkedlists

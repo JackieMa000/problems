@@ -1,41 +1,93 @@
 package dsa.lib.lists.linkedlists;
 
-import dsa.lib.lists.List;
 import dsa.nodes.ListNode;
 
-public class LinkedList implements List {
+import java.util.HashSet;
+import java.util.Set;
 
-    final ListNode head;
+public class LinkedList extends Base {
 
     public LinkedList(ListNode head) {
-        this.head = head;
+        super(head);
     }
 
-    @Override
-    public final int size() {
+    public ListNode reverse() {
+        ListNode pre = null;
         ListNode cur = this.head;
-        int n;
-        for (n = 0; cur != null; n++) cur = cur.next;
-        return n;
+        ListNode next;
+
+        while (cur != null) {
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+
+        return pre;
     }
 
-    public final int[] toArrayInt() {
-        if (this.head == null) return null;
-        ListNode cur = this.head;
-        int[] res = new int[this.size()];
-        for (int i = 0; cur != null; i++, cur = cur.next) res[i] = cur.val;
-        return res;
+    //    reverse the nodes before a certain node
+    public ListNode reverseBefore(ListNode node) {
+        ListNode pre = node, cur = this.head, next;
+        while (cur != node) {
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        return pre;
     }
 
-    public ListNode getNodeByIndex(int idx) {
+    //      Reverse the nodes range fnode tnode, doesn't include the *tnode* node.
+    public ListNode reverseFromTo(ListNode fnode, ListNode tnode) {
         ListNode cur = this.head;
-        for (int i = 0; i < idx && cur != null; i++) cur = cur.next;
-        return cur;
+        ListNode dummy = new ListNode();
+        dummy.next = cur;
+        ListNode groupPre = dummy;
+
+//      1. Search for the fnode node. Get the group previous node;
+        while (cur != fnode) {
+            groupPre = cur;
+            cur = cur.next;
+        }
+
+//      2. Reverse the group nodes;
+//        Append the reversed group dsa.nodes tnode the groupPre
+        groupPre.next = new LinkedList(fnode).reverseBefore(tnode);
+
+        return dummy.next;
     }
 
-    public ListNode getNodeByValue(int val) {
-        ListNode cur = this.head;
-        while (cur != null && cur.val != val) cur = cur.next;
-        return cur;
+    // LeetCode141
+    public boolean hasCycle() {
+        return hasCycle2(this.head);
     }
+
+    // Rule: Hash Table
+    private static boolean hasCycle1(ListNode head) {
+        Set<ListNode> found = new HashSet<>();
+        while (head != null) {
+            if (found.contains(head)) return true;
+            found.add(head);
+            head = head.next;
+        }
+        return false;
+    }
+
+    /**
+     * Rule:
+     * Two Pointers
+     * Fast and Slow Pointers
+     * Tortoise and Hare Algorithm
+     */
+    private static boolean hasCycle2(ListNode head) {
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) return true;
+        }
+        return false;
+    }
+
 }

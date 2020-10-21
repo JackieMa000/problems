@@ -1,7 +1,6 @@
 #ifndef TESTING_H
 #define TESTING_H
 
-#include <gtest/gtest.h>
 #include <dsa/dsadef.h>
 #include "dsa/nodes/nodes.h"
 

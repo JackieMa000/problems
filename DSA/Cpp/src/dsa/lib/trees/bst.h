@@ -1,7 +1,6 @@
 #ifndef LIB_TREES_BST_H
 #define LIB_TREES_BST_H
 
-#include <vector>
 #include "bt.h"
 
 namespace dsa::lib::trees {

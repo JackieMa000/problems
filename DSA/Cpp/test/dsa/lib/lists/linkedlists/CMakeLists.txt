@@ -1,5 +1,5 @@
 add_executable(linkedlist_test
-        ls_test.cpp)
+        ls_test.cpp ls_test1.cpp)
 
 target_link_libraries(linkedlist_test
         linkedlists

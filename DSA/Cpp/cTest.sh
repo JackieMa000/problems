@@ -1,7 +1,9 @@
-cd /Users/Jackie/Dev/DSA/problems/DSA/Cpp/cmake-build-debug-coverage
+cd /Users/Jackie/Dev/DSA/problems/DSA/Cpp/cmake-build-debug
+#cd /Users/Jackie/Dev/DSA/problems/DSA/Cpp/cmake-build-debug-coverage
 
 #### Build All Targets ###
-/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --build /Users/Jackie/Dev/DSA/problems/DSA/Cpp/cmake-build-debug-coverage --target all
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --build /Users/Jackie/Dev/DSA/problems/DSA/Cpp/cmake-build-debug --target all
+#/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --build /Users/Jackie/Dev/DSA/problems/DSA/Cpp/cmake-build-debug-coverage --target all
 
 
 ###### Run CTest   #####

@@ -1,3 +1,3 @@
 add_library(arrays array.cpp)
-target_link_libraries(arrays
+target_link_libraries(arrays PRIVATE
         nodes)

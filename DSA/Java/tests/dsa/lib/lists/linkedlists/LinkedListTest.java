@@ -4,31 +4,9 @@ import dsa.nodes.ListNode;
 import org.junit.Test;
 
 import static dsa.testing.DSAAssert.assertArrayEqualsLinkedList;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class LinkedListTest extends LinkedListTestFX {
-
-    public static class hasCycleTest {
-        @Test
-        public void case1() {
-            assertFalse(hasCycle(arrayToSinglyLinkedlist(new int[]{1, 2})));
-        }
-
-        @Test
-        public void case2() {
-            assertTrue(hasCycle(arrayToCyclicSinglyLinkedlist(new int[]{1, 2}, 0)));
-        }
-
-        @Test
-        public void case3() {
-            assertTrue(hasCycle(arrayToCyclicSinglyLinkedlist(new int[]{3, 2, 0, 4}, 1)));
-        }
-
-        private boolean hasCycle(ListNode head) {
-            return new LinkedList(head).hasCycle();
-        }
-    }
 
     public static class ReverseTest {
         @Test
@@ -90,5 +68,50 @@ public class LinkedListTest extends LinkedListTestFX {
             LinkedList ls = new LinkedList(head);
             return ls.reverseFromTo(ls.getNodeByIndex(from), ls.getNodeByIndex(to));
         }
+    }
+
+    public static class HasCycleTest {
+        @Test
+        public void case1() {
+            assertFalse(hasCycle(arrayToSinglyLinkedlist(new int[]{1, 2})));
+        }
+
+        @Test
+        public void case2() {
+            assertTrue(hasCycle(arrayToCyclicSinglyLinkedlist(new int[]{1, 2}, 0)));
+        }
+
+        @Test
+        public void case3() {
+            assertTrue(hasCycle(arrayToCyclicSinglyLinkedlist(new int[]{3, 2, 0, 4}, 1)));
+        }
+
+        private boolean hasCycle(ListNode head) {
+            return new LinkedList(head).hasCycle();
+        }
+    }
+
+    public static class DetectCycleTest {
+        @Test
+        public void case1() {
+            assertNull(detectCycle(arrayToSinglyLinkedlist(new int[]{1})));
+        }
+
+        @Test
+        public void case2() {
+            ListNode head = arrayToCyclicSinglyLinkedlist(new int[]{1, 2}, 0);
+            assertEquals(getLinkedListNodeByIndex(head, 0), detectCycle(head));
+        }
+
+        @Test
+        public void case3() {
+            ListNode head = arrayToCyclicSinglyLinkedlist(new int[]{3, 2, 0, -4}, 1);
+            assertEquals(getLinkedListNodeByIndex(head, 1), detectCycle(head));
+        }
+
+        private ListNode detectCycle(ListNode head) {
+            return new LinkedList(head).detectCycle();
+        }
+
     }
 }

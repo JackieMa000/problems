@@ -28,7 +28,11 @@ public class LinkedList extends Base {
 
     //    reverse the nodes before a certain node
     public ListNode reverseBefore(ListNode node) {
-        ListNode pre = node, cur = this.head, next;
+        return reverseBefore1(this.head, node);
+    }
+
+    private static ListNode reverseBefore1(ListNode head, ListNode node) {
+        ListNode pre = node, cur = head, next;
         while (cur != node) {
             next = cur.next;
             cur.next = pre;
@@ -53,7 +57,7 @@ public class LinkedList extends Base {
 
 //      2. Reverse the group nodes;
 //        Append the reversed group dsa.nodes tnode the groupPre
-        groupPre.next = new LinkedList(fnode).reverseBefore(tnode);
+        groupPre.next = reverseBefore1(fnode, tnode);
 
         return dummy.next;
     }
@@ -88,6 +92,67 @@ public class LinkedList extends Base {
             if (slow == fast) return true;
         }
         return false;
+    }
+
+    //    LeetCode142
+    public ListNode detectCycle() {
+        return detectCycle1(this.head);
+    }
+
+    // Hash Set
+    private static ListNode detectCycle1(ListNode head) {
+        Set<ListNode> found = new HashSet<>();
+        while (head != null) {
+            if (found.contains(head)) return head; // There is a cycle
+            found.add(head);
+            head = head.next;
+        }
+        return null; // There is no cycle
+
+    }
+
+    // 2 pointers
+    private static ListNode detectCycle2(ListNode head) {
+        ListNode slow = head, fast = head, start = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) { // There is a cycle
+//                Get the entry location node of the cycle
+                while (slow != start) {
+                    slow = slow.next;
+                    start = start.next;
+                }
+                return start;
+            }
+        }
+        return null; // There is no a cycle
+    }
+
+    // Clean Code Version
+    private static ListNode detectCycle3(ListNode head) {
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (isCyclic(slow, fast)) {
+                return getCycleNode(slow, head);
+            }
+        }
+        return null;
+    }
+
+    private static ListNode getCycleNode(ListNode slow, ListNode head) {
+        ListNode start = head;
+        while (slow != start) {
+            slow = slow.next;
+            start = start.next;
+        }
+        return start;
+    }
+
+    private static boolean isCyclic(ListNode slow, ListNode fast) {
+        return slow == fast;
     }
 
 }

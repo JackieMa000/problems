@@ -34,15 +34,15 @@ class ToCyclicSinglyLinkedListTest(ArrayTestCase):
 
     def test_case1(self):
         head: ListNode = self._get_cyclic_singly_linkedList([1, 2, 3], 0)
-        self.assertEqual(1, self.get_linkedList_node_by_index(head, 3).val)
+        self.assertEqual(1, self.get_linkedlist_node_by_index(head, 3).val)
 
     def test_case2(self):
         head: ListNode = self._get_cyclic_singly_linkedList([1, 2, 3, -1], 1)
-        self.assertEqual(2, self.get_linkedList_node_by_index(head, 4).val)
+        self.assertEqual(2, self.get_linkedlist_node_by_index(head, 4).val)
 
     def test_case3(self):
         head: ListNode = self._get_cyclic_singly_linkedList([1, 2, 3], 2)
-        self.assertEqual(3, self.get_linkedList_node_by_index(head, 4).val)
+        self.assertEqual(3, self.get_linkedlist_node_by_index(head, 4).val)
 
     @staticmethod
     def _get_cyclic_singly_linkedList(ary: List[int], pos: int) -> ListNode:

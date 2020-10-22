@@ -70,3 +70,20 @@ class HasCycleTest(LinkedListTestCase):
     @staticmethod
     def hasCycle(head):
         return LinkedList(head).hasCycle()
+
+
+class DetectCycleTest(LinkedListTestCase):
+    def test_case1(self):
+        self.assertIsNone(self.detectCycle(self.array_to_singly_linkedlist([1])))
+
+    def test_case2(self):
+        head = self.array_to_cyclic_linkedlist([1, 2], 0)
+        self.assertEqual(self.get_linkedlist_node_by_index(head, 0), self.detectCycle(head))
+
+    def test_case3(self):
+        head = self.array_to_cyclic_linkedlist([3, 2, 0, -4], 1)
+        self.assertEqual(self.get_linkedlist_node_by_index(head, 1), self.detectCycle(head))
+
+    @staticmethod
+    def detectCycle(head):
+        return LinkedList(head).detectCycle()

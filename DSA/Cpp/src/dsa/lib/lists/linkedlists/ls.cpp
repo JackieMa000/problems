@@ -1,10 +1,15 @@
 #include "ls.h"
 
+namespace dsa::lib::lists::linkedlists {
+
+LinkedList::LinkedList(ListNode *head) : Base(head) {}
+
 // reverse the nodes before a certain node
-dsa::lib::ListNode *dsa::lib::lists::linkedlists::LinkedList::reverseBefore(ListNode *node) const {
+ListNode *LinkedList::reverseBefore(ListNode *node) const { return reverseBefore1(this->head, node); }
+ListNode *LinkedList::reverseBefore1(ListNode *head, ListNode *node) {
     ListNode *pre, *cur, *next;
     pre = node;
-    cur = this->head;
+    cur = head;
 
     while (cur != node) {
         next = cur->next;
@@ -14,7 +19,7 @@ dsa::lib::ListNode *dsa::lib::lists::linkedlists::LinkedList::reverseBefore(List
     }
     return pre;
 }
-dsa::lib::ListNode *dsa::lib::lists::linkedlists::LinkedList::reverse() const {
+ListNode *LinkedList::reverse() const {
     ListNode *pre, *cur, *next;
     pre = nullptr;
     cur = this->head;
@@ -28,7 +33,7 @@ dsa::lib::ListNode *dsa::lib::lists::linkedlists::LinkedList::reverse() const {
     return pre;
 }
 // Reverse the nodes from *fnode* to *tnode*, does not include the *tnode* node
-dsa::lib::ListNode *dsa::lib::lists::linkedlists::LinkedList::reverseFromTo(ListNode *fnode, ListNode *tnode) const {
+ListNode *LinkedList::reverseFromTo(ListNode *fnode, ListNode *tnode) const {
     ListNode *cur = this->head;
     ListNode dummy;
     dummy.next = cur;
@@ -39,65 +44,11 @@ dsa::lib::ListNode *dsa::lib::lists::linkedlists::LinkedList::reverseFromTo(List
         cur = cur->next;
     }
 
-    LinkedList ls(fnode);
-    groupPre->next = ls.reverseBefore(tnode);
+    groupPre->next = reverseBefore1(fnode, tnode);
 
     return dummy.next;
 }
-namespace dsa::lib::lists::linkedlists {
 
-LinkedList::LinkedList(ListNode *head) : head(head) {
-}
-
-void LinkedList::destroy(ListNode *head) {
-    ListNode *cur, *next;
-    cur = head;
-    while (cur) {
-        next = cur->next;
-        delete cur;
-        cur = next;
-    }
-}
-void LinkedList::destroyCycle(ListNode *head, length_t length) {
-    ListNode *cur, *next;
-    cur = head;
-    for (int i = 0; cur && i < length; ++i) {
-        next = cur->next;
-        delete cur;
-        cur = next;
-    }
-}
-
-length_t LinkedList::length() {
-    ListNode *cur = this->head;
-    length_t n;
-    for (n = 0; cur; n++) { cur = cur->next; }
-    return n;
-}
-
-arrayStruct LinkedList::toArray() {
-    arrayStruct as{0, nullptr};
-    if (this->head) {
-        int *ary = new int[this->length()];
-        ListNode *cur = this->head;
-        for (int i = 0; cur; i++, cur = cur->next) { *(ary + i) = cur->val; }
-        as = {this->length(), ary};
-    }
-    return as;
-}
-
-ListNode *LinkedList::getNodeByIndex(int idx) const {
-    ListNode *cur = this->head;
-    for (int i = 0; i < idx && cur; ++i) { cur = cur->next; }
-    return cur;
-}
-ListNode *LinkedList::getNodeByValue(int val) const {
-    ListNode *cur = this->head;
-    while (cur && cur->val != val) { cur = cur->next; }
-    return cur;
-}
-
-// LeetCode141
 bool LinkedList::hasCycle() const {
     return hasCycle1(this->head);
 }
@@ -115,6 +66,46 @@ bool LinkedList::hasCycle1(ListNode *head) {
         if (slow == fast) return true;
     }
     return false;
+}
+
+ListNode *LinkedList::detectCycle() const {
+    return detectCycle1(this->head);
+}
+// Fast and Slow pinters
+ListNode *LinkedList::detectCycle1(ListNode *head) {
+    ListNode *slow = head, *fast = head;
+
+    // Determine whethere there's a cycle
+    while (true) {
+        if (not fast || not fast->next) return nullptr; // No cycle
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow == fast) break;
+    }
+
+    // Get the entry node of cycle
+    ListNode *start = head;
+    while (start != slow) {
+        start = start->next;
+        slow = slow->next;
+    }
+    return start;
+}
+// 2 pointers
+ListNode *LinkedList::detectCycle2(ListNode *head) {
+    ListNode *slow = head, *fast = head, *start = head;
+    while (fast && fast->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow == fast) { // There is a cycle
+            while (slow != start) {
+                slow = slow->next;
+                start = start->next;
+            }
+            return start;
+        }
+    }
+    return nullptr; // There is no cycle
 }
 
 }  // namespace dsa::lib::lists::linkedlists

@@ -1,4 +1,4 @@
-from typing import Set
+from typing import Set, Optional
 
 from dsa.lib.lists.linkedlists.base import Base
 from dsa.nodes import ListNode
@@ -20,8 +20,12 @@ class LinkedList(Base):
 
     def reverse_before(self, node: ListNode) -> ListNode:
         # Reverse the LinkedList nodes before a certain node, doesn't  reverse the certain node
+        return self.reverse_before1(self.head, node)
+
+    @staticmethod
+    def reverse_before1(head: ListNode, node: ListNode) -> ListNode:
         pre: ListNode = node
-        cur: ListNode = self.head
+        cur: ListNode = head
         next_: ListNode
         while cur is not node:
             next_ = cur.next
@@ -43,7 +47,7 @@ class LinkedList(Base):
 
         # 2. Reverse the linkedlist from the fnode to the tnode
         # 3. Concatenate the reversed group nodes to the main linkedlist
-        group_pre.next = LinkedList(fnode).reverse_before(tnode)
+        group_pre.next = self.reverse_before1(fnode, tnode)
 
         return dummy.next
 
@@ -80,3 +84,67 @@ class LinkedList(Base):
             fast, slow = fast.next.next, slow.next
             if fast is slow: return True
         return False
+
+    # LeetCode142
+    def detectCycle(self) -> ListNode:
+        return self.detectCycle1(self.head)
+
+    # Hash Set. Hash Table
+    @staticmethod
+    def detectCycle1(head: ListNode) -> Optional[ListNode]:
+        found: Set[ListNode] = set()
+        while head:
+            if head in found: return head
+            found.add(head)
+            head = head.next
+        return None
+
+    # 2 pointers. Fast and Slow pointers, Tortoise and Hare algorithm
+    @staticmethod
+    def detectCycle2(self, head: ListNode) -> Optional[ListNode]:
+        slow: ListNode = head
+        fast: ListNode = head
+
+        # Determine whether there is a cycle
+        while True:
+            if not fast or not fast.next: return None
+            slow = slow.next
+            fast = fast.next.next
+            if slow is fast: break
+
+        # get the entry location node of the cycle
+        # Here fast == slow
+        start: ListNode = head
+        while start is not slow:
+            slow = slow.next
+            start = start.next
+        return start
+
+    @staticmethod
+    def detectCycle3(head: ListNode) -> Optional[ListNode]:
+        # 1. Determine whether there is a cycle
+        slow: ListNode = head
+        fast: ListNode = head
+        start: ListNode = head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow is fast:  # There is a cycle
+                # 2. Get the entry location node of the cycle
+                while slow is not start:
+                    slow = slow.next
+                    start = start.next
+                return start
+        return None  # There is no cycle
+
+    # Pythonic
+    @staticmethod
+    def detectCycle4(head: ListNode) -> Optional[ListNode]:
+        slow = fast = start = head
+        while fast and fast.next:
+            slow, fast = slow.next, fast.next.next
+            if slow is fast:
+                while slow is not start:
+                    slow, start = slow.next, start.next
+                return start
+        return None

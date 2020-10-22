@@ -50,23 +50,18 @@ public class LinkedListBaseTest extends LinkedListTestFX {
 
         @Test
         public void case1() {
-            assertEquals(1, getNodeByIndex(arrayToSinglyLinkedlist(new int[]{1}), 0).val);
+            assertEquals(1, getLinkedListNodeByIndex(arrayToSinglyLinkedlist(new int[]{1}), 0).val);
         }
 
         @Test
         public void case2() {
-            assertEquals(3, getNodeByIndex(arrayToSinglyLinkedlist(new int[]{1, 2, 3}), 2).val);
+            assertEquals(3, getLinkedListNodeByIndex(arrayToSinglyLinkedlist(new int[]{1, 2, 3}), 2).val);
         }
 
         @Test
         public void indexNotExist() {
-            assertNull(getNodeByIndex(arrayToSinglyLinkedlist(new int[]{1}), 2));
+            assertNull(getLinkedListNodeByIndex(arrayToSinglyLinkedlist(new int[]{1}), 2));
         }
-
-        private ListNode getNodeByIndex(ListNode head, int idx) {
-            return new Base(head).getNodeByIndex(idx);
-        }
-
     }
 
     public static class GetNodeByValueTest {

@@ -95,7 +95,7 @@ public class LinkedList extends Base {
         return false;
     }
 
-    //    LeetCode142
+    // LeetCode142
     public ListNode detectCycle() {
         return detectCycle1(this.head);
     }

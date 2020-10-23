@@ -16,7 +16,7 @@ class LinkedList : public Base {
 
     // LeetCode141
     [[nodiscard]] bool hasCycle() const;
-//    LeetCode142
+    // LeetCode142
     [[nodiscard]] ListNode *detectCycle() const;
 
  private:

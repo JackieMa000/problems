@@ -1,4 +1,4 @@
-from dsa.lib.lists.linkedlists.base import Base
+from dsa.lib.lists.linkedlists.ls import LinkedList
 from dsa.lib.lists.linkedlists.tests.fixture import LinkedListTestCase
 from dsa.nodes import ListNode
 
@@ -13,13 +13,13 @@ class ToArrayTest(LinkedListTestCase):
 
     @staticmethod
     def to_array(head):
-        return Base(head).to_array()
+        return LinkedList(head).to_array()
 
 
 class SizeTestCase(LinkedListTestCase):
     @staticmethod
     def get_size(head: ListNode):
-        return Base(head).size()
+        return LinkedList(head).size()
 
     def test_case1(self):
         self.assertEqual(1, self.get_size(self.array_to_singly_linkedlist([1])))
@@ -57,5 +57,5 @@ class GetNodeByValueTest(LinkedListTestCase):
 
     @staticmethod
     def get_node(head: ListNode, val: int) -> ListNode:
-        actual: ListNode = Base(head).get_node_by_value(val)
+        actual: ListNode = LinkedList(head).get_node_by_value(val)
         return actual

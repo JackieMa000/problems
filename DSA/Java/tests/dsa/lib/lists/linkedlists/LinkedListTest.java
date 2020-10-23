@@ -20,14 +20,14 @@ public class LinkedListTest extends LinkedListTestFX {
         }
 
         private int[] toArray(ListNode head) {
-            return new Base(head).toArrayInt();
+            return new LinkedList(head).toArrayInt();
         }
     }
 
     public static class SizeTest {
 
         private int getSize(ListNode head) {
-            return new Base(head).size();
+            return new LinkedList(head).size();
         }
 
         @Test
@@ -81,7 +81,7 @@ public class LinkedListTest extends LinkedListTestFX {
         }
 
         private ListNode getNodeByValue(ListNode head, int val) {
-            return new Base(head).getNodeByValue(val);
+            return new LinkedList(head).getNodeByValue(val);
         }
 
     }

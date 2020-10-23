@@ -10,12 +10,13 @@ class LinkedList : public Base {
     explicit LinkedList(ListNode *head);
 
     ListNode *reverseBefore(ListNode *node) const;
+    // LeetCode206
     [[nodiscard]] ListNode *reverse() const;
     ListNode *reverseFromTo(ListNode *fnode, ListNode *tnode) const;
 
     // LeetCode141
     [[nodiscard]] bool hasCycle() const;
-    //LeetCode142
+//    LeetCode142
     [[nodiscard]] ListNode *detectCycle() const;
 
  private:

@@ -8,6 +8,7 @@ class LinkedList(Base):
     def __init__(self, head: ListNode):
         super().__init__(head)
 
+    # LeetCode206
     def reverse(self) -> ListNode:
         pre = None
         cur: ListNode = self.head

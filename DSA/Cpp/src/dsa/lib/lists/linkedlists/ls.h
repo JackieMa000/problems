@@ -24,7 +24,7 @@ class LinkedList : public Base {
 
     static bool hasCycle1(ListNode *head);
     static ListNode *detectCycle1(ListNode *head);
-    static ListNode *detectCycle2(ListNode *head);
+    static ListNode *detectCycle11(ListNode *head);
 };
 
 }  // namespace dsa::lib::lists::linkedlists

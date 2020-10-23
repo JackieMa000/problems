@@ -119,7 +119,7 @@ public class LinkedList extends Base {
             slow = slow.next;
             fast = fast.next.next;
             if (slow == fast) { // There is a cycle
-//                Get the entry location node of the cycle
+//                Get the cycle entry node
                 while (slow != start) {
                     slow = slow.next;
                     start = start.next;
@@ -131,19 +131,19 @@ public class LinkedList extends Base {
     }
 
     // Clean Code Version
-    private static ListNode detectCycle3(ListNode head) {
+    private static ListNode detectCycle21(ListNode head) {
         ListNode slow = head, fast = head;
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
             if (isCyclic(slow, fast)) {
-                return getCycleNode(slow, head);
+                return getCycleEntryNode(head, slow);
             }
         }
         return null;
     }
 
-    private static ListNode getCycleNode(ListNode slow, ListNode head) {
+    private static ListNode getCycleEntryNode(ListNode head, ListNode slow) {
         ListNode start = head;
         while (slow != start) {
             slow = slow.next;

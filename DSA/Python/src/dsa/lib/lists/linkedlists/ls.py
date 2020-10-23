@@ -88,7 +88,7 @@ class LinkedList(Base):
 
     # LeetCode142
     def detectCycle(self) -> ListNode:
-        return self.detectCycle1(self.head)
+        return self.detectCycle2(self.head)
 
     # Hash Set. Hash Table
     @staticmethod
@@ -101,8 +101,20 @@ class LinkedList(Base):
         return None
 
     # 2 pointers. Fast and Slow pointers, Tortoise and Hare algorithm
+    # Pythonic
     @staticmethod
-    def detectCycle2(self, head: ListNode) -> Optional[ListNode]:
+    def detectCycle2(head: ListNode) -> Optional[ListNode]:
+        slow = fast = start = head
+        while fast and fast.next:
+            slow, fast = slow.next, fast.next.next
+            if slow is fast:
+                while slow is not start:
+                    slow, start = slow.next, start.next
+                return start
+        return None
+
+    @staticmethod
+    def detectCycle21(head: ListNode) -> Optional[ListNode]:
         slow: ListNode = head
         fast: ListNode = head
 
@@ -122,7 +134,7 @@ class LinkedList(Base):
         return start
 
     @staticmethod
-    def detectCycle3(head: ListNode) -> Optional[ListNode]:
+    def detectCycle22(head: ListNode) -> Optional[ListNode]:
         # 1. Determine whether there is a cycle
         slow: ListNode = head
         fast: ListNode = head
@@ -131,21 +143,9 @@ class LinkedList(Base):
             slow = slow.next
             fast = fast.next.next
             if slow is fast:  # There is a cycle
-                # 2. Get the entry location node of the cycle
+                # 2. Get the cycle entry node
                 while slow is not start:
                     slow = slow.next
                     start = start.next
                 return start
         return None  # There is no cycle
-
-    # Pythonic
-    @staticmethod
-    def detectCycle4(head: ListNode) -> Optional[ListNode]:
-        slow = fast = start = head
-        while fast and fast.next:
-            slow, fast = slow.next, fast.next.next
-            if slow is fast:
-                while slow is not start:
-                    slow, start = slow.next, start.next
-                return start
-        return None

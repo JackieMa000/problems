@@ -6,5 +6,5 @@ What is the distance fast moved? What is the distance slow moved? And their rela
 
 fast: x1 + x2 + x3 + x2
 slow: x1 + x2
-fast = 2 * slow -> x1 + x2 + x3 + x2 = 2 (x1 + x2)
+fast = 2 * slow -> x1 + x2 + x3 + x2 = 2 (x1 + x2) -> x3 + x2 = x1 + x2
 Thus x1 = x3

@@ -71,28 +71,9 @@ bool LinkedList::hasCycle1(ListNode *head) {
 ListNode *LinkedList::detectCycle() const {
     return detectCycle1(this->head);
 }
-// Fast and Slow pinters
-ListNode *LinkedList::detectCycle1(ListNode *head) {
-    ListNode *slow = head, *fast = head;
-
-    // Determine whethere there's a cycle
-    while (true) {
-        if (not fast || not fast->next) return nullptr; // No cycle
-        slow = slow->next;
-        fast = fast->next->next;
-        if (slow == fast) break;
-    }
-
-    // Get the entry node of cycle
-    ListNode *start = head;
-    while (start != slow) {
-        start = start->next;
-        slow = slow->next;
-    }
-    return start;
-}
 // 2 pointers
-ListNode *LinkedList::detectCycle2(ListNode *head) {
+// Fast and Slow pointers
+ListNode *LinkedList::detectCycle1(ListNode *head) {
     ListNode *slow = head, *fast = head, *start = head;
     while (fast && fast->next) {
         slow = slow->next;
@@ -106,6 +87,25 @@ ListNode *LinkedList::detectCycle2(ListNode *head) {
         }
     }
     return nullptr; // There is no cycle
+}
+ListNode *LinkedList::detectCycle11(ListNode *head) {
+    ListNode *slow = head, *fast = head;
+
+    // Determine whether there's a cycle
+    while (true) {
+        if (not fast || not fast->next) return nullptr; // No cycle
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow == fast) break;
+    }
+
+    // Get the cycle entry node
+    ListNode *start = head;
+    while (start != slow) {
+        start = start->next;
+        slow = slow->next;
+    }
+    return start;
 }
 
 }  // namespace dsa::lib::lists::linkedlists

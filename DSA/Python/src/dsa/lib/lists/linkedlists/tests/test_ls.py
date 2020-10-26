@@ -1,15 +1,19 @@
-from typing import List
-
-from dsa.lib.arrays.array import Array
 from dsa.lib.lists.linkedlists.ls import LinkedList
-from dsa.lib.lists.tests.test_list import ListTestCase
+from dsa.lib.lists.linkedlists.tests.fixture import LinkedListTestCase
 from dsa.nodes import ListNode
 
 
-class LinkedListTestCase(ListTestCase):
+class ToArrayTest(LinkedListTestCase):
+    def test_null_list(self):
+        self.assertIsNone(self.to_array(None))
+
+    def test_case1(self):
+        ary = [1, 2, 3, 4]
+        self.assertEqual(ary, self.to_array(self.array_to_singly_linkedlist(ary)))
+
     @staticmethod
-    def array_to_singly_linkedlist(ary: List[int]):
-        return Array(ary).to_singly_linkedList()
+    def to_array(head):
+        return LinkedList(head).to_array()
 
 
 class SizeTestCase(LinkedListTestCase):
@@ -29,20 +33,16 @@ class SizeTestCase(LinkedListTestCase):
 
 class GetNodeByIndexTestCase(LinkedListTestCase):
     def test_case1(self):
-        self.assertEqual(3, self.get_node_by_index(self.array_to_singly_linkedlist([1, 2, 3, 4, 5]), 2).val)
+        self.assertEqual(3, self.get_linkedlist_node_by_index(self.array_to_singly_linkedlist([1, 2, 3, 4, 5]), 2).val)
 
     def test_case2(self):
-        self.assertEqual(1, self.get_node_by_index(self.array_to_singly_linkedlist([1, 2, 3, 4, 5]), 0).val)
+        self.assertEqual(1, self.get_linkedlist_node_by_index(self.array_to_singly_linkedlist([1, 2, 3, 4, 5]), 0).val)
 
     def test_case3(self):
-        self.assertEqual(5, self.get_node_by_index(self.array_to_singly_linkedlist([1, 2, 3, 4, 5]), 4).val)
+        self.assertEqual(5, self.get_linkedlist_node_by_index(self.array_to_singly_linkedlist([1, 2, 3, 4, 5]), 4).val)
 
     def test_index_not_exist(self):
-        self.assertIsNone(self.get_node_by_index(self.array_to_singly_linkedlist([1]), 2))
-
-    @staticmethod
-    def get_node_by_index(head: ListNode, idx: int) -> ListNode:
-        return LinkedList(head).get_node_by_index(idx)
+        self.assertIsNone(self.get_linkedlist_node_by_index(self.array_to_singly_linkedlist([1]), 2))
 
 
 class GetNodeByValueTest(LinkedListTestCase):

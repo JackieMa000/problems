@@ -1,23 +1,42 @@
 #ifndef LIB_LISTS_LINKEDLISTS_LS_H
 #define LIB_LISTS_LINKEDLISTS_LS_H
 
-#include <tuple>
-#include <dsa/lib/lists/list.h>
-#include <dsa/nodes/nodes.h>
+#include "base.h"
 
 namespace dsa::lib::lists::linkedlists {
 
-class LinkedList : public List {
+class LinkedList : public Base {
  public:
-    ListNode *head;
-
     explicit LinkedList(ListNode *head);
-    static void destroy(ListNode *head);
 
-    length_t length() final;
-    [[nodiscard]] virtual arrayStruct toArray() final;
-    [[nodiscard]] ListNode *getNodeByIndex(int idx) const;
-    [[nodiscard]] ListNode *getNodeByValue(int val) const;
+    ListNode *reverseBefore(ListNode *node) const;
+
+    // LeetCode206
+    [[nodiscard]] ListNode *reverse() const;
+    ListNode *reverseFromTo(ListNode *fnode, ListNode *tnode) const;
+
+    // LeetCode141
+    [[nodiscard]] bool hasCycle() const;
+
+//    LeetCode142
+    [[nodiscard]] ListNode *detectCycle() const;
+
+//    LeetCode24
+    ListNode *swapPairs();
+
+ private:
+    static ListNode *reverseBefore1(ListNode *head, ListNode *node);
+
+    static bool hasCycle1(ListNode *head);
+
+    static ListNode *detectCycle1(ListNode *head);
+    static ListNode *detectCycle11(ListNode *head);
+
+    static ListNode *swapPairs1(ListNode *head);
+    static ListNode *swapPairs2(ListNode *head);
+    static ListNode *swapPairs3(ListNode *head);
+    static ListNode *swapPairsRecur(ListNode *prev);
+
 };
 
 }  // namespace dsa::lib::lists::linkedlists

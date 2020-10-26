@@ -17,6 +17,12 @@ class Array {
     Array(int *ary, length_t length);
     [[nodiscard]] ListNode *toSinglyLinkedList() const;
     [[nodiscard]] BinaryTreeNode *toBinaryTree() const;
+    /**
+     * To represent a cycle in the given linked list, we use an integer pos which represents
+     * the position (0-indexed) in the linked list where tail connects to. If pos is -1, then
+     * there is no cycle in the linked list.
+     */
+    [[nodiscard]] ListNode *toCyclicSinglyLinkedList(int pos) const;
 };
 
 }  // namespace dsa::lib::arrays

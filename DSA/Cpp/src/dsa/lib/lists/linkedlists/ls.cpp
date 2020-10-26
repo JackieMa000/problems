@@ -2,46 +2,158 @@
 
 namespace dsa::lib::lists::linkedlists {
 
-LinkedList::LinkedList(ListNode *head) : head(head) {
-}
+LinkedList::LinkedList(ListNode *head) : Base(head) {}
 
-void LinkedList::destroy(ListNode *head) {
-    ListNode *cur, *next;
+// reverse the nodes before a certain node
+ListNode *LinkedList::reverseBefore(ListNode *node) const { return reverseBefore1(this->head, node); }
+ListNode *LinkedList::reverseBefore1(ListNode *head, ListNode *node) {
+    ListNode *pre, *cur, *next;
+    pre = node;
     cur = head;
-    while (cur) {
+
+    while (cur != node) {
         next = cur->next;
-        delete cur;
+        cur->next = pre;
+        pre = cur;
         cur = next;
     }
+    return pre;
 }
+ListNode *LinkedList::reverse() const {
+    ListNode *pre, *cur, *next;
+    pre = nullptr;
+    cur = this->head;
 
-length_t LinkedList::length() {
-    ListNode *cur = this->head;
-    length_t n;
-    for (n = 0; cur; n++) { cur = cur->next; }
-    return n;
-}
-
-arrayStruct LinkedList::toArray() {
-    arrayStruct as{0, nullptr};
-    if (this->head) {
-        int *ary = new int[this->length()];
-        ListNode *cur = this->head;
-        for (int i = 0; cur; i++, cur = cur->next) { *(ary + i) = cur->val; }
-        as = {this->length(), ary};
+    while (cur) {
+        next = cur->next;
+        cur->next = pre;
+        pre = cur;
+        cur = next;
     }
-    return as;
+    return pre;
+}
+// Reverse the nodes from *fnode* to *tnode*, does not include the *tnode* node
+ListNode *LinkedList::reverseFromTo(ListNode *fnode, ListNode *tnode) const {
+    ListNode *cur = this->head;
+    ListNode dummy;
+    dummy.next = cur;
+    ListNode *groupPre = &dummy;
+
+    while (cur != fnode) {
+        groupPre = cur;
+        cur = cur->next;
+    }
+
+    groupPre->next = reverseBefore1(fnode, tnode);
+
+    return dummy.next;
 }
 
-ListNode *LinkedList::getNodeByIndex(int idx) const {
-    ListNode *cur = this->head;
-    for (int i = 0; i < idx && cur; ++i) { cur = cur->next; }
-    return cur;
+bool LinkedList::hasCycle() const {
+    return hasCycle1(this->head);
 }
-ListNode *LinkedList::getNodeByValue(int val) const {
-    ListNode *cur = this->head;
-    while (cur && cur->val != val) { cur = cur->next; }
-    return cur;
+/**
+ * Rule:
+ * Two Pointers
+ * Fast and Slow Pointers
+ * Tortoise and Hare Algorithm
+ */
+bool LinkedList::hasCycle1(ListNode *head) {
+    ListNode *slow = head, *fast = head;
+    while (fast && fast->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow == fast) return true;
+    }
+    return false;
+}
+
+ListNode *LinkedList::detectCycle() const {
+    return detectCycle1(this->head);
+}
+// 2 pointers
+// Fast and Slow pointers
+ListNode *LinkedList::detectCycle1(ListNode *head) {
+    ListNode *slow = head, *fast = head, *start = head;
+    while (fast && fast->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow == fast) { // There is a cycle
+            while (slow != start) {
+                slow = slow->next;
+                start = start->next;
+            }
+            return start;
+        }
+    }
+    return nullptr; // There is no cycle
+}
+ListNode *LinkedList::detectCycle11(ListNode *head) {
+    ListNode *slow = head, *fast = head;
+
+    // Determine whether there's a cycle
+    while (true) {
+        if (not fast || not fast->next) return nullptr; // No cycle
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow == fast) break;
+    }
+
+    // Get the cycle entry node
+    ListNode *start = head;
+    while (start != slow) {
+        start = start->next;
+        slow = slow->next;
+    }
+    return start;
+}
+
+ListNode *LinkedList::swapPairs() {
+    return swapPairs2(this->head);
+}
+//Iteration
+ListNode *LinkedList::swapPairs1(ListNode *head) {
+    ListNode dummy;
+    dummy.next = head;
+
+    ListNode *pre = &dummy;
+    while (pre->next && pre->next->next) {
+        ListNode *p = pre->next, *q = p->next;
+//        swap
+        pre->next = q;
+        p->next = q->next;
+        q->next = p;
+
+        pre = pre->next->next;
+    }
+
+    return dummy.next;
+}
+// Recursion
+ListNode *LinkedList::swapPairs2(ListNode *head) {
+    if (head && head->next) {
+        ListNode *newHead = head->next->next;
+        ListNode *p = head, *q = p->next;
+//        swap
+        head = q;
+        p->next = swapPairs2(newHead);
+        q->next = p;
+    }
+    return head;
+}
+ListNode *LinkedList::swapPairs3(ListNode *head) {
+    ListNode dummy;
+    dummy.next = head;
+    return swapPairsRecur(&dummy);
+}
+ListNode *LinkedList::swapPairsRecur(ListNode *prev) {
+    if (prev->next && prev->next->next) {
+        ListNode *p = prev->next, *q = p->next;
+        prev->next = q;
+        p->next = swapPairsRecur(q);
+        q->next = p;
+    }
+    return prev->next;
 }
 
 }  // namespace dsa::lib::lists::linkedlists

@@ -7,6 +7,23 @@ import static org.junit.Assert.*;
 
 public class LinkedListTest extends LinkedListTestFX {
 
+    public static class ToArrayTest {
+        @Test
+        public void nullList() {
+            assertNull(toArray(null));
+        }
+
+        @Test
+        public void case1() {
+            int[] ary = {1, 2, 3, 4};
+            assertArrayEquals(ary, toArray(arrayToSinglyLinkedlist(ary)));
+        }
+
+        private int[] toArray(ListNode head) {
+            return new LinkedList(head).toArrayInt();
+        }
+    }
+
     public static class SizeTest {
 
         private int getSize(ListNode head) {
@@ -33,23 +50,18 @@ public class LinkedListTest extends LinkedListTestFX {
 
         @Test
         public void case1() {
-            assertEquals(1, getNodeByIndex(arrayToSinglyLinkedlist(new int[]{1}), 0).val);
+            assertEquals(1, getLinkedListNodeByIndex(arrayToSinglyLinkedlist(new int[]{1}), 0).val);
         }
 
         @Test
         public void case2() {
-            assertEquals(3, getNodeByIndex(arrayToSinglyLinkedlist(new int[]{1, 2, 3}), 2).val);
+            assertEquals(3, getLinkedListNodeByIndex(arrayToSinglyLinkedlist(new int[]{1, 2, 3}), 2).val);
         }
 
         @Test
         public void indexNotExist() {
-            assertNull(getNodeByIndex(arrayToSinglyLinkedlist(new int[]{1}), 2));
+            assertNull(getLinkedListNodeByIndex(arrayToSinglyLinkedlist(new int[]{1}), 2));
         }
-
-        private ListNode getNodeByIndex(ListNode head, int idx) {
-            return new LinkedList(head).getNodeByIndex(idx);
-        }
-
     }
 
     public static class GetNodeByValueTest {

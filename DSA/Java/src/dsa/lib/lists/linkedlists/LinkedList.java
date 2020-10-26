@@ -1,41 +1,212 @@
 package dsa.lib.lists.linkedlists;
 
-import dsa.lib.lists.List;
 import dsa.nodes.ListNode;
 
-public class LinkedList implements List {
+import java.util.HashSet;
+import java.util.Set;
 
-    final ListNode head;
+public class LinkedList extends Base {
 
     public LinkedList(ListNode head) {
-        this.head = head;
+        super(head);
     }
 
-    @Override
-    public final int size() {
+    // LeetCode206
+    public ListNode reverse() {
+        ListNode pre = null;
         ListNode cur = this.head;
-        int n;
-        for (n = 0; cur != null; n++) cur = cur.next;
-        return n;
+        ListNode next;
+
+        while (cur != null) {
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+
+        return pre;
     }
 
-    public final int[] toArray() {
-        if (this.head == null) return null;
-        ListNode cur = this.head;
-        int[] res = new int[this.size()];
-        for (int i = 0; cur != null; i++, cur = cur.next) res[i] = cur.val;
-        return res;
+    //    reverse the nodes before a certain node
+    public ListNode reverseBefore(ListNode node) {
+        return reverseBefore1(this.head, node);
     }
 
-    public ListNode getNodeByIndex(int idx) {
-        ListNode cur = this.head;
-        for (int i = 0; i < idx && cur != null; i++) cur = cur.next;
-        return cur;
+    private static ListNode reverseBefore1(ListNode head, ListNode node) {
+        ListNode pre = node, cur = head, next;
+        while (cur != node) {
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        return pre;
     }
 
-    public ListNode getNodeByValue(int val) {
+    //      Reverse the nodes range fnode tnode, doesn't include the *tnode* node.
+    public ListNode reverseFromTo(ListNode fnode, ListNode tnode) {
         ListNode cur = this.head;
-        while (cur != null && cur.val != val) cur = cur.next;
-        return cur;
+        ListNode dummy = new ListNode();
+        dummy.next = cur;
+        ListNode groupPre = dummy;
+
+//      1. Search for the fnode node. Get the group previous node;
+        while (cur != fnode) {
+            groupPre = cur;
+            cur = cur.next;
+        }
+
+//      2. Reverse the group nodes;
+//        Append the reversed group dsa.nodes tnode the groupPre
+        groupPre.next = reverseBefore1(fnode, tnode);
+
+        return dummy.next;
     }
+
+    // LeetCode141
+    public boolean hasCycle() {
+        return hasCycle2(this.head);
+    }
+
+    // Rule: Hash Table
+    private static boolean hasCycle1(ListNode head) {
+        Set<ListNode> found = new HashSet<>();
+        while (head != null) {
+            if (found.contains(head)) return true;
+            found.add(head);
+            head = head.next;
+        }
+        return false;
+    }
+
+    /**
+     * Rule:
+     * Two Pointers
+     * Fast and Slow Pointers
+     * Tortoise and Hare Algorithm
+     */
+    private static boolean hasCycle2(ListNode head) {
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) return true;
+        }
+        return false;
+    }
+
+    // LeetCode142
+    public ListNode detectCycle() {
+        return detectCycle1(this.head);
+    }
+
+    // Hash Set
+    private static ListNode detectCycle1(ListNode head) {
+        Set<ListNode> found = new HashSet<>();
+        while (head != null) {
+            if (found.contains(head)) return head; // There is a cycle
+            found.add(head);
+            head = head.next;
+        }
+        return null; // There is no cycle
+
+    }
+
+    // 2 pointers
+    private static ListNode detectCycle2(ListNode head) {
+        ListNode slow = head, fast = head, start = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) { // There is a cycle
+//                Get the cycle entry node
+                while (slow != start) {
+                    slow = slow.next;
+                    start = start.next;
+                }
+                return start;
+            }
+        }
+        return null; // There is no a cycle
+    }
+
+    // Clean Code Version
+    private static ListNode detectCycle21(ListNode head) {
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (isCyclic(slow, fast)) {
+                return getCycleEntryNode(head, slow);
+            }
+        }
+        return null;
+    }
+
+    private static ListNode getCycleEntryNode(ListNode head, ListNode slow) {
+        ListNode start = head;
+        while (slow != start) {
+            slow = slow.next;
+            start = start.next;
+        }
+        return start;
+    }
+
+    private static boolean isCyclic(ListNode slow, ListNode fast) {
+        return slow == fast;
+    }
+
+    //    LeetCode24
+    public ListNode swapPairs() {
+        return swapPairs2(this.head);
+    }
+
+    private static ListNode swapPairs1(ListNode head) {
+        ListNode dummy = new ListNode();
+        dummy.next = head;
+
+        ListNode prev = dummy;
+        while (prev.next != null && prev.next.next != null) {
+            ListNode p = prev.next, q = p.next;
+//            swap
+            prev.next = q;
+            p.next = q.next;
+            q.next = p;
+
+            prev = prev.next.next;
+        }
+
+        return dummy.next;
+    }
+
+    // Recursion
+    private static ListNode swapPairs2(ListNode head) {
+        if (head != null && head.next != null) {
+            ListNode newStart = head.next.next;
+            ListNode p = head, q = head.next;
+//        swap
+            head = q;
+            p.next = swapPairs2(newStart);
+            q.next = p;
+        }
+        return head;
+    }
+
+    // Recursion
+    private static ListNode swapPairs3(ListNode head) {
+        ListNode dummy = new ListNode();
+        dummy.next = head;
+        return swapPairsRecur(dummy);
+    }
+
+    private static ListNode swapPairsRecur(ListNode prev) {
+        if (prev.next != null && prev.next.next != null) {
+            ListNode p = prev.next, q = p.next;
+            prev.next = q;
+            p.next = swapPairsRecur(q);
+            q.next = p;
+        }
+        return prev.next;
+    }
+
 }

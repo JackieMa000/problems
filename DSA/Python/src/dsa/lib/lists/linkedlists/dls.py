@@ -1,4 +1,4 @@
-from dsa.lib.lists import LinkedList
+from dsa.lib.lists.linkedlists.ls import LinkedList
 from dsa.nodes import ListNode
 
 

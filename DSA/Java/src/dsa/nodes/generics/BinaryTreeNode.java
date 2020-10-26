@@ -1,17 +1,21 @@
 package dsa.nodes.generics;
 
-public class BinaryTreeNode extends TreeNode {
-    public BinaryTreeNode left, right;
+public class BinaryTreeNode<T> extends TreeNode<T> {
+    public BinaryTreeNode<T> left, right;
 
     public BinaryTreeNode() {
         super();
+        left = null;
+        right = null;
     }
 
-    public BinaryTreeNode(int val) {
+    public BinaryTreeNode(T val) {
         super(val);
+        left = null;
+        right = null;
     }
 
-    public BinaryTreeNode(int val, BinaryTreeNode left, BinaryTreeNode right) {
+    public BinaryTreeNode(T val, BinaryTreeNode<T> left, BinaryTreeNode<T> right) {
         this.val = val;
         this.left = left;
         this.right = right;

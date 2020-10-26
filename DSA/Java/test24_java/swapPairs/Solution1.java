@@ -1,4 +1,4 @@
-package swapPairs;
+package test24_java.swapPairs;
 
 import nodes.ListNode;
 

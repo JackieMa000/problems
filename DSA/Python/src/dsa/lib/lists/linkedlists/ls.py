@@ -149,3 +149,43 @@ class LinkedList(Base):
                     start = start.next
                 return start
         return None  # There is no cycle
+
+    # LeetCode24
+    def swapPairs(self) -> ListNode:
+        return self.swapPairs2(self.head)
+
+    # Iteration
+    @staticmethod
+    def swapPairs1(head: ListNode) -> ListNode:
+        dummy = ListNode()
+        dummy.next = head
+
+        prev: ListNode = dummy
+        while prev.next and prev.next.next:
+            p, q = prev.next, prev.next.next
+            prev.next, p.next, q.next = q, q.next, p
+            prev = prev.next.next
+
+        return dummy.next
+
+    # Recursion
+    def swapPairs2(self, head: ListNode) -> ListNode:
+        if head and head.next:
+            new_start = head.next.next
+            p, q = head, head.next
+            # swap
+            head, p.next, q.next = q, self.swapPairs2(new_start), p
+
+        return head
+
+    @staticmethod
+    def swapPairs3(head: ListNode) -> ListNode:
+        def helper(prev: ListNode) -> ListNode:
+            if prev.next and prev.next.next:
+                p, q = prev.next, prev.next.next
+                prev.next, p.next, q.next = q, helper(q), p
+            return prev.next
+
+        dummy = ListNode()
+        dummy.next = head
+        return helper(dummy)

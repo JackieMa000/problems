@@ -1,4 +1,4 @@
-package swapPairs;
+package test24_java.swapPairs;
 
 import converter.Converter;
 import org.junit.Before;
@@ -6,15 +6,15 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
 
-public class Solution1Test {
+public class Solution3Test {
 
     private Converter converter;
-    private Solution1 solution;
+    private Solution3 solution;
 
     @Before
     public void setUp() throws Exception {
         converter = new Converter();
-        solution = new Solution1();
+        solution = new Solution3();
     }
 
     @Test

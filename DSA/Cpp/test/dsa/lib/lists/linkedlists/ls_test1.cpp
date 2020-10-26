@@ -69,5 +69,34 @@ TEST_F(DetectCycleTest, case3) {
     LinkedList::destroyCycle(head, aryLength(ary));
 }
 
+class SwapPairsTest : public LinkedListTest {
+ protected:
+    static ListNode *swapPairs(ListNode *head) {
+        LinkedList ls(head);
+        return ls.swapPairs();
+    }
+};
+TEST_F(SwapPairsTest, emptyList) {
+    int ary[] = {};
+    int expected[] = {};
+    ListNode *actual = swapPairs(arrayToSinglyLinkedlist(ary, aryLength(ary)));
+    EXPECT_ARRAY_EQ_LINKEDLIST(expected, aryLength(expected), actual);
+    LinkedList::destroy(actual);
+}
+TEST_F(SwapPairsTest, oneNode) {
+    int ary[] = {1};
+    int expected[] = {1};
+    ListNode *actual = swapPairs(arrayToSinglyLinkedlist(ary, aryLength(ary)));
+    EXPECT_ARRAY_EQ_LINKEDLIST(expected, aryLength(expected), actual);
+    LinkedList::destroy(actual);
+}
+TEST_F(SwapPairsTest, case1) {
+    int ary[] = {1, 2, 3, 4};
+    int expected[] = {2, 1, 4, 3};
+    ListNode *actual = swapPairs(arrayToSinglyLinkedlist(ary, aryLength(ary)));
+    EXPECT_ARRAY_EQ_LINKEDLIST(expected, aryLength(expected), actual);
+    LinkedList::destroy(actual);
+}
+
 }
 }

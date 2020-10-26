@@ -108,4 +108,52 @@ ListNode *LinkedList::detectCycle11(ListNode *head) {
     return start;
 }
 
+ListNode *LinkedList::swapPairs() {
+    return swapPairs2(this->head);
+}
+//Iteration
+ListNode *LinkedList::swapPairs1(ListNode *head) {
+    ListNode dummy;
+    dummy.next = head;
+
+    ListNode *pre = &dummy;
+    while (pre->next && pre->next->next) {
+        ListNode *p = pre->next, *q = p->next;
+//        swap
+        pre->next = q;
+        p->next = q->next;
+        q->next = p;
+
+        pre = pre->next->next;
+    }
+
+    return dummy.next;
+}
+// Recursion
+ListNode *LinkedList::swapPairs2(ListNode *head) {
+    if (head && head->next) {
+        ListNode *newHead = head->next->next;
+        ListNode *p = head, *q = p->next;
+//        swap
+        head = q;
+        p->next = swapPairs2(newHead);
+        q->next = p;
+    }
+    return head;
+}
+ListNode *LinkedList::swapPairs3(ListNode *head) {
+    ListNode dummy;
+    dummy.next = head;
+    return swapPairsRecur(&dummy);
+}
+ListNode *LinkedList::swapPairsRecur(ListNode *prev) {
+    if (prev->next && prev->next->next) {
+        ListNode *p = prev->next, *q = p->next;
+        prev->next = q;
+        p->next = swapPairsRecur(q);
+        q->next = p;
+    }
+    return prev->next;
+}
+
 }  // namespace dsa::lib::lists::linkedlists

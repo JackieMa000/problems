@@ -156,4 +156,57 @@ public class LinkedList extends Base {
         return slow == fast;
     }
 
+    //    LeetCode24
+    public ListNode swapPairs() {
+        return swapPairs2(this.head);
+    }
+
+    private static ListNode swapPairs1(ListNode head) {
+        ListNode dummy = new ListNode();
+        dummy.next = head;
+
+        ListNode prev = dummy;
+        while (prev.next != null && prev.next.next != null) {
+            ListNode p = prev.next, q = p.next;
+//            swap
+            prev.next = q;
+            p.next = q.next;
+            q.next = p;
+
+            prev = prev.next.next;
+        }
+
+        return dummy.next;
+    }
+
+    // Recursion
+    private static ListNode swapPairs2(ListNode head) {
+        if (head != null && head.next != null) {
+            ListNode newStart = head.next.next;
+            ListNode p = head, q = head.next;
+//        swap
+            head = q;
+            p.next = swapPairs2(newStart);
+            q.next = p;
+        }
+        return head;
+    }
+
+    // Recursion
+    private static ListNode swapPairs3(ListNode head) {
+        ListNode dummy = new ListNode();
+        dummy.next = head;
+        return swapPairsRecur(dummy);
+    }
+
+    private static ListNode swapPairsRecur(ListNode prev) {
+        if (prev.next != null && prev.next.next != null) {
+            ListNode p = prev.next, q = p.next;
+            prev.next = q;
+            p.next = swapPairsRecur(q);
+            q.next = p;
+        }
+        return prev.next;
+    }
+
 }

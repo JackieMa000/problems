@@ -83,3 +83,18 @@ class DetectCycleTest(LinkedListTestCase):
     @staticmethod
     def detectCycle(head):
         return LinkedList(head).detectCycle()
+
+
+class SwapPairsTest(LinkedListTestCase):
+    def test_emptyList(self):
+        self.assertArrayEqualsLinkedList([], self.swapPairs(self.array_to_singly_linkedlist([])))
+
+    def test_oneNode(self):
+        self.assertArrayEqualsLinkedList([1], self.swapPairs(self.array_to_singly_linkedlist([1])))
+
+    def test_case1(self):
+        self.assertArrayEqualsLinkedList([2, 1, 4, 3], self.swapPairs(self.array_to_singly_linkedlist([1, 2, 3, 4])))
+
+    @staticmethod
+    def swapPairs(head):
+        return LinkedList(head).swapPairs()

@@ -112,6 +112,26 @@ public class LinkedListTest1 extends LinkedListTestFX {
         private ListNode detectCycle(ListNode head) {
             return new LinkedList(head).detectCycle();
         }
+    }
 
+    public static class SwapPairs {
+        @Test
+        public void emptyList() {
+            assertArrayEqualsLinkedList(new int[]{}, swapPairs(arrayToSinglyLinkedlist(new int[]{})));
+        }
+
+        @Test
+        public void oneNode() {
+            assertArrayEqualsLinkedList(new int[]{1}, swapPairs(arrayToSinglyLinkedlist(new int[]{1})));
+        }
+
+        @Test
+        public void case1() {
+            assertArrayEqualsLinkedList(new int[]{2, 1, 4, 3}, swapPairs(arrayToSinglyLinkedlist(new int[]{1, 2, 3, 4})));
+        }
+
+        private ListNode swapPairs(ListNode head) {
+            return new LinkedList(head).swapPairs();
+        }
     }
 }

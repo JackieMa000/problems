@@ -98,5 +98,41 @@ TEST_F(SwapPairsTest, case1) {
     LinkedList::destroy(actual);
 }
 
+class ReverseKGroupTest : public LinkedListTest {
+ protected:
+    static ListNode *reverseKGroup(ListNode *head, int k) {
+        LinkedList ls(head);
+        return ls.reverseKGroup(k);
+    }
+};
+TEST_F(ReverseKGroupTest, case1) {
+    int ary[] = {1};
+    int expected[] = {1};
+    ListNode *actual = reverseKGroup(arrayToSinglyLinkedlist(ary, aryLength(ary)), 1);
+    EXPECT_ARRAY_EQ_LINKEDLIST(expected, aryLength(expected), actual);
+    LinkedList::destroy(actual);
+}
+TEST_F(ReverseKGroupTest, case2) {
+    int ary[] = {1, 2, 3, 4, 5};
+    int expected[] = {1, 2, 3, 4, 5};
+    ListNode *actual = reverseKGroup(arrayToSinglyLinkedlist(ary, aryLength(ary)), 1);
+    EXPECT_ARRAY_EQ_LINKEDLIST(expected, aryLength(expected), actual);
+    LinkedList::destroy(actual);
+}
+TEST_F(ReverseKGroupTest, case3) {
+    int ary[] = {1, 2, 3, 4, 5};
+    int expected[] = {2, 1, 4, 3, 5};
+    ListNode *actual = reverseKGroup(arrayToSinglyLinkedlist(ary, aryLength(ary)), 2);
+    EXPECT_ARRAY_EQ_LINKEDLIST(expected, aryLength(expected), actual);
+    LinkedList::destroy(actual);
+}
+TEST_F(ReverseKGroupTest, case4) {
+    int ary[] = {1, 2, 3, 4, 5};
+    int expected[] = {3, 2, 1, 4, 5};
+    ListNode *actual = reverseKGroup(arrayToSinglyLinkedlist(ary, aryLength(ary)), 3);
+    EXPECT_ARRAY_EQ_LINKEDLIST(expected, aryLength(expected), actual);
+    LinkedList::destroy(actual);
+}
+
 }
 }

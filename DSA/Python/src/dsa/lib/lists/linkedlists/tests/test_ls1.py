@@ -98,3 +98,25 @@ class SwapPairsTest(LinkedListTestCase):
     @staticmethod
     def swapPairs(head):
         return LinkedList(head).swapPairs()
+
+
+class ReverseKGroupTest(LinkedListTestCase):
+    def test_case1(self):
+        actual: ListNode = self.reverseKGroup(self.array_to_singly_linkedlist([1]), 1)
+        self.assertArrayEqualsLinkedList([1], actual)
+
+    def test_case2(self):
+        actual: ListNode = self.reverseKGroup(self.array_to_singly_linkedlist([1, 2, 3, 4, 5]), 1)
+        self.assertArrayEqualsLinkedList([1, 2, 3, 4, 5], actual)
+
+    def test_case3(self):
+        actual: ListNode = self.reverseKGroup(self.array_to_singly_linkedlist([1, 2, 3, 4, 5]), 2)
+        self.assertArrayEqualsLinkedList([2, 1, 4, 3, 5], actual)
+
+    def test_case4(self):
+        actual: ListNode = self.reverseKGroup(self.array_to_singly_linkedlist([1, 2, 3, 4, 5]), 3)
+        self.assertArrayEqualsLinkedList([3, 2, 1, 4, 5], actual)
+
+    @staticmethod
+    def reverseKGroup(head, k):
+        return LinkedList(head).reverseKGroup(k)

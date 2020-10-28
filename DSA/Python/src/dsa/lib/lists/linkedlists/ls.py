@@ -35,8 +35,12 @@ class LinkedList(Base):
         return pre
 
     def reverse_from_to(self, fnode: ListNode, tnode: ListNode) -> ListNode:
+        return self._reverse_from_to1(self.head, fnode, tnode)
+
+    @classmethod
+    def _reverse_from_to1(cls, head: ListNode, fnode: ListNode, tnode: ListNode) -> ListNode:
         # Reverse a group of nodes from fnode to tnode, doesn't reverse the tnode node.
-        cur: ListNode = self.head
+        cur: ListNode = head
         dummy: ListNode = ListNode()
         dummy.next = cur
         group_pre: ListNode = dummy
@@ -48,17 +52,17 @@ class LinkedList(Base):
 
         # 2. Reverse the linkedlist from the fnode to the tnode
         # 3. Concatenate the reversed group nodes to the main linkedlist
-        group_pre.next = self.reverse_before1(fnode, tnode)
+        group_pre.next = cls.reverse_before1(fnode, tnode)
 
         return dummy.next
 
     # LeetCode141
     def hasCycle(self) -> bool:
-        return self.hasCycle1(self.head)
+        return self._hasCycle1(self.head)
 
     # HashSet
     @staticmethod
-    def hasCycle1(head: ListNode) -> bool:
+    def _hasCycle1(head: ListNode) -> bool:
         found: Set[ListNode] = set()
         while head:
             if head in found: return True
@@ -68,7 +72,7 @@ class LinkedList(Base):
 
     # Fast and Slow pointers, or Tortoise and hare algorithm.
     @staticmethod
-    def hasCycle2(head: ListNode) -> bool:
+    def _hasCycle2(head: ListNode) -> bool:
         slow = head
         fast = head
         while fast and fast.next:
@@ -79,7 +83,7 @@ class LinkedList(Base):
 
     # Pythonic
     @staticmethod
-    def hasCycle3(head: ListNode) -> bool:
+    def _hasCycle3(head: ListNode) -> bool:
         fast = slow = head
         while fast and fast.next:
             fast, slow = fast.next.next, slow.next
@@ -88,11 +92,11 @@ class LinkedList(Base):
 
     # LeetCode142
     def detectCycle(self) -> ListNode:
-        return self.detectCycle2(self.head)
+        return self._detectCycle2(self.head)
 
     # Hash Set. Hash Table
     @staticmethod
-    def detectCycle1(head: ListNode) -> Optional[ListNode]:
+    def _detectCycle1(head: ListNode) -> Optional[ListNode]:
         found: Set[ListNode] = set()
         while head:
             if head in found: return head
@@ -103,7 +107,7 @@ class LinkedList(Base):
     # 2 pointers. Fast and Slow pointers, Tortoise and Hare algorithm
     # Pythonic
     @staticmethod
-    def detectCycle2(head: ListNode) -> Optional[ListNode]:
+    def _detectCycle2(head: ListNode) -> Optional[ListNode]:
         slow = fast = start = head
         while fast and fast.next:
             slow, fast = slow.next, fast.next.next
@@ -114,7 +118,7 @@ class LinkedList(Base):
         return None
 
     @staticmethod
-    def detectCycle21(head: ListNode) -> Optional[ListNode]:
+    def _detectCycle21(head: ListNode) -> Optional[ListNode]:
         slow: ListNode = head
         fast: ListNode = head
 
@@ -134,7 +138,7 @@ class LinkedList(Base):
         return start
 
     @staticmethod
-    def detectCycle22(head: ListNode) -> Optional[ListNode]:
+    def _detectCycle22(head: ListNode) -> Optional[ListNode]:
         # 1. Determine whether there is a cycle
         slow: ListNode = head
         fast: ListNode = head
@@ -152,11 +156,11 @@ class LinkedList(Base):
 
     # LeetCode24
     def swapPairs(self) -> ListNode:
-        return self.swapPairs2(self.head)
+        return self._swapPairs2(self.head)
 
     # Iteration
     @staticmethod
-    def swapPairs1(head: ListNode) -> ListNode:
+    def _swapPairs1(head: ListNode) -> ListNode:
         dummy = ListNode()
         dummy.next = head
 
@@ -169,17 +173,18 @@ class LinkedList(Base):
         return dummy.next
 
     # Recursion
-    def swapPairs2(self, head: ListNode) -> ListNode:
+    @classmethod
+    def _swapPairs2(cls, head: ListNode) -> ListNode:
         if head and head.next:
             new_start = head.next.next
             p, q = head, head.next
             # swap
-            head, p.next, q.next = q, self.swapPairs2(new_start), p
+            head, p.next, q.next = q, cls._swapPairs2(new_start), p
 
         return head
 
     @staticmethod
-    def swapPairs3(head: ListNode) -> ListNode:
+    def _swapPairs3(head: ListNode) -> ListNode:
         def helper(prev: ListNode) -> ListNode:
             if prev.next and prev.next.next:
                 p, q = prev.next, prev.next.next
@@ -189,3 +194,50 @@ class LinkedList(Base):
         dummy = ListNode()
         dummy.next = head
         return helper(dummy)
+
+    # LeetCode25
+    def reverseKGroup(self, k: int) -> ListNode:
+        return self._reverseKGroup3(self.head, k)
+
+    # Iterative
+    # Rule: Cut the LinkedList into the small piece of individual LinkedLists
+    @classmethod
+    def _reverseKGroup1(cls, head: ListNode, k: int) -> ListNode:
+        # Initialize
+        dummy: ListNode = ListNode()
+        dummy.next = head
+        pre, cur = dummy, head
+
+        while True:
+            for _ in range(k):
+                if not cur: return dummy.next
+                cur = cur.next
+
+            pre.next = cls.reverse_before1(head, cur)
+            # go to the next group
+            pre, head = head, cur
+
+    # Rule: Treat the LinkedList as a whole, group the LinkedList nodes.
+    @classmethod
+    def _reverseKGroup2(cls, head: ListNode, k: int) -> ListNode:
+        group_head = cur = head
+        while True:
+            # generate the nodes for a group
+            for _ in range(k):
+                if not cur: return head
+                cur = cur.next
+            head = cls._reverse_from_to1(head, group_head, cur)
+            group_head = cur
+
+    # Recursion
+    @classmethod
+    def _reverseKGroup3(cls, head: ListNode, k: int) -> ListNode:
+        cur: ListNode = head
+        for _ in range(k):
+            if not cur: return head
+            cur = cur.next
+
+        new_head: ListNode = cls.reverse_before1(head, cur)
+
+        head.next = cls._reverseKGroup3(cur, k)
+        return new_head

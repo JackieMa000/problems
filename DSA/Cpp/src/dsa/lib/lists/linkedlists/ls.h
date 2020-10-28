@@ -9,11 +9,13 @@ class LinkedList : public Base {
  public:
     explicit LinkedList(ListNode *head);
 
-    ListNode *reverseBefore(ListNode *node) const;
-
     // LeetCode206
     [[nodiscard]] ListNode *reverse() const;
     ListNode *reverseFromTo(ListNode *fnode, ListNode *tnode) const;
+    ListNode *reverseBefore(ListNode *node) const;
+
+//    LeetCode25
+    ListNode *reverseKGroup(int k);
 
     // LeetCode141
     [[nodiscard]] bool hasCycle() const;
@@ -24,10 +26,16 @@ class LinkedList : public Base {
 //    LeetCode24
     ListNode *swapPairs();
 
- private:
+ protected:
     static ListNode *reverseBefore1(ListNode *head, ListNode *node);
+    static ListNode *reverseFromTo1(ListNode *head, ListNode *fnode, ListNode *tnode);
 
+ private:
     static bool hasCycle1(ListNode *head);
+
+    static ListNode *reverseKGroup1(ListNode *head, int k);
+    static ListNode *reverseKGroup2(ListNode *head, int k);
+    static ListNode *reverseKGroup3(ListNode *head, int k);
 
     static ListNode *detectCycle1(ListNode *head);
     static ListNode *detectCycle11(ListNode *head);
@@ -36,7 +44,6 @@ class LinkedList : public Base {
     static ListNode *swapPairs2(ListNode *head);
     static ListNode *swapPairs3(ListNode *head);
     static ListNode *swapPairsRecur(ListNode *prev);
-
 };
 
 }  // namespace dsa::lib::lists::linkedlists

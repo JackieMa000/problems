@@ -32,7 +32,7 @@ public class LinkedList extends Base {
         return reverseBefore1(this.head, node);
     }
 
-    private static ListNode reverseBefore1(ListNode head, ListNode node) {
+    protected static ListNode reverseBefore1(ListNode head, ListNode node) {
         ListNode pre = node, cur = head, next;
         while (cur != node) {
             next = cur.next;
@@ -45,7 +45,11 @@ public class LinkedList extends Base {
 
     //      Reverse the nodes range fnode tnode, doesn't include the *tnode* node.
     public ListNode reverseFromTo(ListNode fnode, ListNode tnode) {
-        ListNode cur = this.head;
+        return reverseFromTo1(this.head, fnode, tnode);
+    }
+
+    protected static ListNode reverseFromTo1(ListNode head, ListNode fnode, ListNode tnode) {
+        ListNode cur = head;
         ListNode dummy = new ListNode();
         dummy.next = cur;
         ListNode groupPre = dummy;
@@ -209,4 +213,68 @@ public class LinkedList extends Base {
         return prev.next;
     }
 
+    //    LeetCode25
+    public ListNode reverseKGroup(int k) {
+        return reverseKGroup2(this.head, k);
+    }
+
+    //    Iterative
+    private static ListNode reverseKGroup1(ListNode head, int k) {
+        ListNode dummy = new ListNode();
+        dummy.next = head;
+        ListNode pre = dummy, cur = head;
+
+        while (true) {
+            //        1. Generate current kgroup nodes;
+            for (int i = 0; i < k; i++) {
+                if (cur == null) return dummy.next;
+                cur = cur.next;
+            }
+
+            //        2. Reverse the current kgroup nodes;
+            //        4. Append the current reversed group nodes to the group prev node.
+            pre.next = reverseBefore1(head, cur);
+
+            //  go to the next group;
+            pre = head;
+            head = cur;
+        }
+    }
+
+    private static ListNode reverseKGroup2(ListNode head, int k) {
+        ListNode groupHead = head, cur = head;
+
+        while (true) {
+//        1. Generate current kgroup nodes;
+            for (int i = 0; i < k; i++) {
+                if (cur == null) return head;
+                cur = cur.next;
+            }
+
+//        2. Reverse the current kgroup nodes;
+            head = reverseFromTo1(head, groupHead, cur);
+
+//        3. go to the next group
+            groupHead = cur;
+        }
+    }
+
+    //    Recursive
+    private static ListNode reverseKGroup3(ListNode head, int k) {
+//        1. Generate nodes for the current group;
+        ListNode cur = head;
+        for (int i = 0; i < k; i++) {
+            // Edge case. Terminator
+            if (cur == null) return head;
+            cur = cur.next;
+        }
+//        2. Reverse the nodes for the current group;
+        ListNode newHead = reverseBefore1(head, cur);
+
+//        3. Reverse the nodes for the next group;
+//        4. Append the next group to the current group tail
+        head.next = reverseKGroup2(cur, k);
+
+        return newHead;
+    }
 }

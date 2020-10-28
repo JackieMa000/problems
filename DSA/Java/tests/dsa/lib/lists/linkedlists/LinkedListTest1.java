@@ -114,7 +114,7 @@ public class LinkedListTest1 extends LinkedListTestFX {
         }
     }
 
-    public static class SwapPairs {
+    public static class SwapPairsTest {
         @Test
         public void emptyList() {
             assertArrayEqualsLinkedList(new int[]{}, swapPairs(arrayToSinglyLinkedlist(new int[]{})));
@@ -132,6 +132,36 @@ public class LinkedListTest1 extends LinkedListTestFX {
 
         private ListNode swapPairs(ListNode head) {
             return new LinkedList(head).swapPairs();
+        }
+    }
+
+    public static class ReverseKGroupTest {
+        @Test
+        public void ease1() {
+            ListNode actual = reverseKGroup(arrayToSinglyLinkedlist(new int[]{1}), 1);
+            assertArrayEqualsLinkedList(new int[]{1}, actual);
+        }
+
+        @Test
+        public void case2() {
+            ListNode actual = reverseKGroup(arrayToSinglyLinkedlist(new int[]{1, 2, 3, 4, 5}), 1);
+            assertArrayEqualsLinkedList(new int[]{1, 2, 3, 4, 5}, actual);
+        }
+
+        @Test
+        public void case3() {
+            ListNode actual = reverseKGroup(arrayToSinglyLinkedlist(new int[]{1, 2, 3, 4, 5}), 2);
+            assertArrayEqualsLinkedList(new int[]{2, 1, 4, 3, 5}, actual);
+        }
+
+        @Test
+        public void case4() {
+            ListNode actual = reverseKGroup(arrayToSinglyLinkedlist(new int[]{1, 2, 3, 4, 5}), 3);
+            assertArrayEqualsLinkedList(new int[]{3, 2, 1, 4, 5}, actual);
+        }
+
+        private ListNode reverseKGroup(ListNode head, int k) {
+            return new LinkedList(head).reverseKGroup(k);
         }
     }
 }

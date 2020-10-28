@@ -34,7 +34,10 @@ ListNode *LinkedList::reverse() const {
 }
 // Reverse the nodes from *fnode* to *tnode*, does not include the *tnode* node
 ListNode *LinkedList::reverseFromTo(ListNode *fnode, ListNode *tnode) const {
-    ListNode *cur = this->head;
+    return reverseFromTo1(this->head, fnode, tnode);
+}
+ListNode *LinkedList::reverseFromTo1(ListNode *head, ListNode *fnode, ListNode *tnode) {
+    ListNode *cur = head;
     ListNode dummy;
     dummy.next = cur;
     ListNode *groupPre = &dummy;
@@ -154,6 +157,56 @@ ListNode *LinkedList::swapPairsRecur(ListNode *prev) {
         q->next = p;
     }
     return prev->next;
+}
+
+ListNode *LinkedList::reverseKGroup(int k) {
+    return reverseKGroup3(this->head, k);
+}
+// Iterative
+// Rule: Cut the LinkedList into the small piece of individual LinkedLists
+ListNode *LinkedList::reverseKGroup1(ListNode *head, int k) {
+    ListNode dummy;
+    dummy.next = head;
+
+    ListNode *pre = &dummy, *cur = head;
+    while (true) {
+//        generate the nodes for a group
+        for (int i = 0; i < k; i++) {
+            if (!cur) return dummy.next;
+            cur = cur->next;
+        }
+
+//        reverse the nodes in the group
+//        connect it with group prev node(aka, last piece of LinkedList)
+        pre->next = reverseBefore1(head, cur);
+//        go to the next LinkedList
+        pre = head;
+        head = cur;
+    }
+}
+// Rule: Treat the LinkedList as a whole, group the LinkedList nodes.
+ListNode *LinkedList::reverseKGroup2(ListNode *head, int k) {
+    ListNode *groupHead = head, *cur = head;
+    while (true) {
+        for (int i = 0; i < k; ++i) {
+            if (!cur) return head;
+            cur = cur->next;
+        }
+        head = reverseFromTo1(head, groupHead, cur);
+        groupHead = cur;
+    }
+}
+// Recursive
+ListNode *LinkedList::reverseKGroup3(ListNode *head, int k) {
+    ListNode *cur = head;
+    for (int i = 0; i < k; ++i) {
+        if (!cur) return head;
+        cur = cur->next;
+    }
+
+    ListNode *newHead = reverseBefore1(head, cur);
+    head->next = reverseKGroup3(cur, k);
+    return newHead;
 }
 
 }  // namespace dsa::lib::lists::linkedlists

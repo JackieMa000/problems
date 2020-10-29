@@ -8,3 +8,6 @@ out/
 *.pyc
 /build/
 experiment/
+Python/venv
+Python/src/DSA.egg-info
+Python/.tox

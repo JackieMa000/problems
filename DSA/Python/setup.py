@@ -3,9 +3,8 @@ from setuptools import setup
 
 version = '1.0.1'
 
-# with open('./requirements.txt') as f:
-#     requires = f.read().splitlines()
-requires = ["tox"]
+with open('./requirements.txt') as f:
+    requires = f.read().splitlines()
 
 setup(
     name="DSA",

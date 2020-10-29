@@ -1,14 +1,10 @@
 from dsa.lib.arrays.array import Array
 from dsa.lib.trees.bst import BinarySearchTree
-from dsa.lib.trees.tests.test_bt import BinaryTreeTestCase
+from dsa.lib.trees.tests.fixture import BinarySearchTreeTestCase
 from dsa.nodes import BinaryTreeNode
 
 
-class BinarySearchTreeTestFX(BinaryTreeTestCase):
-    pass
-
-
-class PreorderTestCase(BinarySearchTreeTestFX):
+class PreorderTest(BinarySearchTreeTestCase):
 
     def test_case1(self):
         root: BinaryTreeNode = Array([2, 1]).to_binary_tree()
@@ -23,7 +19,7 @@ class PreorderTestCase(BinarySearchTreeTestFX):
         self.assertEqual([3, 1, 2, 5], BinarySearchTree(root).preorder())
 
 
-class InorderTestCase(BinarySearchTreeTestFX):
+class InorderTest(BinarySearchTreeTestCase):
 
     def test_case1(self):
         root: BinaryTreeNode = Array([2, 1]).to_binary_tree()
@@ -38,7 +34,7 @@ class InorderTestCase(BinarySearchTreeTestFX):
         self.assertEqual([1, 2, 3, 5], BinarySearchTree(root).inorder())
 
 
-class PostorderTestCase(BinarySearchTreeTestFX):
+class PostorderTest(BinarySearchTreeTestCase):
 
     def test_case1(self):
         root: BinaryTreeNode = Array([2, 1]).to_binary_tree()
@@ -53,7 +49,7 @@ class PostorderTestCase(BinarySearchTreeTestFX):
         self.assertEqual([2, 1, 5, 3], BinarySearchTree(root).postorder())
 
 
-class IsValidTestCase(BinarySearchTreeTestFX):
+class IsValidTest(BinarySearchTreeTestCase):
 
     def test_case1(self):
         self.assertTrue(BinarySearchTree(Array([3, 1, 5, 0, 2]).to_binary_tree()).is_valid())
@@ -66,7 +62,7 @@ class IsValidTestCase(BinarySearchTreeTestFX):
         self.assertFalse(BinarySearchTree(Array([1, 1]).to_binary_tree()).is_valid())
 
 
-class LowestCommonAncestorBST(BinarySearchTreeTestFX):
+class LowestCommonAncestorTest(BinarySearchTreeTestCase):
 
     @staticmethod
     def get_lowestCommonAncestor(root: BinaryTreeNode, p: BinaryTreeNode, q: BinaryTreeNode) -> BinaryTreeNode:

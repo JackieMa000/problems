@@ -1,12 +1,8 @@
 from typing import List
 
 from dsa.lib.arrays.array import Array
-from dsa.lib.tests.test_lib import LibTestCase
+from dsa.lib.arrays.tests.fixture import ArrayTestCase
 from dsa.nodes import ListNode
-
-
-class ArrayTestCase(LibTestCase):
-    pass
 
 
 class ToSinglyLinkedListTest(ArrayTestCase):

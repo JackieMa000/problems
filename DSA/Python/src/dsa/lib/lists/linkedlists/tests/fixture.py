@@ -1,7 +1,7 @@
 from typing import List
 
 from dsa.lib.arrays.array import Array
-from dsa.lib.lists.tests.test_list import ListTestCase
+from dsa.lib.lists.tests.fixture import ListTestCase
 from dsa.nodes import ListNode
 
 

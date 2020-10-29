@@ -2,14 +2,8 @@ from typing import List
 
 from dsa.lib.arrays.array import Array
 from dsa.lib.trees.bt import BinaryTree
-from dsa.lib.trees.tests.test_tree import TreeTestCase
+from dsa.lib.trees.tests.fixture import BinaryTreeTestCase
 from dsa.nodes import BinaryTreeNode
-
-
-class BinaryTreeTestCase(TreeTestCase):
-    @staticmethod
-    def get_tree_node_by_value(root: BinaryTreeNode, val: int) -> BinaryTreeNode:
-        return BinaryTree(root).get_node_by_value(val)
 
 
 class DepthTest(BinaryTreeTestCase):

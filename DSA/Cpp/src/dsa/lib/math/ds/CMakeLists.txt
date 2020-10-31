@@ -1,1 +1,2 @@
-add_library(math.ds parentheses.cpp)
+add_library(math.ds paren.cpp)
+target_precompile_headers(math.ds PRIVATE pch.h)

@@ -11,3 +11,6 @@ add_test(NAME DoublyLinkedlistTest COMMAND doublyLinkedlist_test)
 
 ######## Tree Test ####
 add_test(NAME BinaryTreeTest COMMAND binary_tree_test)
+
+######## Math Test #####
+add_test(NAME Math.DSTest COMMAND math.ds_test)

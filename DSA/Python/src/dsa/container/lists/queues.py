@@ -12,6 +12,9 @@ class Queue(list):
     def add(self, item) -> None:
         super().append(item)
 
+    def push(self, item) -> None:
+        super().append(item)
+
 
 class Stack(list):
 
@@ -22,6 +25,9 @@ class Stack(list):
         return len(self)
 
     def add(self, item) -> None:
+        super().append(item)
+
+    def push(self, item) -> None:
         super().append(item)
 
 

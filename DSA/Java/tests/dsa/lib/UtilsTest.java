@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class UtilsTest extends LibFX {
+public class UtilsTest extends LibTestFX {
 
     public static class ArrayStripTrailingTest {
 

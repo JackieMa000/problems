@@ -1,6 +1,6 @@
 package dsa.lib.trees;
 
-import dsa.lib.LibFX;
+import dsa.lib.LibTestFX;
 
-public class TreeTestFX extends LibFX {
+public class TreeTestFX extends LibTestFX {
 }

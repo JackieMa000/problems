@@ -1,46 +1,64 @@
 package dsa.lib.math.ds;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 public class Parentheses {
-
-    // Hash table that takes care of the mappings.
-    private HashMap<Character, Character> mappings;
-
-    // Initialize hash map with mappings. This simply makes the code easier to read.
-    public Parentheses() {
-        this.mappings = new HashMap<Character, Character>();
-        this.mappings.put(')', '(');
-        this.mappings.put('}', '{');
-        this.mappings.put(']', '[');
+    //    LeetCode20
+    public boolean isValid(String s) {
+        return isValid21(s);
     }
 
-    public boolean isValid(String s) {
+    //    Stack and Hash Map
+    public static boolean isValid1(String s) {
+//        Initialize the parentheses map
+        Map<Character, Character> parenMap = new HashMap<>();
+        parenMap.put(')', '(');
+        parenMap.put('}', '{');
+        parenMap.put(']', '[');
 
-        // Initialize a stack to be used in the algorithm.
-        Stack<Character> stack = new Stack<Character>();
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+            // It is an opening bracket, push to the stack.
+            if (!parenMap.containsKey(c)) stack.push(c);
+            else if (stack.isEmpty() || stack.pop() != parenMap.get(c)) return false;
+        }
+        // If the stack is empty, it is valid.
+        return stack.isEmpty();
+    }
 
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
+    //    Stack
+    private static boolean isValid2(String s) {
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+//            Opening bracket
+            if (c == '(') stack.push(')');
+            else if (c == '{') stack.push('}');
+            else if (c == '[') stack.push(']');
+//            Closing bracket
+            else if (stack.isEmpty() || stack.pop() != c) return false;
+        }
+        return stack.isEmpty();
+    }
 
-            // If the current character is a closing bracket.
-            if (this.mappings.containsKey(c)) {
-
-                // Get the top element of the stack. If the stack is empty, set a dummy value of '#'
-                char topElement = stack.empty() ? '#' : stack.pop();
-
-                // If the mapping for this bracket doesn't match the stack's top element, return false.
-                if (topElement != this.mappings.get(c)) {
-                    return false;
-                }
-            } else {
-                // If it was an opening bracket, push to the stack.
-                stack.push(c);
+    private static boolean isValid21(String s) {
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+            switch (c) {
+                case '(':
+                    stack.push(')');
+                    break;
+                case '[':
+                    stack.push(']');
+                    break;
+                case '{':
+                    stack.push('}');
+                    break;
+                default:
+                    if (stack.isEmpty() || stack.pop() != c) return false;
             }
         }
-
-        // If the stack still contains elements, then it is an invalid expression.
         return stack.isEmpty();
     }
 }

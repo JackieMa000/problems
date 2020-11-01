@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class ParenthesesTest extends DsTestFX {
+public class ParenthesesTest extends ParenthesesTestFX {
     public static class IsValidTest {
         @Test
         public void emptyString() {

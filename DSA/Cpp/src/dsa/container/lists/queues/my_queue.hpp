@@ -4,6 +4,7 @@
 #include <stack>
 namespace dsa::container::lists::queues {
 
+//LeetCode232
 template<typename T>
 class MyQueue {
  private:
@@ -16,7 +17,6 @@ class MyQueue {
             output.push(input.top());
             input.pop();
         }
-
     }
  public:
     bool empty() {

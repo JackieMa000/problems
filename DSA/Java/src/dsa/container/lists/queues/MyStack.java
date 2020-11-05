@@ -13,7 +13,6 @@ class MyStack<T> {
      */
     public MyStack() {
         this.queue = new LinkedList<>();
-
     }
 
     /**

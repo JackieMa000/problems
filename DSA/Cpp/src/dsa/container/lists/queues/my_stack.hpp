@@ -42,8 +42,7 @@ class MyStack {
 
  private:
     static void invertQueue(std::queue<T> &queue) {
-        const length_t n = queue.size();
-        for (int i = 0; i < n - 1; ++i) {
+        for (int i = 0, n = queue.size(); i < n - 1; ++i) {
             queue.push(queue.front());
             queue.pop();
         }

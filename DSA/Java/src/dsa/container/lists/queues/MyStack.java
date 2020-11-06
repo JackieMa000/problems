@@ -24,8 +24,7 @@ class MyStack<T> {
     }
 
     private static <T> void invertQueue(Queue<T> queue) {
-        final int n = queue.size();
-        for (int i = 0; i < n - 1; i++) queue.add(queue.poll());
+        for (int i = 0, n = queue.size(); i < n - 1; i++) queue.add(queue.poll());
     }
 
     /**

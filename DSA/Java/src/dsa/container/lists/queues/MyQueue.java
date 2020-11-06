@@ -2,6 +2,7 @@ package dsa.container.lists.queues;
 
 import java.util.Stack;
 
+//LeetCode232
 public class MyQueue<T> {
     private final Stack<T> input, output;
 
@@ -23,10 +24,9 @@ public class MyQueue<T> {
         return this.output.pop();
     }
 
-//    Migrate the input stack to the output stack.
+    //    Migrate the input stack to the output stack.
     private void migrate() {
-        final int n = this.input.size();
-        for (int i = 0; i < n; i++) this.output.push(this.input.pop());
+        while (!this.input.empty()) this.output.push(this.input.pop());
     }
 
     public T peek() {

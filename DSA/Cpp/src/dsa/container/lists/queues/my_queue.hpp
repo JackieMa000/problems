@@ -12,8 +12,7 @@ class MyQueue {
  private:
 //    Migrate the input stack elements to the output stack
     void migrate() {
-        const int n = input.size();
-        for (int i = 0; i < n; ++i) {
+        while (!input.empty()) {
             output.push(input.top());
             input.pop();
         }

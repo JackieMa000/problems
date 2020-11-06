@@ -45,7 +45,7 @@ class MyQueue:
 
     # Migrate the input stack to the output stack. The order gets reversed.
     def _migrate(self) -> None:
-        for _ in range(self._input.size()): self._output.push(self._input.pop())
+        while not self._input.is_empty(): self._output.push(self._input.pop())
 
 
 # LeetCode225

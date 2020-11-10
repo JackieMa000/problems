@@ -1,7 +1,3 @@
-//
-// Created by Jackie Ma on 2020/10/29.
-//
-
 #ifndef DSA_TEST_DSA_LIB_MATH_MATH_TEST_H_
 #define DSA_TEST_DSA_LIB_MATH_MATH_TEST_H_
 

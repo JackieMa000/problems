@@ -1,0 +1,2 @@
+add_executable(math.nums_test kth_largest_test.cpp)
+target_link_libraries(math.nums_test test_main)

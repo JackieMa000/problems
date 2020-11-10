@@ -14,6 +14,7 @@ add_test(NAME BinaryTreeTest COMMAND binary_tree_test)
 
 ######## Math Test #####
 add_test(NAME Math.DSTest COMMAND math.ds_test)
+add_test(NAME Math.NumsTest COMMAND math.nums_test)
 
 ######### Container Test #####
 add_test(NAME QueueTest COMMAND queue_test)

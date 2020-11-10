@@ -1,3 +1,6 @@
+import heapq
+
+
 class Queue(list):
 
     def pop(self, index=0):
@@ -52,5 +55,12 @@ class Stack(list):
         return self[0]
 
 
-class PriorityQueue(list):
-    pass
+class PriorityQueue(Queue):
+    def __init__(self):
+        super().__init__()
+
+    def push(self, x: int) -> None:
+        heapq.heappush(self, x)
+
+    def pop(self, index=0):
+        heapq.heappop(self)

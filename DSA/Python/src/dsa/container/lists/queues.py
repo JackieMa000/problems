@@ -56,6 +56,9 @@ class Stack(list):
 
 
 class PriorityQueue(Queue):
+    """
+    Min Heap
+    """
     def __init__(self):
         super().__init__()
 

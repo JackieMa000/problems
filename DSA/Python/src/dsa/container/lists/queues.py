@@ -56,11 +56,7 @@ class Stack(list):
 
 
 class PriorityQueue(Queue):
-    """
-    Min Heap
-    """
-    def __init__(self):
-        super().__init__()
+    """ Min Heap """
 
     def push(self, x: int) -> None:
         heapq.heappush(self, x)

@@ -5,7 +5,7 @@ from dsa.container.lists.queues import PriorityQueue
 
 
 # LeetCode703
-class KthLargest1:
+class KthLargest:
     def __init__(self, k: int, nums: List[int]):
         self.k = k
         self.queue = heapq.nlargest(k, nums)
@@ -17,15 +17,13 @@ class KthLargest1:
         return self.queue[0]
 
 
-class KthLargest:
+class KthLargest1:
     def __init__(self, k: int, nums: List[int]):
         self.k = k
         self.queue: PriorityQueue = PriorityQueue()
-        for num in nums:
-            self.add(num)
+        for num in nums: self.add(num)
 
     def add(self, val: int) -> int:
         self.queue.push(val)
-        if self.queue.size() > self.k:
-            self.queue.pop()
+        if self.queue.size() > self.k: self.queue.pop()
         return self.queue.peek()

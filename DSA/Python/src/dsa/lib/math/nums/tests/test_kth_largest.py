@@ -10,4 +10,3 @@ class AddTest(KthLargestTestCase):
         self.assertEqual(5, largest.add(10))
         self.assertEqual(8, largest.add(9))
         self.assertEqual(8, largest.add(4))
-

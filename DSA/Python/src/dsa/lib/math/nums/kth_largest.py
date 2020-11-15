@@ -1,7 +1,7 @@
 import heapq
 from typing import List
 
-from dsa.container.lists.queues import PriorityQueue
+from dsa.container.lists.queues import MinPriorityQueue
 
 
 # LeetCode703
@@ -20,7 +20,7 @@ class KthLargest:
 class KthLargest1:
     def __init__(self, k: int, nums: List[int]):
         self.k = k
-        self.queue: PriorityQueue = PriorityQueue()
+        self.queue: MinPriorityQueue = MinPriorityQueue()
         for num in nums: self.add(num)
 
     def add(self, val: int) -> int:

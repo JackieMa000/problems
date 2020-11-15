@@ -56,19 +56,38 @@ class Stack(list):
         return self[0]
 
 
-class PriorityQueue(Queue):
+class MinPriorityQueue(Queue):
     """ Min Heap """
 
     def push(self, x: int) -> None:
         heapq.heappush(self, x)
 
     def pop(self, index=0):
-        heapq.heappop(self)
+        return heapq.heappop(self)
+
+    def peek(self) -> int:
+        return self[0]
+
+    def top(self) -> int:
+        return self.peek()
 
 
-class MaxHeap:
-    # ToDo
-    pass
+class MaxPriorityQueue(Queue):
+    """ Max Heap """
+
+    def push(self, x: int) -> None:
+        heapq.heappush(self, x)
+
+    def pop(self, index=0):
+        max_ = heapq.nlargest(1, self)[0]
+        self.remove(max_)
+        return max_
+
+    def peek(self) -> int:
+        return heapq.nlargest(1, self)[0]
+
+    def top(self) -> int:
+        return self.peek()
 
 
 class Deque(collections.deque):

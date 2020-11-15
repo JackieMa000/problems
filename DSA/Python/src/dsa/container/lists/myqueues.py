@@ -21,21 +21,21 @@ class MyQueue:
         """
         Removes the element from in front of queue and returns that element.
         """
-        if self._output.is_empty(): self._migrate()
+        if self._output.empty(): self._migrate()
         return self._output.pop()
 
     def peek(self) -> int:
         """
         Get the front element.
         """
-        if self._output.is_empty(): self._migrate()
+        if self._output.empty(): self._migrate()
         return self._output.top()
 
     def empty(self) -> bool:
         """
         Returns whether the queue is empty.
         """
-        return self._input.is_empty() and self._output.is_empty()
+        return self._input.empty() and self._output.empty()
 
     def front(self) -> int:
         return self.peek()
@@ -45,7 +45,7 @@ class MyQueue:
 
     # Migrate the input stack to the output stack. The order gets reversed.
     def _migrate(self) -> None:
-        while not self._input.is_empty(): self._output.push(self._input.pop())
+        while not self._input.empty(): self._output.push(self._input.pop())
 
 
 # LeetCode225
@@ -80,7 +80,7 @@ class MyStack:
         """
         Returns whether the stack is empty.
         """
-        return self._queue.is_empty()
+        return self._queue.empty()
 
     def size(self) -> int:
         return self._queue.size()

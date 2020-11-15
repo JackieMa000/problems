@@ -34,6 +34,6 @@ class Parentheses:
             elif c == '{':
                 stack.push('}')
             # Closing bracket
-            elif stack.is_empty() or stack.pop() != c:
+            elif stack.empty() or stack.pop() != c:
                 return False
-        return stack.is_empty()
+        return stack.empty()

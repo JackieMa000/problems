@@ -1,25 +1,26 @@
+import collections
 import heapq
 
 
 class Queue(list):
 
-    def pop(self, index=0):
-        """
-        remove and return the front item from the queue
-        """
-        return super().pop(index)
-
-    def is_empty(self) -> bool:
-        return not len(self)
-
     def size(self) -> int:
         return len(self)
+
+    def empty(self) -> bool:
+        return self.size() == 0
 
     def push(self, x) -> None:
         self.append(x)
 
     def peek(self) -> int:
         return self[0]
+
+    def pop(self, index=0):
+        """
+        remove and return the front item from the queue
+        """
+        return super().pop(index)
 
     def add(self, x) -> None:
         self.push(x)
@@ -33,14 +34,14 @@ class Queue(list):
 
 class Stack(list):
 
-    def is_empty(self) -> bool:
-        return not len(self)
-
     def size(self) -> int:
         return len(self)
 
-    def push(self, item) -> None:
-        super().append(item)
+    def empty(self) -> bool:
+        return self.size() == 0
+
+    def push(self, x) -> None:
+        super().append(x)
 
     def peek(self) -> int:
         return self[-1]
@@ -63,3 +64,73 @@ class PriorityQueue(Queue):
 
     def pop(self, index=0):
         heapq.heappop(self)
+
+
+class MaxHeap:
+    # ToDo
+    pass
+
+
+class Deque(collections.deque):
+    def size(self) -> int:
+        return len(self)
+
+    def empty(self) -> bool:
+        return self.size() == 0
+
+    def push(self, x) -> None:
+        self.appendleft(x)
+
+    def pushleft(self, x) -> None:
+        self.push(x)
+
+    def pushback(self, x) -> None:
+        self.push(x)
+
+    def pushright(self, x) -> None:
+        self.append(x)
+
+    def pushfront(self, x) -> None:
+        self.append(x)
+
+    def popright(self):
+        return self.pop()
+
+    def popfirst(self):
+        return self.pop()
+
+    def popfront(self):
+        return self.pop()
+
+    def poplast(self):
+        return self.popleft()
+
+    def popback(self):
+        return self.popleft()
+
+    def peek(self):
+        return self[-1]
+
+    def peekright(self):
+        return self.peek()
+
+    def peekfirst(self):
+        return self.peek()
+
+    def peekfront(self):
+        return self.peek()
+
+    def front(self):
+        return self.peek()
+
+    def peekleft(self):
+        return self[0]
+
+    def peeklast(self):
+        return self.peekleft()
+
+    def peekback(self):
+        return self.peekleft()
+
+    def back(self):
+        return self.peekleft()

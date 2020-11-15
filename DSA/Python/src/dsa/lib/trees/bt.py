@@ -47,7 +47,7 @@ class BinaryTree(Tree):
 
         queue.append(root)
         count: int = 0
-        while not queue.is_empty():
+        while not queue.empty():
             node = queue.pop()
             count += 1
             if (count - 1) == idx:
@@ -66,7 +66,7 @@ class BinaryTree(Tree):
     def get_node_by_val_bfs(root: BinaryTreeNode, val: int) -> Optional[BinaryTreeNode]:
         queue: Queue = Queue()
         queue.add(root)
-        while not queue.is_empty():
+        while not queue.empty():
             node = queue.pop()
             if not node: continue
 
@@ -85,7 +85,7 @@ class BinaryTree(Tree):
         queue: Queue = Queue()
         queue.add(root)
         count: int = 0
-        while not queue.is_empty():
+        while not queue.empty():
             node = queue.pop()
             if not node: continue
             count += 1

@@ -12,7 +12,7 @@ setup(
     description='Data Structure and Algorithm',
     long_description=open('README.md').read(),
     author='Jackie Ma',
-    author_email='jackie.ma@tophant.com',
+    author_email='jacknet.ma@gmail.com',
     url='https://github.com/JackieMa000/problems',
     packages=find_packages('src'),
     package_dir={'': 'src'},

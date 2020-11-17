@@ -67,6 +67,7 @@ class TestMinPriorityQueue(TestCase):
         self.queue.push(3)
         self.queue.push(2)
         self.assertEqual(1, self.queue.pop())
+        self.assertEqual(2, self.queue.pop())
 
     def test_peek(self):
         self.queue.push(1)

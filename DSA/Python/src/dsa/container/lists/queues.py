@@ -28,7 +28,19 @@ class Queue(list):
     def front(self) -> int:
         return self.peek()
 
+    def fist(self) -> int:
+        return self.peek()
+
+    def head(self) -> int:
+        return self.peek()
+
     def back(self) -> int:
+        return self[-1]
+
+    def last(self) -> int:
+        return self[-1]
+
+    def tail(self) -> int:
         return self[-1]
 
 
@@ -62,14 +74,18 @@ class MinPriorityQueue(Queue):
     def push(self, x: int) -> None:
         heapq.heappush(self, x)
 
-    def pop(self, index=0):
-        return heapq.heappop(self)
+    def pop(self, key=None, index=0):
+        if not key: return heapq.heappop(self)
+        min_ = heapq.nsmallest(1, self, key)[0]
+        self.remove(min_)
+        return min_
 
-    def peek(self) -> int:
-        return self[0]
+    def peek(self, key=None) -> int:
+        if not key: return self[0]
+        return heapq.nsmallest(1, self, key)[0]
 
-    def top(self) -> int:
-        return self.peek()
+    def top(self, key=None) -> int:
+        return self.peek(key)
 
 
 class MaxPriorityQueue(Queue):
@@ -78,16 +94,16 @@ class MaxPriorityQueue(Queue):
     def push(self, x: int) -> None:
         heapq.heappush(self, x)
 
-    def pop(self, index=0):
-        max_ = heapq.nlargest(1, self)[0]
+    def pop(self, key=None, index=0):
+        max_ = heapq.nlargest(1, self, key)[0]
         self.remove(max_)
         return max_
 
-    def peek(self) -> int:
-        return heapq.nlargest(1, self)[0]
+    def peek(self, key=None) -> int:
+        return heapq.nlargest(1, self, key)[0]
 
-    def top(self) -> int:
-        return self.peek()
+    def top(self, key=None) -> int:
+        return self.peek(key)
 
 
 class Deque(collections.deque):
@@ -106,10 +122,16 @@ class Deque(collections.deque):
     def pushback(self, x) -> None:
         self.push(x)
 
+    def pushtail(self, x) -> None:
+        self.push(x)
+
     def pushright(self, x) -> None:
         self.append(x)
 
     def pushfront(self, x) -> None:
+        self.append(x)
+
+    def pushhead(self, x) -> None:
         self.append(x)
 
     def popright(self):
@@ -121,10 +143,16 @@ class Deque(collections.deque):
     def popfront(self):
         return self.pop()
 
+    def pophead(self):
+        return self.pop()
+
     def poplast(self):
         return self.popleft()
 
     def popback(self):
+        return self.popleft()
+
+    def poptail(self):
         return self.popleft()
 
     def peek(self):
@@ -139,7 +167,16 @@ class Deque(collections.deque):
     def peekfront(self):
         return self.peek()
 
+    def peekhead(self):
+        return self.peek()
+
     def front(self):
+        return self.peek()
+
+    def first(self):
+        return self.peek()
+
+    def head(self):
         return self.peek()
 
     def peekleft(self):
@@ -151,5 +188,14 @@ class Deque(collections.deque):
     def peekback(self):
         return self.peekleft()
 
+    def peektail(self):
+        return self.peekleft()
+
     def back(self):
+        return self.peekleft()
+
+    def last(self):
+        return self.peekleft()
+
+    def tail(self):
         return self.peekleft()

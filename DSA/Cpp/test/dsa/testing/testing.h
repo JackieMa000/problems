@@ -1,5 +1,5 @@
-#ifndef TESTING_H
-#define TESTING_H
+#ifndef DSA_TESTING_H
+#define DSA_TESTING_H
 
 #include <dsa/dsadef.h>
 #include "dsa/nodes/nodes.h"
@@ -18,6 +18,7 @@ class DSATest : public ::testing::Test {
                                  length_t expectedLength,
                                  const int *actual,
                                  length_t actualLength);
+    static void EXPECT_ARRAY_EQ(const arrayStruct &expected, const arrayStruct &actual);
 };
 
 }  // namespace dsa::testing

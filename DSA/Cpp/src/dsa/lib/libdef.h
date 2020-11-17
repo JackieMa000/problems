@@ -8,7 +8,6 @@
 
 namespace dsa::lib {
 
-typedef struct { length_t length;int *ary; } arrayStruct;
 typedef nodes::BinaryTreeNode BinaryTreeNode;
 typedef nodes::ListNode ListNode;
 }

@@ -15,6 +15,8 @@ typedef unsigned int depth_t;
 // Position of a node in an array, LinkedList, Tree.
 typedef unsigned int pos_t;
 
+typedef struct { length_t length;int *ary; } arrayStruct;
+
 }
 
 #endif //DSA_SRC_DSA_DSADEF_H_

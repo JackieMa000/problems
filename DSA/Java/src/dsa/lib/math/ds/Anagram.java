@@ -7,6 +7,11 @@ import java.util.HashMap;
  * Rule: Hash Table
  * Map: {letter: count_of_the_letter}. key: letter, value: count_of_the_letter
  * letter: array index, count_of_the_letter: array value
+ *
+ * 1. get a bucket
+ * 2. produce to the bucket
+ * 3. consume from the bucket
+ * 4. check if the bucket is empty
  */
 //LeetCode242
 public class Anagram {

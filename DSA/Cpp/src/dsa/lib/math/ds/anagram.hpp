@@ -4,7 +4,6 @@
 #include <unordered_map>
 namespace dsa::lib::math::ds {
 
-
 // LeetCode242
 /**
  * Rule: Hash Table
@@ -28,7 +27,7 @@ class Anagram {
         int mapAlphabet[26] = {0};
         std::for_each(s.begin(), s.end(), [&](char c) { mapAlphabet[hashFunc(c)]++; });
         std::for_each(t.begin(), t.end(), [&](char c) { mapAlphabet[hashFunc(c)]--; });
-        return std::all_of(mapAlphabet, mapAlphabet + 26, [](int v) { return v == 0; }) ? true : false;
+        return std::all_of(mapAlphabet, mapAlphabet + 26, [](int v) { return v == 0; });
     }
     static int hashFunc(char c) { return c - 'a'; }
 
@@ -43,8 +42,7 @@ class Anagram {
         std::unordered_map<char, int> mapAlphabet;
         std::for_each(s.begin(), s.end(), [&](char c) { mapAlphabet[c]++; });
         std::for_each(t.begin(), t.end(), [&](char c) { mapAlphabet[c]--; });
-        return std::all_of(mapAlphabet.begin(), mapAlphabet.end(), [](auto it) { return it.second == 0; }) ? true
-                                                                                                           : false;
+        return std::all_of(mapAlphabet.begin(), mapAlphabet.end(), [](auto it) { return it.second == 0; });
     }
 };
 

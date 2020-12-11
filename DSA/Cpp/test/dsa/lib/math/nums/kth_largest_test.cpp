@@ -4,6 +4,7 @@
 namespace dsa::lib::math::nums {
 namespace {
 
+class KthLargestTest : public NumsTest {};
 class AddTest : public KthLargestTest {};
 TEST_F(AddTest, case1) {
     std::vector<int> nums = {4, 5, 8, 2};

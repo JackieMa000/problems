@@ -49,27 +49,28 @@ public class BinarySearchTree extends BinaryTree {
         return lst;
     }
 
+    //    LeetCode98
     public boolean isValid() {
         return isValidBST(this.root, null, null);
     }
 
     /**
-     * LowerBound and UpperBound.
+     * Rule: LowerBound, UpperBound.
      * BST Rule:
-     * left(all dsa.nodes) < root < right(all dsa.nodes)
-     * Biggest on the left < root < smallest on the right
+     * left(all nodes) < root < right(all nodes)
+     * Biggest on the left < root < smallest on the right -> Left SubTree UpperBound = root, Right subTree LowerBound = root.
      */
     private static boolean isValidBST(BinaryTreeNode root, BinaryTreeNode minNode, BinaryTreeNode maxNode) {
 //        Terminator
         if (root == null) return true;
 
-//        Left Children Tree. upperBound
+//        Left SubTree. upperBound
         if (maxNode != null && root.val >= maxNode.val) return false;
 
-//        Right Children Tree. lowerBound
+//        Right SubTree. lowerBound
         if (minNode != null && root.val <= minNode.val) return false;
 
-//        Recursive case
+//        Left SubTree UpperBound = root, Right subTree LowerBound = root.
         return isValidBST(root.left, minNode, root) && isValidBST(root.right, root, maxNode);
     }
 

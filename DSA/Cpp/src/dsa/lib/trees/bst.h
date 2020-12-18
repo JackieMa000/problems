@@ -5,7 +5,7 @@
 
 namespace dsa::lib::trees {
 
-class BinarySearchTree : BinaryTree {
+class BinarySearchTree : public BinaryTree {
  public:
     explicit BinarySearchTree(BinaryTreeNode *root);
 
@@ -13,6 +13,7 @@ class BinarySearchTree : BinaryTree {
     std::vector<int> *inorder();
     std::vector<int> &postorder();
 
+//    LeetCode98
     bool isValid();
 
     BinaryTreeNode *lowestCommonAncestor(BinaryTreeNode *p, BinaryTreeNode *q) override;
@@ -22,12 +23,8 @@ class BinarySearchTree : BinaryTree {
     static std::vector<int> *inorderDfs(BinaryTreeNode *root, std::vector<int> *lst);
     static std::vector<int> &postorderDfs(BinaryTreeNode *root, std::vector<int> &lst);
     static bool isValidBST(BinaryTreeNode *root, BinaryTreeNode *minNode, BinaryTreeNode *maxNode);
-    static BinaryTreeNode *lowestCommonAncestorDfs(BinaryTreeNode *root,
-                                                   BinaryTreeNode *p,
-                                                   BinaryTreeNode *q);
-    static BinaryTreeNode *lowestCommonAncestorBfs(BinaryTreeNode *root,
-                                                   BinaryTreeNode *p,
-                                                   BinaryTreeNode *q);
+    static BinaryTreeNode *lowestCommonAncestorDfs(BinaryTreeNode *root, BinaryTreeNode *p, BinaryTreeNode *q);
+    static BinaryTreeNode *lowestCommonAncestorBfs(BinaryTreeNode *root, BinaryTreeNode *p, BinaryTreeNode *q);
 
 };
 

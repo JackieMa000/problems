@@ -5,7 +5,7 @@
 
 namespace dsa::lib::trees {
 
-class BinaryTree : Tree {
+class BinaryTree : public Tree {
  private:
     static BinaryTreeNode *lowestCommonAncestorDfs(BinaryTreeNode *root,
                                                    BinaryTreeNode *p,

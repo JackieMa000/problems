@@ -1,4 +1,5 @@
 add_executable(binary_tree_test
+        bst_test.cpp
         binary_tree_test.cpp)
 
 target_link_libraries(binary_tree_test

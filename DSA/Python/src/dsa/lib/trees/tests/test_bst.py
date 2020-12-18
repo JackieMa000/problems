@@ -51,15 +51,24 @@ class PostorderTest(BinarySearchTreeTestCase):
 
 class IsValidTest(BinarySearchTreeTestCase):
 
-    def test_case1(self):
-        self.assertTrue(BinarySearchTree(Array([3, 1, 5, 0, 2]).to_binary_tree()).is_valid())
-        self.assertTrue(BinarySearchTree(Array([5, 1, 8, 0, 2, 6, 9]).to_binary_tree()).is_valid())
-        self.assertTrue(BinarySearchTree(Array([5, 1, 6, -3, 2, 0, 7]).to_binary_tree()).is_valid())
-        self.assertTrue(BinarySearchTree(Array([0, 0, -1]).to_binary_tree()).is_valid())
+    def test_empty_tree_is_BST(self):
+        self.assertTrue(self.is_valid([]))
 
-    def test_case2(self):
-        self.assertFalse(BinarySearchTree(Array([5, 1, 4, 0, 6, 3, 6]).to_binary_tree()).is_valid())
-        self.assertFalse(BinarySearchTree(Array([1, 1]).to_binary_tree()).is_valid())
+    def test_one_node_is_BST(self):
+        self.assertTrue(self.is_valid([1]))
+
+    def test_not_BST(self):
+        self.assertFalse(self.is_valid([5, 1, 4, 0, 6, 3, 6]))
+        self.assertFalse(self.is_valid([1, 1]))
+
+    def test_is_BST(self):
+        self.assertTrue(self.is_valid([0, 0, -1]))
+        self.assertTrue(self.is_valid([3, 1, 5, 0, 2]))
+        self.assertTrue(self.is_valid([5, 1, 8, 0, 2, 6, 9]))
+        self.assertTrue(self.is_valid([5, 1, 6, -3, 2, 0, 7]))
+
+    def is_valid(self, ary):
+        return BinarySearchTree(self.array_to_binary_tree(ary)).is_valid()
 
 
 class LowestCommonAncestorTest(BinarySearchTreeTestCase):

@@ -29,4 +29,4 @@ include_directories(${CMAKE_SOURCE_DIR}/test)
 
 add_subdirectory(src)
 add_subdirectory(test)
-#add_subdirectory(experiment)
+add_subdirectory(experiment)

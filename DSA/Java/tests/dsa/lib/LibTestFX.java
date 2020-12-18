@@ -10,8 +10,15 @@ public class LibTestFX {
         return new ArrayInt(ary).toBinaryTree();
     }
 
+    public static ListNode arrayToSinglyLinkedlist(int[] ary) {
+        return new ArrayInt(ary).toSinglyLinkedList();
+    }
+
+    public static ListNode arrayToCyclicSinglyLinkedlist(int[] ary, int pos) {
+        return new ArrayInt(ary).toCyclicSinglyLinkedList(pos);
+    }
+
     public static ListNode getLinkedListNodeByIndex(ListNode head, int idx) {
         return new SinglyLinkedList(head).getNodeByIndex(idx);
     }
-
 }

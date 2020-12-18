@@ -9,7 +9,7 @@
 namespace dsa::lib {
 
 class LibTest : public testing::DSATest {
- protected:
+ public:
     [[nodiscard]] static BinaryTreeNode *arrayToBinaryTree(int *ary, length_t length) {
         arrays::Array array(ary, length);
         return array.toBinaryTree();

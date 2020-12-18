@@ -12,5 +12,13 @@ class LibTestCase(DSATestCase):
         return Array(ary).to_binary_tree()
 
     @staticmethod
+    def array_to_singly_linkedlist(ary: List[int]) -> ListNode:
+        return Array(ary).to_singly_linkedList()
+
+    @staticmethod
+    def array_to_cyclic_linkedlist(ary: List[int], pos: int) -> ListNode:
+        return Array(ary).to_cyclic_singly_linkedList(pos)
+
+    @staticmethod
     def get_linkedlist_node_by_index(head: ListNode, idx: int) -> ListNode:
         return SinglyLinkedList(head).get_node_by_index(idx)

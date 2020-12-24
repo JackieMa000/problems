@@ -1,4 +1,6 @@
-package dsa.lib.algo.sort;
+#ifndef DSA_SRC_DSA_LIB_ALGO_SORT_INSERTION_SORT_HPP_
+#define DSA_SRC_DSA_LIB_ALGO_SORT_INSERTION_SORT_HPP_
+namespace dsa::lib::algo::sort {
 
 /**
  * 插入排序:
@@ -9,7 +11,7 @@ package dsa.lib.algo.sort;
  * 数据分为两个区间，已排序区间和未排序区间。初始已排序区间只有一个元素，就是数组的第一个元素。
  * 插入算法的核心思想是取未排序区间中的元素，在已排序区间中找到合适的插入位置将其插入，
  * 并保证已排序区间数据一直有序
- * <p>
+ *
  * Rule:
  * 取已排序区间尾元素a，取未排序区间头元素b
  * a从尾向头前进，b从头向尾前进
@@ -19,26 +21,22 @@ package dsa.lib.algo.sort;
  * a < b -> b 前进
  * 已排序区间查找完成后，插入数据b
  */
-public class InsertionSort {
-    public static void sort(int[] ary) {
-        int n = ary.length;
-
-//        未排序区间
-        for (int i = 1; i < n; ++i) {
-//            取未排序区间元素
+class InsertionSort {
+ public:
+    static void sort(int *ary, size_t n) {
+        for (int i = 0; i < n; ++i) {
             int b = ary[i];
-//            进入已排序区间查找插入位置
-//            从尾向头查找插入点, j = i - 1 表示已排序区间的最后一位
+
             int j = i - 1;
-            // 查找插入的位置
             for (; j >= 0; --j) {
-                final int a = ary[j];
-                if (a > b) {
-                    // 数据移动, a 后移一位
-                    ary[j + 1] = a;
-                } else break;
+                int a = ary[j];
+                if (a > b) { ary[j + 1] = a; }
+                else { break; }
             }
-            ary[j + 1] = b; // 插入数据
+            ary[j + 1] = b;
         }
     }
+};
+
 }
+#endif //DSA_SRC_DSA_LIB_ALGO_SORT_INSERTION_SORT_HPP_

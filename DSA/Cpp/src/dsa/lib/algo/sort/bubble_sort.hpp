@@ -1,5 +1,6 @@
 #ifndef DSA_SRC_DSA_LIB_ALGO_SORT_BUBBLE_SORT_HPP_
 #define DSA_SRC_DSA_LIB_ALGO_SORT_BUBBLE_SORT_HPP_
+
 namespace dsa::lib::algo::sort {
 
 /**

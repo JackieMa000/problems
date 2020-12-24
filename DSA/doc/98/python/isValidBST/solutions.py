@@ -44,7 +44,7 @@ class Solution2:
         prev: Optional[BinaryTreeNode] = None
 
         while root or not stack.empty():
-            while (root):
+            while root:
                 stack.push(root)
                 root = root.left
 

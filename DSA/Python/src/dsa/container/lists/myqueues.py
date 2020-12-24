@@ -15,7 +15,7 @@ class MyQueue:
         """
         Push element x to the back of queue.
         """
-        self._input.push(x)
+        self._input.push_back1(x)
 
     def pop(self) -> int:
         """
@@ -45,7 +45,7 @@ class MyQueue:
 
     # Migrate the input stack to the output stack. The order gets reversed.
     def _migrate(self) -> None:
-        while not self._input.empty(): self._output.push(self._input.pop())
+        while not self._input.empty(): self._output.push_back1(self._input.pop())
 
 
 # LeetCode225

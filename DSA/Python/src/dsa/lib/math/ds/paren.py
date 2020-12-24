@@ -14,7 +14,7 @@ class Parentheses:
         for c in s:
             # Current character is an opening bracket.
             if c not in paren_map:
-                stack.push(c)
+                stack.push_back1(c)
             # Current character is a closing bracket
             elif not stack or stack.pop() != paren_map.get(c):
                 return False
@@ -28,11 +28,11 @@ class Parentheses:
         for c in s:
             # Opening bracket
             if c == '(':
-                stack.push(')')
+                stack.push_back1(')')
             elif c == '[':
-                stack.push(']')
+                stack.push_back1(']')
             elif c == '{':
-                stack.push('}')
+                stack.push_back1('}')
             # Closing bracket
             elif stack.empty() or stack.pop() != c:
                 return False

@@ -1,5 +1,5 @@
 #include <dsa/lib/trees/bt.h>
-#include "binary_tree_test.h"
+#include "bt_test.h"
 
 namespace dsa::lib::trees {
 namespace {
@@ -87,6 +87,84 @@ TEST_F(GetArraySizeForBinaryTreeTest, case4) {
     int ary[] = {3, 1, 5, 0, 2};
     run(ary, aryLength(ary), 7);
 }
+
+class GetNodeByIndexTest : public BinaryTreeTest {
+ protected:
+    static BinaryTreeNode *getNodeByIndex(BinaryTreeNode *root, pos_t i) {
+        BinaryTree bt(root);
+        return bt.getNodeByIndex(i);
+    }
+};
+TEST_F(GetNodeByIndexTest, case1) {
+    BinaryTreeNode *actual = getNodeByIndex(nullptr, 0);
+    EXPECT_EQ(nullptr, actual);
+}
+TEST_F(GetNodeByIndexTest, case2) {
+    BinaryTreeNode *actual = getNodeByIndex(nullptr, 1);
+    EXPECT_EQ(nullptr, actual);
+}
+TEST_F(GetNodeByIndexTest, case3) {
+    int ary[] = {1};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *actual = getNodeByIndex(root, 1);
+
+    EXPECT_EQ(nullptr, actual);
+    BinaryTree::destroy(root);
+}
+TEST_F(GetNodeByIndexTest, case4) {
+    int ary[] = {1, 0, 3};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *actual = getNodeByIndex(root, 1);
+
+    EXPECT_EQ(nullptr, actual);
+    BinaryTree::destroy(root);
+}
+TEST_F(GetNodeByIndexTest, case5) {
+    int ary[] = {1};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *actual = getNodeByIndex(root, 0);
+
+    EXPECT_EQ(1, actual->val);
+    BinaryTree::destroy(root);
+}
+TEST_F(GetNodeByIndexTest, case6) {
+    int ary[] = {1, 2, 3};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *actual = getNodeByIndex(root, 2);
+
+    EXPECT_EQ(3, actual->val);
+    BinaryTree::destroy(root);
+}
+TEST_F(GetNodeByIndexTest, case7) {
+    int ary[] = {3, 1, 5, 0, 2};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *actual = getNodeByIndex(root, 4);
+
+    EXPECT_EQ(2, actual->val);
+    BinaryTree::destroy(root);
+}
+
+//class LowestCommonAncestorTest : public LibTest {
+class LowestCommonAncestorTest : public BinaryTreeTest {
+ protected:
+    static BinaryTreeNode *lca(BinaryTreeNode *root, BinaryTreeNode *p, BinaryTreeNode *q) {
+        BinaryTree bt(root);
+        return bt.lowestCommonAncestor(p, q);
+    }
+};
+//TEST_F(LowestCommonAncestorTest, case1) {
+////    Act;
+//    int ary[] = {3, 5, 1, 6, 2, 0, 8, 0, 0, 7, 4};
+//    length_t length = aryLength(ary);
+//    BinaryTreeNode *root = arrayToBinaryTree(ary, length);
+//    BinaryTreeNode *p = getTreeNodeByValue(5);
+//    BinaryTreeNode *q = getTreeNodeByValue(1);
+//
+////    Arrange;
+//    BinaryTreeNode *actual = lca(root, p, q);
+////    Assert;
+//
+//}
 
 }
 }

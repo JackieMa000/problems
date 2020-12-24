@@ -108,6 +108,12 @@ class LowestCommonAncestorTest(BinaryTreeTestCase):
         q: BinaryTreeNode = self.get_tree_node_by_value(root, 4)
         self.assertEqual(5, self.get_lowestCommonAncestor(root, p, q).val)
 
+    def test_case3(self):
+        root: BinaryTreeNode = self.array_to_binary_tree([1, 2])
+        p: BinaryTreeNode = self.get_tree_node_by_value(root, 1)
+        q: BinaryTreeNode = self.get_tree_node_by_value(root, 2)
+        self.assertEqual(1, self.get_lowestCommonAncestor(root, p, q).val)
+
     @staticmethod
     def get_lowestCommonAncestor(root, p, q):
         return BinaryTree(root).lowest_common_ancestor(p, q)

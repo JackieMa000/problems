@@ -63,22 +63,21 @@ public class BinaryTree implements Tree {
 
     @Override
     public BinaryTreeNode getNodeByIndex(int idx) {
-        return getNodeByIdxBfs(this.root, idx);
+        return getTreeNodeByIdxBfs(this.root, idx);
     }
 
-    private static BinaryTreeNode getNodeByIdxBfs(BinaryTreeNode root, int idx) {
+    private static BinaryTreeNode getTreeNodeByIdxBfs(BinaryTreeNode root, int idx) {
         Queue<BinaryTreeNode> queue = new LinkedList<>();
+        if (root != null) queue.add(root);
 
-        queue.add(root);
         int count = 0;
         while (!queue.isEmpty()) {
-            BinaryTreeNode node = queue.poll();
-            count++;
-            if ((count - 1) == idx) return node;
+            root = queue.poll();
+            if ((++count - 1) == idx) return root;
 
-            if (node == null) continue;
-            queue.add(node.left);
-            queue.add(node.right);
+            if (root == null) continue;
+            queue.add(root.left);
+            queue.add(root.right);
         }
 
         return null;

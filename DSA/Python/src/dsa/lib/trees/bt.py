@@ -39,23 +39,22 @@ class BinaryTree(Tree):
         return pow(2, BinaryTree(root).depth()) - 1
 
     def get_node_by_index(self, idx: int) -> BinaryTreeNode:
-        return BinaryTree.get_node_by_idx_bfs(self._root, idx)
+        return BinaryTree.get_tree_node_by_idx_bfs(self._root, idx)
 
     @staticmethod
-    def get_node_by_idx_bfs(root: BinaryTreeNode, idx: int) -> Optional[BinaryTreeNode]:
+    def get_tree_node_by_idx_bfs(root: BinaryTreeNode, idx: int) -> Optional[BinaryTreeNode]:
         queue: Queue = Queue()
+        if root: queue.push(root)
 
-        queue.append(root)
         count: int = 0
         while not queue.empty():
-            node = queue.pop()
+            root = queue.pop()
             count += 1
-            if (count - 1) == idx:
-                return node
+            if (count - 1) == idx: return root
 
-            if not node: continue
-            queue.append(node.left)
-            queue.append(node.right)
+            if not root: continue
+            queue.push(root.left)
+            queue.push(root.right)
 
         return None
 

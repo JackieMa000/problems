@@ -18,3 +18,6 @@ add_test(NAME Math.NumsTest COMMAND math.nums_test)
 
 ######### Container Test #####
 add_test(NAME QueueTest COMMAND queue_test)
+
+######## Algo Test #####
+add_test(NAME SortTest COMMAND sort_test)

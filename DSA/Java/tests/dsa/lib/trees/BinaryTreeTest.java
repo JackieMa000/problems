@@ -11,6 +11,7 @@ public class BinaryTreeTest extends BinaryTreeTestFX {
     public static class GetNodeByIndexTest {
         @Test
         public void case1() {
+            assertNull(getTreeNodeByIdx(null, 0));
             assertNull(getTreeNodeByIdx(null, 1));
             assertNull(getTreeNodeByIdx(arrayToBinaryTree(new int[]{1}), 1));
             assertNull(getTreeNodeByIdx(arrayToBinaryTree(new int[]{1, 0, 3}), 1));
@@ -146,6 +147,14 @@ public class BinaryTreeTest extends BinaryTreeTestFX {
             BinaryTreeNode p = getTreeNodeByValue(root, 5);
             BinaryTreeNode q = getTreeNodeByValue(root, 4);
             assertEquals(5, getLowestCommonAncestor(root, p, q).val);
+        }
+
+        @Test
+        public void case3() {
+            BinaryTreeNode root = arrayToBinaryTree(new int[]{1, 2});
+            BinaryTreeNode p = getTreeNodeByValue(root, 1);
+            BinaryTreeNode q = getTreeNodeByValue(root, 2);
+            assertEquals(1, getLowestCommonAncestor(root, p, q).val);
         }
     }
 }

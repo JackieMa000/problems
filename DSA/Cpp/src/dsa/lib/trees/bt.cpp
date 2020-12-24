@@ -1,4 +1,5 @@
 #include <dsa/lib/utils/utils.h>
+#include <queue>
 #include "bt.h"
 
 namespace dsa::lib::trees {
@@ -53,6 +54,31 @@ depth_t BinaryTree::depth() {
 }
 depth_t BinaryTree::depthDfs(BinaryTreeNode *root) {
     return (!root) ? 0 : (1 + std::max(depthDfs(root->left), depthDfs(root->right)));
+}
+
+BinaryTreeNode *BinaryTree::getNodeByIndex(pos_t idx) {
+    return getTreeNodeByIdxBfs(this->root, idx);
+}
+BinaryTreeNode *BinaryTree::getTreeNodeByIdxBfs(BinaryTreeNode *root, pos_t idx) {
+    std::queue<BinaryTreeNode *> queue;
+    if (root) { queue.push(root); }
+
+    int count = 0;
+    while (!queue.empty()) {
+        root = queue.front();
+        queue.pop();
+        if (++count - 1 == idx) { return root; }
+
+        if (!root) { continue; }
+        queue.push(root->left);
+        queue.push(root->right);
+    }
+
+    return nullptr;
+}
+BinaryTreeNode *BinaryTree::getNodeByValue(int val) {
+//    ToDo
+    return nullptr;
 }
 
 }  // namespace dsa::lib::trees

@@ -124,5 +124,13 @@ public class BinarySearchTreeTest extends BinarySearchTreeTestFX {
             BinaryTreeNode q = getTreeNodeByValue(root, 4);
             assertEquals(2, getLowestCommonAncestor(root, p, q).val);
         }
+
+        @Test
+        public void case3() {
+            BinaryTreeNode root = arrayToBinaryTree(new int[]{1, 2});
+            BinaryTreeNode p = getTreeNodeByValue(root, 1);
+            BinaryTreeNode q = getTreeNodeByValue(root, 2);
+            assertEquals(1, getLowestCommonAncestor(root, p, q).val);
+        }
     }
 }

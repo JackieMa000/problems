@@ -12,6 +12,7 @@ class BinaryTree : public Tree {
                                                    BinaryTreeNode *q);
     static void generateArrayFromTree(BinaryTreeNode *root, pos_t i, int *ary, length_t length);
     static depth_t depthDfs(BinaryTreeNode *root);
+    static BinaryTreeNode *getTreeNodeByIdxBfs(BinaryTreeNode *root, pos_t idx);
 
  protected:
     BinaryTreeNode *root;
@@ -23,6 +24,9 @@ class BinaryTree : public Tree {
 
     arrayStruct toArray() override;
     depth_t depth() override;
+    BinaryTreeNode *getNodeByIndex(pos_t idx) override;
+    BinaryTreeNode *getNodeByValue(int val) override;
+
     virtual BinaryTreeNode *lowestCommonAncestor(BinaryTreeNode *p, BinaryTreeNode *q);
     static length_t getArraySizeForBinaryTree(BinaryTreeNode *root);
 };

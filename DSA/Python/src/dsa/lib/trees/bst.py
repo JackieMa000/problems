@@ -10,35 +10,35 @@ class BinarySearchTree(BinaryTree):
         super().__init__(root)
 
     def preorder(self) -> List[int]:
-        return BinarySearchTree._preorder_dfs(self._root, [])
+        return self._preorder_dfs(self._root, [])
 
-    @staticmethod
-    def _preorder_dfs(root: BinaryTreeNode, lst: List[int]) -> List[int]:
+    @classmethod
+    def _preorder_dfs(cls, root: BinaryTreeNode, lst: List[int]) -> List[int]:
         if root:
             lst.append(root.val)
-            BinarySearchTree._preorder_dfs(root.left, lst)
-            BinarySearchTree._preorder_dfs(root.right, lst)
+            cls._preorder_dfs(root.left, lst)
+            cls._preorder_dfs(root.right, lst)
         return lst
 
     def inorder(self) -> List[int]:
-        return BinarySearchTree._inorder_dfs(self._root, [])
+        return self._inorder_dfs(self._root, [])
 
-    @staticmethod
-    def _inorder_dfs(root: BinaryTreeNode, lst: List[int]) -> List[int]:
+    @classmethod
+    def _inorder_dfs(cls, root: BinaryTreeNode, lst: List[int]) -> List[int]:
         if root:
-            BinarySearchTree._inorder_dfs(root.left, lst)
+            cls._inorder_dfs(root.left, lst)
             lst.append(root.val)
-            BinarySearchTree._inorder_dfs(root.right, lst)
+            cls._inorder_dfs(root.right, lst)
         return lst
 
     def postorder(self) -> List[int]:
-        return BinarySearchTree._postorder_dfs(self._root, [])
+        return self._postorder_dfs(self._root, [])
 
-    @staticmethod
-    def _postorder_dfs(root: BinaryTreeNode, lst: List[int]) -> List[int]:
+    @classmethod
+    def _postorder_dfs(cls, root: BinaryTreeNode, lst: List[int]) -> List[int]:
         if root:
-            BinarySearchTree._postorder_dfs(root.left, lst)
-            BinarySearchTree._postorder_dfs(root.right, lst)
+            cls._postorder_dfs(root.left, lst)
+            cls._postorder_dfs(root.right, lst)
             lst.append(root.val)
         return lst
 
@@ -77,14 +77,14 @@ class BinarySearchTree(BinaryTree):
         2. if p < root and q < root -> goes to left subtree
         3. if root < p and root < q -> goes to right subtree
         """
-        return BinarySearchTree._lowest_common_ancestor_dfs(self._root, p, q)
+        return self._lowest_common_ancestor_dfs(self._root, p, q)
 
-    @staticmethod
-    def _lowest_common_ancestor_dfs(root: BinaryTreeNode, p: BinaryTreeNode, q: BinaryTreeNode) -> BinaryTreeNode:
+    @classmethod
+    def _lowest_common_ancestor_dfs(cls, root: BinaryTreeNode, p: BinaryTreeNode, q: BinaryTreeNode) -> BinaryTreeNode:
         if p.val < root.val > q.val:
-            return BinarySearchTree._lowest_common_ancestor_dfs(root.left, p, q)
+            return cls._lowest_common_ancestor_dfs(root.left, p, q)
         if p.val > root.val < q.val:
-            return BinarySearchTree._lowest_common_ancestor_dfs(root.right, p, q)
+            return cls._lowest_common_ancestor_dfs(root.right, p, q)
         return root
 
     @staticmethod

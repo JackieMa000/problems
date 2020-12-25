@@ -85,20 +85,42 @@ public class BinaryTree implements Tree {
 
     @Override
     public BinaryTreeNode getNodeByValue(int val) {
-        return getNodeByValBfs(this.root, val);
+        return getNodeByValDfs(this.root, val);
+    }
+
+    private static BinaryTreeNode getNodeByValDfs(BinaryTreeNode root, int val) {
+        if (root == null) return null;
+        if (root.val == val) return root;
+
+        BinaryTreeNode left = getNodeByValDfs(root.left, val);
+        BinaryTreeNode right = getNodeByValDfs(root.right, val);
+        return left != null ? left : right;
     }
 
     private static BinaryTreeNode getNodeByValBfs(BinaryTreeNode root, int val) {
         Queue<BinaryTreeNode> queue = new LinkedList<>();
-
-        queue.add(root);
+        if (root != null) queue.add(root);
         while (!queue.isEmpty()) {
-            BinaryTreeNode node = queue.poll();
-            if (node == null) continue;
-            if (node.val == val) return node;
+            root = queue.poll();
+            if (root.val == val) return root;
 
-            queue.add(node.left);
-            queue.add(node.right);
+            if (root.left != null) queue.add(root.left);
+            if (root.right != null) queue.add(root.right);
+        }
+
+        return null;
+    }
+
+    private static BinaryTreeNode getNodeByValBfs1(BinaryTreeNode root, int val) {
+        Queue<BinaryTreeNode> queue = new LinkedList<>();
+        if (root != null) queue.add(root);
+        while (!queue.isEmpty()) {
+            root = queue.poll();
+            if (root == null) continue;
+            if (root.val == val) return root;
+
+            queue.add(root.left);
+            queue.add(root.right);
         }
 
         return null;

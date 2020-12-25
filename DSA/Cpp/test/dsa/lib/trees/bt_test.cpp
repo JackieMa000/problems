@@ -144,6 +144,53 @@ TEST_F(GetNodeByIndexTest, case7) {
     BinaryTree::destroy(root);
 }
 
+class GetNodeByValueTest : public BinaryTreeTest {
+ protected:
+    static BinaryTreeNode *getNodeByValue(BinaryTreeNode *root, int val) {
+        BinaryTree bt(root);
+        return bt.getNodeByValue(val);
+    }
+};
+TEST_F(GetNodeByValueTest, emptyTree) {
+    BinaryTreeNode *actual = getNodeByValue(nullptr, 1);
+    EXPECT_EQ(nullptr, actual);
+}
+TEST_F(GetNodeByValueTest, valueNotExist) {
+    int ary[] = {1};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *actual = getNodeByValue(root, 2);
+    EXPECT_EQ(nullptr, actual);
+    BinaryTree::destroy(root);
+}
+TEST_F(GetNodeByValueTest, case1) {
+    int ary[] = {1};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *actual = getNodeByValue(root, 1);
+    EXPECT_EQ(1, actual->val);
+    BinaryTree::destroy(root);
+}
+TEST_F(GetNodeByValueTest, case2) {
+    int ary[] = {1, 2, 3};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *actual = getNodeByValue(root, 3);
+    EXPECT_EQ(3, actual->val);
+    BinaryTree::destroy(root);
+}
+TEST_F(GetNodeByValueTest, case3) {
+    int ary[] = {1, 2, 3};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *actual = getNodeByValue(root, 2);
+    EXPECT_EQ(2, actual->val);
+    BinaryTree::destroy(root);
+}
+TEST_F(GetNodeByValueTest, case4) {
+    int ary[] = {3, 1, 5, 0, 2};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *actual = getNodeByValue(root, 2);
+    EXPECT_EQ(2, actual->val);
+    BinaryTree::destroy(root);
+}
+
 //class LowestCommonAncestorTest : public LibTest {
 class LowestCommonAncestorTest : public BinaryTreeTest {
  protected:

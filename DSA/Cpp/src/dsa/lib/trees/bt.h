@@ -13,6 +13,9 @@ class BinaryTree : public Tree {
     static void generateArrayFromTree(BinaryTreeNode *root, pos_t i, int *ary, length_t length);
     static depth_t depthDfs(BinaryTreeNode *root);
     static BinaryTreeNode *getTreeNodeByIdxBfs(BinaryTreeNode *root, pos_t idx);
+    static BinaryTreeNode *getNodeByValBfs(BinaryTreeNode *root, int val);
+    static BinaryTreeNode *getNodeByValBfs1(BinaryTreeNode *root, int val);
+    static BinaryTreeNode *getNodeByValDfs(BinaryTreeNode *root, int val);
 
  protected:
     BinaryTreeNode *root;

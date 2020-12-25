@@ -77,8 +77,44 @@ BinaryTreeNode *BinaryTree::getTreeNodeByIdxBfs(BinaryTreeNode *root, pos_t idx)
     return nullptr;
 }
 BinaryTreeNode *BinaryTree::getNodeByValue(int val) {
-//    ToDo
+    return getNodeByValDfs(this->root, val);
+}
+BinaryTreeNode *BinaryTree::getNodeByValBfs(BinaryTreeNode *root, int val) {
+    std::queue<BinaryTreeNode *> queue;
+    if (root) { queue.push(root); }
+    while (!queue.empty()) {
+        root = queue.front();
+        queue.pop();
+        if (root->val == val) { return root; }
+
+        if (root->left) { queue.push(root->left); }
+        if (root->right) { queue.push(root->right); }
+    }
+
     return nullptr;
+}
+BinaryTreeNode *BinaryTree::getNodeByValBfs1(BinaryTreeNode *root, int val) {
+    std::queue<BinaryTreeNode *> queue;
+    if (root) { queue.push(root); }
+    while (!queue.empty()) {
+        root = queue.front();
+        queue.pop();
+        if (!root) { continue; }
+        if (root->val == val) { return root; }
+
+        queue.push(root->left);
+        queue.push(root->right);
+    }
+
+    return nullptr;
+}
+BinaryTreeNode *BinaryTree::getNodeByValDfs(BinaryTreeNode *root, int val) {
+    if (!root) { return nullptr; }
+    if (root->val == val) { return root; }
+
+    BinaryTreeNode *left = getNodeByValDfs(root->left, val);
+    BinaryTreeNode *right = getNodeByValDfs(root->right, val);
+    return left ? left : right;
 }
 
 }  // namespace dsa::lib::trees

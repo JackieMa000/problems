@@ -26,6 +26,18 @@ class LibTest : public testing::DSATest {
         lists::linkedlists::SinglyLinkedList ls(head);
         return ls.getNodeByIndex(idx);
     }
+    static ListNode *getLinkedListNodeByValue(ListNode *head, int val) {
+        lists::linkedlists::SinglyLinkedList ls(head);
+        return ls.getNodeByValue(val);
+    }
+    static BinaryTreeNode *getTreeNodeByIndex(BinaryTreeNode *root, pos_t idx) {
+        trees::BinaryTree bt(root);
+        return bt.getNodeByIndex(idx);
+    }
+    static BinaryTreeNode *getTreeNodeByValue(BinaryTreeNode *root, int val) {
+        trees::BinaryTree bt(root);
+        return bt.getNodeByValue(val);
+    }
 };
 
 }

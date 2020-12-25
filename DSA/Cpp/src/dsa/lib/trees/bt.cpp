@@ -15,9 +15,7 @@ void BinaryTree::destroy(BinaryTreeNode *root) {
 BinaryTreeNode *BinaryTree::lowestCommonAncestor(BinaryTreeNode *p, BinaryTreeNode *q) {
     return lowestCommonAncestorDfs(this->root, p, q);
 }
-BinaryTreeNode *BinaryTree::lowestCommonAncestorDfs(BinaryTreeNode *root,
-                                                    BinaryTreeNode *p,
-                                                    BinaryTreeNode *q) {
+BinaryTreeNode *BinaryTree::lowestCommonAncestorDfs(BinaryTreeNode *root, BinaryTreeNode *p, BinaryTreeNode *q) {
     if (!root || p == root || q == root) return root;
     BinaryTreeNode *left = lowestCommonAncestorDfs(root->left, p, q);
     BinaryTreeNode *right = lowestCommonAncestorDfs(root->right, p, q);

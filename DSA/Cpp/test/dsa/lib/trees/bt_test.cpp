@@ -1,7 +1,7 @@
 #include <dsa/lib/trees/bt.h>
 #include "bt_test.h"
 
-namespace dsa::lib::trees {
+namespace dsa::lib::trees::bt {
 namespace {
 
 class ToArrayTest : public BinaryTreeTest {
@@ -191,7 +191,6 @@ TEST_F(GetNodeByValueTest, case4) {
     BinaryTree::destroy(root);
 }
 
-//class LowestCommonAncestorTest : public LibTest {
 class LowestCommonAncestorTest : public BinaryTreeTest {
  protected:
     static BinaryTreeNode *lca(BinaryTreeNode *root, BinaryTreeNode *p, BinaryTreeNode *q) {
@@ -199,19 +198,39 @@ class LowestCommonAncestorTest : public BinaryTreeTest {
         return bt.lowestCommonAncestor(p, q);
     }
 };
-//TEST_F(LowestCommonAncestorTest, case1) {
-////    Act;
-//    int ary[] = {3, 5, 1, 6, 2, 0, 8, 0, 0, 7, 4};
-//    length_t length = aryLength(ary);
-//    BinaryTreeNode *root = arrayToBinaryTree(ary, length);
-//    BinaryTreeNode *p = getTreeNodeByValue(5);
-//    BinaryTreeNode *q = getTreeNodeByValue(1);
-//
-////    Arrange;
-//    BinaryTreeNode *actual = lca(root, p, q);
-////    Assert;
-//
-//}
+TEST_F(LowestCommonAncestorTest, case1) {
+    int ary[] = {3, 5, 1, 6, 2, 0, 8, 0, 0, 7, 4};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *p = getTreeNodeByValue(root, 5);
+    BinaryTreeNode *q = getTreeNodeByValue(root, 1);
+
+    BinaryTreeNode *actual = lca(root, p, q);
+
+    EXPECT_EQ(3, actual->val);
+    BinaryTree::destroy(root);
+}
+TEST_F(LowestCommonAncestorTest, case2) {
+    int ary[] = {3, 5, 1, 6, 2, 0, 8, 0, 0, 7, 4};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *p = getTreeNodeByValue(root, 5);
+    BinaryTreeNode *q = getTreeNodeByValue(root, 4);
+
+    BinaryTreeNode *actual = lca(root, p, q);
+
+    EXPECT_EQ(5, actual->val);
+    BinaryTree::destroy(root);
+}
+TEST_F(LowestCommonAncestorTest, case3) {
+    int ary[] = {1, 2};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *p = getTreeNodeByValue(root, 1);
+    BinaryTreeNode *q = getTreeNodeByValue(root, 2);
+
+    BinaryTreeNode *actual = lca(root, p, q);
+
+    EXPECT_EQ(1, actual->val);
+    BinaryTree::destroy(root);
+}
 
 }
 }

@@ -74,23 +74,23 @@ class IsValidTest(BinarySearchTreeTestCase):
 class LowestCommonAncestorTest(BinarySearchTreeTestCase):
 
     @staticmethod
-    def get_lowestCommonAncestor(root: BinaryTreeNode, p: BinaryTreeNode, q: BinaryTreeNode) -> BinaryTreeNode:
+    def lca(root: BinaryTreeNode, p: BinaryTreeNode, q: BinaryTreeNode) -> BinaryTreeNode:
         return BinarySearchTree(root).lowest_common_ancestor(p, q)
 
     def test_case1(self):
         root: BinaryTreeNode = self.array_to_binary_tree([6, 2, 8, 1, 4, 7, 9, 0, 0, 3, 5])
         p: BinaryTreeNode = self.get_tree_node_by_value(root, 2)
         q: BinaryTreeNode = self.get_tree_node_by_value(root, 8)
-        self.assertEqual(6, self.get_lowestCommonAncestor(root, p, q).val)
+        self.assertEqual(6, self.lca(root, p, q).val)
 
     def test_case2(self):
         root: BinaryTreeNode = self.array_to_binary_tree([6, 2, 8, 1, 4, 7, 9, 0, 0, 3, 5])
         p: BinaryTreeNode = self.get_tree_node_by_value(root, 2)
         q: BinaryTreeNode = self.get_tree_node_by_value(root, 4)
-        self.assertEqual(2, self.get_lowestCommonAncestor(root, p, q).val)
+        self.assertEqual(2, self.lca(root, p, q).val)
 
     def test_case3(self):
         root: BinaryTreeNode = self.array_to_binary_tree([1, 2])
         p: BinaryTreeNode = self.get_tree_node_by_value(root, 1)
         q: BinaryTreeNode = self.get_tree_node_by_value(root, 2)
-        self.assertEqual(1, self.get_lowestCommonAncestor(root, p, q).val)
+        self.assertEqual(1, self.lca(root, p, q).val)

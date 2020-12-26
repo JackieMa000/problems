@@ -11,25 +11,21 @@ public class BinaryTreeTest extends BinaryTreeTestFX {
     public static class GetNodeByIndexTest {
         @Test
         public void case1() {
-            assertNull(getTreeNodeByIdx(null, 0));
-            assertNull(getTreeNodeByIdx(null, 1));
-            assertNull(getTreeNodeByIdx(arrayToBinaryTree(new int[]{1}), 1));
-            assertNull(getTreeNodeByIdx(arrayToBinaryTree(new int[]{1, 0, 3}), 1));
+            assertNull(getTreeNodeByIndex(null, 0));
+            assertNull(getTreeNodeByIndex(null, 1));
+            assertNull(getTreeNodeByIndex(arrayToBinaryTree(new int[]{1}), 1));
+            assertNull(getTreeNodeByIndex(arrayToBinaryTree(new int[]{1, 0, 3}), 1));
         }
 
         @Test
         public void case2() {
-            assertEquals(1, getTreeNodeByIdx(arrayToBinaryTree(new int[]{1}), 0).val);
-            assertEquals(3, getTreeNodeByIdx(arrayToBinaryTree(new int[]{1, 2, 3}), 2).val);
+            assertEquals(1, getTreeNodeByIndex(arrayToBinaryTree(new int[]{1}), 0).val);
+            assertEquals(3, getTreeNodeByIndex(arrayToBinaryTree(new int[]{1, 2, 3}), 2).val);
         }
 
         @Test
         public void case3() {
-            assertEquals(2, getTreeNodeByIdx(arrayToBinaryTree(new int[]{3, 1, 5, 0, 2}), 4).val);
-        }
-
-        private BinaryTreeNode getTreeNodeByIdx(BinaryTreeNode root, int i) {
-            return new BinaryTree(root).getNodeByIndex(i);
+            assertEquals(2, getTreeNodeByIndex(arrayToBinaryTree(new int[]{3, 1, 5, 0, 2}), 4).val);
         }
     }
 
@@ -37,24 +33,20 @@ public class BinaryTreeTest extends BinaryTreeTestFX {
 
         @Test
         public void case1() {
-            assertNull(getTreeNodeByVal(null, 1));
-            assertNull(getTreeNodeByVal(arrayToBinaryTree(new int[]{1}), 2));
+            assertNull(getTreeNodeByValue(null, 1));
+            assertNull(getTreeNodeByValue(arrayToBinaryTree(new int[]{1}), 2));
         }
 
         @Test
         public void case2() {
-            assertEquals(1, getTreeNodeByVal(arrayToBinaryTree(new int[]{1}), 1).val);
-            assertEquals(3, getTreeNodeByVal(arrayToBinaryTree(new int[]{1, 2, 3}), 3).val);
+            assertEquals(1, getTreeNodeByValue(arrayToBinaryTree(new int[]{1}), 1).val);
+            assertEquals(3, getTreeNodeByValue(arrayToBinaryTree(new int[]{1, 2, 3}), 3).val);
         }
 
         @Test
         public void case3() {
-            assertEquals(2, getTreeNodeByVal(arrayToBinaryTree(new int[]{1, 2, 3}), 2).val);
-            assertEquals(2, getTreeNodeByVal(arrayToBinaryTree(new int[]{3, 1, 5, 0, 2}), 2).val);
-        }
-
-        private BinaryTreeNode getTreeNodeByVal(BinaryTreeNode root, int v) {
-            return new BinaryTree(root).getNodeByValue(v);
+            assertEquals(2, getTreeNodeByValue(arrayToBinaryTree(new int[]{1, 2, 3}), 2).val);
+            assertEquals(2, getTreeNodeByValue(arrayToBinaryTree(new int[]{3, 1, 5, 0, 2}), 2).val);
         }
     }
 
@@ -129,7 +121,7 @@ public class BinaryTreeTest extends BinaryTreeTestFX {
 
     public static class LowestCommonAncestorTest {
 
-        private BinaryTreeNode getLowestCommonAncestor(BinaryTreeNode root, BinaryTreeNode p, BinaryTreeNode q) {
+        private BinaryTreeNode lca(BinaryTreeNode root, BinaryTreeNode p, BinaryTreeNode q) {
             return new BinaryTree(root).lowestCommonAncestor(p, q);
         }
 
@@ -138,7 +130,7 @@ public class BinaryTreeTest extends BinaryTreeTestFX {
             BinaryTreeNode root = arrayToBinaryTree(new int[]{3, 5, 1, 6, 2, 0, 8, 0, 0, 7, 4});
             BinaryTreeNode p = getTreeNodeByValue(root, 5);
             BinaryTreeNode q = getTreeNodeByValue(root, 1);
-            assertEquals(3, getLowestCommonAncestor(root, p, q).val);
+            assertEquals(3, lca(root, p, q).val);
         }
 
         @Test
@@ -146,7 +138,7 @@ public class BinaryTreeTest extends BinaryTreeTestFX {
             BinaryTreeNode root = arrayToBinaryTree(new int[]{3, 5, 1, 6, 2, 0, 8, 0, 0, 7, 4});
             BinaryTreeNode p = getTreeNodeByValue(root, 5);
             BinaryTreeNode q = getTreeNodeByValue(root, 4);
-            assertEquals(5, getLowestCommonAncestor(root, p, q).val);
+            assertEquals(5, lca(root, p, q).val);
         }
 
         @Test
@@ -154,7 +146,7 @@ public class BinaryTreeTest extends BinaryTreeTestFX {
             BinaryTreeNode root = arrayToBinaryTree(new int[]{1, 2});
             BinaryTreeNode p = getTreeNodeByValue(root, 1);
             BinaryTreeNode q = getTreeNodeByValue(root, 2);
-            assertEquals(1, getLowestCommonAncestor(root, p, q).val);
+            assertEquals(1, lca(root, p, q).val);
         }
     }
 }

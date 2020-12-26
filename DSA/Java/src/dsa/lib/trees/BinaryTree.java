@@ -132,14 +132,17 @@ public class BinaryTree implements Tree {
 
     /**
      * Binary Tree LCA Rule:
-     * 1. root is None
+     * find(root, p, q): find p or q in the tree.
+     * lca(root, p, q): find the lca in the tree.
+     * 1. root is null -> null
      * 2. p or q is root -> root
-     * 3. p is on the left/right subtree, q is on the right/left subtree, respectively -> root
-     * 4. p and q both are on the left/right subtree, then go to the left/right for more searching.
+     * 3. p is on the left/right subtree, and q is on the right/left subtree, respectively -> root
+     * 4. p and q both are on the left/right subtree, means lca is on the left/right, return left/right respectively.
      */
     private static BinaryTreeNode lowestCommonAncestorDfs(BinaryTreeNode root, BinaryTreeNode p, BinaryTreeNode q) {
         if (root == null || p == root || q == root) return root;
 
+//        saving the lca on variable left/right
         BinaryTreeNode left = lowestCommonAncestorDfs(root.left, p, q);
         BinaryTreeNode right = lowestCommonAncestorDfs(root.right, p, q);
 

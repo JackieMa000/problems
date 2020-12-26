@@ -83,9 +83,13 @@ BinaryTreeNode *BinarySearchTree::lowestCommonAncestorDfs(BinaryTreeNode *root, 
 
 BinaryTreeNode *BinarySearchTree::lowestCommonAncestorBfs(BinaryTreeNode *root, BinaryTreeNode *p, BinaryTreeNode *q) {
     while (root) {
-        if (p->val < root->val && q->val < root->val) root = root->left;
-        else if (root->val < p->val && root->val < q->val) root = root->right;
-        else return root;
+        if (p->val < root->val && q->val < root->val) {
+            root = root->left;
+        } else if (root->val < p->val && root->val < q->val) {
+            root = root->right;
+        } else {
+            break;
+        }
     }
     return root;
 }

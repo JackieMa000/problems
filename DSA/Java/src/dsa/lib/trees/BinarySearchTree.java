@@ -92,12 +92,13 @@ public class BinarySearchTree extends BinaryTree {
 
     private static BinaryTreeNode lowestCommonAncestorBfs(BinaryTreeNode root, BinaryTreeNode p, BinaryTreeNode q) {
         while (root != null) {
-            if (p.val < root.val && q.val < root.val)
+            if (p.val < root.val && q.val < root.val) {
                 root = root.left;
-            else if ((root.val < p.val && root.val < q.val))
+            } else if ((root.val < p.val && root.val < q.val)) {
                 root = root.right;
-            else
-                return root;
+            } else {
+                break;
+            }
         }
         return root;
     }

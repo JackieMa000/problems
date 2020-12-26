@@ -1,7 +1,7 @@
 #include <dsa/lib/trees/bt.h>
 #include "bt_test.h"
 
-namespace dsa::lib::trees::bt {
+namespace dsa::lib::trees {
 namespace {
 
 class ToArrayTest : public BinaryTreeTest {
@@ -191,14 +191,14 @@ TEST_F(GetNodeByValueTest, case4) {
     BinaryTree::destroy(root);
 }
 
-class LowestCommonAncestorTest : public BinaryTreeTest {
+class LowestCommonAncestorTestBT : public BinaryTreeTest {
  protected:
     static BinaryTreeNode *lca(BinaryTreeNode *root, BinaryTreeNode *p, BinaryTreeNode *q) {
         BinaryTree bt(root);
         return bt.lowestCommonAncestor(p, q);
     }
 };
-TEST_F(LowestCommonAncestorTest, case1) {
+TEST_F(LowestCommonAncestorTestBT, case1) {
     int ary[] = {3, 5, 1, 6, 2, 0, 8, 0, 0, 7, 4};
     BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
     BinaryTreeNode *p = getTreeNodeByValue(root, 5);
@@ -209,7 +209,7 @@ TEST_F(LowestCommonAncestorTest, case1) {
     EXPECT_EQ(3, actual->val);
     BinaryTree::destroy(root);
 }
-TEST_F(LowestCommonAncestorTest, case2) {
+TEST_F(LowestCommonAncestorTestBT, case2) {
     int ary[] = {3, 5, 1, 6, 2, 0, 8, 0, 0, 7, 4};
     BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
     BinaryTreeNode *p = getTreeNodeByValue(root, 5);
@@ -220,7 +220,7 @@ TEST_F(LowestCommonAncestorTest, case2) {
     EXPECT_EQ(5, actual->val);
     BinaryTree::destroy(root);
 }
-TEST_F(LowestCommonAncestorTest, case3) {
+TEST_F(LowestCommonAncestorTestBT, case3) {
     int ary[] = {1, 2};
     BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
     BinaryTreeNode *p = getTreeNodeByValue(root, 1);

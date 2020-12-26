@@ -43,38 +43,30 @@ class GetArraySizeForTreeTest(BinaryTreeTestCase):
 class GetNodeByIndexTest(BinaryTreeTestCase):
 
     def test_case1(self):
-        self.assertIsNone(self.get_tree_node_by_idx(BinaryTreeNode(), 2))
-        self.assertIsNone(self.get_tree_node_by_idx(self.array_to_binary_tree([1]), 1))
-        self.assertIsNone(self.get_tree_node_by_idx(self.array_to_binary_tree([1, 0, 3]), 1))
+        self.assertIsNone(self.get_tree_node_by_index(BinaryTreeNode(), 2))
+        self.assertIsNone(self.get_tree_node_by_index(self.array_to_binary_tree([1]), 1))
+        self.assertIsNone(self.get_tree_node_by_index(self.array_to_binary_tree([1, 0, 3]), 1))
 
     def test_case2(self):
-        self.assertEqual(1, self.get_tree_node_by_idx(self.array_to_binary_tree([1]), 0).val)
-        self.assertEqual(3, self.get_tree_node_by_idx(self.array_to_binary_tree([1, 2, 3]), 2).val)
+        self.assertEqual(1, self.get_tree_node_by_index(self.array_to_binary_tree([1]), 0).val)
+        self.assertEqual(3, self.get_tree_node_by_index(self.array_to_binary_tree([1, 2, 3]), 2).val)
 
     def test_case3(self):
-        self.assertEqual(2, self.get_tree_node_by_idx(self.array_to_binary_tree([3, 1, 5, 0, 2]), 4).val)
-
-    @staticmethod
-    def get_tree_node_by_idx(root: BinaryTreeNode, i: int) -> BinaryTreeNode:
-        return BinaryTree(root).get_node_by_index(i)
+        self.assertEqual(2, self.get_tree_node_by_index(self.array_to_binary_tree([3, 1, 5, 0, 2]), 4).val)
 
 
 class GetNodeByValueTest(BinaryTreeTestCase):
 
     def test_case1(self):
-        self.assertIsNone(self.get_tree_node_by_val(BinaryTreeNode(), 2))
-        self.assertIsNone(self.get_tree_node_by_val(self.array_to_binary_tree([1]), 2))
+        self.assertIsNone(self.get_tree_node_by_value(BinaryTreeNode(), 2))
+        self.assertIsNone(self.get_tree_node_by_value(self.array_to_binary_tree([1]), 2))
 
     def test_case2(self):
-        self.assertEqual(1, self.get_tree_node_by_val(self.array_to_binary_tree([1, 2, 3]), 1).val)
-        self.assertEqual(2, self.get_tree_node_by_val(self.array_to_binary_tree([1, 2, 3]), 2).val)
+        self.assertEqual(1, self.get_tree_node_by_value(self.array_to_binary_tree([1, 2, 3]), 1).val)
+        self.assertEqual(2, self.get_tree_node_by_value(self.array_to_binary_tree([1, 2, 3]), 2).val)
 
     def test_case3(self):
-        self.assertEqual(2, self.get_tree_node_by_val(self.array_to_binary_tree([3, 1, 5, 0, 2]), 2).val)
-
-    @staticmethod
-    def get_tree_node_by_val(root: BinaryTreeNode, val: int):
-        return BinaryTree(root).get_node_by_value(val)
+        self.assertEqual(2, self.get_tree_node_by_value(self.array_to_binary_tree([3, 1, 5, 0, 2]), 2).val)
 
 
 class SizeTest(BinaryTreeTestCase):
@@ -100,20 +92,20 @@ class LowestCommonAncestorTest(BinaryTreeTestCase):
         root: BinaryTreeNode = self.array_to_binary_tree([3, 5, 1, 6, 2, 0, 8, 0, 0, 7, 4])
         p: BinaryTreeNode = self.get_tree_node_by_value(root, 5)
         q: BinaryTreeNode = self.get_tree_node_by_value(root, 1)
-        self.assertEqual(3, self.get_lowestCommonAncestor(root, p, q).val)
+        self.assertEqual(3, self.lca(root, p, q).val)
 
     def test_case2(self):
         root: BinaryTreeNode = self.array_to_binary_tree([3, 5, 1, 6, 2, 0, 8, 0, 0, 7, 4])
         p: BinaryTreeNode = self.get_tree_node_by_value(root, 5)
         q: BinaryTreeNode = self.get_tree_node_by_value(root, 4)
-        self.assertEqual(5, self.get_lowestCommonAncestor(root, p, q).val)
+        self.assertEqual(5, self.lca(root, p, q).val)
 
     def test_case3(self):
         root: BinaryTreeNode = self.array_to_binary_tree([1, 2])
         p: BinaryTreeNode = self.get_tree_node_by_value(root, 1)
         q: BinaryTreeNode = self.get_tree_node_by_value(root, 2)
-        self.assertEqual(1, self.get_lowestCommonAncestor(root, p, q).val)
+        self.assertEqual(1, self.lca(root, p, q).val)
 
     @staticmethod
-    def get_lowestCommonAncestor(root, p, q):
+    def lca(root, p, q):
         return BinaryTree(root).lowest_common_ancestor(p, q)

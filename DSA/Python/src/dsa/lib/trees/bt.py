@@ -141,4 +141,4 @@ class BinaryTree(Tree):
         left = cls._lowest_common_ancestor_dfs(root.left, p, q)
         right = cls._lowest_common_ancestor_dfs(root.right, p, q)
 
-        return root if left and right else left or right
+        return root if (left and right) else left or right

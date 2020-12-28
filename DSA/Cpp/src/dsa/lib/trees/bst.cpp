@@ -68,22 +68,23 @@ bool BinarySearchTree::isValidBST(BinaryTreeNode *root, BinaryTreeNode *minNode,
 
 /**
  * BST LCA Rule:
+ * lca(root, p, q): find lca of p and q in the tree.
  * 1. if p < root < q or q < root < p -> root
- * 2. if p < root and q < root -> goes to left subtree
- * 3. if root < p and root < q -> goes to right subtree
+ * 2. if p < root and q < root -> lca is on the left
+ * 3. if root < p and root < q -> lca is on the right
  */
 BinaryTreeNode *BinarySearchTree::lowestCommonAncestor(BinaryTreeNode *p, BinaryTreeNode *q) {
-    return lowestCommonAncestorDfs(this->root, p, q);
+    return lowestCommonAncestorBfs(this->root, p, q);
 }
 
 BinaryTreeNode *BinarySearchTree::lowestCommonAncestorDfs(BinaryTreeNode *root, BinaryTreeNode *p, BinaryTreeNode *q) {
-    return (p->val < root->val && q->val < root->val) ? lowestCommonAncestorDfs(root->left, p, q) :
+    return (root->val > p->val && root->val > q->val) ? lowestCommonAncestorDfs(root->left, p, q) :
            (root->val < p->val && root->val < q->val) ? lowestCommonAncestorDfs(root->right, p, q) : root;
 }
 
 BinaryTreeNode *BinarySearchTree::lowestCommonAncestorBfs(BinaryTreeNode *root, BinaryTreeNode *p, BinaryTreeNode *q) {
     while (root) {
-        if (p->val < root->val && q->val < root->val) {
+        if (root->val > p->val && root->val > q->val) {
             root = root->left;
         } else if (root->val < p->val && root->val < q->val) {
             root = root->right;

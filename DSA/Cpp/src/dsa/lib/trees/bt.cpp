@@ -15,11 +15,19 @@ void BinaryTree::destroy(BinaryTreeNode *root) {
 BinaryTreeNode *BinaryTree::lowestCommonAncestor(BinaryTreeNode *p, BinaryTreeNode *q) {
     return lowestCommonAncestorDfs(this->root, p, q);
 }
+/**
+ * Binary Tree LCA Rule:
+ * lca(root, p, q): find the lca in the tree.
+ * 1. root is null -> null
+ * 2. p or q is root -> root
+ * 3. p is on the left/right subtree, and q is on the right/left subtree, respectively -> root
+ * 4. p and q both are on the left/right subtree, means lca is on the left/right, return left/right respectively.
+ */
 BinaryTreeNode *BinaryTree::lowestCommonAncestorDfs(BinaryTreeNode *root, BinaryTreeNode *p, BinaryTreeNode *q) {
-    if (!root || p == root || q == root) return root;
+    if (!root || root == p || root == q) { return root; }
+
     BinaryTreeNode *left = lowestCommonAncestorDfs(root->left, p, q);
     BinaryTreeNode *right = lowestCommonAncestorDfs(root->right, p, q);
-
     return (left && right) ? root : !left ? right : left;
 }
 

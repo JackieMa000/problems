@@ -123,22 +123,22 @@ class BinaryTree(Tree):
             count += cls._size_dfs(root.right)
         return count
 
+    # LeetCode236
     def lowest_common_ancestor(self, p: BinaryTreeNode, q: BinaryTreeNode) -> Optional[BinaryTreeNode]:
         return self._lowest_common_ancestor_dfs(self._root, p, q)
 
     @classmethod
-    def _lowest_common_ancestor_dfs(cls, root: BinaryTreeNode, p: BinaryTreeNode, q: BinaryTreeNode) -> \
-            Optional[BinaryTreeNode]:
+    def _lowest_common_ancestor_dfs(cls, root: BinaryTreeNode, p: BinaryTreeNode, q: BinaryTreeNode) -> Optional[
+        BinaryTreeNode]:
         """
          Binary Tree LCA Rule:
-         1. root is None
-         2. p or q is root -> root
+         1. root is null -> null
+         2. root is p or q -> root
          3. p is on the left/right subtree, q is on the right/left subtree, respectively -> root
-         4. p and q both are on the left/right subtree, then go to the left/right for more searching.
+         4. p and q both are on the left/right subtree, means lca is on the left/right, return left/right respectively.
         """
-        if not root or p == root or q == root: return root
+        if not root or root == p or root == q: return root
 
         left = cls._lowest_common_ancestor_dfs(root.left, p, q)
         right = cls._lowest_common_ancestor_dfs(root.right, p, q)
-
         return root if (left and right) else left or right

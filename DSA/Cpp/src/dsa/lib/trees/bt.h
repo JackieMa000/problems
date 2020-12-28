@@ -30,6 +30,7 @@ class BinaryTree : public Tree {
     BinaryTreeNode *getNodeByIndex(pos_t idx) override;
     BinaryTreeNode *getNodeByValue(int val) override;
 
+//    LeetCode236
     virtual BinaryTreeNode *lowestCommonAncestor(BinaryTreeNode *p, BinaryTreeNode *q);
     static length_t getArraySizeForBinaryTree(BinaryTreeNode *root);
 };

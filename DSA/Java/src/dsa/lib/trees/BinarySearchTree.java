@@ -77,12 +77,13 @@ public class BinarySearchTree extends BinaryTree {
     /**
      * BST LCA Rule:
      * 1. if p < root < q or q < root < p -> root
-     * 2. if p < root and q < root -> goes to left subtree
-     * 3. if root < p and root < q -> goes to right subtree
+     * 2. if p < root and q < root -> lca is on the left
+     * 3. if root < p and root < q -> lca is on the right
      */
+//    LeetCode235
     @Override
     public BinaryTreeNode lowestCommonAncestor(BinaryTreeNode p, BinaryTreeNode q) {
-        return lowestCommonAncestorDfs(this.root, p, q);
+        return lowestCommonAncestorBfs(this.root, p, q);
     }
 
     private static BinaryTreeNode lowestCommonAncestorDfs(BinaryTreeNode root, BinaryTreeNode p, BinaryTreeNode q) {
@@ -92,9 +93,9 @@ public class BinarySearchTree extends BinaryTree {
 
     private static BinaryTreeNode lowestCommonAncestorBfs(BinaryTreeNode root, BinaryTreeNode p, BinaryTreeNode q) {
         while (root != null) {
-            if (p.val < root.val && q.val < root.val) {
+            if (root.val > p.val && root.val > q.val) {
                 root = root.left;
-            } else if ((root.val < p.val && root.val < q.val)) {
+            } else if (root.val < p.val && root.val < q.val) {
                 root = root.right;
             } else {
                 break;

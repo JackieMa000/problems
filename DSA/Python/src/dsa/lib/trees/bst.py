@@ -70,12 +70,13 @@ class BinarySearchTree(BinaryTree):
 
         return cls._is_valid_bst(root.left, min_node, root) and cls._is_valid_bst(root.right, root, max_node)
 
+    # LeetCode235
     def lowest_common_ancestor(self, p: BinaryTreeNode, q: BinaryTreeNode) -> BinaryTreeNode:
         """
         BST LCA Rule:
         1. if p < root < q or q < root < p -> root
-        2. if p < root and q < root -> goes to left subtree
-        3. if root < p and root < q -> goes to right subtree
+        2. if p < root and q < root -> lca is on the left
+        3. if root < p and root < q -> lca is on the right
         """
         return self._lowest_common_ancestor_dfs(self._root, p, q)
 

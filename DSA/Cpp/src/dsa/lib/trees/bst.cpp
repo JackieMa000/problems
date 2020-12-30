@@ -1,48 +1,9 @@
 #include "bst.h"
+#include "bt.h"
 
 namespace dsa::lib::trees {
 
 BinarySearchTree::BinarySearchTree(BinaryTreeNode *root) : BinaryTree(root) {}
-
-std::vector<int> BinarySearchTree::preorder() {
-    std::vector<int> lst;
-    return preorderDfs(this->root, lst);
-}
-std::vector<int> BinarySearchTree::preorderDfs(BinaryTreeNode *root, std::vector<int> lst) {
-    if (root) {
-        lst.push_back(root->val);
-        preorderDfs(root->left, lst);
-        preorderDfs(root->right, lst);
-    }
-    return lst;
-}
-
-std::vector<int> *BinarySearchTree::inorder() {
-    std::vector<int> *lst;
-    lst = new std::vector<int>();
-    return inorderDfs(this->root, lst);
-}
-std::vector<int> *BinarySearchTree::inorderDfs(BinaryTreeNode *root, std::vector<int> *lst) {
-    if (root) {
-        inorderDfs(root->left, lst);
-        lst->push_back(root->val);
-        inorderDfs(root->right, lst);
-    }
-    return lst;
-}
-
-std::vector<int> &BinarySearchTree::postorder() {
-    std::vector<int> lst;
-    return postorderDfs(this->root, lst);
-}
-std::vector<int> &BinarySearchTree::postorderDfs(BinaryTreeNode *root, std::vector<int> &lst) {
-    if (root) {
-        postorderDfs(root->left, lst);
-        postorderDfs(root->right, lst);
-        lst.push_back(root->val);
-    }
-    return lst;
-}
 
 bool BinarySearchTree::isValid() {
     return isValidBST(this->root, nullptr, nullptr);

@@ -4,49 +4,52 @@ from dsa.lib.trees.tests.fixture import BinarySearchTreeTestCase
 from dsa.nodes import BinaryTreeNode
 
 
-class PreorderTest(BinarySearchTreeTestCase):
+class PreOrderTest(BinarySearchTreeTestCase):
 
     def test_case1(self):
-        root: BinaryTreeNode = Array([2, 1]).to_binary_tree()
-        self.assertEqual([2, 1], BinarySearchTree(root).preorder())
+        self.assertEqual([2, 1], self.preorder(self.array_to_binary_tree([2, 1])))
 
     def test_case2(self):
-        root: BinaryTreeNode = Array([2, 1, 3]).to_binary_tree()
-        self.assertEqual([2, 1, 3], BinarySearchTree(root).preorder())
+        self.assertEqual([2, 1, 3], self.preorder(self.array_to_binary_tree([2, 1, 3])))
 
     def test_case3(self):
-        root: BinaryTreeNode = Array([3, 1, 5, 0, 2]).to_binary_tree()
-        self.assertEqual([3, 1, 2, 5], BinarySearchTree(root).preorder())
+        self.assertEqual([3, 1, 2, 5], self.preorder(self.array_to_binary_tree([3, 1, 5, 0, 2])))
+
+    @staticmethod
+    def preorder(root):
+        return BinarySearchTree(root).preorderTraversal()
 
 
-class InorderTest(BinarySearchTreeTestCase):
+class InOrderTest(BinarySearchTreeTestCase):
 
     def test_case1(self):
-        root: BinaryTreeNode = Array([2, 1]).to_binary_tree()
-        self.assertEqual([1, 2], BinarySearchTree(root).inorder())
+        self.assertEqual([1, 2], self.inorder(self.array_to_binary_tree([2, 1])))
 
     def test_case2(self):
-        root: BinaryTreeNode = Array([2, 1, 3]).to_binary_tree()
-        self.assertEqual([1, 2, 3], BinarySearchTree(root).inorder())
+        self.assertEqual([1, 2, 3], self.inorder(self.array_to_binary_tree([2, 1, 3])))
 
     def test_case3(self):
-        root: BinaryTreeNode = Array([3, 1, 5, 0, 2]).to_binary_tree()
-        self.assertEqual([1, 2, 3, 5], BinarySearchTree(root).inorder())
+        self.assertEqual([1, 2, 3, 5], self.inorder(Array([3, 1, 5, 0, 2]).to_binary_tree()))
+
+    @staticmethod
+    def inorder(root):
+        return BinarySearchTree(root).inorderTraversal()
 
 
-class PostorderTest(BinarySearchTreeTestCase):
+class PostOrderTest(BinarySearchTreeTestCase):
 
     def test_case1(self):
-        root: BinaryTreeNode = Array([2, 1]).to_binary_tree()
-        self.assertEqual([1, 2], BinarySearchTree(root).postorder())
+        self.assertEqual([1, 2], self.postorder(self.array_to_binary_tree([2, 1])))
 
     def test_case2(self):
-        root: BinaryTreeNode = Array([2, 1, 3]).to_binary_tree()
-        self.assertEqual([1, 3, 2], BinarySearchTree(root).postorder())
+        self.assertEqual([1, 3, 2], self.postorder(self.array_to_binary_tree([2, 1, 3])))
 
     def test_case3(self):
-        root: BinaryTreeNode = Array([3, 1, 5, 0, 2]).to_binary_tree()
-        self.assertEqual([2, 1, 5, 3], BinarySearchTree(root).postorder())
+        self.assertEqual([2, 1, 5, 3], self.postorder(self.array_to_binary_tree([3, 1, 5, 0, 2])))
+
+    @staticmethod
+    def postorder(root):
+        return BinarySearchTree(root).postorderTraversal()
 
 
 class IsValidTest(BinarySearchTreeTestCase):

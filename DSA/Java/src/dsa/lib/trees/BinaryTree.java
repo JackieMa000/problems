@@ -4,6 +4,7 @@ import dsa.lib.Utils;
 import dsa.nodes.BinaryTreeNode;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 import static java.lang.Math.max;
@@ -124,6 +125,54 @@ public class BinaryTree implements Tree {
         }
 
         return null;
+    }
+
+    //    LeetCode144
+    public List<Integer> preorderTraversal() {
+        List<Integer> lst = new LinkedList<>();
+        BinaryTree.preorderDfs(this.root, lst);
+        return lst;
+    }
+
+    //    parameter root will be a copy object, lst will be a lvalue, reference, shared object(declared in preorder
+//    stack frame) for all recursive call stack.
+//    Java decides the parameter object would be a copy or a reference
+    private static void preorderDfs(BinaryTreeNode root, List<Integer> lst) {
+        if (root != null) {
+            lst.add(root.val);
+            BinaryTree.preorderDfs(root.left, lst);
+            BinaryTree.preorderDfs(root.right, lst);
+        }
+    }
+
+    //    LeetCode94
+    public List<Integer> inorderTraversal() {
+        List<Integer> lst = new LinkedList<>();
+        BinaryTree.inorderDfs(this.root, lst);
+        return lst;
+    }
+
+    private static void inorderDfs(BinaryTreeNode root, List<Integer> lst) {
+        if (root != null) {
+            BinaryTree.inorderDfs(root.left, lst);
+            lst.add(root.val);
+            BinaryTree.inorderDfs(root.right, lst);
+        }
+    }
+
+    //    LeetCode145
+    public List<Integer> postorderTraversal() {
+        List<Integer> lst = new LinkedList<>();
+        BinaryTree.postorderDfs(this.root, lst);
+        return lst;
+    }
+
+    private static void postorderDfs(BinaryTreeNode root, List<Integer> lst) {
+        if (root != null) {
+            BinaryTree.postorderDfs(root.left, lst);
+            BinaryTree.postorderDfs(root.right, lst);
+            lst.add(root.val);
+        }
     }
 
     //    LeetCode236

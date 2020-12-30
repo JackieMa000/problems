@@ -109,3 +109,69 @@ class LowestCommonAncestorTest(BinaryTreeTestCase):
     @staticmethod
     def lca(root, p, q):
         return BinaryTree(root).lowest_common_ancestor(p, q)
+
+
+class PreOrderTest(BinaryTreeTestCase):
+
+    def test_empty_tree(self):
+        self.assertEqual([], self.preorder(None))
+
+    def test_one_node(self):
+        self.assertEqual([1], self.preorder(self.array_to_binary_tree([1])))
+
+    def test_case1(self):
+        self.assertEqual([1, 2], self.preorder(self.array_to_binary_tree([1, 0, 2])))
+
+    def test_case2(self):
+        self.assertEqual([1, 2], self.preorder(self.array_to_binary_tree([1, 2])))
+
+    def test_case3(self):
+        self.assertEqual([1, 2, 3], self.preorder(self.array_to_binary_tree([1, 0, 2, 0, 0, 3])))
+
+    @staticmethod
+    def preorder(root):
+        return BinaryTree(root).preorderTraversal()
+
+
+class InOrderTest(BinaryTreeTestCase):
+
+    def test_empty_tree(self):
+        self.assertEqual([], self.inorder(None))
+
+    def test_one_node(self):
+        self.assertEqual([1], self.inorder(self.array_to_binary_tree([1])))
+
+    def test_case1(self):
+        self.assertEqual([1, 2], self.inorder(self.array_to_binary_tree([1, 0, 2])))
+
+    def test_case2(self):
+        self.assertEqual([2, 1], self.inorder(self.array_to_binary_tree([1, 2])))
+
+    def test_case3(self):
+        self.assertEqual([1, 3, 2], self.inorder(self.array_to_binary_tree([1, 0, 2, 0, 0, 3])))
+
+    @staticmethod
+    def inorder(root):
+        return BinaryTree(root).inorderTraversal()
+
+
+class PostOrderTest(BinaryTreeTestCase):
+
+    def test_empty_tree(self):
+        self.assertEqual([], self.postorder(None))
+
+    def test_one_node(self):
+        self.assertEqual([1], self.postorder(self.array_to_binary_tree([1])))
+
+    def test_case1(self):
+        self.assertEqual([2, 1], self.postorder(self.array_to_binary_tree([1, 0, 2])))
+
+    def test_case2(self):
+        self.assertEqual([2, 1], self.postorder(self.array_to_binary_tree([1, 2])))
+
+    def test_case3(self):
+        self.assertEqual([3, 2, 1], self.postorder(self.array_to_binary_tree([1, 0, 2, 0, 0, 3])))
+
+    @staticmethod
+    def postorder(root):
+        return BinaryTree(root).postorderTraversal()

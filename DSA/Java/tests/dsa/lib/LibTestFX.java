@@ -7,7 +7,7 @@ import dsa.nodes.BinaryTreeNode;
 import dsa.nodes.ListNode;
 
 public class LibTestFX {
-    public static BinaryTreeNode arrayToBinaryTree(int[] ary) {
+    public static BinaryTreeNode arrayToBinaryTree(int... ary) {
         return new ArrayInt(ary).toBinaryTree();
     }
 

@@ -1,5 +1,7 @@
+#include "bst.h"
 #include <dsa/lib/utils/utils.h>
 #include <queue>
+#include <iostream>
 #include "bt.h"
 
 namespace dsa::lib::trees {
@@ -121,6 +123,51 @@ BinaryTreeNode *BinaryTree::getNodeByValDfs(BinaryTreeNode *root, int val) {
     BinaryTreeNode *left = getNodeByValDfs(root->left, val);
     BinaryTreeNode *right = getNodeByValDfs(root->right, val);
     return left ? left : right;
+}
+
+std::vector<int> BinaryTree::preorderTraversal() {
+    std::vector<int> lst;
+    preorderDfs(this->root, lst);
+    return lst;
+}
+void BinaryTree::preorderDfs(BinaryTreeNode *root, std::vector<int> &lst) {
+    if (root) {
+        lst.push_back(root->val);
+        preorderDfs(root->left, lst);
+        preorderDfs(root->right, lst);
+    }
+}
+std::vector<int> BinaryTree::preorderDfs1(BinaryTreeNode *root, std::vector<int> lst) {
+    if (root) {
+        lst.push_back(root->val);
+        lst = preorderDfs1(root->left, lst);
+        lst = preorderDfs1(root->right, lst);
+    }
+    return lst;
+}
+std::vector<int> BinaryTree::inorderTraversal() {
+    std::vector<int> lst;
+    inorderDfs(this->root, lst);
+    return lst;
+}
+void BinaryTree::inorderDfs(BinaryTreeNode *root, std::vector<int> &lst) {
+    if (root) {
+        inorderDfs(root->left, lst);
+        lst.push_back(root->val);
+        inorderDfs(root->right, lst);
+    }
+}
+std::vector<int> BinaryTree::postorderTraversal() {
+    std::vector<int> lst;
+    postorderDfs(this->root, lst);
+    return lst;
+}
+void BinaryTree::postorderDfs(BinaryTreeNode *root, std::vector<int> &lst) {
+    if (root) {
+        postorderDfs(root->left, lst);
+        postorderDfs(root->right, lst);
+        lst.push_back(root->val);
+    }
 }
 
 }  // namespace dsa::lib::trees

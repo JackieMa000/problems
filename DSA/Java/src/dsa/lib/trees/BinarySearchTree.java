@@ -2,51 +2,9 @@ package dsa.lib.trees;
 
 import dsa.nodes.BinaryTreeNode;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class BinarySearchTree extends BinaryTree {
     public BinarySearchTree(BinaryTreeNode root) {
         super(root);
-    }
-
-    public List<Integer> preorder() {
-        return preorderDfs(this.root, new ArrayList<>());
-    }
-
-    private static List<Integer> preorderDfs(BinaryTreeNode root, List<Integer> lst) {
-        if (root != null) {
-            lst.add(root.val);
-            preorderDfs(root.left, lst);
-            preorderDfs(root.right, lst);
-        }
-        return lst;
-    }
-
-    public List<Integer> inorder() {
-        return inorderDfs(this.root, new ArrayList<>());
-    }
-
-    private static List<Integer> inorderDfs(BinaryTreeNode root, List<Integer> lst) {
-        if (root != null) {
-            inorderDfs(root.left, lst);
-            lst.add(root.val);
-            inorderDfs(root.right, lst);
-        }
-        return lst;
-    }
-
-    public List<Integer> postorder() {
-        return postorderDfs(this.root, new ArrayList<>());
-    }
-
-    private static List<Integer> postorderDfs(BinaryTreeNode root, List<Integer> lst) {
-        if (root != null) {
-            postorderDfs(root.left, lst);
-            postorderDfs(root.right, lst);
-            lst.add(root.val);
-        }
-        return lst;
     }
 
     //    LeetCode98

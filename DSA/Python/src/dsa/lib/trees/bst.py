@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import Optional
 
 from dsa.lib.trees.bt import BinaryTree
 from dsa.nodes import BinaryTreeNode
@@ -8,39 +8,6 @@ class BinarySearchTree(BinaryTree):
 
     def __init__(self, root: BinaryTreeNode):
         super().__init__(root)
-
-    def preorder(self) -> List[int]:
-        return self._preorder_dfs(self._root, [])
-
-    @classmethod
-    def _preorder_dfs(cls, root: BinaryTreeNode, lst: List[int]) -> List[int]:
-        if root:
-            lst.append(root.val)
-            cls._preorder_dfs(root.left, lst)
-            cls._preorder_dfs(root.right, lst)
-        return lst
-
-    def inorder(self) -> List[int]:
-        return self._inorder_dfs(self._root, [])
-
-    @classmethod
-    def _inorder_dfs(cls, root: BinaryTreeNode, lst: List[int]) -> List[int]:
-        if root:
-            cls._inorder_dfs(root.left, lst)
-            lst.append(root.val)
-            cls._inorder_dfs(root.right, lst)
-        return lst
-
-    def postorder(self) -> List[int]:
-        return self._postorder_dfs(self._root, [])
-
-    @classmethod
-    def _postorder_dfs(cls, root: BinaryTreeNode, lst: List[int]) -> List[int]:
-        if root:
-            cls._postorder_dfs(root.left, lst)
-            cls._postorder_dfs(root.right, lst)
-            lst.append(root.val)
-        return lst
 
     # LeetCode98
     def is_valid(self) -> bool:

@@ -1,11 +1,10 @@
 package dsa.lib.trees;
 
-import dsa.lib.arrays.ArrayInt;
 import dsa.nodes.BinaryTreeNode;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -42,43 +41,45 @@ public class BinarySearchTreeTest extends BinarySearchTreeTestFX {
 
     public static class PreOrderTest {
 
+        private List<Integer> preorder(BinaryTreeNode root) {
+            return new BinarySearchTree(root).preorderTraversal();
+        }
+
         @Test
         public void case1() {
-            BinaryTreeNode root = new ArrayInt(new int[]{2, 1}).toBinaryTree();
-            assertEquals(new ArrayList<>(Arrays.asList(2, 1)), new BinarySearchTree(root).preorder());
+            assertEquals(Arrays.asList(2, 1), preorder(arrayToBinaryTree(2, 1)));
         }
 
         @Test
         public void case2() {
-            BinaryTreeNode root = new ArrayInt(new int[]{2, 1, 3}).toBinaryTree();
-            assertEquals(new ArrayList<>(Arrays.asList(2, 1, 3)), new BinarySearchTree(root).preorder());
+            assertEquals(Arrays.asList(2, 1, 3), preorder(arrayToBinaryTree(2, 1, 3)));
         }
 
         @Test
         public void case3() {
-            BinaryTreeNode root = new ArrayInt(new int[]{3, 1, 5, 0, 2}).toBinaryTree();
-            assertEquals(new ArrayList<>(Arrays.asList(3, 1, 2, 5)), new BinarySearchTree(root).preorder());
+            assertEquals(Arrays.asList(3, 1, 2, 5), preorder(arrayToBinaryTree(3, 1, 5, 0, 2)));
         }
     }
 
     public static class InOrderTest {
 
+        private List<Integer> inorder(BinaryTreeNode root) {
+            return new BinarySearchTree(root).inorderTraversal();
+        }
+
         @Test
         public void case1() {
-            BinaryTreeNode root = new ArrayInt(new int[]{2, 1}).toBinaryTree();
-            assertEquals(new ArrayList<>(Arrays.asList(1, 2)), new BinarySearchTree(root).inorder());
+            assertEquals(Arrays.asList(1, 2), inorder(arrayToBinaryTree(2, 1)));
         }
 
         @Test
         public void case2() {
-            BinaryTreeNode root = new ArrayInt(new int[]{2, 1, 3}).toBinaryTree();
-            assertEquals(new ArrayList<>(Arrays.asList(1, 2, 3)), new BinarySearchTree(root).inorder());
+            assertEquals(Arrays.asList(1, 2, 3), inorder(arrayToBinaryTree(2, 1, 3)));
         }
 
         @Test
         public void case3() {
-            BinaryTreeNode root = new ArrayInt(new int[]{3, 1, 5, 0, 2}).toBinaryTree();
-            assertEquals(new ArrayList<>(Arrays.asList(1, 2, 3, 5)), new BinarySearchTree(root).inorder());
+            assertEquals(Arrays.asList(1, 2, 3, 5), inorder(arrayToBinaryTree(3, 1, 5, 0, 2)));
         }
     }
 
@@ -86,20 +87,21 @@ public class BinarySearchTreeTest extends BinarySearchTreeTestFX {
 
         @Test
         public void case1() {
-            BinaryTreeNode root = new ArrayInt(new int[]{2, 1}).toBinaryTree();
-            assertEquals(new ArrayList<>(Arrays.asList(1, 2)), new BinarySearchTree(root).postorder());
+            assertEquals(Arrays.asList(1, 2), postorder(arrayToBinaryTree(2, 1)));
         }
 
         @Test
         public void case2() {
-            BinaryTreeNode root = new ArrayInt(new int[]{2, 1, 3}).toBinaryTree();
-            assertEquals(new ArrayList<>(Arrays.asList(1, 3, 2)), new BinarySearchTree(root).postorder());
+            assertEquals(Arrays.asList(1, 3, 2), postorder(arrayToBinaryTree(2, 1, 3)));
         }
 
         @Test
         public void case3() {
-            BinaryTreeNode root = new ArrayInt(new int[]{3, 1, 5, 0, 2}).toBinaryTree();
-            assertEquals(new ArrayList<>(Arrays.asList(2, 1, 5, 3)), new BinarySearchTree(root).postorder());
+            assertEquals(Arrays.asList(2, 1, 5, 3), postorder(arrayToBinaryTree(3, 1, 5, 0, 2)));
+        }
+
+        private List<Integer> postorder(BinaryTreeNode root) {
+            return new BinarySearchTree(root).postorderTraversal();
         }
     }
 

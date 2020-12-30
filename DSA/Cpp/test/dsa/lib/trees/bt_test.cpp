@@ -232,5 +232,140 @@ TEST_F(LowestCommonAncestorTestBT, case3) {
     BinaryTree::destroy(root);
 }
 
+class PreOrderTest : public BinaryTreeTest {
+ protected:
+    static std::vector<int> preorder(BinaryTreeNode *root) {
+        BinaryTree bt(root);
+        return bt.preorderTraversal();
+    }
+};
+TEST_F(PreOrderTest, emptyTree) {
+    std::vector<int> expected = {};
+    std::vector<int> actual = preorder(nullptr);
+    EXPECT_EQ(expected, actual);
+}
+TEST_F(PreOrderTest, oneNodeTree) {
+    int ary[] = {1};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    std::vector<int> expected = {1};
+    std::vector<int> actual = preorder(root);
+    EXPECT_EQ(expected, actual);
+    BinaryTree::destroy(root);
+}
+TEST_F(PreOrderTest, case1) {
+    int ary[] = {1, 0, 2};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    std::vector<int> expected = {1, 2};
+    std::vector<int> actual = preorder(root);
+    EXPECT_EQ(expected, actual);
+    BinaryTree::destroy(root);
+}
+TEST_F(PreOrderTest, case2) {
+    int ary[] = {1, 2};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    std::vector<int> expected = {1, 2};
+    std::vector<int> actual = preorder(root);
+    EXPECT_EQ(expected, actual);
+    BinaryTree::destroy(root);
+}
+TEST_F(PreOrderTest, case3) {
+    int ary[] = {1, 0, 2, 0, 0, 3};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    std::vector<int> expected = {1, 2, 3};
+    std::vector<int> actual = preorder(root);
+    EXPECT_EQ(expected, actual);
+    BinaryTree::destroy(root);
+}
+
+class InOrderTest : public BinaryTreeTest {
+ protected:
+    static std::vector<int> inorder(BinaryTreeNode *root) {
+        BinaryTree bt(root);
+        return bt.inorderTraversal();
+    }
+};
+TEST_F(InOrderTest, emptyTree) {
+    std::vector<int> expected = {};
+    std::vector<int> actual = inorder(nullptr);
+    EXPECT_EQ(expected, actual);
+}
+TEST_F(InOrderTest, oneNodeTree) {
+    int ary[] = {1};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    std::vector<int> expected = {1};
+    std::vector<int> actual = inorder(root);
+    EXPECT_EQ(expected, actual);
+    BinaryTree::destroy(root);
+}
+TEST_F(InOrderTest, case1) {
+    int ary[] = {1, 0, 2};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    std::vector<int> expected = {1, 2};
+    std::vector<int> actual = inorder(root);
+    EXPECT_EQ(expected, actual);
+    BinaryTree::destroy(root);
+}
+TEST_F(InOrderTest, case2) {
+    int ary[] = {1, 2};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    std::vector<int> expected = {2, 1};
+    std::vector<int> actual = inorder(root);
+    EXPECT_EQ(expected, actual);
+    BinaryTree::destroy(root);
+}
+TEST_F(InOrderTest, case3) {
+    int ary[] = {1, 0, 2, 0, 0, 3};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    std::vector<int> expected = {1, 3, 2};
+    std::vector<int> actual = inorder(root);
+    EXPECT_EQ(expected, actual);
+    BinaryTree::destroy(root);
+}
+
+class PostOrderTest : public BinaryTreeTest {
+ protected:
+    static std::vector<int> postorder(BinaryTreeNode *root) {
+        BinaryTree bt(root);
+        return bt.postorderTraversal();
+    }
+};
+TEST_F(PostOrderTest, emptyTree) {
+    std::vector<int> expected = {};
+    std::vector<int> actual = postorder(nullptr);
+    EXPECT_EQ(expected, actual);
+}
+TEST_F(PostOrderTest, oneNodeTree) {
+    int ary[] = {1};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    std::vector<int> expected = {1};
+    std::vector<int> actual = postorder(root);
+    EXPECT_EQ(expected, actual);
+    BinaryTree::destroy(root);
+}
+TEST_F(PostOrderTest, case1) {
+    int ary[] = {1, 0, 2};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    std::vector<int> expected = {2, 1};
+    std::vector<int> actual = postorder(root);
+    EXPECT_EQ(expected, actual);
+    BinaryTree::destroy(root);
+}
+TEST_F(PostOrderTest, case2) {
+    int ary[] = {1, 2};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    std::vector<int> expected = {2, 1};
+    std::vector<int> actual = postorder(root);
+    EXPECT_EQ(expected, actual);
+    BinaryTree::destroy(root);
+}
+TEST_F(PostOrderTest, case3) {
+    int ary[] = {1, 0, 2, 0, 0, 3};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    std::vector<int> expected = {3, 2, 1};
+    std::vector<int> actual = postorder(root);
+    EXPECT_EQ(expected, actual);
+    BinaryTree::destroy(root);
+}
+
 }
 }

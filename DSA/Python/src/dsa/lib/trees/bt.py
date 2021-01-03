@@ -1,4 +1,5 @@
-from typing import List, Optional
+import collections
+from typing import List, Optional, Deque
 
 from dsa.container.lists.queues import Queue
 from dsa.lib.trees.tree import Tree
@@ -181,3 +182,61 @@ class BinaryTree(Tree):
         lst: List[int] = []
         self._postorder_dfs(self._root, lst)
         return lst
+
+    # LeetCode102
+    def levelOrder(self) -> List[List[int]]:
+        # return self._levelOrderBfs(self._root)
+        result: List[List[int]] = []
+        self._levelOrderDfs(self._root, 0, result)
+        return result
+
+    @staticmethod
+    def _levelOrderBfs(root: BinaryTreeNode) -> List[List[int]]:
+        """
+         * Rule: BFS
+         * queue -> currentLevelResult -> Result
+         * currentLevelResult: saving the node values for the current level, 1D-array
+         * Result: saving the final result for all the levels, 2D-array
+         * queue: for BFS traversing the tree by level,
+         *  consuming the nodes for the current level, producing the children nodes for next level
+         *  Loop for the current level, do the logic(saving the node values to the currentLevelResult), produce for the next level
+         * Loop on the whole tree:
+         *  Loop on the level:
+         *      ....
+         *
+        """
+        result: List[List[int]] = []
+
+        if root:
+            queue = Queue()
+            queue.push(root)
+            while queue:
+                level_size: int = len(queue)
+                current_level: List[int] = []
+
+                for _ in range(level_size):
+                    root = queue.pop()
+                    current_level.append(root.val)
+
+                    if root.left: queue.push(root.left)
+                    if root.right: queue.push(root.right)
+
+                result.append(current_level)
+
+        return result
+
+    @classmethod
+    def _levelOrderDfs(cls, root: BinaryTreeNode, level: int, result: List[List[int]]) -> None:
+        """
+         * Rule: DFS
+         * currentLevelResult -> Result
+         * saving the current level node values to the currentLevelResult.
+         * get the currentLevelResult by the level number parameter from Result
+         * generate the currentLevelResult when it does not exist in the result.
+
+        """
+        if root:
+            if len(result) < level + 1: result.append([])
+            result[level].append(root.val)
+            cls._levelOrderDfs(root.left, level + 1, result)
+            cls._levelOrderDfs(root.right, level + 1, result)

@@ -367,5 +367,26 @@ TEST_F(PostOrderTest, case3) {
     BinaryTree::destroy(root);
 }
 
+class LevelOrderTest : public BinaryTreeTest {
+ protected:
+    static std::vector<std::vector<int>> levelOrder(BinaryTreeNode *root) {
+        BinaryTree bt(root);
+        return bt.levelOrder();
+    }
+};
+TEST_F(LevelOrderTest, emptyTree) {
+    std::vector<std::vector<int>> expected;
+    std::vector<std::vector<int>> actual = levelOrder(nullptr);
+    EXPECT_EQ(expected, actual);
+}
+TEST_F(LevelOrderTest, case1) {
+    int ary[] = {3, 9, 20, 0, 0, 15, 7};
+    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    std::vector<std::vector<int>> expected = {{3}, {9, 20}, {15, 7}};
+    std::vector<std::vector<int>> actual = levelOrder(root);
+    EXPECT_EQ(expected, actual);
+    BinaryTree::destroy(root);
+}
+
 }
 }

@@ -12,9 +12,20 @@ public class SolutionDFS {
     }
 
     private void dfs(TreeNode root, int level, List<List<Integer>> result) {
+//        terminator
         if (root == null) return;
-        if (result.size() < level + 1) result.add(new LinkedList<>());
+
+//        Go;
+//        level is the same as index, starts with 0
+        if (result.size() < level + 1) {
+            result.add(new LinkedList<>());
+        }
+
+
+//        get the current level from the result, add the current node value to the current level
         result.get(level).add(root.val);
+
+//        recursive case, drill down
         dfs(root.left, level + 1, result);
         dfs(root.right, level + 1, result);
     }

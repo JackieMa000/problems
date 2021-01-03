@@ -15,10 +15,13 @@ class BinaryTree : public Tree {
     static BinaryTreeNode *getNodeByValBfs1(BinaryTreeNode *root, int val);
     static BinaryTreeNode *getNodeByValDfs(BinaryTreeNode *root, int val);
 
-    static std::vector<int> preorderDfs1(BinaryTreeNode *root, std::vector<int> lst);
     static void preorderDfs(BinaryTreeNode *root, std::vector<int> &lst);
     static void inorderDfs(BinaryTreeNode *root, std::vector<int> &lst);
     static void postorderDfs(BinaryTreeNode *root, std::vector<int> &lst);
+    static std::vector<int> preorderDfs1(BinaryTreeNode *root, std::vector<int> lst);
+
+    static std::vector<std::vector<int>> levelOrderBfs(BinaryTreeNode *root);
+    static void levelOrderDfs(BinaryTreeNode *root, int level, std::vector<std::vector<int>> &result);
 
  protected:
     BinaryTreeNode *root;
@@ -42,6 +45,9 @@ class BinaryTree : public Tree {
     std::vector<int> inorderTraversal();
 //    LeetCode145
     std::vector<int> postorderTraversal();
+
+//    LeetCode102
+    std::vector<std::vector<int>> levelOrder();
 };
 
 }  // namespace dsa::lib::trees

@@ -3,9 +3,7 @@ package dsa.lib.trees;
 import dsa.lib.Utils;
 import dsa.nodes.BinaryTreeNode;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 import static java.lang.Math.max;
 import static java.lang.Math.pow;
@@ -197,5 +195,69 @@ public class BinaryTree implements Tree {
         BinaryTreeNode right = lowestCommonAncestorDfs(root.right, p, q);
         return (left != null && right != null) ? root : left == null ? right : left;
 //        return left == null ? right : right == null ? left : root;
+    }
+
+
+    //    LeetCode102
+    public List<List<Integer>> levelOrder() {
+//        return levelOrderBfs(this.root);
+        List<List<Integer>> result = new LinkedList<>();
+        levelOrderDfs(root, 0, result);
+        return result;
+    }
+
+    /*
+     * Rule: BFS
+     * queue -> currentLevelResult -> Result
+     * currentLevelResult: saving the node values for the current level, 1D-array
+     * Result: saving the final result for all the levels, 2D-array
+     * queue: for BFS traversing the tree by level,
+     *  consuming the nodes for the current level, producing the children nodes for next level
+     *  Loop for the current level, do the logic(saving the node values to the currentLevelResult), produce for the next level
+     * Loop on the whole tree:
+     *  Loop on the level:
+     *      ....
+     *
+     */
+    private static List<List<Integer>> levelOrderBfs(BinaryTreeNode root) {
+        List<List<Integer>> result = new LinkedList<>();
+
+        if (root != null) {
+            Queue<BinaryTreeNode> queue = new LinkedList<>();
+            queue.add(root);
+            while (!queue.isEmpty()) {
+                int levelSize = queue.size();
+                List<Integer> levelResult = new LinkedList<>();
+
+                for (int i = 0; i < levelSize; i++) {
+                    root = queue.poll();
+                    levelResult.add(root.val);
+
+                    if (root.left != null) queue.add(root.left);
+                    if (root.right != null) queue.add(root.right);
+                }
+
+                result.add(levelResult);
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * Rule: DFS
+     * currentLevelResult -> Result
+     * saving the current level node values to the currentLevelResult.
+     * get the currentLevelResult by the level number parameter from Result
+     * generate the currentLevelResult when it does not exist in the result.
+     */
+    private static void levelOrderDfs(BinaryTreeNode root, int level, List<List<Integer>> result) {
+        if (root == null) return;
+
+        if (result.size() < level + 1) result.add(new LinkedList<>());
+        result.get(level).add(root.val);
+
+        levelOrderDfs(root.left, level + 1, result);
+        levelOrderDfs(root.right, level + 1, result);
     }
 }

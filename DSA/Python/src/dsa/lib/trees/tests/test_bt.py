@@ -175,3 +175,15 @@ class PostOrderTest(BinaryTreeTestCase):
     @staticmethod
     def postorder(root):
         return BinaryTree(root).postorderTraversal()
+
+
+class LevelOrderTest(BinaryTreeTestCase):
+    def test_empty_tree(self):
+        self.assertEqual([], self.leveOrder(None))
+
+    def test_case1(self):
+        self.assertEqual([[3], [9, 20], [15, 7]], self.leveOrder(self.array_to_binary_tree([3, 9, 20, 0, 0, 15, 7])))
+
+    @staticmethod
+    def leveOrder(root):
+        return BinaryTree(root).levelOrder()

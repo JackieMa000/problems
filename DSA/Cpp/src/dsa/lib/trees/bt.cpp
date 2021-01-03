@@ -1,7 +1,5 @@
-#include "bst.h"
 #include <dsa/lib/utils/utils.h>
 #include <queue>
-#include <iostream>
 #include "bt.h"
 
 namespace dsa::lib::trees {
@@ -167,6 +165,64 @@ void BinaryTree::postorderDfs(BinaryTreeNode *root, std::vector<int> &lst) {
         postorderDfs(root->left, lst);
         postorderDfs(root->right, lst);
         lst.push_back(root->val);
+    }
+}
+std::vector<std::vector<int>> BinaryTree::levelOrder() {
+//    return levelOrderBfs(root);
+    std::vector<std::vector<int>> result = std::vector<std::vector<int>>();
+    levelOrderDfs(this->root, 0, result);
+    return result;
+}
+/**
+ * Rule: BFS
+ * queue -> currentLevelResult -> Result
+ * currentLevelResult: saving the node values for the current level, 1D-array
+ * Result: saving the final result for all the levels, 2D-array
+ * queue: for BFS traversing the tree by level,
+ *  consuming the nodes for the current level, producing the children nodes for next level
+ *  Loop for the current level, do the logic(saving the node values to the currentLevelResult), produce for the next level
+ * Loop on the whole tree:
+ *  Loop on the level:
+ *      ....
+ *
+ */
+std::vector<std::vector<int>> BinaryTree::levelOrderBfs(BinaryTreeNode *root) {
+    std::vector<std::vector<int>> result;
+
+    if (root) {
+        std::queue<BinaryTreeNode *> queue;
+        queue.push(root);
+        while (!queue.empty()) {
+            std::vector<int> levelResult;
+            int levelSize = queue.size();
+            for (int i = 0; i < levelSize; ++i) {
+                root = queue.front();
+                queue.pop();
+
+                levelResult.push_back(root->val);
+
+                if (root->left) { queue.push(root->left); }
+                if (root->right) { queue.push(root->right); }
+            }
+            result.push_back(levelResult);
+        }
+    }
+
+    return result;
+}
+/**
+ * Rule: DFS
+ * currentLevelResult -> Result
+ * saving the current level node values to the currentLevelResult.
+ * get the currentLevelResult by the level number parameter from Result
+ * generate the currentLevelResult when it does not exist in the result.
+ */
+void BinaryTree::levelOrderDfs(BinaryTreeNode *root, int level, std::vector<std::vector<int>> &result) {
+    if (root) {
+        if (result.size() < level + 1) { result.emplace_back(); }
+        result[level].push_back(root->val);
+        levelOrderDfs(root->left, level + 1, result);
+        levelOrderDfs(root->right, level + 1, result);
     }
 }
 

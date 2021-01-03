@@ -246,4 +246,28 @@ public class BinaryTreeTest extends BinaryTreeTestFX {
             assertEquals(Arrays.asList(3, 2, 1), postorder(arrayToBinaryTree(1, 0, 2, 0, 0, 3)));
         }
     }
+
+    public static class LevelOrderTest {
+
+        @Test
+        public void emptyTree() {
+            assertEquals(Collections.emptyList(), levelOrder(null));
+        }
+
+        @Test
+        public void case1() {
+            List<List<Integer>> expected = asList(asList(3), asList(9, 20), asList(15, 7));
+            assertEquals(expected, levelOrder(arrayToBinaryTree(3, 9, 20, 0, 0, 15, 7)));
+        }
+
+        private List<List<Integer>> levelOrder(BinaryTreeNode root) {
+            return new BinaryTree(root).levelOrder();
+        }
+
+        @SafeVarargs
+        private static <T> List<T> asList(T... a) {
+            return Arrays.asList(a);
+        }
+    }
+
 }

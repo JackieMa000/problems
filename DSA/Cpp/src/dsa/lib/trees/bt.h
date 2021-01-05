@@ -1,5 +1,5 @@
-#ifndef LIB_TREES_BT_H
-#define LIB_TREES_BT_H
+#ifndef DSA_LIB_TREES_BT_H
+#define DSA_LIB_TREES_BT_H
 
 #include "tree.h"
 

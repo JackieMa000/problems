@@ -28,17 +28,18 @@ public class MergeSort {
      * 继续上述比较过程，直到其中一个子数组中的所有数据都放入临时数组tmp中，再把另一个数组中的数据依次加入到临时数组tmp的末尾(
      * 判断哪个子数组中有剩余的数据, 将剩余的数据拷贝到临时数组tmp)
      * 将tmp中的数组拷贝回A
-     * A1 or A2 leftover:
+     * A1 or A2 leftover(tmp is not fully filled):
      *   A1 and A2 leftover:
      *   A1 leftover:
      *   A2 leftover:
      */
     private void merge(int[] ary, int p, int q, int r) {
-        final int length = r - p + 1;
+        final int n = r - p + 1;
 
 //        generate data for tmp
-        int[] tmp = new int[length];
-        for (int i = p, j = q + 1, k = 0; i <= q || j <= r; ++k) {
+        int[] tmp = new int[n];
+        for (int i = p, j = q + 1, k = 0; k < n; ++k) {
+//        for (int i = p, j = q + 1, k = 0; i <= q || j <= r; ++k) {
             if (i <= q && j <= r) {
                 if (ary[i] <= ary[j]) {
                     tmp[k] = ary[i++];
@@ -53,7 +54,7 @@ public class MergeSort {
         }
 
         // 将tmp中的数组拷贝回A
-        arraycopy(tmp, 0, ary, p, length);
+        arraycopy(tmp, 0, ary, p, n);
     }
 
     private static void arraycopy(int[] src, int srcPos, int[] dest, int destPos, int length) {

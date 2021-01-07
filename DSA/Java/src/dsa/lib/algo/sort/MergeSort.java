@@ -39,7 +39,6 @@ public class MergeSort {
 //        generate data for tmp
         int[] tmp = new int[n];
         for (int i = p, j = q + 1, k = 0; k < n; ++k) {
-//        for (int i = p, j = q + 1, k = 0; i <= q || j <= r; ++k) {
             if (i <= q && j <= r) {
                 if (ary[i] <= ary[j]) {
                     tmp[k] = ary[i++];

@@ -78,9 +78,11 @@ public class BucketSort {
 
     private int[] getMinMax(int[] ary) {
         int min = ary[0], max = ary[0];
-        for (int cur : ary) {
+        for (int i = 1; i < ary.length; ++i) {
+            int cur = ary[i];
             if (cur < min) min = cur;
             if (cur > max) max = cur;
+
         }
         return new int[]{min, max};
     }

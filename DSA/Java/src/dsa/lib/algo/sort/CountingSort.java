@@ -1,8 +1,9 @@
 package dsa.lib.algo.sort;
 
 public class CountingSort {
-    public void sort(int[] ary, int n) {
-        if (n <= 1) return;
+    public void sort(int[] ary) {
+        int length = ary.length;
+        if (length <= 1) return;
 
         int max = getArrayMax(ary);
         int[] counts = new int[max + 1];
@@ -11,10 +12,10 @@ public class CountingSort {
         storeCounts(counts, ary);
         accumulateCounts(counts);
 
-        int[] result = new int[n];
+        int[] result = new int[length];
         generateResult(result, ary, counts);
 
-        arraycopy(result, 0, ary, 0, n);
+        arraycopy(result, 0, ary, 0, length);
     }
 
     private void generateResult(int[] result, int[] ary, int[] counts) {

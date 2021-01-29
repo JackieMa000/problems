@@ -15,22 +15,31 @@ namespace dsa::lib::algo::sort {
  */
 class SelectionSort {
  public:
-    static void sort(int *ary, size_t n) {
+    static void sort(int *ary, int n) {
         for (int i = 0; i < n - 1; ++i) {
-
-//            未排序区间查找最小值
-            int minIdx = i;
-            for (int j = i + 1; j < n; ++j) {
-                if (ary[j] < ary[minIdx]) {
-                    minIdx = j;
-                }
-            }
-
-//            swap
-            int tmp = ary[minIdx];
-            ary[minIdx] = ary[i];
-            ary[i] = tmp;
+            int minPos = arrayMinPos(ary, i, n);
+            arraySwap(ary, i, minPos);
         }
+    }
+    /**
+     * Find the index of the minimum element from the range of array
+     *
+     * @param ary The whole array
+     * @param st  The start position of the range, inclusive.
+     * @param end The end position of the range, exclusive.
+     * @return The index of the minimum element
+     */
+    static int arrayMinPos(const int *ary, int st, size_t end) {
+        int m = st;
+        for (int i = st + 1; i < end; ++i) {
+            if (ary[i] < ary[m]) { m = i; }
+        }
+        return m;
+    }
+    static void arraySwap(int *ary, int i, int j) {
+        int tmp = ary[i];
+        ary[i] = ary[j];
+        ary[j] = tmp;
     }
 };
 

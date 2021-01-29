@@ -7,14 +7,21 @@ class BubbleSort {
     static void sort(int *ary, size_t n) {
         for (int i = 0; i < n; ++i) {
             bool swapped = false;
-            compareSwap(ary, n, i, swapped);
+            compareSwap(ary, 0, n - i, swapped);
             if (!swapped) { break; }
         }
     }
-    static void compareSwap(int *ary, size_t n, int i, bool &swapped) {
-        for (int j = 0; j < n - 1 - i; ++j) {
-            if (ary[j] > ary[j + 1]) {
-                arraySwap(ary, j, j + 1);
+    /**
+     * Compare each two adjacent elements, swap them if 1st one is bigger than the 2nd.
+     *
+     * @param ary The Array.
+     * @param st  The start position, inclusive.
+     * @param end The end position, exclusive.
+     */
+    static void compareSwap(int *ary, int st, size_t end, bool &swapped) {
+        for (int i = st; i < end - 1; ++i) {
+            if (ary[i] > ary[i + 1]) {
+                arraySwap(ary, i, i + 1);
                 swapped = true;
             }
         }

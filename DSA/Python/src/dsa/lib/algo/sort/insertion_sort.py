@@ -6,25 +6,27 @@ class InsertionSort:
         n: int = len(ary)
         for i in range(1, n):
             b: int = ary[i]
-            pos: int = self.insert_pos_of(ary, i)
+            pos: int = self.insert_pos_of(ary, 0, i)
             ary[pos] = b
 
     @staticmethod
-    def insert_pos_of(ary, i) -> int:
+    def insert_pos_of(ary: List[int], st: int, idx: int) -> int:
         """
-        Find the insert position of element in the sorted range of array.
+        Find the insert position of an element in the sorted array.
 
-        :param ary: The whole array
-        :param i: The index of element to be inserted
+        :param ary:
+        :param st: The start position of the sorted array.
+        :param idx: The index of the element to be inserted. The element should be next to the end element of
+        the sorted array
         :return: The index of insert position
         """
-        b: int = ary[i]
-        i -= 1
-        while i >= 0:
-            a = ary[i]
+        b: int = ary[idx]
+        idx -= 1
+        while idx >= st:
+            a = ary[idx]
             if a > b:
-                ary[i + 1] = a
+                ary[idx + 1] = a
             else:
                 break
-            i -= 1
-        return i + 1
+            idx -= 1
+        return idx + 1

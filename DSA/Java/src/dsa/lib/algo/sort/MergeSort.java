@@ -1,64 +1,53 @@
 package dsa.lib.algo.sort;
 
-/**
- * A = A[p..r]
- * A1 = A[p..q]
- * A2 = A[q+1..r]
- */
 public class MergeSort {
     public void sort(int[] ary, int n) {
         split(ary, 0, n - 1);
     }
 
-    private void split(int[] ary, int p, int r) {
-        if (p >= r) return;
+    /**
+     * Split the array into 2 sub-arrays, then merge the 2 sub-arrays into a sorted array.
+     *
+     * @param ary The array to be split.
+     * @param st  The start position of the array to be split, inclusive.
+     * @param end The end position of the array to be split, inclusive.
+     */
+    private void split(int[] ary, int st, int end) {
+        if (st >= end) return;
 
-        int q = p + (r - p) / 2;
-        split(ary, p, q);
-        split(ary, q + 1, r);
+        int mid = st + (end - st) / 2;
+        split(ary, st, mid);
+        split(ary, mid + 1, end);
+        merge(ary, st, mid, end);
 
-        // 将A1和A2合并为A
-        merge(ary, p, q, r);
     }
 
-    /*
-     * 我们申请一个临时数组 tmp，大小与 A相同。我们用两个游标 i 和 j，分别指向 A1和 A2的第一个元素。
-     * 比较这两个元素 A[i]和 A[j]，如果 A[i]<=A[j]，我们就把 A[i]放入到临时数组 tmp，并且 i 后移一位，
-     * 否则将 A[j]放入到数组 tmp，j 后移一位。
-     * 继续上述比较过程，直到其中一个子数组中的所有数据都放入临时数组tmp中，再把另一个数组中的数据依次加入到临时数组tmp的末尾(
-     * 判断哪个子数组中有剩余的数据, 将剩余的数据拷贝到临时数组tmp)
-     * 将tmp中的数组拷贝回A
-     * A1 or A2 leftover(tmp is not fully filled):
-     *   A1 and A2 leftover:
-     *   A1 leftover:
-     *   A2 leftover:
+    /**
+     * Merge 2 sub-arrays into a sorted array.
+     *
+     * @param ary The given array contains 2 sub-arrays.
+     * @param st  The start position of the 1st sub-array, inclusive.
+     * @param m   The end position of the 1st sub-array, inclusive.
+     *            Also it is the divided position of the 2 sub-arrays, the next position should be the start of the 2nd sub-array.
+     * @param end The end position of the 2nd sub-array, inclusive.
      */
-    private void merge(int[] ary, int p, int q, int r) {
-        final int n = r - p + 1;
+    private void merge(int[] ary, int st, int m, int end) {
+        final int n = end - st + 1;
+        int[] result = new int[n];
 
-//        generate data for tmp
-        int[] tmp = new int[n];
-        for (int i = p, j = q + 1, k = 0; k < n; ++k) {
-            if (i <= q && j <= r) {
-                if (ary[i] <= ary[j]) {
-                    tmp[k] = ary[i++];
-                } else {
-                    tmp[k] = ary[j++];
-                }
-            } else if (i <= q) {
-                tmp[k] = ary[i++];
-            } else {
-                tmp[k] = ary[j++];
-            }
+        for (int i = st, j = m + 1, k = 0; k < n; ++k) {
+            if (i <= m && j <= end) {
+                if (ary[i] <= ary[j]) result[k] = ary[i++];
+                else result[k] = ary[j++];
+            } else if (i <= m) {
+                result[k] = ary[i++];
+            } else result[k] = ary[j++];
         }
 
-        // 将tmp中的数组拷贝回A
-        arraycopy(tmp, 0, ary, p, n);
+        arraycopy(result, 0, ary, st, end - st + 1);
     }
 
     private static void arraycopy(int[] src, int srcPos, int[] dest, int destPos, int length) {
-        for (int i = 0; i < length; i++) {
-            dest[destPos + i] = src[srcPos + i];
-        }
+        for (int i = 0; i < length; i++) dest[destPos + i] = src[srcPos + i];
     }
 }

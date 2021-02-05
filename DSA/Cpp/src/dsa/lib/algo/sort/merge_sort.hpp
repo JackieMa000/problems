@@ -1,5 +1,6 @@
 #ifndef DSA_SRC_DSA_LIB_ALGO_SORT_MERGE_SORT_HPP_
 #define DSA_SRC_DSA_LIB_ALGO_SORT_MERGE_SORT_HPP_
+#include <dsa/lib/utils.hpp>
 namespace dsa::lib::algo::sort {
 
 class MergeSort {
@@ -7,7 +8,7 @@ class MergeSort {
     void sort(int *ary, int n) {
         split(ary, 0, n - 1);
     }
-
+ private:
     /**
      * Split the array into 2 sub-arrays, then merge the 2 sub-arrays into a sorted array.
      *
@@ -49,11 +50,7 @@ class MergeSort {
             }
         }
 
-        arraycopy(result, 0, ary, st, n);
-    }
-
-    static void arraycopy(const int *ary, int srcPos, int *des, int desPos, int length) {
-        for (int i = 0; i < length; ++i) { des[desPos + i] = ary[srcPos + i]; }
+        utils::arraycopy(result, 0, ary, st, n);
     }
 };
 

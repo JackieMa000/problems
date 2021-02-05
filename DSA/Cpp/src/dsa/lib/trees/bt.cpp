@@ -1,7 +1,6 @@
 #include "bst.h"
-#include <dsa/lib/utils/utils.h>
+#include <dsa/lib/utils.hpp>
 #include <queue>
-#include <iostream>
 #include "bt.h"
 
 namespace dsa::lib::trees {

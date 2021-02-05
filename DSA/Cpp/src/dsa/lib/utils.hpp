@@ -1,4 +1,7 @@
-#include "utils.h"
+#ifndef DSA_LIB_UTILS_HPP
+#define DSA_LIB_UTILS_HPP
+
+#include "dsa/dsadef.h"
 
 namespace dsa::lib::utils {
 
@@ -19,4 +22,10 @@ length_t arrayRstrip(const int *ary, length_t length) {
     return newLength;
 }
 
+void arraycopy(const int *ary, int srcPos, int *des, int desPos, int length) {
+    for (int i = 0; i < length; ++i) { des[desPos + i] = ary[srcPos + i]; }
+}
+
 }  // namespace dsa
+
+#endif

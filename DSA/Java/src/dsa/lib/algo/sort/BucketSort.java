@@ -1,5 +1,7 @@
 package dsa.lib.algo.sort;
 
+import dsa.lib.Utils;
+
 public class BucketSort {
 
     private int min;
@@ -41,7 +43,7 @@ public class BucketSort {
             new QuickSort().sort(bucket, size);
 
 //            copy the bucket elements into the original array
-            arraycopy(bucket, 0, ary, k, size);
+            Utils.arraycopy(bucket, 0, ary, k, size);
             k += size;
         }
     }
@@ -72,7 +74,7 @@ public class BucketSort {
     private void resize(int[][] buckets, int idx, int n) {
         int[] bucket = buckets[idx];
         int[] newBucket = new int[n];
-        arraycopy(bucket, 0, newBucket, 0, bucket.length);
+        Utils.arraycopy(bucket, 0, newBucket, 0, bucket.length);
         buckets[idx] = newBucket;
     }
 
@@ -85,11 +87,5 @@ public class BucketSort {
 
         }
         return new int[]{min, max};
-    }
-
-    private static void arraycopy(int[] src, int srcPos, int[] dest, int destPos, int length) {
-        for (int i = 0; i < length; i++) {
-            dest[destPos + i] = src[srcPos + i];
-        }
     }
 }

@@ -23,3 +23,7 @@ def _array_rstrip_dfs(ary: List[int]) -> List[int]:
     if not len(ary) or (len(ary) == 1 and ary[0] == 0): return []
     if ary[-1] != 0: return ary
     return _array_rstrip_dfs(ary[:-1])
+
+
+def array_copy(src: List[int], src_pos, des: List[int], des_pos, length) -> None:
+    for i in range(length): des[des_pos + i] = src[src_pos + i]

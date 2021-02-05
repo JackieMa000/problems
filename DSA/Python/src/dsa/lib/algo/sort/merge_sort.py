@@ -1,5 +1,7 @@
 from typing import List
 
+from dsa.lib.utils import array_copy
+
 
 class MergeSort:
     def sort(self, ary: List[int], n: int) -> None:
@@ -20,7 +22,8 @@ class MergeSort:
         self.split(ary, mid + 1, end)
         self.merge(ary, st, mid, end)
 
-    def merge(self, ary: List[int], st: int, m: int, end: int) -> None:
+    @staticmethod
+    def merge(ary: List[int], st: int, m: int, end: int) -> None:
         """
         Merge 2 sub-arrays into a sorted array.
 
@@ -50,8 +53,4 @@ class MergeSort:
                 result[k] = ary[j]
                 j += 1
 
-        self.array_copy(result, 0, ary, st, n)
-
-    @staticmethod
-    def array_copy(src: List[int], src_pos, des: List[int], des_pos, length) -> None:
-        for i in range(length): des[des_pos + i] = src[src_pos + i]
+        array_copy(result, 0, ary, st, n)

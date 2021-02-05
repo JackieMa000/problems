@@ -1,5 +1,7 @@
 package dsa.lib.algo.sort;
 
+import dsa.lib.Utils;
+
 public class MergeSort {
     public void sort(int[] ary, int n) {
         split(ary, 0, n - 1);
@@ -44,10 +46,6 @@ public class MergeSort {
             } else result[k] = ary[j++];
         }
 
-        arraycopy(result, 0, ary, st, end - st + 1);
-    }
-
-    private static void arraycopy(int[] src, int srcPos, int[] dest, int destPos, int length) {
-        for (int i = 0; i < length; i++) dest[destPos + i] = src[srcPos + i];
+        Utils.arraycopy(result, 0, ary, st, end - st + 1);
     }
 }

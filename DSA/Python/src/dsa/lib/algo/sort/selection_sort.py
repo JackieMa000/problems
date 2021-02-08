@@ -1,12 +1,14 @@
 from typing import List
 
+from dsa.lib import utils
+
 
 class SelectionSort:
     def sort(self, ary: List[int]) -> None:
         n = len(ary)
         for i in range(n - 1):
             min_idx = self.array_min_pos(ary, i, n)
-            self.array_swap(ary, i, min_idx)
+            utils.array_swap(ary, i, min_idx)
 
     @staticmethod
     def array_min_pos(ary: List[int], st: int, end: int) -> int:
@@ -22,7 +24,3 @@ class SelectionSort:
         for i in range(st + 1, end):
             if ary[i] < ary[m]: m = i
         return m
-
-    @staticmethod
-    def array_swap(ary: List[int], i: int, j: int) -> None:
-        ary[i], ary[j] = ary[j], ary[i]

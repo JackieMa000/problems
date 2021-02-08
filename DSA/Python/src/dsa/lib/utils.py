@@ -27,3 +27,7 @@ def _array_rstrip_dfs(ary: List[int]) -> List[int]:
 
 def array_copy(src: List[int], src_pos, des: List[int], des_pos, length) -> None:
     for i in range(length): des[des_pos + i] = src[src_pos + i]
+
+
+def array_swap(ary, i, j) -> None:
+    ary[i], ary[j] = ary[j], ary[i]

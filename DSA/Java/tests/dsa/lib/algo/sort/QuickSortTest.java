@@ -3,6 +3,7 @@ package dsa.lib.algo.sort;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 public class QuickSortTest {
     private static void quickSort(int[] ary) {

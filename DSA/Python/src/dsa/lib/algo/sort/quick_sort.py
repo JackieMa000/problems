@@ -22,7 +22,8 @@ class QuickSort:
         self.quick_sort(ary, low, m - 1)
         self.quick_sort(ary, m + 1, high)
 
-    def partition(self, ary: List[int], low: int, high: int) -> int:
+    @staticmethod
+    def partition(ary: List[int], low: int, high: int) -> int:
         """
         Partition the array into 2 sub-parts, return the pivot position.
         All the elements on the left part are smaller than the pivot,
@@ -34,15 +35,10 @@ class QuickSort:
         :return: The pivot position.
         """
         i: int = low
-        p = self.get_pivot_pos(ary, low, high)
         for j in range(low, high):
-            if ary[j] < ary[p]:
+            if ary[j] < ary[high]:
                 utils.array_swap(ary, i, j)
                 i += 1
+        utils.array_swap(ary, i, high)
 
-        utils.array_swap(ary, i, p)
         return i
-
-    @staticmethod
-    def get_pivot_pos(ary, low: int, high: int) -> int:
-        return high

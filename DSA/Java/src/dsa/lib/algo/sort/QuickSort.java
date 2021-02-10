@@ -34,17 +34,12 @@ public class QuickSort {
      */
     private int partition(int[] ary, int low, int high) {
         int i = low;
-        int p = getPivotPos(ary, low, high);
         for (int j = low; j < high; ++j) {
-            if (ary[j] < ary[p]) Utils.arrayswap(ary, i++, j);
+            if (ary[j] < ary[high]) Utils.arrayswap(ary, i++, j);
         }
+        Utils.arrayswap(ary, i, high);
 
-        Utils.arrayswap(ary, i, p);
         return i;
     }
 
-    private int getPivotPos(int[] ary, int st, int end) {
-        // ToDo: Can improve the algorithm here, make it more efficient.
-        return end;
-    }
 }

@@ -7,6 +7,7 @@ class QuickSort {
  public:
     void sort(int *ary, int n) { quickSort(ary, 0, n - 1); }
 
+ private:
     /**
      * QuickSort the array recursively, until the array has only one element.
      *
@@ -32,19 +33,14 @@ class QuickSort {
      * @param high The high endpoint of the array to be partitioned, inclusive.
      * @return The pivot position.
      */
-    int partition(int *ary, int low, int high) {
+    static int partition(int *ary, int low, int high) {
         int i = low;
-        int p = getPivotPos(ary, low, high);
         for (int j = low; j < high; ++j) {
-            if (ary[j] < ary[p]) { utils::arraySwap(ary, i++, j); }
+            if (ary[j] < ary[high]) { utils::arraySwap(ary, i++, j); }
         }
+        utils::arraySwap(ary, i, high);
 
-        utils::arraySwap(ary, i, p);
         return i;
-    }
-
-    static int getPivotPos(int *ary, int low, int high) {
-        return high;
     }
 };
 

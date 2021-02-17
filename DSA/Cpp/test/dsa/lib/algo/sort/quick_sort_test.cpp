@@ -5,7 +5,7 @@ namespace {
 
 class QuickSortTest : public SortTest {
  protected:
-    static void sort(int *ary, int n) {
+    static void quickSort(int *ary, int n) {
         QuickSort qs;
         qs.sort(ary, n);
     }
@@ -13,19 +13,19 @@ class QuickSortTest : public SortTest {
 TEST_F(QuickSortTest, case1) {
     int ary[] = {1};
     int expected[] = {1};
-    sort(ary, aryLength(ary));
+    quickSort(ary, aryLength(ary));
     EXPECT_ARRAY_EQ(expected, aryLength(expected), ary, aryLength(ary));
 }
 TEST_F(QuickSortTest, case2) {
     int ary[] = {4, 5, 6, 3, 2, 1};
     int expected[] = {1, 2, 3, 4, 5, 6};
-    sort(ary, aryLength(ary));
+    quickSort(ary, aryLength(ary));
     EXPECT_ARRAY_EQ(expected, aryLength(expected), ary, aryLength(ary));
 }
 TEST_F(QuickSortTest, case3) {
     int ary[] = {12, 11, 13, 5, 6, 7};
     int expected[] = {5, 6, 7, 11, 12, 13};
-    sort(ary, aryLength(ary));
+    quickSort(ary, aryLength(ary));
     EXPECT_ARRAY_EQ(expected, aryLength(expected), ary, aryLength(ary));
 }
 

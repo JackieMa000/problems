@@ -13,12 +13,12 @@ class ThreeSum {
 
     /**
      * Rule: sortFind. Double Pointers
-     * sort remove duplicates
+     * quickSort remove duplicates
      * remove duplicates for a
      * remove duplicates for b, c
      * sum = a + b + c
      *
-     * sort(a)
+     * quickSort(a)
      * loop a:
      *  remove duplicates for a
      *  double pointers for b, c

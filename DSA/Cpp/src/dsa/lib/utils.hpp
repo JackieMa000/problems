@@ -18,18 +18,26 @@ static length_t arrayRstrip(const int *ary, length_t length) {
     if (*(ary + (length - 1)) != 0) return length;
 
     auto newLength = length - 1;
-    while (newLength > 0 && *(ary + (newLength - 1)) == 0) newLength--;
+    while (newLength > 0 && *(ary + (newLength - 1)) == 0) --newLength;
     return newLength;
 }
 
-static void arraycopy(const int *ary, int srcPos, int *des, int desPos, int length) {
-    for (int i = 0; i < length; ++i) { des[desPos + i] = ary[srcPos + i]; }
+template<typename T>
+static void arraycopy(const T *ary, pos_t srcPos, T *des, pos_t desPos, length_t length) {
+    for (int i = 0; i < length; ++i) {
+        des[desPos + i] = ary[srcPos + i];
+    }
 }
-//static void arraycopy(const array<int> *ary, int srcPos, int *des, int desPos, int length) {
-//    for (int i = 0; i < length; ++i) { des[desPos + i] = ary[srcPos + i]; }
-//}
 
-static void arraySwap(int *ary, int i, int j) {
+template<typename T>
+static void vectorcopy(const std::vector<T> &src, pos_t srcPos, std::vector<T> &des, pos_t desPos, length_t length) {
+    for (int i = 0; i < length; ++i) {
+        des[desPos + i] = src[srcPos + i];
+    }
+}
+
+template<typename T>
+static void arraySwap(T *ary, pos_t i, pos_t j) {
     int tmp = ary[i];
     ary[i] = ary[j];
     ary[j] = tmp;

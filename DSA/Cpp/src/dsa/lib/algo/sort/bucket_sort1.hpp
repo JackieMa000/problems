@@ -7,42 +7,44 @@ namespace dsa::lib::algo::sort {
 
 // Treats vector as array, tracks the size of vector manually.
 class BucketSort {
- public:
+ private:
     typedef std::vector<int> bucket_t;
     typedef std::vector<bucket_t> buckets_t;
     typedef std::vector<size_t> sizes_t;
 
-    buckets_t *buckets{};
-    sizes_t *sizes{};
-
- private:
     std::vector<int> &nums;
-
     size_t initBucketCapacity = 2;
+
     int min{}, max{};
+    buckets_t *buckets{};
+    sizes_t *bucketSizes{};
+    size_t bucketCount{};
 
  public:
     explicit BucketSort(std::vector<int> &nums) : nums(nums) {}
 
     virtual ~BucketSort() {
         delete buckets;
-        delete sizes;
+        delete bucketSizes;
     }
 
     void sort() {
         if (nums.size() < 2) { return; }
 
-        setMinMax();
-        size_t s = getBucketsSize();
-        initBuckets(s);
-        initSizesForBuckets(s);
-
-        scatterToBuckets();
+        initFields();
+        scatterToEachBucket();
         sortEachBucket();
     }
 
  private:
-    void setMinMax() {
+    void initFields() {
+        initMinMax();
+        initBucketCount();
+        initBuckets();
+        initBucketSizes();
+    }
+
+    void initMinMax() {
         min = nums[0], max = nums[0];
         for (int &num : nums) {
             if (num < min) {
@@ -53,28 +55,26 @@ class BucketSort {
         }
     }
 
-    size_t getBucketsSize() const {
-        return (max - min + 1) / initBucketCapacity + 1;
-    }
+    void initBucketCount() { bucketCount = (max - min + 1) / initBucketCapacity + 1; }
 
-    void initBuckets(size_t bucketsSize) {
+    void initBuckets() {
         bucket_t _bucket(initBucketCapacity);
-        buckets = new buckets_t(bucketsSize, _bucket);
+        buckets = new buckets_t(bucketCount, _bucket);
     }
 
-    void initSizesForBuckets(size_t bucketsSize) { sizes = new sizes_t(bucketsSize, 0); }
+    void initBucketSizes() { bucketSizes = new sizes_t(bucketCount, 0); }
 
-    void scatterToBuckets() {
+    void scatterToEachBucket() {
         for (int &num : nums) {
             pos_t idx = bucketIndexOf(num);
             bucket_t &bucket = (*buckets)[idx];
-            size_t size = (*sizes)[idx];
+            size_t size = (*bucketSizes)[idx];
 
             size_t cap = bucket.capacity();
-            if (size > cap) { bucket.reserve(cap * 1.5); }
+            if (size > cap) { bucket.reserve(cap * 1.5f); }
 
             bucket[size] = num;
-            ++(*sizes)[idx];
+            ++(*bucketSizes)[idx];
         }
     }
 
@@ -85,10 +85,11 @@ class BucketSort {
     void sortEachBucket() {
         pos_t k = 0;
         for (pos_t i = 0; i < buckets->size(); ++i) {
-            size_t size = (*sizes)[i];
+            bucket_t &bucket = (*buckets)[i];
+            size_t size = (*bucketSizes)[i];
+
             if (!size) { continue; }
 
-            bucket_t &bucket = (*buckets)[i];
             quickSort(bucket, size);
             utils::vectorcopy(bucket, 0, nums, k, size);
             k += size;

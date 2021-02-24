@@ -6,17 +6,16 @@
 namespace dsa::lib::algo::sort {
 
 class BucketSort {
- public:
+ private:
     typedef std::vector<int> bucket_t;
     typedef std::vector<bucket_t> buckets_t;
 
-    buckets_t *buckets{};
-
- private:
     std::vector<int> &nums;
-
     size_t initBucketCapacity = 2;
+
     int min{}, max{};
+    buckets_t *buckets{};
+    size_t bucketCount{};
 
  public:
     explicit BucketSort(std::vector<int> &nums) : nums(nums) {}
@@ -26,14 +25,19 @@ class BucketSort {
     void sort() {
         if (nums.size() < 2) { return; }
 
-        setMinMax();
-        initBuckets(getBucketsSize());
-        scatterToBuckets();
+        initFields();
+        scatterToEachBucket();
         sortEachBucket();
     }
 
  private:
-    void setMinMax() {
+    void initFields() {
+        initMinMax();
+        initBucketCount();
+        initBuckets();
+    }
+
+    void initMinMax() {
         min = nums[0], max = nums[0];
         for (int &num : nums) {
             if (num < min) {
@@ -44,20 +48,18 @@ class BucketSort {
         }
     }
 
-    size_t getBucketsSize() const {
-        return (max - min + 1) / initBucketCapacity + 1;
-    }
+    void initBucketCount() { bucketCount = (max - min + 1) / initBucketCapacity + 1; }
 
-    void initBuckets(size_t bucketsSize) {
+    void initBuckets() {
         bucket_t _bucket;
-        buckets = new buckets_t(bucketsSize, _bucket);
+        buckets = new buckets_t(bucketCount, _bucket);
     }
 
-    void scatterToBuckets() {
+    void scatterToEachBucket() {
         for (int &num : nums) {
             bucket_t &bucket = (*buckets)[bucketIndexOf(num)];
             size_t cap = bucket.capacity();
-            if (bucket.size() > cap) { bucket.reserve(cap * 1.5); }
+            if (bucket.size() > cap) { bucket.reserve(cap * 1.5f); }
             bucket.push_back(num);
         }
     }

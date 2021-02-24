@@ -4,88 +4,94 @@ import dsa.lib.Utils;
 
 public class BucketSort {
 
-    private int min;
-    private int max;
+    private int[] nums;
+    private final int initBucketCapacity = 2;
 
-    public void sort(int[] ary, int length) {
-        bucketSort(ary, 3);
+    private int min, max;
+    private int[][] buckets;
+    private int[] bucketSizes;
+    private int bucketCount;
+
+    public BucketSort(int[] nums) {
+        this.nums = nums;
     }
 
-    /**
-     * @param ary
-     * @param capacity: expected bucket capacity
-     */
-    public void bucketSort(int[] ary, int capacity) {
-        if (ary.length < 2) return;
+    public void sort() {
+        if (nums.length < 2) return;
 
-        int[] result = getMinMax(ary);
-        min = result[0];
-        max = result[1];
-
-        int nBuckets = (max - min + 1) / capacity + 1;
-        int[][] buckets = new int[nBuckets][capacity];
-
-//        tracking the current size of bucket
-        int[] sizes = new int[nBuckets];
-
-        scatterToBuckets(ary, capacity, buckets, sizes);
-        sortBuckets(ary, buckets, sizes);
+        initFields();
+        scatterToEachBucket();
+        sortEachBucket();
     }
 
-    private void sortBuckets(int[] ary, int[][] buckets, int[] sizes) {
-        int k = 0;
-        for (int idx = 0; idx < buckets.length; ++idx) {
-//            actual bucket size, how many actual elements in the bucket
-            int size = sizes[idx];
-            if (size == 0) continue;
+    private void initFields() {
+        initMinMax();
+        initBucketCount();
+        initBuckets();
+        initBucketSizes();
+    }
+
+    private void initMinMax() {
+        min = nums[0];
+        max = nums[0];
+        for (int i = 1; i < nums.length; ++i) {
+            if (nums[i] < min) min = nums[i];
+            else if (nums[i] > max) max = nums[i];
+        }
+    }
+
+    private void initBucketCount() {
+        bucketCount = (max - min + 1) / initBucketCapacity + 1;
+    }
+
+    private void initBuckets() {
+        buckets = new int[bucketCount][initBucketCapacity];
+    }
+
+    private void initBucketSizes() {
+        bucketSizes = new int[bucketCount];
+    }
+
+    private void scatterToEachBucket() {
+        for (final int num : nums) {
+            int idx = bucketIndexOf(num);
             int[] bucket = buckets[idx];
+            final int size = bucketSizes[idx];
 
-            new QuickSort().sort(bucket, size);
+            int cap = bucket.length;
+            if (size > cap) resize(idx, (int) (cap * 1.5f));
 
-//            copy the bucket elements into the original array
-            Utils.arraycopy(bucket, 0, ary, k, size);
+            bucket[size] = num;
+            ++bucketSizes[idx];
+        }
+    }
+
+    private int bucketIndexOf(int num) {
+        return (num - min) / initBucketCapacity;
+    }
+
+    private void resize(int bucketIdx, int newSize) {
+        int[] bucket = buckets[bucketIdx];
+        int[] newBucket = new int[newSize];
+        Utils.arraycopy(bucket, 0, newBucket, 0, bucket.length);
+        buckets[bucketIdx] = newBucket;
+    }
+
+    private void sortEachBucket() {
+        int k = 0;
+        for (int i = 0; i < buckets.length; ++i) {
+            int[] bucket = buckets[i];
+            int size = bucketSizes[i];
+
+            if (size == 0) continue;
+
+            quickSort(bucket, size);
+            Utils.arraycopy(bucket, 0, nums, k, size);
             k += size;
         }
     }
 
-    private void scatterToBuckets(int[] ary, int capacity, int[][] buckets, int[] sizes) {
-        for (final int cur : ary) {
-            //  get the bucket index
-            int idx = (cur - min) / capacity;
-            int[] bucket = buckets[idx];
-            final int size = sizes[idx];
-
-            int curCapacity = bucket.length;
-            if (size >= curCapacity) resize(buckets, idx, curCapacity * 2);
-
-//            put the element into the bucket
-            bucket[size] = cur;
-            sizes[idx]++;
-        }
-    }
-
-    /**
-     * resize the bucket from the buckets collection
-     *
-     * @param buckets bucket collection
-     * @param idx     the index of bucket to resize
-     * @param n       the new size of the bucket
-     */
-    private void resize(int[][] buckets, int idx, int n) {
-        int[] bucket = buckets[idx];
-        int[] newBucket = new int[n];
-        Utils.arraycopy(bucket, 0, newBucket, 0, bucket.length);
-        buckets[idx] = newBucket;
-    }
-
-    private int[] getMinMax(int[] ary) {
-        int min = ary[0], max = ary[0];
-        for (int i = 1; i < ary.length; ++i) {
-            int cur = ary[i];
-            if (cur < min) min = cur;
-            if (cur > max) max = cur;
-
-        }
-        return new int[]{min, max};
+    private void quickSort(int[] bucket, int size) {
+        new QuickSort().sort(bucket, size);
     }
 }

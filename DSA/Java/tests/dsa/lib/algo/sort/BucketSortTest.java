@@ -5,28 +5,39 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 public class BucketSortTest {
-    private static void bucketSort(int[] ary) {
-        new BucketSort().sort(ary, ary.length);
+    private static void bucketSort(int[] nums) {
+        new BucketSort(nums).sort();
+    }
+
+    @Test
+    public void emptyNums() {
+        int[] nums = {};
+        final int[] expected = {};
+        bucketSort(nums);
+        assertArrayEquals(expected, nums);
     }
 
     @Test
     public void oneNum() {
-        int[] ary = {1};
-        bucketSort(ary);
-        assertArrayEquals(new int[]{1}, ary);
+        int[] nums = {1};
+        final int[] expected = {1};
+        bucketSort(nums);
+        assertArrayEquals(expected, nums);
     }
 
     @Test
     public void case1() {
-        int[] ary = {4, 5, 6, 3, 2, 1};
-        bucketSort(ary);
-        assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6}, ary);
+        int[] nums = {4, 5, 6, 3, 2, 1};
+        final int[] expected = {1, 2, 3, 4, 5, 6};
+        bucketSort(nums);
+        assertArrayEquals(expected, nums);
     }
 
     @Test
     public void case2() {
-        int[] ary = {12, 11, 13, 5, 6, 7};
-        bucketSort(ary);
-        assertArrayEquals(new int[]{5, 6, 7, 11, 12, 13}, ary);
+        int[] nums = {12, 11, 13, 5, 6, 7};
+        final int[] expected = {5, 6, 7, 11, 12, 13};
+        bucketSort(nums);
+        assertArrayEquals(expected, nums);
     }
 }

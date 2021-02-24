@@ -10,6 +10,12 @@ class BucketSortTest : public SortTest {
         bs.sort();
     }
 };
+TEST_F(BucketSortTest, emptyNums) {
+    std::vector<int> nums = {};
+    std::vector<int> expected = {};
+    bucketSort(nums);
+    EXPECT_EQ(expected, nums);
+}
 TEST_F(BucketSortTest, case1) {
     std::vector<int> nums = {1};
     std::vector<int> expected = {1};

@@ -6,7 +6,7 @@ namespace {
 
 class ToArrayTest : public BinaryTreeTest {
  protected:
-    [[nodiscard]] inline static arrayStruct toArray(BinaryTreeNode *root) {
+    [[nodiscard]] inline static array_s toArray(BinaryTreeNode *root) {
         BinaryTree bt(root);
         return bt.toArray();
     }

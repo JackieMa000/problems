@@ -29,7 +29,7 @@ class BinaryTree : public Tree {
     static void destroy(BinaryTreeNode *root);
     static length_t getArraySizeForBinaryTree(BinaryTreeNode *root);
 
-    arrayStruct toArray() override;
+    array_s toArray() override;
     depth_t depth() override;
     BinaryTreeNode *getNodeByIndex(pos_t idx) override;
     BinaryTreeNode *getNodeByValue(int val) override;

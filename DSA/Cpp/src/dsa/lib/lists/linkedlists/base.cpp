@@ -27,13 +27,13 @@ length_t Base::length() {
     for (n = 0; cur; n++) { cur = cur->next; }
     return n;
 }
-arrayStruct Base::toArray() {
-    arrayStruct as{0, nullptr};
+array_s Base::toArray() {
+    array_s as{nullptr, 0};
     if (this->head) {
         int *ary = new int[this->length()];
         ListNode *cur = this->head;
         for (int i = 0; cur; i++, cur = cur->next) { *(ary + i) = cur->val; }
-        as = {this->length(), ary};
+        as = {ary, this->length()};
     }
     return as;
 }

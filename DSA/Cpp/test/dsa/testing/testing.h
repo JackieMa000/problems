@@ -18,7 +18,7 @@ class DSATest : public ::testing::Test {
                                  length_t expectedLength,
                                  const int *actual,
                                  length_t actualLength);
-    static void EXPECT_ARRAY_EQ(const arrayStruct &expected, const arrayStruct &actual);
+    static void EXPECT_ARRAY_EQ(const array_s &expected, const array_s &actual);
 };
 
 }  // namespace dsa::testing

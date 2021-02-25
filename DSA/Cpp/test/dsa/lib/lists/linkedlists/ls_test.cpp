@@ -14,7 +14,7 @@ class ToArrayTest : public LinkedListTest {
         delete[] actual.ary;
     }
 
-    static arrayStruct toArray(ListNode *head) {
+    static array_s toArray(ListNode *head) {
         LinkedList ls(head);
         return ls.toArray();
     }

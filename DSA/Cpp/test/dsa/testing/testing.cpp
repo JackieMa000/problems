@@ -2,7 +2,7 @@
 
 namespace dsa::testing {
 
-void DSATest::EXPECT_ARRAY_EQ(const arrayStruct &expected, const arrayStruct &actual) {
+void DSATest::EXPECT_ARRAY_EQ(const array_s &expected, const array_s &actual) {
     expectArrayEQDfs(expected.ary, expected.length, actual.ary, actual.length);
 
 }

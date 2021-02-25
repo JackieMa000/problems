@@ -31,15 +31,15 @@ BinaryTreeNode *BinaryTree::lowestCommonAncestorDfs(BinaryTreeNode *root, Binary
     return (left && right) ? root : !left ? right : left;
 }
 
-arrayStruct BinaryTree::toArray() {
-    arrayStruct as{0, nullptr};
+array_s BinaryTree::toArray() {
+    array_s as{nullptr, 0};
     if (this->root) {
         length_t length = getArraySizeForBinaryTree(root);
         int *ary = new int[length];
         for (int i = 0; i < length; ++i) *(ary + i) = 0;
 
         generateArrayFromTree(root, 0, ary, length);
-        as = {utils::arrayRstrip(ary, length), ary};
+        as = {ary, utils::arrayRstrip(ary, length)};
     }
     return as;
 }

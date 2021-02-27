@@ -11,7 +11,7 @@ class BucketSort {
     typedef std::vector<bucket_t> buckets_t;
 
     std::vector<int> &nums;
-    size_t initBucketCapacity = 2;
+    const size_t INIT_BUCKET_CAPACITY = 2;
 
     int min{}, max{};
     buckets_t *buckets{};
@@ -48,7 +48,7 @@ class BucketSort {
         }
     }
 
-    void initBucketCount() { bucketCount = (max - min + 1) / initBucketCapacity + 1; }
+    void initBucketCount() { bucketCount = (max - min + 1) / INIT_BUCKET_CAPACITY + 1; }
 
     void initBuckets() {
         bucket_t _bucket;
@@ -65,7 +65,7 @@ class BucketSort {
     }
 
     pos_t bucketIndexOf(const int &num) const {
-        return (num - min) / initBucketCapacity;
+        return (num - min) / INIT_BUCKET_CAPACITY;
     }
 
     void sortEachBucket() {

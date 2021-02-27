@@ -13,7 +13,7 @@ namespace dsa::lib::utils {
  * 3. array last element is not 0 -> return array
  * 4. array length is bigger than 1, last element is 0 -> remove the trailing 0s by loop
  */
-static length_t arrayRstrip(const int *ary, length_t length) {
+static length_t arrayRstrip(const int *ary, const length_t length) {
     if (!length || (length == 1 && *(ary) == 0)) return 0;
     if (*(ary + (length - 1)) != 0) return length;
 

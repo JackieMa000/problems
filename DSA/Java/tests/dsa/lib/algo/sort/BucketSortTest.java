@@ -6,7 +6,7 @@ import static org.junit.Assert.assertArrayEquals;
 
 public class BucketSortTest {
     private static void bucketSort(int[] nums) {
-        new BucketSort(nums).sort();
+        new BucketSort(nums, nums.length).sort();
     }
 
     @Test

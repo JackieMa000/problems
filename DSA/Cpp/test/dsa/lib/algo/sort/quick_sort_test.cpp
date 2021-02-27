@@ -5,10 +5,7 @@ namespace {
 
 class QuickSortTest : public SortTest {
  protected:
-    static void quickSort(int *ary, int n) {
-        QuickSort qs;
-        qs.sort(ary, n);
-    }
+    static void quickSort(int *ary, int n) { QuickSort().sort(ary, n); }
 };
 TEST_F(QuickSortTest, case1) {
     int ary[] = {1};

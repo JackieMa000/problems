@@ -1,5 +1,8 @@
 #ifndef DSA_SRC_DSA_LIB_ALGO_SORT_INSERTION_SORT_HPP_
 #define DSA_SRC_DSA_LIB_ALGO_SORT_INSERTION_SORT_HPP_
+
+#include "dsa/dsadef.h"
+
 namespace dsa::lib::algo::sort {
 
 class InsertionSort {

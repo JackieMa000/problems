@@ -1,3 +1,5 @@
+#include <stack>
+#include <map>
 #include "paren.h"
 
 namespace dsa::lib::math::ds {

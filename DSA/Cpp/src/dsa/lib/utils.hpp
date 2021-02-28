@@ -1,6 +1,7 @@
 #ifndef DSA_LIB_UTILS_HPP
 #define DSA_LIB_UTILS_HPP
 
+#include <vector>
 #include "dsa/dsadef.h"
 
 namespace dsa::lib::utils {

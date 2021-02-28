@@ -1,7 +1,10 @@
 #ifndef DSA_SRC_DSA_LIB_MATH_NUMS_THREE_SUM_HPP_
 #define DSA_SRC_DSA_LIB_MATH_NUMS_THREE_SUM_HPP_
 #include <vector>
+#include <set>
 #include <unordered_set>
+#include <algorithm>
+
 namespace dsa::lib::math::nums {
 
 //LeetCode15

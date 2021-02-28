@@ -1,4 +1,4 @@
-#include <dsa/lib/algo/sort/bucket_sort1.hpp>
+#include <dsa/lib/algo/sort/bucket_sort.hpp>
 #include "sort_test.h"
 namespace dsa::lib::algo::sort {
 namespace {

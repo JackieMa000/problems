@@ -2,11 +2,10 @@
 
 #include "quick_sort.hpp"
 #include <dsa/lib/utils.hpp>
-
 namespace dsa::lib::algo::sort {
 
 class BucketSort {
- private:
+ public:
     typedef std::vector<int> bucket_t;
     typedef std::vector<bucket_t> buckets_t;
 

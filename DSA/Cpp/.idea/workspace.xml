@@ -66,6 +66,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3352a187-3665-4468-9f93-642bc24727ee" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/dsa/lib/algo/sort/bucket_sort_test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/dsa/lib/algo/sort/bucket_sort_test.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +76,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
@@ -109,7 +111,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C/C++" />
   </component>
-  <component name="RunManager" selected="Shell Script.cTest">
+  <component name="RunManager" selected="Google Test.BucketSortTest">
     <configuration name="All in bucket_sort_test.cpp" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="DSA," TARGET_NAME="sort_test" RUN_TARGET_PROJECT_NAME="DSA," RUN_TARGET_NAME="sort_test" TEST_PATTERN="all-tests(file://$PROJECT_DIR$/test/dsa/lib/algo/sort/bucket_sort_test.cpp)" TEST_MODE="PATTERN">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -276,11 +278,6 @@
       </method>
     </configuration>
     <configuration name="NightlyUpdate" type="CMakeRunConfiguration" factoryName="Application" folderName="cMake" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="DSA," TARGET_NAME="NightlyUpdate" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="DSA," RUN_TARGET_NAME="NightlyUpdate">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -481,11 +478,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Google Test.BucketSortTest" />
+        <item itemvalue="Google Test.BucketSortTest.minMax" />
         <item itemvalue="Google Test.All in bucket_sort_test.cpp" />
         <item itemvalue="Google Test.BucketSortTest.case1" />
         <item itemvalue="Google Test.BucketSortTest.emptyNums" />
-        <item itemvalue="Google Test.BucketSortTest.minMax" />
-        <item itemvalue="Google Test.BucketSortTest" />
       </list>
     </recent_temporary>
   </component>
@@ -500,6 +497,9 @@
       <workItem from="1614444787910" duration="6800000" />
       <workItem from="1614488736029" duration="10000" />
       <workItem from="1614488812627" duration="134000" />
+      <workItem from="1614489768503" duration="50000" />
+      <workItem from="1614489832251" duration="117000" />
+      <workItem from="1614489960152" duration="70000" />
     </task>
     <task id="LOCAL-00001" summary="ignore">
       <created>1614449372734</created>
@@ -537,5 +537,16 @@
     <MESSAGE value="ignore" />
     <MESSAGE value="ide files update" />
     <option name="LAST_COMMIT_MESSAGE" value="ide files update" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/dsa/lib/algo/sort/bucket_sort1.hpp</url>
+          <line>18</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

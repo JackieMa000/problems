@@ -10,4 +10,4 @@ experiment/
 /cmake-build-debug/
 /Testing/
 /cmake-build-debug-coverage/
-#/.idea/workspace.xml
+/.idea/workspace.xml

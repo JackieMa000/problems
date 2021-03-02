@@ -2,22 +2,26 @@
 
 #include "quick_sort.hpp"
 #include <dsa/lib/utils.hpp>
+
 namespace dsa::lib::algo::sort {
 
+// Let vector.size() track the bucket size.
 class BucketSort {
  public:
     typedef std::vector<int> bucket_t;
-    typedef std::vector<bucket_t> buckets_t;
 
     std::vector<int> &nums;
-    const size_t INIT_BUCKET_CAPACITY = 2;
-
     int min{}, max{};
-    buckets_t *buckets{};
+
+    std::vector<bucket_t> *buckets{};
     size_t bucketCount{};
 
+    const size_t INIT_BUCKET_CAPACITY = 2;
+    const size_t capacity;
+
  public:
-    explicit BucketSort(std::vector<int> &nums) : nums(nums) {}
+    explicit BucketSort(std::vector<int> &nums) : nums(nums), capacity(INIT_BUCKET_CAPACITY) {}
+    BucketSort(std::vector<int> &nums, const size_t capacity) : nums(nums), capacity(capacity) {}
 
     virtual ~BucketSort() { delete buckets; }
 
@@ -38,7 +42,7 @@ class BucketSort {
 
     void initMinMax() {
         min = nums[0], max = nums[0];
-        for (int &num : nums) {
+        for (const int &num : nums) {
             if (num < min) {
                 min = num;
             } else if (num > max) {
@@ -47,15 +51,12 @@ class BucketSort {
         }
     }
 
-    void initBucketCount() { bucketCount = (max - min + 1) / INIT_BUCKET_CAPACITY + 1; }
+    void initBucketCount() { bucketCount = (max - min + 1) / capacity + 1; }
 
-    void initBuckets() {
-        bucket_t _bucket;
-        buckets = new buckets_t(bucketCount, _bucket);
-    }
+    void initBuckets() { buckets = new std::vector<bucket_t>(bucketCount, bucket_t()); }
 
     void scatterToEachBucket() {
-        for (int &num : nums) {
+        for (const int &num : nums) {
             bucket_t &bucket = (*buckets)[bucketIndexOf(num)];
             size_t cap = bucket.capacity();
             if (bucket.size() > cap) { bucket.reserve(cap * 1.5f); }
@@ -63,26 +64,22 @@ class BucketSort {
         }
     }
 
-    pos_t bucketIndexOf(const int &num) const {
-        return (num - min) / INIT_BUCKET_CAPACITY;
-    }
+    pos_t bucketIndexOf(const int &num) const { return (num - min) / capacity; }
 
     void sortEachBucket() {
         pos_t k = 0;
         for (bucket_t &bucket : *buckets) {
             size_t size = bucket.size();
+
             if (!size) { continue; }
 
-            quickSort(bucket, size);
+            quickSort(bucket.data(), size);
             utils::vectorcopy(bucket, 0, nums, k, size);
             k += size;
         }
     }
 
-    static void quickSort(bucket_t &bucket, size_t n) {
-        QuickSort qs;
-        qs.sort(bucket.data(), n);
-    }
+    static void quickSort(int *nums, size_t n) { QuickSort().sort(nums, n); }
 };
 
 }

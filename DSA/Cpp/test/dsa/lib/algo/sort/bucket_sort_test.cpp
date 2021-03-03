@@ -18,7 +18,7 @@ class BucketSortTest : public SortTest {
     static void assertBucketCount(std::vector<int> &&nums, int capacity, int count) {
         BucketSort bs(nums, capacity);
         bs.sort();
-        EXPECT_EQ(bs.bucketCount, count);
+        EXPECT_EQ(count, bs.bucketCount);
     }
 };
 TEST_F(BucketSortTest, minMax) {

@@ -16,12 +16,10 @@ class BucketSort {
     std::vector<bucket_t> *buckets{};
     size_t bucketCount{};
     std::vector<size_t> *bucketSizes{};
-
-    const size_t INIT_BUCKET_CAPACITY = 2;
     const size_t capacity;
 
-    explicit BucketSort(std::vector<int> &nums) : nums(nums), capacity(INIT_BUCKET_CAPACITY) {}
-    BucketSort(std::vector<int> &nums, const size_t capacity) : nums(nums), capacity(capacity) {}
+    explicit BucketSort(std::vector<int> &nums) : nums(nums), capacity(2) {}
+    BucketSort(std::vector<int> &nums, size_t capacity) : nums(nums), capacity(capacity) {}
 
     virtual ~BucketSort() {
         delete buckets;
@@ -67,8 +65,8 @@ class BucketSort {
             bucket_t &bucket = (*buckets)[index];
             size_t size = (*bucketSizes)[index];
 
-            size_t cap = bucket.capacity();
-            if (size > cap) { bucket.reserve(cap * 1.5f); }
+            size_t cap = bucket.size();
+            if (size >= cap) { bucket.resize(cap * 1.5f); }
 
             bucket[size] = num;
             ++(*bucketSizes)[index];

@@ -4,21 +4,25 @@ import dsa.lib.Utils;
 
 class BucketSort {
     private int[] nums;
-    private final int length;
-    private final int INIT_BUCKET_CAPACITY = 2;
+    int min, max;
 
-    private int min, max;
     private int[][] buckets;
     private int[] bucketSizes;
-    private int bucketCount;
+    int bucketCount;
+    private final int capacity;
 
-    public BucketSort(int[] nums, int n) {
+    public BucketSort(int[] nums) {
         this.nums = nums;
-        this.length = n;
+        this.capacity = 2;
+    }
+
+    public BucketSort(int[] nums, int capacity) {
+        this.nums = nums;
+        this.capacity = capacity;
     }
 
     public void sort() {
-        if (this.length < 2) return;
+        if (nums.length < 2) return;
 
         initFields();
         scatterToEachBucket();
@@ -35,18 +39,18 @@ class BucketSort {
     private void initMinMax() {
         min = nums[0];
         max = nums[0];
-        for (int i = 1; i < this.length; ++i) {
-            if (nums[i] < min) min = nums[i];
-            else if (nums[i] > max) max = nums[i];
+        for (final int num : nums) {
+            if (num < min) min = num;
+            else if (num > max) max = num;
         }
     }
 
     private void initBucketCount() {
-        bucketCount = (max - min + 1) / INIT_BUCKET_CAPACITY + 1;
+        bucketCount = (max - min + 1) / capacity + 1;
     }
 
     private void initBuckets() {
-        buckets = new int[bucketCount][INIT_BUCKET_CAPACITY];
+        buckets = new int[bucketCount][capacity];
     }
 
     private void initBucketSizes() {
@@ -56,19 +60,18 @@ class BucketSort {
     private void scatterToEachBucket() {
         for (final int num : nums) {
             int index = bucketIndexOf(num);
-            int[] bucket = buckets[index];
             int size = bucketSizes[index];
 
-            int cap = bucket.length;
-            if (size > cap) resizeBucket(index, (int) (cap * 1.5f));
+            int cap = buckets[index].length;
+            if (size >= cap) resizeBucket(index, (int) (cap * 1.5f));
 
-            bucket[size] = num;
+            buckets[index][size] = num;
             ++bucketSizes[index];
         }
     }
 
     private int bucketIndexOf(int num) {
-        return (num - min) / INIT_BUCKET_CAPACITY;
+        return (num - min) / capacity;
     }
 
     private void resizeBucket(int index, int newSize) {

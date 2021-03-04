@@ -39,19 +39,19 @@ TEST_F(BucketSortTest, emptyNums) {
     bucketSort(nums);
     EXPECT_EQ(expected, nums);
 }
-TEST_F(BucketSortTest, case1) {
+TEST_F(BucketSortTest, oneNum) {
     std::vector<int> nums = {1};
     const std::vector<int> expected = {1};
     bucketSort(nums);
     EXPECT_EQ(expected, nums);
 }
-TEST_F(BucketSortTest, case2) {
+TEST_F(BucketSortTest, case1) {
     std::vector<int> nums = {4, 5, 6, 3, 2, 1};
     const std::vector<int> expected = {1, 2, 3, 4, 5, 6};
     bucketSort(nums);
     EXPECT_EQ(expected, nums);
 }
-TEST_F(BucketSortTest, case3) {
+TEST_F(BucketSortTest, case2) {
     std::vector<int> nums = {12, 11, 13, 5, 6, 7};
     const std::vector<int> expected = {5, 6, 7, 11, 12, 13};
     bucketSort(nums);

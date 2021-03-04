@@ -18,6 +18,7 @@ class BucketSort {
     std::vector<size_t> *bucketSizes{};
     const size_t capacity;
 
+ public:
     explicit BucketSort(std::vector<int> &nums) : nums(nums), capacity(2) {}
     BucketSort(std::vector<int> &nums, size_t capacity) : nums(nums), capacity(capacity) {}
 

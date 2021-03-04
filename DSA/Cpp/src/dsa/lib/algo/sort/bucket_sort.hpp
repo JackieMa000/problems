@@ -17,10 +17,9 @@ class BucketSort {
     size_t bucketCount{};
     const size_t capacity;
 
-
  public:
     explicit BucketSort(std::vector<int> &nums) : nums(nums), capacity(2) {}
-    BucketSort(std::vector<int> &nums, const size_t capacity) : nums(nums), capacity(capacity) {}
+    BucketSort(std::vector<int> &nums, size_t capacity) : nums(nums), capacity(capacity) {}
 
     virtual ~BucketSort() { delete buckets; }
 

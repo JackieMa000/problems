@@ -9,6 +9,8 @@ set(CMAKE_CXX_STANDARD 17)
 # Turn on sanitizer for debugging
 #include(sanitizer.cmake)
 
+#include(boost.cmake)
+
 # Enable cMake's CTest
 include(CTest)
 

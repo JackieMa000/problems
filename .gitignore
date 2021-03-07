@@ -11,3 +11,6 @@ experiment/
 /DSA/Python/.tox/
 /DSA/Python/venv/
 /DSA/Python/src/DSA.egg-info/
+/DSA/Java/.settings/
+/DSA/Java/.project
+/DSA/Java/.classpath

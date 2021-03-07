@@ -4,7 +4,7 @@
         "vector": "cpp",
         "includes": "cpp"
     },
-    "cmake.sourceDirectory": "${workspaceFolder}",
+    "cmake.sourceDirectory": "${workspaceFolder:Cpp}",
     "cmake.debugConfig": {
         "stopAtEntry": false,
         "MIMode": "lldb",

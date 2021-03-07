@@ -8,9 +8,11 @@
     </sourceRoots>
     <excludeRoots>
       <file path="$PROJECT_DIR$/.vscode" />
+      <file path="$PROJECT_DIR$/build" />
       <file path="$PROJECT_DIR$/cmake-build-debug" />
       <file path="$PROJECT_DIR$/cmake-build-debug-gcc" />
       <file path="$PROJECT_DIR$/cmake-build-debugremote" />
+      <file path="$PROJECT_DIR$/cmake-build-remotecppenv" />
       <file path="$PROJECT_DIR$/cmake-build-removecppenv" />
       <file path="$PROJECT_DIR$/experiment" />
     </excludeRoots>

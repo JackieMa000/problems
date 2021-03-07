@@ -15,16 +15,18 @@
           </excludedPaths>
         </serverdata>
       </paths>
-      <paths name="RemoteCPPEnv (9a146f10-9672-4051-882f-b7d791d395b4)">
+      <paths name="RemoteCPPEnv (c444556f-dc28-4ea6-a716-fd2bcf6c8816)">
         <serverdata>
           <mappings>
-            <mapping deploy="/tmp/tmp.MStFG453uF" local="$PROJECT_DIR$" />
+            <mapping deploy="/tmp/tmp.7m1DdUcJin" local="$PROJECT_DIR$" />
           </mappings>
           <excludedPaths>
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-gcc" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-remotecppenv" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-removecppenv" />
             <excludedPath local="true" path="$PROJECT_DIR$/experiment" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debugremote" />
+            <excludedPath local="true" path="$PROJECT_DIR$/build" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
             <excludedPath local="true" path="$PROJECT_DIR$/.vscode" />
           </excludedPaths>

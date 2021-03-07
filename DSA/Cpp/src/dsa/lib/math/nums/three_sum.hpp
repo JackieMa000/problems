@@ -1,7 +1,10 @@
 #ifndef DSA_SRC_DSA_LIB_MATH_NUMS_THREE_SUM_HPP_
 #define DSA_SRC_DSA_LIB_MATH_NUMS_THREE_SUM_HPP_
 #include <vector>
+#include <set>
 #include <unordered_set>
+#include <algorithm>
+
 namespace dsa::lib::math::nums {
 
 //LeetCode15
@@ -13,12 +16,12 @@ class ThreeSum {
 
     /**
      * Rule: sortFind. Double Pointers
-     * sort remove duplicates
+     * quickSort remove duplicates
      * remove duplicates for a
      * remove duplicates for b, c
      * sum = a + b + c
      *
-     * sort(a)
+     * quickSort(a)
      * loop a:
      *  remove duplicates for a
      *  double pointers for b, c

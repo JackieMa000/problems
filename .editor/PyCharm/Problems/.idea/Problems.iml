@@ -12,7 +12,7 @@
       <excludeFolder url="file://$MODULE_DIR$/../../../DSA/Java/target" />
       <excludeFolder url="file://$MODULE_DIR$/../../../build" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.8 (Problems)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.8(venv)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

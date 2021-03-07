@@ -32,4 +32,21 @@ public class Utils {
 
         return arrayStripTrailingDfs(Arrays.copyOf(ary, n - 1));
     }
+
+    /**
+     * Swap 2 elements of an array.
+     *
+     * @param ary The array.
+     * @param i   The position of 1st element.
+     * @param j   The position of 2nd element.
+     */
+    public static void arrayswap(int[] ary, int i, int j) {
+        int tmp = ary[i];
+        ary[i] = ary[j];
+        ary[j] = tmp;
+    }
+
+    public static void arraycopy(int[] src, int srcPos, int[] dest, int destPos, int length) {
+        for (int i = 0; i < length; i++) dest[destPos + i] = src[srcPos + i];
+    }
 }

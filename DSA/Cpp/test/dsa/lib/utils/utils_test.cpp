@@ -1,5 +1,5 @@
 #include <dsa/lib/libdef.h>
-#include "dsa/lib/utils/utils.h"
+#include "dsa/lib/utils.hpp"
 #include "utils_test.h"
 
 namespace dsa::lib::utils {

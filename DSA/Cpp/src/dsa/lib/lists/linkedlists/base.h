@@ -16,7 +16,7 @@ class Base : public List {
     static void destroyCycle(ListNode *head, length_t length);
 
     length_t length() final;
-    [[nodiscard]] virtual arrayStruct toArray() final;
+    [[nodiscard]] virtual array_s toArray() final;
 
     [[nodiscard]] ListNode *getNodeByIndex(int idx) const;
     [[nodiscard]] ListNode *getNodeByValue(int val) const;

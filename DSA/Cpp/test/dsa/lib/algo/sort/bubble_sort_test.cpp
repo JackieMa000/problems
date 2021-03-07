@@ -1,6 +1,5 @@
 #include <dsa/lib/algo/sort/bubble_sort.hpp>
 #include "sort_test.h"
-
 namespace dsa::lib::algo::sort {
 namespace {
 

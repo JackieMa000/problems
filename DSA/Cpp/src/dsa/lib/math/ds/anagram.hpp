@@ -1,7 +1,10 @@
 #ifndef DSA_SRC_DSA_LIB_MATH_DS_ANAGRAM_HPP_
 #define DSA_SRC_DSA_LIB_MATH_DS_ANAGRAM_HPP_
+
+#include <algorithm>
 #include <string>
 #include <unordered_map>
+
 namespace dsa::lib::math::ds {
 
 // LeetCode242

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="RemoteCPPEnv (8d5644be-b18a-4923-b991-59972a3d27e7)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/tmp.zeoy2wUg22" local="$PROJECT_DIR$" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
+            <excludedPath local="true" path="$PROJECT_DIR$/experiment" />
+            <excludedPath local="true" path="$PROJECT_DIR$/.vscode" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debugremote" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+      <paths name="RemoteCPPEnv (c444556f-dc28-4ea6-a716-fd2bcf6c8816)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/tmp.7m1DdUcJin" local="$PROJECT_DIR$" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-gcc" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-remotecppenv" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-removecppenv" />
+            <excludedPath local="true" path="$PROJECT_DIR$/experiment" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debugremote" />
+            <excludedPath local="true" path="$PROJECT_DIR$/build" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
+            <excludedPath local="true" path="$PROJECT_DIR$/.vscode" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

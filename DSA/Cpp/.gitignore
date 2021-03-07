@@ -6,7 +6,7 @@ locals.cpp
 target/
 out/
 /build*
+/cmake-build-*
 experiment/
-/cmake-build-debug/
 /Testing/
-/cmake-build-debug-coverage/
+/.idea/workspace.xml

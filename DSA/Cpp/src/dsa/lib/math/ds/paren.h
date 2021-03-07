@@ -1,6 +1,8 @@
 #ifndef DSA_SRC_DSA_LIB_MATH_DS_PAREN_H_
 #define DSA_SRC_DSA_LIB_MATH_DS_PAREN_H_
 
+#include <string>
+
 namespace dsa::lib::math::ds {
 
 class Parentheses {

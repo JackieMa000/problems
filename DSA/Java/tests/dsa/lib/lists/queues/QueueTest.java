@@ -1,11 +1,8 @@
 package dsa.lib.lists.queues;
 
-import dsa.lib.lists.ListTestFX;
 import org.junit.Test;
 
 import java.util.LinkedList;
-
-import static org.junit.Assert.*;
 
 public class QueueTest extends QueueTestFX {
     public static class InvertTest {
@@ -15,7 +12,7 @@ public class QueueTest extends QueueTestFX {
             q.add(1);
             q.add(2);
             q.add(3);
-            Queue<Integer> queue = new Queue<>(q);
+//            Queue<Integer> queue = new Queue<>(q);
 //            queue.invert();
 //            queue.queue.poll()
 

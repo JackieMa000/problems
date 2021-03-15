@@ -1,56 +1,67 @@
 package dsa.lib.algo.sort;
 
+import dsa.lib.utils.Arrays;
+
 public class CountingSort {
-    public void sort(int[] ary) {
-        int length = ary.length;
-        if (length <= 1) return;
 
-        int max = getArrayMax(ary);
-        int[] counts = new int[max + 1];
+    private int[] nums;
+    private final int size;
+    int min, max;
+    int[] counts;
 
-        initCounts(counts);
-        storeCounts(counts, ary);
-        accumulateCounts(counts);
-
-        int[] result = new int[length];
-        generateResult(result, ary, counts);
-
-        arraycopy(result, 0, ary, 0, length);
+    public CountingSort(int[] nums) {
+        this.nums = nums;
+        this.size = nums.length;
     }
 
-    private void generateResult(int[] result, int[] ary, int[] counts) {
-        int n = ary.length;
-        for (int i = n - 1; i >= 0; --i) {
-            final int cur = ary[i];
-            int index = counts[cur] - 1;
-            result[index] = cur;
-            counts[cur]--;
+    public void sort() {
+        if (this.size < 2) return;
+
+        initFields();
+        storeCounts();
+        accumulateCounts();
+
+        int[] result = new int[this.size];
+        generateResult(result);
+
+        Arrays.copy(result, 0, nums, 0, result.length);
+    }
+
+    private void initFields() {
+        initMinMax();
+        initCounts();
+    }
+
+    private void initMinMax() {
+        min = max = nums[0];
+        for (int i = 1; i < this.size; i++) {
+            if (nums[i] < min) min = nums[i];
+            else if (nums[i] > max) max = nums[i];
         }
     }
 
-    private static void arraycopy(int[] src, int srcPos, int[] dest, int destPos, int length) {
-        for (int i = 0; i < length; i++) {
-            dest[destPos + i] = src[srcPos + i];
-        }
+    private void initCounts() {
+        counts = new int[max - min + 1];
+        Arrays.fill(counts, 0);
     }
 
-    private void initCounts(int[] counts) {
-        for (int i = 0; i < counts.length; ++i) counts[i] = 0;
+    private void storeCounts() {
+        for (int num : nums) ++counts[countsIndexOf(num)];
     }
 
-    private void storeCounts(int[] counts, int[] ary) {
-        for (int e : ary) counts[e]++;
+    int countsIndexOf(int num) {
+        return num - min;
     }
 
-    private void accumulateCounts(int[] counts) {
+    private void accumulateCounts() {
         for (int i = 1; i < counts.length; ++i) counts[i] += counts[i - 1];
     }
 
-    private int getArrayMax(int[] ary) {
-        int max = ary[0];
-        for (int i = 1; i < ary.length; ++i) {
-            if (ary[i] > max) max = ary[i];
+    private void generateResult(int[] result) {
+        for (int i = this.size - 1; i >= 0; --i) {
+            int index = counts[countsIndexOf(nums[i])] - 1;
+            result[index] = nums[i];
+            --counts[countsIndexOf(nums[i])];
         }
-        return max;
     }
 }

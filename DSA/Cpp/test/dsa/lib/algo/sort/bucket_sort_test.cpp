@@ -1,11 +1,16 @@
-#include "sort_test.h"
 #include <dsa/lib/algo/sort/bucket_sort.hpp>
+#include "sort_test.h"
 
 namespace dsa::lib::algo::sort {
 namespace {
 
 class BucketSortTest : public SortTest {
  protected:
+    static void assertBucketSort(std::vector<int> &&nums, const std::vector<int> &&expected) {
+        bucketSort(nums);
+        EXPECT_EQ(expected, nums);
+    }
+
     static void bucketSort(std::vector<int> &nums) { BucketSort(nums).sort(); }
 
     static void assertMinMax(std::vector<int> &&nums, int min, int max) {
@@ -33,29 +38,16 @@ TEST_F(BucketSortTest, bucketCount) {
     assertBucketCount({1, 4, 5}, 2, 3);
     assertBucketCount({2, 4, 9}, 3, 3);
 }
-TEST_F(BucketSortTest, emptyNums) {
-    std::vector<int> nums = {};
-    const std::vector<int> expected = {};
-    bucketSort(nums);
-    EXPECT_EQ(expected, nums);
+TEST_F(BucketSortTest, emptyArray) {
+    assertBucketSort({}, {});
 }
 TEST_F(BucketSortTest, oneNum) {
-    std::vector<int> nums = {1};
-    const std::vector<int> expected = {1};
-    bucketSort(nums);
-    EXPECT_EQ(expected, nums);
+    assertBucketSort({1}, {1});
 }
-TEST_F(BucketSortTest, case1) {
-    std::vector<int> nums = {4, 5, 6, 3, 2, 1};
-    const std::vector<int> expected = {1, 2, 3, 4, 5, 6};
-    bucketSort(nums);
-    EXPECT_EQ(expected, nums);
-}
-TEST_F(BucketSortTest, case2) {
-    std::vector<int> nums = {12, 11, 13, 5, 6, 7};
-    const std::vector<int> expected = {5, 6, 7, 11, 12, 13};
-    bucketSort(nums);
-    EXPECT_EQ(expected, nums);
+TEST_F(BucketSortTest, sort) {
+    assertBucketSort({3, 2, 1}, {1, 2, 3});
+    assertBucketSort({4, 5, 6, 3, 2, 1}, {1, 2, 3, 4, 5, 6});
+    assertBucketSort({12, 11, 13, 5, 6, 7}, {5, 6, 7, 11, 12, 13});
 }
 
 }

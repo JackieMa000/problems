@@ -1,6 +1,6 @@
 package dsa.lib.trees;
 
-import dsa.lib.Utils;
+import dsa.lib.utils.Arrays;
 import dsa.nodes.BinaryTreeNode;
 
 import java.util.*;
@@ -21,7 +21,7 @@ public class BinaryTree implements Tree {
         int arraySize = getArraySizeForBinaryTree(this.root);
         int[] array = new int[arraySize];
         generateArrayFromTree(this.root, 0, array);
-        return Utils.arrayStripTrailing(array);
+        return Arrays.rstrip(array);
     }
 
     private static void generateArrayFromTree(BinaryTreeNode root, int i, int[] array) {

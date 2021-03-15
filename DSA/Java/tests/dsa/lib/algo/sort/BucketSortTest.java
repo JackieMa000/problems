@@ -5,10 +5,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class BucketSortTest {
-    private static void bucketSort(int[] nums) {
-        new BucketSort(nums).sort();
-    }
-
     @Test
     public void minMax() {
         assertMinMax(new int[]{1, 1}, 1, 1);
@@ -39,34 +35,28 @@ public class BucketSortTest {
     }
 
     @Test
-    public void emptyNums() {
-        int[] nums = {};
-        final int[] expected = {};
-        bucketSort(nums);
-        assertArrayEquals(expected, nums);
+    public void emptyArray() {
+        assertBucketSort(new int[]{}, new int[]{});
     }
 
     @Test
     public void oneNum() {
-        int[] nums = {1};
-        final int[] expected = {1};
+        assertBucketSort(new int[]{1}, new int[]{1});
+    }
+
+    @Test
+    public void sort() {
+        assertBucketSort(new int[]{4, 5, 6, 3, 2, 1}, new int[]{1, 2, 3, 4, 5, 6});
+        assertBucketSort(new int[]{12, 11, 13, 5, 6, 7}, new int[]{5, 6, 7, 11, 12, 13});
+    }
+
+    private void assertBucketSort(int[] nums, int[] expected) {
         bucketSort(nums);
         assertArrayEquals(expected, nums);
     }
 
-    @Test
-    public void case1() {
-        int[] nums = {4, 5, 6, 3, 2, 1};
-        final int[] expected = {1, 2, 3, 4, 5, 6};
-        bucketSort(nums);
-        assertArrayEquals(expected, nums);
+    private static void bucketSort(int[] nums) {
+        new BucketSort(nums).sort();
     }
 
-    @Test
-    public void case2() {
-        int[] nums = {12, 11, 13, 5, 6, 7};
-        final int[] expected = {5, 6, 7, 11, 12, 13};
-        bucketSort(nums);
-        assertArrayEquals(expected, nums);
-    }
 }

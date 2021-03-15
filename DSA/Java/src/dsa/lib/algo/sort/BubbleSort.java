@@ -1,5 +1,6 @@
 package dsa.lib.algo.sort;
 
+import dsa.lib.utils.Arrays;
 
 public class BubbleSort {
 
@@ -24,15 +25,9 @@ public class BubbleSort {
     private static void compareSwap(int[] ary, int st, int end) {
         for (int i = st; i < end - 1; ++i) {
             if (ary[i] > ary[i + 1]) {
-                arraySwap(ary, i, i + 1);
+                Arrays.swap(ary, i, i + 1);
                 swapped = true;
             }
         }
-    }
-
-    private static void arraySwap(int[] ary, int i, int j) {
-        int tmp = ary[i];
-        ary[i] = ary[j];
-        ary[j] = tmp;
     }
 }

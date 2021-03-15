@@ -1,6 +1,6 @@
 package dsa.lib.algo.sort;
 
-import dsa.lib.Utils;
+import dsa.lib.utils.Arrays;
 
 class BucketSort {
     private int[] nums;
@@ -37,11 +37,10 @@ class BucketSort {
     }
 
     private void initMinMax() {
-        min = nums[0];
-        max = nums[0];
-        for (final int num : nums) {
-            if (num < min) min = num;
-            else if (num > max) max = num;
+        min = max = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] < min) min = nums[i];
+            else if (nums[i] > max) max = nums[i];
         }
     }
 
@@ -77,7 +76,7 @@ class BucketSort {
     private void resizeBucket(int index, int newSize) {
         int[] newBucket = new int[newSize];
         int[] oldBucket = buckets[index];
-        Utils.arraycopy(oldBucket, 0, newBucket, 0, oldBucket.length);
+        Arrays.copy(oldBucket, 0, newBucket, 0, oldBucket.length);
         buckets[index] = newBucket;
     }
 
@@ -90,7 +89,7 @@ class BucketSort {
             if (size == 0) continue;
 
             quickSort(bucket, size);
-            Utils.arraycopy(bucket, 0, nums, k, size);
+            Arrays.copy(bucket, 0, nums, k, size);
             k += size;
         }
     }

@@ -1,11 +1,13 @@
 package dsa.lib.algo.sort;
 
+import dsa.lib.utils.Arrays;
+
 public class SelectionSort {
     public static void sort(int[] ary) {
         int n = ary.length;
         for (int i = 0; i < n - 1; i++) {
             int minPos = arrayMinPos(ary, i, n);
-            arraySwap(ary, i, minPos);
+            Arrays.swap(ary, i, minPos);
         }
     }
 
@@ -17,17 +19,11 @@ public class SelectionSort {
      * @param end The end position of the range, exclusive.
      * @return The index of the minimum element
      */
-    private static int arrayMinPos(int[] ary, int st, int end) {
+    public static int arrayMinPos(int[] ary, int st, int end) {
         int m = st;
         for (int i = st + 1; i < end; ++i) {
             if (ary[i] < ary[m]) m = i;
         }
         return m;
-    }
-
-    private static void arraySwap(int[] ary, int i, int j) {
-        int tmp = ary[i];
-        ary[i] = ary[j];
-        ary[j] = tmp;
     }
 }

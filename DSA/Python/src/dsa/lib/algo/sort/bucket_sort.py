@@ -8,6 +8,7 @@ class BucketSort:
 
     def __init__(self, nums: List[int], capacity: int = 2) -> None:
         self.nums: List[int] = nums
+        self.size = len(self.nums)
         self.capacity: int = capacity
 
         self.min: int = 0
@@ -17,7 +18,7 @@ class BucketSort:
         self.bucketSizes: List[int] = []
 
     def sort(self) -> None:
-        if len(self.nums) < 2: return
+        if self.size < 2: return
 
         self.init_fields()
         self.scatterToEachBucket()
@@ -30,6 +31,8 @@ class BucketSort:
         self.init_bucketSizes()
 
     def init_minMax(self) -> None:
+        if not self.size: return
+
         self.min = self.max = self.nums[0]
         for num in self.nums:
             if num < self.min:

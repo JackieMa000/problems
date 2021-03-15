@@ -4,6 +4,7 @@ import dsa.lib.utils.Arrays;
 
 class BucketSort {
     private int[] nums;
+    private final int size;
     int min, max;
 
     private int[][] buckets;
@@ -13,16 +14,18 @@ class BucketSort {
 
     public BucketSort(int[] nums) {
         this.nums = nums;
+        this.size = nums.length;
         this.capacity = 2;
     }
 
     public BucketSort(int[] nums, int capacity) {
         this.nums = nums;
+        this.size = nums.length;
         this.capacity = capacity;
     }
 
     public void sort() {
-        if (nums.length < 2) return;
+        if (this.size < 2) return;
 
         initFields();
         scatterToEachBucket();
@@ -37,10 +40,12 @@ class BucketSort {
     }
 
     private void initMinMax() {
+        if (this.size == 0) return;
+
         min = max = nums[0];
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] < min) min = nums[i];
-            else if (nums[i] > max) max = nums[i];
+        for (final int num : this.nums) {
+            if (num < min) min = num;
+            else if (num > max) max = num;
         }
     }
 

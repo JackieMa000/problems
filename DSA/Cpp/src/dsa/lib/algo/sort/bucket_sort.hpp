@@ -11,6 +11,7 @@ class BucketSort {
     typedef std::vector<int> bucket_t;
 
     std::vector<int> &nums;
+    const size_t size;
     int min{}, max{};
 
     std::vector<bucket_t> *buckets{};
@@ -18,13 +19,13 @@ class BucketSort {
     const size_t capacity;
 
  public:
-    explicit BucketSort(std::vector<int> &nums) : nums(nums), capacity(2) {}
-    BucketSort(std::vector<int> &nums, size_t capacity) : nums(nums), capacity(capacity) {}
+    explicit BucketSort(std::vector<int> &nums) : nums(nums), size(nums.size()), capacity(2) {}
+    BucketSort(std::vector<int> &nums, size_t capacity) : nums(nums), size(nums.size()), capacity(capacity) {}
 
     virtual ~BucketSort() { delete buckets; }
 
     void sort() {
-        if (nums.size() < 2) { return; }
+        if (this->size < 2) { return; }
 
         initFields();
         scatterToEachBucket();
@@ -39,13 +40,12 @@ class BucketSort {
     }
 
     void initMinMax() {
-        min = nums[0], max = nums[0];
+        if (!this->size) { return; }
+
+        min = max = nums[0];
         for (const int &num : nums) {
-            if (num < min) {
-                min = num;
-            } else if (num > max) {
-                max = num;
-            }
+            if (num < min) { min = num; }
+            else if (num > max) { max = num; }
         }
     }
 

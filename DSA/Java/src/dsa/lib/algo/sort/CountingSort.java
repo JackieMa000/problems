@@ -6,6 +6,7 @@ public class CountingSort {
 
     private int[] nums;
     private final int size;
+
     int min, max;
     int[] counts;
 
@@ -23,8 +24,7 @@ public class CountingSort {
 
         int[] result = new int[this.size];
         generateResult(result);
-
-        Arrays.copy(result, 0, nums, 0, result.length);
+        Arrays.copy(result, 0, this.nums, 0, result.length);
     }
 
     private void initFields() {
@@ -32,36 +32,39 @@ public class CountingSort {
         initCounts();
     }
 
-    private void initMinMax() {
-        min = max = nums[0];
-        for (int i = 1; i < this.size; i++) {
-            if (nums[i] < min) min = nums[i];
-            else if (nums[i] > max) max = nums[i];
+    public void initMinMax() {
+        if (this.size == 0) return;
+
+        min = max = this.nums[0];
+        for (final int num : nums) {
+            if (num < min) min = num;
+            else if (num > max) max = num;
         }
     }
 
-    private void initCounts() {
+    public void initCounts() {
         counts = new int[max - min + 1];
         Arrays.fill(counts, 0);
     }
 
-    private void storeCounts() {
-        for (int num : nums) ++counts[countsIndexOf(num)];
+    public void storeCounts() {
+        for (final int num : this.nums) ++counts[countsIndexOf(num)];
     }
 
-    int countsIndexOf(int num) {
+    private int countsIndexOf(int num) {
         return num - min;
     }
 
-    private void accumulateCounts() {
-        for (int i = 1; i < counts.length; ++i) counts[i] += counts[i - 1];
+    public void accumulateCounts() {
+        for (int i = 1; i < counts.length; i++) counts[i] += counts[i - 1];
     }
 
     private void generateResult(int[] result) {
         for (int i = this.size - 1; i >= 0; --i) {
-            int index = counts[countsIndexOf(nums[i])] - 1;
-            result[index] = nums[i];
-            --counts[countsIndexOf(nums[i])];
+            int num = this.nums[i];
+            final int ci = countsIndexOf(num);
+            result[counts[ci] - 1] = num;
+            --counts[ci];
         }
     }
 }

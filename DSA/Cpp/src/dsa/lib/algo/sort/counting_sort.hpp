@@ -11,7 +11,8 @@ class CountingSort {
 
  public:
     std::vector<int> &nums;
-    size_t size;
+    const size_t size;
+
     int min{}, max{};
     std::vector<int> *counts{};
 
@@ -39,10 +40,12 @@ class CountingSort {
     }
 
     void initMinMax() {
-        min = max = nums[0];
-        for (int i = 1; i < this->size; ++i) {
-            if (nums[i] > max) { max = nums[i]; }
-            else if (nums[i] < min) { min = nums[i]; }
+        if (!this->size) { return; }
+
+        min = max = this->nums[0];
+        for (const int num: this->nums) {
+            if (num > max) { max = num; }
+            else if (num < min) { min = num; }
         }
     }
 
@@ -52,17 +55,17 @@ class CountingSort {
         for (const int &num  : nums) { ++(*counts)[countsIndexOf(num)]; }
     }
 
-    [[nodiscard]] int countsIndexOf(const int &num) const { return num - min; }
+    int countsIndexOf(const int &num) const { return num - min; }
 
     void accumulateCounts() {
         for (int i = 1; i < counts->size(); ++i) { (*counts)[i] += (*counts)[i - 1]; }
     }
 
     void generateResult(std::vector<int> &result) {
-        for (int i = (int) this->size - 1; i >= 0; --i) {
-            int index = (*counts)[countsIndexOf(nums[i])] - 1;
-            result[index] = nums[i];
-            --(*counts)[countsIndexOf(nums[i])];
+        for (int i = (int) size - 1; i >= 0; --i) {
+            int ci = countsIndexOf(nums[i]);
+            result[((*counts)[ci] - 1)] = nums[i];
+            --(*counts)[ci];
         }
     }
 };

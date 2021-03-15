@@ -33,6 +33,8 @@ class CountingSortTestCase(TestCase):
 
     def test_minMax(self):
         self.assertMinMax([1, 1], 1, 1)
+        self.assertMinMax([1, 2, 3], 1, 3)
+        self.assertMinMax([8, 2, 9], 2, 9)
 
     def assertMinMax(self, nums: List[int], min_: int, max_: int) -> None:
         cs = CountingSort(nums)

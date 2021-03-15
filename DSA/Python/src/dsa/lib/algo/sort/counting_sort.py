@@ -32,11 +32,11 @@ class CountingSort:
         if not self.size: return
 
         self.min = self.max = self.nums[0]
-        for i in range(self.size):
-            if self.nums[i] > self.max:
-                self.max = self.nums[i]
-            elif self.nums[i] < self.min:
-                self.min = self.nums[i]
+        for num in self.nums:
+            if num > self.max:
+                self.max = num
+            elif num < self.min:
+                self.min = num
 
     def init_counts(self):
         self.counts = [0] * (self.max - self.min + 1)
@@ -54,6 +54,5 @@ class CountingSort:
         for i in range(self.size - 1, -1, -1):
             num = self.nums[i]
             ci = self.countsIndexOf(num)
-            index = self.counts[ci] - 1
-            result[index] = num
+            result[(self.counts[ci] - 1)] = num
             self.counts[ci] -= 1

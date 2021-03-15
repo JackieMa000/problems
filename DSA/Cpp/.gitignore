@@ -1,12 +1,4 @@
-.hide*
-info.md
-info.txt
-.DS_Store
-locals.cpp
-target/
-out/
 /build*
 /cmake-build-*
 experiment/
-/Testing/
 /.idea/workspace.xml

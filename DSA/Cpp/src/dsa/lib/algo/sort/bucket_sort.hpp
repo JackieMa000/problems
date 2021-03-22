@@ -67,13 +67,13 @@ class BucketSort {
     void sortEachBucket() {
         pos_t k = 0;
         for (bucket_t &bucket : *buckets) {
-            size_t size = bucket.size();
+            size_t n = bucket.size();
 
-            if (!size) { continue; }
+            if (!n) { continue; }
 
-            quickSort(bucket.data(), size);
-            utils::vectorcopy(bucket, 0, nums, k, size);
-            k += size;
+            quickSort(bucket.data(), n);
+            utils::vectorcopy(bucket, 0, nums, k, n);
+            k += n;
         }
     }
 

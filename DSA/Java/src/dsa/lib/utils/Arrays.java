@@ -1,5 +1,7 @@
 package dsa.lib.utils;
 
+import java.util.List;
+
 public class Arrays {
     /**
      * Rule:
@@ -45,7 +47,23 @@ public class Arrays {
     }
 
     public static void copy(int[] src, int srcPos, int[] dest, int destPos, int length) {
-        for (int i = 0; i < length; i++) dest[destPos + i] = src[srcPos + i];
+        for (int i = 0; i < length; ++i) dest[destPos + i] = src[srcPos + i];
+    }
+
+    public static <T> void copy(T[] src, int srcPos, T[] dest, int destPos, int length) {
+        for (int i = 0; i < length; ++i) dest[destPos + i] = src[srcPos + i];
+    }
+
+    public static <T> void copy(List<T> src, int srcPos, T[] dest, int destPos, int length) {
+        for (int i = 0; i < length; ++i) dest[destPos + i] = src.get(srcPos + i);
+    }
+
+    public static void copy(Integer[] src, int srcPos, int[] dest, int destPos, int length) {
+        for (int i = 0; i < length; ++i) dest[destPos + i] = src[srcPos + i];
+    }
+
+    public static void copy(int[] src, int srcPos, Integer[] dest, int destPos, int length) {
+        for (int i = 0; i < length; ++i) dest[destPos + i] = src[srcPos + i];
     }
 
     public static void fill(int[] ary, int val) {
@@ -54,17 +72,33 @@ public class Arrays {
 
     public static int max(int[] ary) {
         int max = ary[0];
-        for (int i = 1; i < ary.length; ++i) {
-            if (ary[i] > max) max = ary[i];
-        }
+        for (final int num : ary) if (num > max) max = num;
         return max;
     }
 
     public static int min(int[] ary) {
         int min = ary[0];
-        for (int i = 1; i < ary.length; i++) {
-            if (ary[i] < min) min = ary[i];
-        }
+        for (final int num : ary) if (num < min) min = num;
         return min;
+    }
+
+    public static String longest(String[] ary) {
+        String lo = ary[0];
+        for (final String s : ary) if (s.length() > lo.length()) lo = s;
+        return lo;
+    }
+
+    public static Integer[] integerValueOf(int[] nums) {
+        final int size = nums.length;
+        Integer[] result = new Integer[size];
+        for (int i = 0; i < size; i++) result[i] = nums[i];
+        return result;
+    }
+
+    public static int[] intValueOf(Integer[] nums) {
+        final int size = nums.length;
+        int[] result = new int[size];
+        for (int i = 0; i < size; i++) result[i] = nums[i];
+        return result;
     }
 }

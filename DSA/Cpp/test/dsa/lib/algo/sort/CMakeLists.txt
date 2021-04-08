@@ -3,5 +3,3 @@ add_executable(sort_test
         merge_sort_test.cpp quick_sort_test.cpp
         bucket_sort_test.cpp counting_sort_test.cpp)
 target_link_libraries(sort_test test_main)
-
-add_executable(cppmain cppmain.cpp)

@@ -1,5 +1,5 @@
-#include <dsa/lib/algo/sort/counting_sort.hpp>
-#include "sort_test.h"
+#include <dsa/lib/algo/sort/counting_sort/counting_sort.hpp>
+#include "dsa/lib/algo/sort/sort_test.h"
 
 namespace dsa::lib::algo::sort {
 namespace {

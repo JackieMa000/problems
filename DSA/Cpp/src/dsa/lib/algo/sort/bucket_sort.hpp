@@ -1,7 +1,7 @@
 #pragma once
 
 #include "quick_sort.hpp"
-#include <dsa/lib/utils.hpp>
+#include <dsa/lib/utils/algorithm.hpp>
 
 namespace dsa::lib::algo::sort {
 
@@ -72,7 +72,7 @@ class BucketSort {
             if (!n) { continue; }
 
             quickSort(bucket.data(), n);
-            utils::vectorcopy(bucket, 0, nums, k, n);
+            dsa::copy(bucket, 0, nums, k, n);
             k += n;
         }
     }

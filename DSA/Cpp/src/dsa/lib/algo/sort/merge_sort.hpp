@@ -1,6 +1,7 @@
 #ifndef DSA_SRC_DSA_LIB_ALGO_SORT_MERGE_SORT_HPP_
 #define DSA_SRC_DSA_LIB_ALGO_SORT_MERGE_SORT_HPP_
-#include <dsa/lib/utils.hpp>
+#include <dsa/lib/utils/algorithm.hpp>
+
 namespace dsa::lib::algo::sort {
 
 class MergeSort {
@@ -50,7 +51,7 @@ class MergeSort {
             }
         }
 
-        utils::arraycopy(result, 0, ary, st, n);
+        dsa::copy(result, 0, ary, st, n);
     }
 };
 

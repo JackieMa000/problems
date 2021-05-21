@@ -14,5 +14,5 @@
                 "traceResponse": true
         }
     },
-    "cmake.parallelJobs": 6
+    "cmake.parallelJobs": 8
 }

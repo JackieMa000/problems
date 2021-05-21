@@ -1,6 +1,7 @@
 #ifndef DSA_SRC_DSA_LIB_ALGO_SORT_BUBBLE_SORT_HPP_
 #define DSA_SRC_DSA_LIB_ALGO_SORT_BUBBLE_SORT_HPP_
-#include <dsa/lib/utils.hpp>
+#include <dsa/lib/utils/algorithm.hpp>
+
 namespace dsa::lib::algo::sort {
 
 class BubbleSort {
@@ -22,7 +23,7 @@ class BubbleSort {
     static void compareSwap(int *ary, int st, size_t end, bool &swapped) {
         for (int i = st; i < end - 1; ++i) {
             if (ary[i] > ary[i + 1]) {
-                utils::arraySwap(ary, i, i + 1);
+                dsa::swap(ary, i, i + 1);
                 swapped = true;
             }
         }

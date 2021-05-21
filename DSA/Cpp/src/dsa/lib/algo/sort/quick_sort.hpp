@@ -1,6 +1,7 @@
 #ifndef DSA_SRC_DSA_LIB_ALGO_SORT_QUICK_SORT_HPP_
 #define DSA_SRC_DSA_LIB_ALGO_SORT_QUICK_SORT_HPP_
-#include <dsa/lib/utils.hpp>
+#include <dsa/lib/utils/algorithm.hpp>
+
 namespace dsa::lib::algo::sort {
 
 class QuickSort {
@@ -36,9 +37,9 @@ class QuickSort {
     static int partition(int *ary, int low, int high) {
         int i = low;
         for (int j = low; j < high; ++j) {
-            if (ary[j] < ary[high]) { utils::arraySwap(ary, i++, j); }
+            if (ary[j] < ary[high]) { dsa::swap(ary, i++, j); }
         }
-        utils::arraySwap(ary, i, high);
+        dsa::swap(ary, i, high);
 
         return i;
     }

@@ -3,11 +3,11 @@
 #include <vector>
 
 #include <dsa/dsadef.h>
-#include <dsa/lib/utils.hpp>
+#include <dsa/lib/utils/algorithm.hpp>
 
 namespace dsa::lib::algo::sort {
 
-class CountingSort {
+class CountingSortInt {
 
  public:
     std::vector<int> &nums;
@@ -17,8 +17,8 @@ class CountingSort {
     std::vector<int> *counts{};
 
  public:
-    explicit CountingSort(std::vector<int> &nums) : nums(nums), size(nums.size()) {}
-    virtual ~CountingSort() { delete counts; }
+    explicit CountingSortInt(std::vector<int> &nums) : nums(nums), size(nums.size()) {}
+    virtual ~CountingSortInt() { delete counts; }
 
     void sort() {
         if (this->size < 2) { return; }
@@ -30,7 +30,7 @@ class CountingSort {
         std::vector<int> result(this->size, 0);
         generateResult(result);
 
-        utils::vectorcopy(result, 0, nums, 0, result.size());
+        dsa::copy(result, 0, nums, 0, result.size());
     }
 
  public:
@@ -55,9 +55,9 @@ class CountingSort {
         for (const int &num  : nums) { ++(*counts)[countsIndexOf(num)]; }
     }
 
-    int countsIndexOf(const int &num) const { return num - min; }
+    [[nodiscard]] int countsIndexOf(const int &num) const { return num - min; }
 
-    void accumulateCounts() {
+    void accumulateCounts() const {
         for (int i = 1; i < counts->size(); ++i) { (*counts)[i] += (*counts)[i - 1]; }
     }
 

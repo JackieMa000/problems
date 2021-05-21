@@ -8,7 +8,7 @@
 namespace dsa::testing {
 
 class DSATest : public ::testing::Test {
- protected:
+ public:
     static void EXPECT_ARRAY_EQ(const array_s &expected, const array_s &actual);
     static void EXPECT_ARRAY_EQ(int *expected, length_t expectedLength, int *actual, length_t actualLength);
     static void EXPECT_ARRAY_EQ_LINKEDLIST(int *ary, length_t length, nodes::ListNode *head);
@@ -24,4 +24,4 @@ class DSATest : public ::testing::Test {
 
 }  // namespace dsa::testing
 
-#endif  // TESTING_H
+#endif  // DSA_TESTING_H

@@ -1,6 +1,7 @@
 #ifndef DSA_SRC_DSA_LIB_ALGO_SORT_SELECTION_SORT_HPP_
 #define DSA_SRC_DSA_LIB_ALGO_SORT_SELECTION_SORT_HPP_
-#include <dsa/lib/utils.hpp>
+#include <dsa/lib/utils/algorithm.hpp>
+
 namespace dsa::lib::algo::sort {
 
 class SelectionSort {
@@ -8,7 +9,7 @@ class SelectionSort {
     static void sort(int *ary, int n) {
         for (int i = 0; i < n - 1; ++i) {
             int minPos = arrayMinPos(ary, i, n);
-            utils::arraySwap(ary, i, minPos);
+            dsa::swap(ary, i, minPos);
         }
     }
     /**

@@ -1,7 +1,7 @@
 #include <queue>
 #include <cmath>
 
-#include <dsa/lib/utils.hpp>
+#include <dsa/lib/utils/algorithm.hpp>
 #include "bt.h"
 
 namespace dsa::lib::trees {
@@ -41,7 +41,7 @@ array_s BinaryTree::toArray() {
         for (int i = 0; i < length; ++i) *(ary + i) = 0;
 
         generateArrayFromTree(root, 0, ary, length);
-        as = {ary, utils::arrayRstrip(ary, length)};
+        as = {ary, dsa::rStrip(ary, length)};
     }
     return as;
 }

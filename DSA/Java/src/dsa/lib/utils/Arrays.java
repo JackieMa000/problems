@@ -11,11 +11,11 @@ public class Arrays {
      * 4. Array length is bigger than 1, last element is 0 -> remove the trailing 0s by loop.
      */
     //    Remove all the trailing 0s from an array
-    public static int[] rstrip(int[] ary) {
-        return rstripIt(ary);
+    public static int[] rStrip(int[] ary) {
+        return rStripIt(ary);
     }
 
-    private static int[] rstripIt(int[] ary) {
+    private static int[] rStripIt(int[] ary) {
         int n = ary.length;
         if (n == 0 || (n == 1 && ary[0] == 0)) return new int[0];
         if (ary[n - 1] != 0) return ary;
@@ -25,12 +25,12 @@ public class Arrays {
         return java.util.Arrays.copyOf(ary, newLength);
     }
 
-    private static int[] rstripDfs(int[] ary) {
+    private static int[] rStripDfs(int[] ary) {
         int n = ary.length;
         if (n == 0 || (n == 1 && ary[0] == 0)) return new int[0];
         if (ary[n - 1] != 0) return ary;
 
-        return rstripDfs(java.util.Arrays.copyOf(ary, n - 1));
+        return rStripDfs(java.util.Arrays.copyOf(ary, n - 1));
     }
 
     /**

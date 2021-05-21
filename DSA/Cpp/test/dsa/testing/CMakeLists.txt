@@ -1,6 +1,5 @@
 add_library(testing testing.cpp)
 target_link_libraries(testing PUBLIC gtest)
-target_link_libraries(testing PRIVATE arrays)
 target_precompile_headers(testing PUBLIC pch.h)
 
 add_library(test_main test_main.cpp)

@@ -287,7 +287,7 @@ const T &min(const T &a, const T &b) {
 }
 
 template<class ForwardIterator, class Compare>
-inline CONSTEXPR
+NODISCARD inline CONSTEXPR
 ForwardIterator min_element(ForwardIterator first, ForwardIterator last, Compare comp) {
     static_assert(std::__is_cpp17_forward_iterator<ForwardIterator>::value,
                   "std::min_element requires a ForwardIterator");
@@ -298,6 +298,12 @@ ForwardIterator min_element(ForwardIterator first, ForwardIterator last, Compare
                 first = i;
     }
     return first;
+}
+
+template<class ForwardIterator>
+NODISCARD inline CONSTEXPR
+ForwardIterator min_element(ForwardIterator first, ForwardIterator last) {
+    return DSA::min_element(first, last, std::less<typename std::iterator_traits<ForwardIterator>::value_type>());
 }
 
 template<class T, class Compare>

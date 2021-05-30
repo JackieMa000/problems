@@ -2,8 +2,9 @@
 #include <dsa/lib/utils/algorithm.hpp>
 #include <dsa/testing/dsatest.h>
 #include <list>
-#include <dsa/lib/utils/out.h>
 #include <dsa/lib/utils/math.h>
+#include "dsa/lib/utils/out.h"
+#include <random>
 
 namespace dsa {
 namespace {
@@ -77,13 +78,12 @@ TEST(FillTest, case1) {
 }
 
 TEST(FillNTest, case1) {
-    int ary[] = {0, 0, 0};
+    int nums[] = {0, 0, 0};
     int expected[] = {1, 1, 0};
 
-    dsa::fill_n(ary, 2, 1);
-    print(ary, ary + 3);
+    dsa::fill_n(nums, 2, 1);
 
-    EXPECT_ARRAY_EQ(expected, aryLength(expected), ary, aryLength(ary));
+    EXPECT_ARRAY_EQ(expected, aryLength(expected), nums, aryLength(nums));
 }
 
 TEST(SwapTest, arrayPos) {
@@ -373,6 +373,48 @@ TEST(MinInitListCompTest, case1) {
     EXPECT_EQ(3, dsa::min({3, 2, 1}, std::greater<>()));
     EXPECT_EQ(3, dsa::min({1, 2, 3}, std::greater<>()));
     EXPECT_EQ(3, dsa::min({1, 3, 2}, std::greater<>()));
+}
+
+TEST(MinElementTest, array) {
+    int nums[] = {2, 4, 6, 8, 7, 5, 3, 1};
+    int *actual = dsa::min_element(nums, nums + aryLength(nums));
+    EXPECT_EQ(1, *actual);
+}
+TEST(MinElementTest, list) {
+    std::list<int> nums = {2, 4, 6, 8, 7, 5, 3, 1};
+    auto actual = dsa::min_element(nums.begin(), nums.end());
+    EXPECT_EQ(1, *actual);
+}
+TEST(MinElementTest, vector) {
+    std::vector<int> nums = {2, 4, 6, 8, 7, 5, 3, 1};
+    auto actual = dsa::min_element(nums.begin(), nums.end());
+    EXPECT_EQ(1, *actual);
+}
+TEST(MinElementTest, staticAssert) {
+    static constexpr int nums[] = {2, 4, 6, 8, 7, 5, 3, 1};
+    constexpr auto actual = dsa::min_element(nums, nums + 8);
+    static_assert(*actual == 1);
+}
+
+TEST(MinElementCompTest, array) {
+    int nums[] = {2, 4, 6, 8, 7, 5, 3, 1};
+    EXPECT_EQ(1, *dsa::min_element(nums, nums + aryLength(nums), std::less<>()));
+    EXPECT_EQ(8, *dsa::min_element(nums, nums + aryLength(nums), std::greater<>()));
+}
+TEST(MinElementCompTest, list) {
+    std::list<int> nums = {2, 4, 6, 8, 7, 5, 3, 1};
+    EXPECT_EQ(1, *dsa::min_element(nums.begin(), nums.end(), std::less<>()));
+    EXPECT_EQ(8, *dsa::min_element(nums.begin(), nums.end(), std::greater<>()));
+}
+TEST(MinElementCompTest, vector) {
+    std::vector<int> nums = {2, 4, 6, 8, 7, 5, 3, 1};
+    EXPECT_EQ(1, *dsa::min_element(nums.begin(), nums.end(), std::less<>()));
+    EXPECT_EQ(8, *dsa::min_element(nums.begin(), nums.end(), std::greater<>()));
+}
+TEST(MinElementCompTest, staticAssert) {
+    static constexpr int nums[] = {2, 4, 6, 8, 7, 5, 3, 1};
+    constexpr auto actual = dsa::min_element(nums, nums + 8, std::less<>());
+    static_assert(*actual == 1);
 }
 
 }  // namespace

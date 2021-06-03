@@ -4,6 +4,7 @@
 // Algorithms to be used on ranges of elements.
 
 #include <vector>
+
 #include <dsa/config.h>
 #include <dsa/type_traits.h>
 #include "dsa/dsadef.h"
@@ -178,7 +179,7 @@ distance(InputIterator first, InputIterator last) {
 }
 
 template<class ForwardIterator, class T>
-CONSTEXPR
+NODISCARD inline CONSTEXPR
 ForwardIterator remove(ForwardIterator first, ForwardIterator last, const T &val) {
     first = std::find(first, last, val);
     if (first != last) {
@@ -194,7 +195,7 @@ ForwardIterator remove(ForwardIterator first, ForwardIterator last, const T &val
 }
 
 template<class ForwardIterator, class UnaryPredicate>
-CONSTEXPR
+NODISCARD inline CONSTEXPR
 ForwardIterator remove_if(ForwardIterator first, ForwardIterator last, UnaryPredicate pred) {
     first = std::find_if<ForwardIterator, typename std::add_lvalue_reference<UnaryPredicate>::type>(first, last, pred);
     if (first != last) {
@@ -210,7 +211,7 @@ ForwardIterator remove_if(ForwardIterator first, ForwardIterator last, UnaryPred
 }
 
 template<class InputIterator, class T>
-CONSTEXPR
+NODISCARD inline CONSTEXPR
 InputIterator find(InputIterator first, InputIterator last, const T &val) {
     for (; first != last; ++first)
         if (*first == val)
@@ -218,7 +219,7 @@ InputIterator find(InputIterator first, InputIterator last, const T &val) {
     return first;
 }
 template<class InputIterator, class UnaryPredicate>
-CONSTEXPR
+NODISCARD inline CONSTEXPR
 InputIterator find_if(InputIterator first, InputIterator last, UnaryPredicate pred) {
     for (; first != last; ++first)
         if (pred(*first))
@@ -226,7 +227,7 @@ InputIterator find_if(InputIterator first, InputIterator last, UnaryPredicate pr
     return first;
 }
 template<class InputIterator, class UnaryPredicate>
-CONSTEXPR
+NODISCARD inline CONSTEXPR
 InputIterator find_if_not(InputIterator first, InputIterator last, UnaryPredicate pred) {
     for (; first != last; ++first)
         if (!pred(*first))
@@ -235,7 +236,7 @@ InputIterator find_if_not(InputIterator first, InputIterator last, UnaryPredicat
 }
 
 template<class InputIterator, class T>
-CONSTEXPR
+NODISCARD inline CONSTEXPR
 typename std::iterator_traits<InputIterator>::difference_type
 count(InputIterator first, InputIterator last, const T &val) {
     typename std::iterator_traits<InputIterator>::difference_type r(0);
@@ -245,7 +246,7 @@ count(InputIterator first, InputIterator last, const T &val) {
     return r;
 }
 template<class InputIterator, class UnaryPredicate>
-CONSTEXPR
+NODISCARD inline CONSTEXPR
 typename std::iterator_traits<InputIterator>::difference_type
 count_if(InputIterator first, InputIterator last, UnaryPredicate pred) {
     typename std::iterator_traits<InputIterator>::difference_type r(0);
@@ -275,13 +276,15 @@ void reverse(BidirectionalIterator first, BidirectionalIterator last) {
     dsa::reverse(first, last, typename std::iterator_traits<BidirectionalIterator>::iterator_category());
 }
 
+// min
+
 template<class T, class Compare>
-inline CONSTEXPR
+NODISCARD inline CONSTEXPR
 const T &min(const T &a, const T &b, Compare comp) {
     return comp(b, a) ? b : a;
 }
 template<class T>
-inline CONSTEXPR
+NODISCARD inline CONSTEXPR
 const T &min(const T &a, const T &b) {
     return DSA::min(a, b, std::less<T>());
 }
@@ -307,15 +310,117 @@ ForwardIterator min_element(ForwardIterator first, ForwardIterator last) {
 }
 
 template<class T, class Compare>
-inline CONSTEXPR
+NODISCARD inline CONSTEXPR
 T min(std::initializer_list<T> t, Compare comp) {
     return *DSA::min_element(t.begin(), t.end(), comp);
 }
 
 template<class T>
-inline CONSTEXPR
+NODISCARD inline CONSTEXPR
 T min(std::initializer_list<T> t) {
     return *DSA::min_element(t.begin(), t.end(), std::less<T>());
+}
+
+// max_element
+
+template<class ForwardIterator, class Compare>
+NODISCARD inline CONSTEXPR
+ForwardIterator max_element(ForwardIterator first, ForwardIterator last, Compare comp) {
+    static_assert(std::__is_cpp17_forward_iterator<ForwardIterator>::value,
+                  "std::max_element requires a ForwardIterator");
+    if (first != last) {
+        ForwardIterator i = first;
+        while (++i != last)
+            if (comp(*first, *i))
+                first = i;
+    }
+    return first;
+}
+
+template<class ForwardIterator>
+NODISCARD inline CONSTEXPR
+ForwardIterator max_element(ForwardIterator first, ForwardIterator last) {
+    return DSA::max_element(first, last,
+                            std::less<typename std::iterator_traits<ForwardIterator>::value_type>());
+}
+
+// max
+
+template<class T, class Compare>
+NODISCARD inline CONSTEXPR
+const T &max(const T &a, const T &b, Compare comp) {
+    return comp(a, b) ? b : a;
+}
+
+template<class T>
+NODISCARD inline CONSTEXPR
+const T &max(const T &a, const T &b) {
+    return DSA::max(a, b, std::less<T>());
+}
+
+template<class T, class Compare>
+NODISCARD inline CONSTEXPR
+T max(std::initializer_list<T> t, Compare comp) {
+    return *DSA::max_element(t.begin(), t.end(), comp);
+}
+
+template<class T>
+NODISCARD inline CONSTEXPR
+T max(std::initializer_list<T> t) {
+    return *DSA::max_element(t.begin(), t.end(), std::less<T>());
+}
+
+// minmax
+
+template<class T, class Compare>
+NODISCARD inline CONSTEXPR
+std::pair<const T &, const T &> minmax(const T &a, const T &b, Compare comp) {
+    return comp(b, a) ? std::pair<const T &, const T &>(b, a) :
+           std::pair<const T &, const T &>(a, b);
+}
+
+template<class T>
+NODISCARD inline CONSTEXPR
+std::pair<const T &, const T &> minmax(const T &a, const T &b) {
+    return DSA::minmax(a, b, std::less<T>());
+}
+
+template<class T, class Compare>
+NODISCARD inline CONSTEXPR
+std::pair<T, T> minmax(std::initializer_list<T> t, Compare comp) {
+    typedef typename std::initializer_list<T>::const_iterator Iter;
+    Iter first = t.begin();
+    Iter last = t.end();
+    std::pair<T, T> result(*first, *first);
+
+    ++first;
+    if (t.size() % 2 == 0) {
+        if (comp(*first, result.first))
+            result.first = *first;
+        else
+            result.second = *first;
+        ++first;
+    }
+
+    while (first != last) {
+        T prev = *first++;
+        if (comp(*first, prev)) {
+            if (comp(*first, result.first)) result.first = *first;
+            if (!comp(prev, result.second)) result.second = prev;
+        } else {
+            if (comp(prev, result.first)) result.first = prev;
+            if (!comp(*first, result.second)) result.second = *first;
+        }
+
+        first++;
+    }
+    return result;
+}
+
+template<class T>
+NODISCARD inline CONSTEXPR
+std::pair<T, T> minmax(std::initializer_list<T> t) {
+    return DSA::minmax(t, std::less<T>());
 }
 
 }

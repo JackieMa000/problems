@@ -423,5 +423,54 @@ std::pair<T, T> minmax(std::initializer_list<T> t) {
     return DSA::minmax(t, std::less<T>());
 }
 
+// minmax_element
+
+template<class ForwardIterator, class Compare>
+NODISCARD CONSTEXPR
+std::pair<ForwardIterator, ForwardIterator> minmax_element(ForwardIterator first,
+                                                           ForwardIterator last,
+                                                           Compare comp) {
+    static_assert(std::__is_cpp17_forward_iterator<ForwardIterator>::value,
+                  "std::minmax_element requires a ForwardIterator");
+    std::pair<ForwardIterator, ForwardIterator> result(first, first);
+    if (first != last) {
+        if (++first != last) {
+            if (comp(*first, *result.first))
+                result.first = first;
+            else
+                result.second = first;
+            while (++first != last) {
+                ForwardIterator i = first;
+                if (++first == last) {
+                    if (comp(*i, *result.first))
+                        result.first = i;
+                    else if (!comp(*i, *result.second))
+                        result.second = i;
+                    break;
+                } else {
+                    if (comp(*first, *i)) {
+                        if (comp(*first, *result.first))
+                            result.first = first;
+                        if (!comp(*i, *result.second))
+                            result.second = i;
+                    } else {
+                        if (comp(*i, *result.first))
+                            result.first = i;
+                        if (!comp(*first, *result.second))
+                            result.second = first;
+                    }
+                }
+            }
+        }
+    }
+    return result;
+}
+
+template<class ForwardIterator>
+NODISCARD inline CONSTEXPR
+std::pair<ForwardIterator, ForwardIterator> minmax_element(ForwardIterator first, ForwardIterator last) {
+    return DSA::minmax_element(first, last, std::less<typename std::iterator_traits<ForwardIterator>::value_type>());
+}
+
 }
 #endif //DSA_SRC_DSA_LIB_UTILS_ALGORITHM_HPP_

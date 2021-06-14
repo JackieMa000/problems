@@ -3,8 +3,6 @@
 
 // Algorithms to be used on ranges of elements.
 
-#include <vector>
-
 #include <dsa/config.h>
 #include <dsa/type_traits.h>
 #include "dsa/dsadef.h"
@@ -470,6 +468,32 @@ template<class ForwardIterator>
 NODISCARD inline CONSTEXPR
 std::pair<ForwardIterator, ForwardIterator> minmax_element(ForwardIterator first, ForwardIterator last) {
     return DSA::minmax_element(first, last, std::less<typename std::iterator_traits<ForwardIterator>::value_type>());
+}
+
+
+// for_each
+
+template<class InputIterator, class Function>
+CONSTEXPR
+Function for_each(InputIterator first, InputIterator last, Function f) {
+    for (; first != last; ++first)
+        f(*first);
+    return f;
+}
+
+// for_each_n
+
+template<class InputIterator, class Size, class Function>
+CONSTEXPR
+InputIterator for_each_n(InputIterator first, Size orig_n, Function f) {
+    typedef decltype(std::__convert_to_integral(orig_n)) IntegralSize;
+    IntegralSize n = orig_n;
+    while (n > 0) {
+        f(*first);
+        ++first;
+        --n;
+    }
+    return first;
 }
 
 }

@@ -41,12 +41,22 @@ TEST(ForEachNTest, case1) {
     size_t s = aryLength(nums);
 
     auto f = for_each_test(0);
-//    auto it = dsa::for_each_n(nums, 0, std::ref(f));
     auto it = dsa::for_each_n(nums, 0, f);
 
     EXPECT_EQ(nums, it);
     EXPECT_EQ(0, f.count);
 }
+#if _LIBCPP_STD_VER > 17
+TEST(ForEachNTest, staticAssert) {
+    int nums[] = {1, 3, 6, 7};
+    int expected[] = {3, 6, 8, 9};
+    const size_t n = 4;
+
+    auto it = dsa::for_each_n(std::begin(nums), n,[](int &a) { a += 2; });
+    static_assert(it == std::begin(nums) + n)
+    static_assert(std::equal(std::begin(nums), std::end(nums), std::begin(expected)));
+}
+#endif
 
 }
 }

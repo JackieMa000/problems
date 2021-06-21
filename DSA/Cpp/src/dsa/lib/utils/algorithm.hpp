@@ -496,5 +496,38 @@ InputIterator for_each_n(InputIterator first, Size orig_n, Function f) {
     return first;
 }
 
+// all_of
+
+template<class InputIterator, class Predicate>
+NODISCARD inline HIDDEN CONSTEXPR
+bool all_of(InputIterator first, InputIterator last, Predicate pred) {
+    for (; first != last; ++first)
+        if (!pred(*first))
+            return false;
+    return true;
+}
+
+// any_of
+
+template<class InputIterator, class Predicate>
+NODISCARD inline HIDDEN CONSTEXPR
+bool any_of(InputIterator first, InputIterator last, Predicate pred) {
+    for (; first != last; ++first)
+        if (pred(*first))
+            return true;
+    return false;
+}
+
+// none_of
+
+template<class InputIterator, class Predicate>
+NODISCARD inline HIDDEN CONSTEXPR
+bool none_of(InputIterator first, InputIterator last, Predicate pred) {
+    for (; first != last; ++first)
+        if (pred(*first))
+            return false;
+    return true;
+}
+
 }
 #endif //DSA_SRC_DSA_LIB_UTILS_ALGORITHM_HPP_

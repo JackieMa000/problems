@@ -1,5 +1,4 @@
 #include <list>
-#include <vector>
 
 #include <dsa/lib/libdef.h>
 #include <dsa/lib/utils/algorithm.hpp>
@@ -57,6 +56,65 @@ TEST(ForEachNTest, staticAssert) {
     static_assert(std::equal(std::begin(nums), std::end(nums), std::begin(expected)));
 }
 #endif
+
+TEST(AllOfTest, case1) {
+    int nums[] = {2, 4, 6, 8};
+    EXPECT_TRUE(dsa::all_of(nums, nums + aryLength(nums), isEven));
+    EXPECT_TRUE(dsa::all_of(nums, nums, isEven));
+}
+TEST(AllOfTest, case2) {
+    int nums[] = {2, 4, 5, 8};
+    EXPECT_FALSE(dsa::all_of(nums, nums + aryLength(nums), isEven));
+    EXPECT_TRUE(dsa::all_of(nums, nums, isEven));
+}
+TEST(AllOfTest, statisAssert) {
+    CONSTEXPR int ia[] = {2, 4, 6, 8};
+    CONSTEXPR int ib[] = {2, 4, 5, 8};
+    CONSTEXPR bool r1 = dsa::all_of(std::begin(ia), std::end(ia), isEven);
+    CONSTEXPR bool r2 = dsa::all_of(std::begin(ib), std::end(ib), isEven);
+    static_assert(r1 && !r2);
+}
+
+TEST(AnyOfTest, case1) {
+    int nums[] = {2, 4, 6, 8};
+    EXPECT_TRUE(dsa::any_of(nums, nums + aryLength(nums), isEven));
+    EXPECT_FALSE(dsa::any_of(nums, nums, isEven));
+}
+TEST(AnyOfTest, case2) {
+    int nums[] = {2, 4, 5, 8};
+    EXPECT_TRUE(dsa::any_of(nums, nums + aryLength(nums), isEven));
+    EXPECT_FALSE(dsa::any_of(nums, nums, isEven));
+}
+TEST(AnyOfTest, case3) {
+    int nums[] = {1, 3, 5, 7};
+    EXPECT_FALSE(dsa::any_of(nums, nums + aryLength(nums), isEven));
+    EXPECT_FALSE(dsa::any_of(nums, nums, isEven));
+}
+TEST(AnyOfTest, statisAssert) {
+    CONSTEXPR int ia[] = {2, 4, 6, 8};
+    CONSTEXPR int ib[] = {1, 3, 5, 7};
+    CONSTEXPR bool r1 = dsa::any_of(std::begin(ia), std::end(ia), isEven);
+    CONSTEXPR bool r2 = dsa::any_of(std::begin(ib), std::end(ib), isEven);
+    static_assert(r1 && !r2);
+}
+
+TEST(NoneOfTest, case1) {
+    int nums[] = {2, 4, 6, 8};
+    EXPECT_FALSE(dsa::none_of(nums, nums + aryLength(nums), isEven));
+    EXPECT_TRUE(dsa::none_of(nums, nums, isEven));
+}
+TEST(NoneOfTest, case2) {
+    int nums[] = {2, 4, 5, 8};
+    EXPECT_FALSE(dsa::none_of(nums, nums + aryLength(nums), isEven));
+    EXPECT_TRUE(dsa::none_of(nums, nums, isEven));
+}
+TEST(NoneOfTest, statisAssert) {
+    CONSTEXPR int ia[] = {1, 3, 6, 7};
+    CONSTEXPR int ib[] = {1, 3, 5, 7};
+    CONSTEXPR bool r1 = dsa::none_of(std::begin(ia), std::end(ia), isEven);
+    CONSTEXPR bool r2 = dsa::none_of(std::begin(ib), std::end(ib), isEven);
+    static_assert(!r1 && r2);
+}
 
 }
 }

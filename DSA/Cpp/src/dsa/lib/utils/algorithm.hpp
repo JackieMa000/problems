@@ -17,7 +17,8 @@ namespace dsa {
  * 3. array last element is not 0 -> return array
  * 4. array length is bigger than 1, last element is 0 -> remove the trailing 0s by loop
  */
-INTERN length_t rStrip(const int *ary, const length_t length) {
+INTERN CONSTEXPR
+length_t rStrip(const int *ary, const length_t length) {
     if (!length || (length == 1 && *(ary) == 0)) return 0;
     if (*(ary + (length - 1)) != 0) return length;
 
@@ -29,6 +30,7 @@ INTERN length_t rStrip(const int *ary, const length_t length) {
  * Remove all the trailing 0s from an iterator
  */
 template<class RandomAccessIterator>
+CONSTEXPR
 RandomAccessIterator rStrip(const RandomAccessIterator first, RandomAccessIterator last) {
     int n = last - first;
     if (!n || n == 1 && *first == 0) { return first; }

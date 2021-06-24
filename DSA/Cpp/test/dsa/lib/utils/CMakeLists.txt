@@ -7,6 +7,7 @@ add_executable(utils_test
         algorithm_test.cpp
         algo_test_1.cpp
         algo_test_2.cpp
+        algo_test_3.cpp
 
         nums_test.cpp)
 target_link_libraries(utils_test

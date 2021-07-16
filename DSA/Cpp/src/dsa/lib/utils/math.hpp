@@ -1,5 +1,5 @@
-#ifndef DSA_SRC_DSA_LIB_UTILS_MATH_H_
-#define DSA_SRC_DSA_LIB_UTILS_MATH_H_
+#ifndef DSA_SRC_DSA_LIB_UTILS_MATH_HPP_
+#define DSA_SRC_DSA_LIB_UTILS_MATH_HPP_
 
 #include <dsa/config.h>
 
@@ -23,4 +23,4 @@ struct equal {
 };
 
 }
-#endif //DSA_SRC_DSA_LIB_UTILS_MATH_H_
+#endif //DSA_SRC_DSA_LIB_UTILS_MATH_HPP_

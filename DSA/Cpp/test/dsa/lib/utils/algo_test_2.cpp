@@ -3,7 +3,7 @@
 #include <dsa/lib/libdef.h>
 #include <dsa/lib/utils/algorithm.hpp>
 #include <dsa/testing/dsatest.h>
-#include <dsa/lib/utils/math.h>
+#include <dsa/lib/utils/math.hpp>
 
 namespace dsa {
 namespace {

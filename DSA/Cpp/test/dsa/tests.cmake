@@ -21,3 +21,6 @@ add_test(NAME QueueTest COMMAND queue_test)
 
 ######## Algo Test #####
 add_test(NAME SortTest COMMAND sort_test)
+
+######## Testing Test #####
+add_test(NAME TestingTest COMMAND testing_test)

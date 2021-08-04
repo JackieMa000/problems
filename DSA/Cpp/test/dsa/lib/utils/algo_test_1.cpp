@@ -12,10 +12,8 @@ namespace {
 TEST(ReplaceTest, array) {
     int nums[] = {1, 2, 3};
     int expected[] = {1, 0, 3};
-
     dsa::replace(nums, nums + 3, 2, 0);
-
-    EXPECT_ARRAY_EQ(expected, aryLength(expected), nums, aryLength(nums));
+    EXPECT_LIST_EQ(expected, nums, nums + aryLength(nums));
 }
 TEST(ReplaceTest, vector) {
     std::vector<int> nums = {1, 2, 3};
@@ -28,10 +26,8 @@ TEST(ReplaceTest, vector) {
 TEST(ReplaceIfTest, array) {
     int nums[] = {1, 2, 3};
     int expected[] = {0, 2, 0};
-
     dsa::replace_if(nums, nums + 3, dsa::isOdd, 0);
-
-    EXPECT_ARRAY_EQ(expected, aryLength(expected), nums, aryLength(nums));
+    EXPECT_LIST_EQ(expected, nums, nums + aryLength(nums));
 }
 TEST(ReplaceIfTest, vector) {
     std::vector<int> nums = {1, 2, 3};
@@ -47,7 +43,7 @@ TEST(RemoveTest, array) {
 
     int *last = dsa::remove(nums, nums + aryLength(nums), 0);
     long n = dsa::distance(nums, last);
-    EXPECT_ARRAY_EQ(expected, aryLength(expected), nums, n);
+    EXPECT_LIST_EQ(expected, nums, nums + n);
 }
 TEST(RemoveIfTest, vector) {
     std::vector<int> nums = {1, 2, 3};
@@ -116,13 +112,13 @@ TEST(ReverseTest, arrayOneElement) {
     int nums[] = {0};
     int expected[] = {0};
     dsa::reverse(nums, nums + aryLength(nums));
-    EXPECT_ARRAY_EQ(expected, aryLength(expected), nums, aryLength(nums));
+    EXPECT_LIST_EQ(expected, nums, nums + aryLength(nums));
 }
 TEST(ReverseTest, array) {
     int nums[] = {1, 2, 3};
     int expected[] = {3, 2, 1};
     dsa::reverse(nums, nums + aryLength(nums));
-    EXPECT_ARRAY_EQ(expected, aryLength(expected), nums, aryLength(nums));
+    EXPECT_LIST_EQ(expected, nums, nums + aryLength(nums));
 }
 TEST(ReverseTest, list) {
     std::list<int> nums = {1, 2, 3};
@@ -136,7 +132,6 @@ TEST(ReverseTest, vector) {
     dsa::reverse(nums.begin(), nums.end());
     EXPECT_EQ(expected, nums);
 }
-
 
 }
 }

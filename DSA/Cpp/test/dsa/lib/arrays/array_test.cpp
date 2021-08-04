@@ -82,7 +82,7 @@ class ToBinaryTreeTest : public ArrayTest {
  protected:
     static void run(int *ary, length_t length) {
         BinaryTreeNode *root = arrayToBinaryTree(ary, length);
-        EXPECT_ARRAY_EQ_TREE(ary, length, root);
+        EXPECT_EQ_TREE(ary, ary + length, root);
         trees::BinaryTree::destroy(root);
     }
     static void expectNull(int *ary, length_t length) {

@@ -5,12 +5,13 @@
 #include <dsa/lib/arrays/array.h>
 #include <dsa/lib/trees/bt.h>
 #include <dsa/lib/lists/linkedlists/sls.h>
+#include <dsa/config.h>
 
 namespace dsa::lib {
 
 class LibTest : public testing::DSATest {
  public:
-    [[nodiscard]] static BinaryTreeNode *arrayToBinaryTree(int *ary, length_t length) {
+    NODISCARD static BinaryTreeNode *arrayToBinaryTree(int *ary, length_t length) {
         arrays::Array array(ary, length);
         return array.toBinaryTree();
     }

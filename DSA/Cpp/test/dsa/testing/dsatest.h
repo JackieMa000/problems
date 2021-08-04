@@ -3,11 +3,9 @@
 
 #include "testing.h"
 
-#define EXPECT_ARRAY_EQ(expected, expectedLength, actual, actualLength) \
-    ::dsa::testing::DSATest::EXPECT_ARRAY_EQ(expected, expectedLength, actual, actualLength);
-#define EXPECT_ARRAY_EQ_LINKEDLIST(ary, length, head) \
-    ::dsa::testing::DSATest::EXPECT_ARRAY_EQ_LINKEDLIST(ary, length, head);
-#define EXPECT_ARRAY_EQ_TREE(ary, length, root) \
-    ::dsa::testing::DSATest:EXPECT_ARRAY_EQ_TREE(ary, length, root);
+#define EXPECT_LIST_EQ(expected, actualFirst, actualLast) \
+    ::dsa::testing::DSATest::EXPECT_LIST_EQ(expected, actualFirst, actualLast);
+
+#define EXPECT_EQ_TREE(first, last, root) ::dsa::testing::DSATest:EXPECT_EQ_TREE(first, last, root);
 
 #endif //DSA_TEST_DSA_TESTING_DSATEST_H_

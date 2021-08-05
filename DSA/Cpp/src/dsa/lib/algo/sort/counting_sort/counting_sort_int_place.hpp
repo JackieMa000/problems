@@ -25,7 +25,7 @@ class CountingSortIntPlace : public CountingSortIntAbstract {
     }
 
     int countsIndexOf(int e) override {
-        return dsa::nums::placeValueOf(e, place) - min;
+        return nums::placeValueOf(e, place) - min;
     }
 
 };

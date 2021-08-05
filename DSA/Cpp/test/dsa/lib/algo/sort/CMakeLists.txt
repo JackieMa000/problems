@@ -6,3 +6,4 @@ add_executable(sort_test
         counting_sort/counting_sort_int_place_test.cpp
         )
 target_link_libraries(sort_test test_main)
+target_precompile_headers(sort_test PRIVATE pch.h)

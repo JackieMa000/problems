@@ -1,0 +1,6 @@
+#ifndef DSA_TEST_DSA_LIB_ALGO_SORT_PCH_H_
+#define DSA_TEST_DSA_LIB_ALGO_SORT_PCH_H_
+
+#include <vector>
+
+#endif //DSA_TEST_DSA_LIB_ALGO_SORT_PCH_H_

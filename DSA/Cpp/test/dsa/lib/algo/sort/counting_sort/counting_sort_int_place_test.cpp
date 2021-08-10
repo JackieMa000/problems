@@ -29,10 +29,19 @@ TEST_F(CountingSortIntPlaceTest, placeExceeds_noSort) {
     assertCountingSortPlace({22, 11, 31}, 100, {22, 11, 31});
 }
 TEST_F(CountingSortIntPlaceTest, unitPlace) {
-//    assertCountingSortPlace({2, 1, 3}, 1, {1, 2, 3});
+    assertCountingSortPlace({2, 1, 3}, 1, {1, 2, 3});
 
-//    assertCountingSortPlace({22, 11, 31}, 1, {11, 31, 22});
-//    assertCountingSortPlace({121, 432, 564, 23, 1, 45, 788}, 1, {121, 1, 432, 23, 564, 45, 788});
+    assertCountingSortPlace({22, 11, 31}, 1, {11, 31, 22});
+    assertCountingSortPlace({121, 432, 564, 23, 1, 45, 788}, 1, {121, 1, 432, 23, 564, 45, 788});
+}
+TEST_F(CountingSortIntPlaceTest, tensPlace) {
+    assertCountingSortPlace({22, 11, 31}, 10, {11, 22, 31});
+    assertCountingSortPlace({121, 1, 432, 23, 564, 45, 788}, 10, {1, 121, 23, 432, 45, 564, 788});
+
+}
+TEST_F(CountingSortIntPlaceTest, hundredsPlace) {
+    assertCountingSortPlace({222, 111, 311}, 100, {111, 222, 311});
+    assertCountingSortPlace({1, 121, 23, 432, 45, 564, 788}, 100, {1, 23, 45, 121, 432, 564, 788});
 }
 
 }

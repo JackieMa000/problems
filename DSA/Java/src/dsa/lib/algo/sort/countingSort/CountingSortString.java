@@ -1,29 +1,13 @@
 package dsa.lib.algo.sort.countingSort;
 
-import dsa.lib.utils.Arrays;
-
 //Only handles small case letters
 class CountingSortString extends CountingSortAbstract<String> {
     private final int FIRST_OF_ALPHABET = 97, LAST_OF_ALPHABET = 122;
     private final int index;
 
-    public CountingSortString(String[] ary, int index) {
-        super(ary);
+    public CountingSortString(String[] ss, int index) {
+        super(ss);
         this.index = index;
-    }
-
-    @Override
-    public void sort() {
-        if (size < 2) return;
-
-        initFields();
-        storeCounts();
-        accumulateCounts();
-
-        String[] result = new String[size];
-        generateResult(result);
-
-        Arrays.copy(result, 0, ary, 0, size);
     }
 
     @Override

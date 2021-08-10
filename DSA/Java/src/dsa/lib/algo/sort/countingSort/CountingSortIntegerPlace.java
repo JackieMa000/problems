@@ -5,8 +5,8 @@ import dsa.lib.utils.Nums;
 class CountingSortIntegerPlace extends CountingSortIntegerAbstract {
     private final int place;
 
-    public CountingSortIntegerPlace(Integer[] ary, int place) {
-        super(ary);
+    public CountingSortIntegerPlace(Integer[] nums, int place) {
+        super(nums);
         this.place = place;
     }
 

@@ -6,11 +6,9 @@
 #include "counting_sort_abstract.hpp"
 #include <dsa/lib/utils/nums.hpp>
 
-
 namespace dsa::lib::algo::sort {
 
 class CountingSortIntPlace : public CountingSortIntAbstract {
-
  private:
     const int place;
 
@@ -24,7 +22,7 @@ class CountingSortIntPlace : public CountingSortIntAbstract {
         max = 9;
     }
 
-    int countsIndexOf(int e) override {
+    pos_t countsIndexOf(int e) override {
         return nums::placeValueOf(e, place) - min;
     }
 

@@ -10,7 +10,7 @@ namespace dsa::lib::algo::sort {
 
 template<class T>
 class CountingSortAbstract {
- protected:
+ public:
     std::vector<T> &ary;
     const size_t size;
     int min{}, max{};
@@ -18,7 +18,7 @@ class CountingSortAbstract {
     int *counts{};
     int COUNTS_SIZE{};
 
- protected:
+ public:
     explicit CountingSortAbstract(std::vector<T> &ary) : ary(ary), size(ary.size()) {}
     virtual ~CountingSortAbstract() { delete[] counts; }
 
@@ -32,11 +32,11 @@ class CountingSortAbstract {
         produceSortedResult();
     }
 
- protected:
+ public:
     virtual void initMinMax() = 0;
     virtual pos_t countsIndexOf(T e) = 0;
 
- protected:
+ public:
     void initFields() {
         initMinMax();
         COUNTS_SIZE = max - min + 1;
@@ -57,10 +57,9 @@ class CountingSortAbstract {
     };
 
     void produceSortedResult() {
-        T res[size];
-        generateResult(res);
-
-        dsa::copy(res, res + size, ary.begin());
+        T r[size];
+        generateResult(r);
+        dsa::copy(r, r + size, ary.begin());
     }
 
     void generateResult(T *res) {

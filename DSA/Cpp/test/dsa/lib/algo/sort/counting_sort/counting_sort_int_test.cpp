@@ -26,14 +26,13 @@ class CountingSortIntTest : public SortTest {
     static void assertCountsSize(std::vector<int> &&nums, size_t size) {
         CountingSortInt cs(nums);
         cs.initFields();
-
-        EXPECT_EQ(size, cs.counts->size());
+        EXPECT_EQ(size, cs.COUNTS_SIZE);
     }
 
-    static void assertCountsIndexOf(std::vector<int> &&nums, int num, int index) {
+    static void assertCountsIndexOf(std::vector<int> &&nums, int num, int expected) {
         CountingSortInt cs(nums);
         cs.initMinMax();
-        EXPECT_EQ(index, cs.countsIndexOf(num));
+        EXPECT_EQ(expected, cs.countsIndexOf(num));
     }
 
     static void assertStoreCounts(std::vector<int> &&nums, std::vector<int> &&expected) {
@@ -41,7 +40,7 @@ class CountingSortIntTest : public SortTest {
         cs.initFields();
         cs.storeCounts();
 
-        EXPECT_EQ(expected, (*cs.counts));
+        EXPECT_LIST_EQ(expected.begin(), cs.counts, cs.counts + cs.COUNTS_SIZE);
     }
 
     static void assertAccCounts(std::vector<int> &&nums, std::vector<int> &&expected) {
@@ -50,7 +49,7 @@ class CountingSortIntTest : public SortTest {
         cs.storeCounts();
         cs.accumulateCounts();
 
-        EXPECT_EQ(expected, (*cs.counts));
+        EXPECT_LIST_EQ(expected.begin(), cs.counts, cs.counts + cs.COUNTS_SIZE);
     }
 };
 TEST_F(CountingSortIntTest, emptyArray) {

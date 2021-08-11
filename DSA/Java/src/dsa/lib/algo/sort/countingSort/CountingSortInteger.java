@@ -2,8 +2,8 @@ package dsa.lib.algo.sort.countingSort;
 
 class CountingSortInteger extends CountingSortIntegerAbstract {
 
-    public CountingSortInteger(Integer[] ary) {
-        super(ary);
+    public CountingSortInteger(Integer[] nums) {
+        super(nums);
     }
 
     @Override

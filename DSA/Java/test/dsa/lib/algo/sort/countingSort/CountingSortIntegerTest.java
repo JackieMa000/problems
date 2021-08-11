@@ -6,6 +6,52 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class CountingSortIntegerTest {
+    private void assertCountingSort(Integer[] nums, Integer[] expected) {
+        countingSort(nums);
+        assertArrayEquals(expected, nums);
+    }
+
+    private void countingSort(Integer[] nums) {
+        new CountingSortInteger(nums).sort();
+    }
+
+    private void assertMinMax(Integer[] nums, int min, int max) {
+        CountingSortInteger cs = new CountingSortInteger(nums);
+        cs.initFields();
+
+        assertEquals(min, cs.min);
+        assertEquals(max, cs.max);
+    }
+
+    private void assertCountsSize(Integer[] nums, int size) {
+        CountingSortInteger cs = new CountingSortInteger(nums);
+        cs.initFields();
+        assertEquals(size, cs.counts.length);
+    }
+
+    private void assertStoreCounts(Integer[] nums, int[] expected) {
+        CountingSortInteger cs = new CountingSortInteger(nums);
+        cs.initFields();
+        cs.storeCounts();
+
+        assertArrayEquals(expected, cs.counts);
+    }
+
+    private void assertAccCounts(Integer[] nums, int[] expected) {
+        CountingSortInteger cs = new CountingSortInteger(nums);
+        cs.initFields();
+        cs.storeCounts();
+        cs.accumulateCounts();
+
+        assertArrayEquals(expected, cs.counts);
+    }
+
+    private void assertCountsIndexOf(Integer[] nums, int num, int expected) {
+        CountingSortInteger cs = new CountingSortInteger(nums);
+        cs.initMinMax();
+        assertEquals(expected, cs.countsIndexOf(num));
+    }
+
     @Test
     public void emptyArray() {
         assertCountingSort(new Integer[]{}, new Integer[]{});
@@ -31,29 +77,12 @@ public class CountingSortIntegerTest {
         assertCountingSort(new Integer[]{-2, -7, 3}, new Integer[]{-7, -2, 3});
     }
 
-    private void assertCountingSort(Integer[] nums, Integer[] expected) {
-        countingSort(nums);
-        assertArrayEquals(expected, nums);
-    }
-
-    private void countingSort(Integer[] nums) {
-        new CountingSortInteger(nums).sort();
-    }
-
     @Test
     public void minMax() {
         assertMinMax(new Integer[]{1}, 1, 1);
         assertMinMax(new Integer[]{1, 1}, 1, 1);
         assertMinMax(new Integer[]{1, 2, 3}, 1, 3);
         assertMinMax(new Integer[]{8, 2, 9}, 2, 9);
-    }
-
-    private void assertMinMax(Integer[] nums, int min, int max) {
-        CountingSortInteger cs = new CountingSortInteger(nums);
-        cs.initFields();
-
-        assertEquals(min, cs.min);
-        assertEquals(max, cs.max);
     }
 
     @Test
@@ -68,26 +97,11 @@ public class CountingSortIntegerTest {
         assertCountsSize(new Integer[]{3, 4, 2}, 3);
     }
 
-    private void assertCountsSize(Integer[] nums, int size) {
-        CountingSortInteger cs = new CountingSortInteger(nums);
-        cs.initFields();
-
-        assertEquals(size, cs.counts.length);
-    }
-
     @Test
     public void storeCounts() {
         assertStoreCounts(new Integer[]{1, 2, 3}, new int[]{1, 1, 1});
         assertStoreCounts(new Integer[]{1, 4, 1}, new int[]{2, 0, 0, 1});
         assertStoreCounts(new Integer[]{3, 4, 2}, new int[]{1, 1, 1});
-    }
-
-    private void assertStoreCounts(Integer[] nums, int[] expected) {
-        CountingSortInteger cs = new CountingSortInteger(nums);
-        cs.initFields();
-        cs.storeCounts();
-
-        assertArrayEquals(expected, cs.counts);
     }
 
     @Test
@@ -97,12 +111,10 @@ public class CountingSortIntegerTest {
         assertAccCounts(new Integer[]{3, 4, 2}, new int[]{1, 2, 3});
     }
 
-    private void assertAccCounts(Integer[] nums, int[] expected) {
-        CountingSortInteger cs = new CountingSortInteger(nums);
-        cs.initFields();
-        cs.storeCounts();
-        cs.accumulateCounts();
-
-        assertArrayEquals(expected, cs.counts);
+    @Test
+    public void countsIndexOf() {
+        assertCountsIndexOf(new Integer[]{1, 1}, 1, 0);
+        assertCountsIndexOf(new Integer[]{1, 2, 3}, 2, 1);
+        assertCountsIndexOf(new Integer[]{8, 2, 9}, 9, 7);
     }
 }

@@ -32,5 +32,8 @@ namespace dsa {
 //Project root namespace
 #define DSA dsa
 
+// Test Flag
+#define DSA_TEST
+
 }
 #endif //DSA_SRC_DSA_CONFIG_H_

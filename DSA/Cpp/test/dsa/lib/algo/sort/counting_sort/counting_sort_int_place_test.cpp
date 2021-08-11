@@ -1,4 +1,4 @@
-#include <dsa/lib/algo/sort/counting_sort/counting_sort_int_place.hpp>
+#include <dsa/lib/algo/sort/counting_sort/counting_sort_int.hpp>
 #include "dsa/lib/algo/sort/sort_test.h"
 
 namespace dsa::lib::algo::sort {

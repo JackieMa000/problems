@@ -21,12 +21,12 @@ abstract class CountingSortAbstract<T> {
         initFields();
         storeCounts();
         accumulateCounts();
-
-        Object[] result = new Object[size];
-        generateResult(result);
-
-        Arrays.copy(result, 0, ary, 0, size);
+        produceSortedResult();
     }
+
+    protected abstract void initMinMax();
+
+    protected abstract int countsIndexOf(T e);
 
     protected void initFields() {
         initMinMax();
@@ -47,18 +47,21 @@ abstract class CountingSortAbstract<T> {
         for (int i = 1; i < COUNTS_SIZE; ++i) counts[i] += counts[i - 1];
     }
 
-    protected void generateResult(Object[] result) {
+    private void produceSortedResult() {
+        Object[] r = new Object[size];
+        generateResult(r);
+        Arrays.copy(r, 0, ary, 0, size);
+    }
+
+    protected void generateResult(Object[] res) {
         for (int i = size - 1; i >= 0; --i) {
             final T e = ary[i];
             final int ci = countsIndexOf(e);
             final int index = counts[ci] - 1;
 
-            result[index] = e;
+            res[index] = e;
             --counts[ci];
         }
     }
 
-    protected abstract void initMinMax();
-
-    protected abstract int countsIndexOf(T e);
 }

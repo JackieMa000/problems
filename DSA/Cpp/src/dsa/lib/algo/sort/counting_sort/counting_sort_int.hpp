@@ -3,7 +3,6 @@
 #include <vector>
 
 #include <dsa/dsadef.h>
-#include <dsa/lib/utils/algorithm.hpp>
 #include <dsa/lib/utils/nums.hpp>
 
 #include "counting_sort_abstract.hpp"

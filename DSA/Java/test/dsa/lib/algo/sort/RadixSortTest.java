@@ -17,15 +17,15 @@ public class RadixSortTest {
 
     @Test
     public void sorts() {
-        assertRadixSort(new int[]{121, 432, 564, 23, 1, 45, 788}, new int[]{1, 23, 45, 121, 432, 564, 788});
+        assertRadixSort(new int[]{1, 23, 45, 121, 432, 564, 788}, new int[]{121, 432, 564, 23, 1, 45, 788});
     }
 
-    private void assertRadixSort(int[] ary, int[] expected) {
-        radixSort(ary);
-        assertArrayEquals(expected, ary);
+    private void assertRadixSort(int[] expected, int[] nums) {
+        radixSort(nums);
+        assertArrayEquals(expected, nums);
     }
 
-    private static void radixSort(int[] ary) {
-        new RadixSort().sort(ary);
+    private static void radixSort(int[] nums) {
+        RadixSort.sort(nums);
     }
 }

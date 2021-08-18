@@ -82,10 +82,10 @@ public class Arrays {
         return min;
     }
 
-    public static String longest(String[] ary) {
-        String lo = ary[0];
-        for (final String s : ary) if (s.length() > lo.length()) lo = s;
-        return lo;
+    public static String longest(String[] ss) {
+        String r = ss[0];
+        for (final String s : ss) if (s.length() > r.length()) r = s;
+        return r;
     }
 
     public static Integer[] integerValueOf(int[] nums) {

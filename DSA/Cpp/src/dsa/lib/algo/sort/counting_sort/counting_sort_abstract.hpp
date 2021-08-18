@@ -29,7 +29,7 @@ class CountingSortAbstract {
         initFields();
         storeCounts();
         accumulateCounts();
-        produceSortedResult();
+        produceSorted();
     }
 
  public:
@@ -56,10 +56,11 @@ class CountingSortAbstract {
         for (int i = 1; i < COUNTS_SIZE; ++i) counts[i] += counts[i - 1];
     };
 
-    void produceSortedResult() {
-        T r[size];
+    void produceSorted() {
+        T *r = new T[size];
         generateResult(r);
         dsa::copy(r, r + size, ary.begin());
+        delete[] r;
     }
 
     void generateResult(T *res) {

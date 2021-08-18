@@ -3,27 +3,27 @@ package dsa.lib.algo.sort.countingSort;
 import dsa.lib.utils.Arrays;
 
 public class CountingSort {
-    public CountingSort(int[] ary) {
-        Integer[] newAry = Arrays.integerValueOf(ary);
-        new CountingSortInteger(newAry).sort();
-        Arrays.copy(newAry, 0, ary, 0, ary.length);
+    public static void sort(int[] nums) {
+        Integer[] a = Arrays.integerValueOf(nums);
+        new CountingSortInteger(a).sort();
+        Arrays.copy(a, 0, nums, 0, nums.length);
     }
 
-    public CountingSort(Integer[] ary) {
-        new CountingSortInteger(ary).sort();
+    public static void sort(Integer[] nums) {
+        new CountingSortInteger(nums).sort();
     }
 
-    public CountingSort(int[] ary, int place) {
-        Integer[] newAry = Arrays.integerValueOf(ary);
-        new CountingSortIntegerPlace(newAry, place).sort();
-        Arrays.copy(newAry, 0, ary, 0, ary.length);
+    public static void sort(int[] nums, int place) {
+        Integer[] a = Arrays.integerValueOf(nums);
+        new CountingSortIntegerPlace(a, place).sort();
+        Arrays.copy(a, 0, nums, 0, nums.length);
     }
 
-    public CountingSort(Integer[] ary, int place) {
-        new CountingSortIntegerPlace(ary, place).sort();
+    public static void sort(Integer[] nums, int place) {
+        new CountingSortIntegerPlace(nums, place).sort();
     }
 
-    public CountingSort(String[] ary, int index) {
-        new CountingSortString(ary, index).sort();
+    public static void sort(String[] nums, int index) {
+        new CountingSortString(nums, index).sort();
     }
 }

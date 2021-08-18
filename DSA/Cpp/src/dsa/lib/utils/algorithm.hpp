@@ -7,6 +7,8 @@
 #include <dsa/type_traits.h>
 #include "dsa/dsadef.h"
 
+#include "funcs.hpp"
+
 namespace dsa {
 
 /**
@@ -342,6 +344,13 @@ NODISCARD inline CONSTEXPR
 ForwardIterator max_element(ForwardIterator first, ForwardIterator last) {
     return DSA::max_element(first, last,
                             std::less<typename std::iterator_traits<ForwardIterator>::value_type>());
+}
+
+template<class ForwardIterator>
+NODISCARD inline CONSTEXPR
+ForwardIterator maxSizeElement(ForwardIterator first, ForwardIterator last) {
+    typedef typename std::iterator_traits<ForwardIterator>::value_type vt;
+    return DSA::max_element(first, last, dsa::lessSize<vt, vt>());
 }
 
 // max

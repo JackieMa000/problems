@@ -1,9 +1,11 @@
 #ifndef DSA_SRC_DSA_LIB_UTILS_NUMS_HPP_
 #define DSA_SRC_DSA_LIB_UTILS_NUMS_HPP_
 
+#include <dsa/config.h>
 namespace dsa::nums {
 
-static int lastDigitOf(int num) {
+INTERN CONSTEXPR
+int lastDigitOf(int num) {
     return num % 10;
 }
 
@@ -14,7 +16,8 @@ static int lastDigitOf(int num) {
  * @param place The place. 1 for unit place, 10 for tens place, 100 for hundreds place.
  * @return The value digit.
  */
-static int placeValueOf(int num, int place) {
+INTERN CONSTEXPR
+int placeValueOf(int num, int place) {
     return lastDigitOf(num / place);
 }
 

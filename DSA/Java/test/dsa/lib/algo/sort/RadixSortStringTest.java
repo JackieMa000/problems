@@ -27,6 +27,6 @@ public class RadixSortStringTest {
     }
 
     private static void radixSort(String[] ary) {
-        new RadixSortString().sort(ary);
+        RadixSortString.sort(ary);
     }
 }

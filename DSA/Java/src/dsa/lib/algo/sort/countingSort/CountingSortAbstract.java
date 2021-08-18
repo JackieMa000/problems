@@ -21,7 +21,7 @@ abstract class CountingSortAbstract<T> {
         initFields();
         storeCounts();
         accumulateCounts();
-        produceSortedResult();
+        produceSorted();
     }
 
     protected abstract void initMinMax();
@@ -47,7 +47,7 @@ abstract class CountingSortAbstract<T> {
         for (int i = 1; i < COUNTS_SIZE; ++i) counts[i] += counts[i - 1];
     }
 
-    private void produceSortedResult() {
+    private void produceSorted() {
         Object[] r = new Object[size];
         generateResult(r);
         Arrays.copy(r, 0, ary, 0, size);
@@ -63,5 +63,4 @@ abstract class CountingSortAbstract<T> {
             --counts[ci];
         }
     }
-
 }

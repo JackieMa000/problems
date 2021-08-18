@@ -24,7 +24,7 @@ void sort(std::vector<int> &v, int place) {
 }
 
 template<class InputIterator>
-void sortInt(InputIterator first, InputIterator last, int place) {
+void sort(InputIterator first, InputIterator last, int place) {
     std::vector<int> v(first, last);
     CountingSortIntPlace(v, place).sort();
     dsa::copy(v.begin(), v.end(), first);

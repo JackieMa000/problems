@@ -17,13 +17,13 @@ public class RadixSortStringTest {
 
     @Test
     public void sorts() {
-        assertRadixSort(new String[]{"hke", "iba", "hzg", "ikf", "hac"},
-                new String[]{"hac", "hke", "hzg", "iba", "ikf"});
+        assertRadixSort(new String[]{"hac", "hke", "hzg", "iba", "ikf"}, new String[]{"hke", "iba", "hzg", "ikf", "hac"}
+        );
     }
 
-    private void assertRadixSort(String[] ary, String[] expected) {
-        radixSort(ary);
-        assertArrayEquals(expected, ary);
+    private void assertRadixSort(String[] expected, String[] ss) {
+        radixSort(ss);
+        assertArrayEquals(expected, ss);
     }
 
     private static void radixSort(String[] ary) {

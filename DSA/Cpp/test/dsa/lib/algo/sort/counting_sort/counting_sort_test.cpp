@@ -79,7 +79,7 @@ TEST(CountingSortIntTest_a, sorts1) {
 TEST(CountingSortTest, tensPlace) {
     std::vector<int> input = {22, 11, 31};
     std::vector<int> expected = {11, 22, 31};
-    cs::sortInt(input.begin(), input.end(), 10);
+    cs::sort(input.begin(), input.end(), 10);
     EXPECT_EQ(expected, input);
 }
 TEST(CountingSortgTest, sortOnIndex0) {

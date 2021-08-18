@@ -2,8 +2,8 @@
 #include <list>
 #include <forward_list>
 
-#include <dsa/lib/algo/sort/radix_sort.hpp>
 #include <dsa/testing/dsatest.h>
+#include <dsa/lib/algo/sort/radix_sort.hpp>
 
 namespace dsa::lib::algo::sort::rs {
 namespace {
@@ -38,15 +38,15 @@ TEST(RadixSortStrTest, emptyArray) {
 TEST(RadixSortStrTest, oneElement) {
     expectRadixSortStr({"ab"}, {"ab"});
 }
-//TEST(RadixSortStrTest, sorts) {
-//    expectRadixSortStr({"hke", "iba", "hzg", "ikf", "hac"}, {"hac", "hke", "hzg", "iba", "ikf"});
-//}
-//TEST(RadixSortStrTest, iterator) {
-//    std::vector<std::string> ss = {"hac", "hke", "hzg", "iba", "ikf"};
-//    std::vector<std::string> expected = {"hke", "iba", "hzg", "ikf", "hac"};
-//    rs::sort(ss.begin(), ss.end());
-//    EXPECT_EQ(expected, ss);
-//}
+TEST(RadixSortStrTest, sorts) {
+    expectRadixSortStr({"hac", "hke", "hzg", "iba", "ikf"}, {"hke", "iba", "hzg", "ikf", "hac"});
+}
+TEST(RadixSortStrTest, iterator) {
+    std::vector<std::string> ss = {"hke", "iba", "hzg", "ikf", "hac"};
+    std::vector<std::string> expected = {"hac", "hke", "hzg", "iba", "ikf"};
+    rs::sortStr(ss.begin(), ss.end());
+    EXPECT_EQ(expected, ss);
+}
 
 }
 }

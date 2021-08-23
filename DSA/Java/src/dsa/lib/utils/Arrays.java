@@ -1,6 +1,6 @@
 package dsa.lib.utils;
 
-import java.util.List;
+import java.util.*;
 
 public class Arrays {
     /**
@@ -82,9 +82,32 @@ public class Arrays {
         return min;
     }
 
-    public static String longest(String[] ss) {
-        String r = ss[0];
-        for (final String s : ss) if (s.length() > r.length()) r = s;
+    public static String maxSizeElement(String[] lists) {
+        String r = lists[0];
+        for (final String l : lists) if (l.length() > r.length()) r = l;
+        return r;
+    }
+
+    public static <E> E[] maxSizeElement(E[][] lists) {
+        E[] r = lists[0];
+        for (final E[] l : lists) if (l.length > r.length) r = l;
+        return r;
+    }
+
+    public static <E> List<E> maxSizeElement(List<List<E>> lists) {
+        List<E> r = lists.get(0);
+        for (final List<E> l : lists) if (l.size() > r.size()) r = l;
+        return r;
+    }
+
+    public static <E> List<E> maxSizeElement(Iterator<List<E>> it) {
+        if (!it.hasNext()) return null;
+
+        List<E> r = it.next();
+        while (it.hasNext()) {
+            List<E> l = it.next();
+            if (l.size() > r.size()) r = l;
+        }
         return r;
     }
 
@@ -101,4 +124,14 @@ public class Arrays {
         for (int i = 0; i < size; i++) result[i] = nums[i];
         return result;
     }
+
+    /**
+     * Delegation of java.util.Arrays.asList.
+     */
+    @SafeVarargs
+    @SuppressWarnings("varargs")
+    public static <T> List<T> asList(T... a) {
+        return java.util.Arrays.asList(a);
+    }
+
 }

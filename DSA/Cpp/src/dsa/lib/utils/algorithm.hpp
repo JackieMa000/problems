@@ -350,7 +350,7 @@ template<class ForwardIterator>
 NODISCARD inline CONSTEXPR
 ForwardIterator maxSizeElement(ForwardIterator first, ForwardIterator last) {
     typedef typename std::iterator_traits<ForwardIterator>::value_type vt;
-    return DSA::max_element(first, last, dsa::lessSize<vt, vt>());
+    return DSA::max_element(first, last, DSA::lessSize<vt>());
 }
 
 // max

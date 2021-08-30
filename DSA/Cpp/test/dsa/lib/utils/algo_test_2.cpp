@@ -2,7 +2,6 @@
 
 #include <dsa/lib/libdef.h>
 #include <dsa/lib/utils/algorithm.hpp>
-#include <dsa/testing/dsatest.h>
 #include <dsa/lib/utils/math.hpp>
 
 namespace dsa {
@@ -25,7 +24,7 @@ TEST(ForEachTest, case1) {
     for (unsigned i = 0; i < s; ++i)
         EXPECT_EQ(nums[i], static_cast<int>(i + 1));
 }
-#if _LIBCPP_STD_VER > 17
+#if TEST_STD_VER > 17
 TEST(ForEachTest, staticAssert) {
     int nums[] = {1, 3, 6, 7};
     int expected[] = {3, 6, 8, 9};
@@ -44,7 +43,7 @@ TEST(ForEachNTest, case1) {
     EXPECT_EQ(nums, it);
     EXPECT_EQ(0, f.count);
 }
-#if _LIBCPP_STD_VER > 17
+#if TEST_STD_VER > 17
 TEST(ForEachNTest, staticAssert) {
     int nums[] = {1, 3, 6, 7};
     int expected[] = {3, 6, 8, 9};

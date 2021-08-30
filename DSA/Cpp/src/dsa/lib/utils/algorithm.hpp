@@ -540,5 +540,67 @@ bool none_of(InputIterator first, InputIterator last, Predicate pred) {
     return true;
 }
 
+// equal
+
+template<class InputIterator1, class InputIterator2, class BinaryPredicate>
+NODISCARD inline CONSTEXPR
+bool equal(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2, BinaryPredicate pred) {
+    for (; first1 != last1; ++first1, (void) ++first2)
+        if (!pred(*first1, *first2))
+            return false;
+    return true;
+}
+
+template<class InputIterator1, class InputIterator2>
+NODISCARD inline CONSTEXPR
+bool equal(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2) {
+    typedef typename std::iterator_traits<InputIterator1>::value_type v1;
+    typedef typename std::iterator_traits<InputIterator2>::value_type v2;
+    return DSA::equal(first1, last1, first2, std::__equal_to<v1, v2>());
+}
+
+template<class BinaryPredicate, class InputIterator1, class InputIterator2>
+inline CONSTEXPR
+bool equal(InputIterator1 first1, InputIterator1 last1,
+           InputIterator2 first2, InputIterator2 last2, BinaryPredicate pred,
+           std::input_iterator_tag, std::input_iterator_tag) {
+    for (; first1 != last1 && first2 != last2; ++first1, (void) ++first2)
+        if (!pred(*first1, *first2))
+            return false;
+    return first1 == last1 && first2 == last2;
+}
+
+template<class BinaryPredicate, class RandomAccessIterator1, class RandomAccessIterator2>
+inline CONSTEXPR
+bool equal(RandomAccessIterator1 first1, RandomAccessIterator1 last1,
+           RandomAccessIterator2 first2, RandomAccessIterator2 last2, BinaryPredicate pred,
+           std::random_access_iterator_tag, std::random_access_iterator_tag) {
+    if (DSA::distance(first1, last1) != DSA::distance(first2, last2))
+        return false;
+    return DSA::equal<RandomAccessIterator1, RandomAccessIterator2,
+                      typename std::add_lvalue_reference<BinaryPredicate>::type>(first1, last1, first2, pred);
+}
+
+template<class InputIterator1, class InputIterator2, class BinaryPredicate>
+NODISCARD inline CONSTEXPR
+bool equal(InputIterator1 first1, InputIterator1 last1,
+           InputIterator2 first2, InputIterator2 last2, BinaryPredicate pred) {
+    return DSA::equal<typename std::add_lvalue_reference<BinaryPredicate>::type>(
+        first1, last1, first2, last2, pred,
+        typename std::iterator_traits<InputIterator1>::iterator_category(),
+        typename std::iterator_traits<InputIterator2>::iterator_category());
+}
+
+template<class InputIterator1, class InputIterator2>
+NODISCARD inline CONSTEXPR
+bool equal(InputIterator1 first1, InputIterator1 last1,
+           InputIterator2 first2, InputIterator2 last2) {
+    typedef typename std::iterator_traits<InputIterator1>::value_type v1;
+    typedef typename std::iterator_traits<InputIterator2>::value_type v2;
+    return DSA::equal(first1, last1, first2, last2, std::__equal_to<v1, v2>(),
+                      typename std::iterator_traits<InputIterator1>::iterator_category(),
+                      typename std::iterator_traits<InputIterator2>::iterator_category());
+}
+
 }
 #endif //DSA_SRC_DSA_LIB_UTILS_ALGORITHM_HPP_

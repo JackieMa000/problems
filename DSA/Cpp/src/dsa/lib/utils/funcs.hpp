@@ -4,14 +4,15 @@
 
 namespace dsa {
 
+//Compare the equality of two objects
 template<class T>
-struct equal {
-    T val;
+struct equal_to {
+    const T &val;
 
-    explicit equal(T val) : val(val) {}
+    explicit equal_to(const T &val) : val(val) {}
 
     CONSTEXPR
-    bool operator()(T x) const {
+    bool operator()(const T &x) const {
         return x == val;
     }
 };

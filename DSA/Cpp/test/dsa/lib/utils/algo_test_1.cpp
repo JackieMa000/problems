@@ -103,9 +103,9 @@ TEST(CountTest, array) {
 }
 TEST(CountIfTest, array) {
     int nums[] = {0, 1, 2, 2, 0, 1, 2, 3};
-    EXPECT_EQ(3, dsa::count_if(nums, nums + aryLength(nums), equal(2)));
-    EXPECT_EQ(0, dsa::count_if(nums, nums + aryLength(nums), equal(7)));
-    EXPECT_EQ(0, dsa::count_if(nums, nums, equal(2)));
+    EXPECT_EQ(3, dsa::count_if(nums, nums + aryLength(nums), equal_to(2)));
+    EXPECT_EQ(0, dsa::count_if(nums, nums + aryLength(nums), equal_to(7)));
+    EXPECT_EQ(0, dsa::count_if(nums, nums, equal_to(2)));
 }
 
 TEST(ReverseTest, arrayOneElement) {

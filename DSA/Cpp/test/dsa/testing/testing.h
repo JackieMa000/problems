@@ -9,8 +9,16 @@ namespace dsa::testing {
 class DSATest : public ::testing::Test {
  public:
     template<class InputIterator1, class InputIterator2>
-    static void EXPECT_LIST_EQ(InputIterator2 expected, InputIterator1 actualFirst, InputIterator1 actualLast) {
+    static void EXPECT_LIST_EQ(InputIterator1 expected, InputIterator2 actualFirst, InputIterator2 actualLast) {
         EXPECT_TRUE(std::equal(actualFirst, actualLast, expected));
+    }
+
+    template<class InputIterator1, class InputIterator2>
+    static void EXPECT_LIST_EQ(InputIterator1 expectedFirst,
+                               InputIterator1 expectedLast,
+                               InputIterator2 actualFirst,
+                               InputIterator2 actualLast) {
+        EXPECT_TRUE(std::equal(actualFirst, actualLast, expectedFirst, expectedLast));
     }
 
 //  All the 3 functions below have the same functionalities as EXPECT_LIST_EQ.

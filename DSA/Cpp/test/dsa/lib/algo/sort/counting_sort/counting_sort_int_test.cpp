@@ -2,7 +2,6 @@
 #include "dsa/lib/algo/sort/sort_test.h"
 
 namespace dsa::lib::algo::sort {
-namespace {
 
 class CountingSortIntTest : public SortTest {
  protected:
@@ -103,5 +102,4 @@ TEST_F(CountingSortIntTest, countsIndexOf) {
     assertCountsIndexOf({8, 2, 9}, 9, 7);
 }
 
-}
 }

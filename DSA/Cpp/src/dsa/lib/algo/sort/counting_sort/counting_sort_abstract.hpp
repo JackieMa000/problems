@@ -10,7 +10,9 @@ namespace dsa::lib::algo::sort {
 
 template<class T>
 class CountingSortAbstract {
- public:
+    friend class CountingSortIntTest;
+
+ protected:
     std::vector<T> &ary;
     const size_t size;
     int min{}, max{};
@@ -32,11 +34,11 @@ class CountingSortAbstract {
         produceSorted();
     }
 
- public:
+ protected:
     virtual void initMinMax() = 0;
     virtual pos_t countsIndexOf(T e) = 0;
 
- public:
+ protected:
     void initFields() {
         initMinMax();
         COUNTS_SIZE = max - min + 1;

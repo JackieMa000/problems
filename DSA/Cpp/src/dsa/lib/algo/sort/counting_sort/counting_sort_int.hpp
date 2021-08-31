@@ -10,10 +10,12 @@
 namespace dsa::lib::algo::sort {
 
 class CountingSortInt : public CountingSortIntAbstract {
+    friend class CountingSortIntTest;
+
  public:
     explicit CountingSortInt(std::vector<int> &nums) : CountingSortIntAbstract(nums) {}
 
- public:
+ protected:
     void initMinMax() override {
         if (this->size == 0) return;
 

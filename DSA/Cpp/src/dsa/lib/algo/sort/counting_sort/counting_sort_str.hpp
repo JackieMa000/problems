@@ -15,7 +15,7 @@ class CountingSortString : public CountingSortAbstract<std::string> {
     CountingSortString(std::vector<std::string> &ss, pos_t index) : CountingSortAbstract(ss), index(index) {
     }
 
- public:
+ protected:
     void initMinMax() override {
         min = FIRST_OF_ALPHABET;
         max = LAST_OF_ALPHABET;

@@ -5,7 +5,7 @@ namespace dsa::lib::algo::sort {
 
 class CountingSortIntTest : public SortTest {
  protected:
-    static void assertCountingSort(std::vector<int> &&nums, std::vector<int> &&expected) {
+    static void assertCountingSort(std::vector<int> &&expected, std::vector<int> &&nums) {
         countingSort(nums);
         EXPECT_EQ(expected, nums);
     }
@@ -58,16 +58,16 @@ TEST_F(CountingSortIntTest, oneElement) {
     assertCountingSort({1}, {1});
 }
 TEST_F(CountingSortIntTest, sorts) {
-    assertCountingSort({1, 1, 0}, {0, 1, 1});
-    assertCountingSort({3, 2, 1}, {1, 2, 3});
-    assertCountingSort({4, 5, 6, 3, 2, 1}, {1, 2, 3, 4, 5, 6});
-    assertCountingSort({12, 11, 13, 5, 6, 7}, {5, 6, 7, 11, 12, 13});
-    assertCountingSort({2, 5, 3, 0, 2, 3, 0, 3}, {0, 0, 2, 2, 3, 3, 3, 5});
+    assertCountingSort({0, 1, 1}, {1, 1, 0});
+    assertCountingSort({1, 2, 3}, {3, 2, 1});
+    assertCountingSort({1, 2, 3, 4, 5, 6}, {4, 5, 6, 3, 2, 1});
+    assertCountingSort({5, 6, 7, 11, 12, 13}, {12, 11, 13, 5, 6, 7});
+    assertCountingSort({0, 0, 2, 2, 3, 3, 3, 5}, {2, 5, 3, 0, 2, 3, 0, 3});
 
-    assertCountingSort({-1, -2}, {-2, -1});
-    assertCountingSort({-2, -4, -5}, {-5, -4, -2});
-    assertCountingSort({0, -1, -2}, {-2, -1, 0});
-    assertCountingSort({-2, -7, 3}, {-7, -2, 3});
+    assertCountingSort({-2, -1}, {-1, -2});
+    assertCountingSort({-5, -4, -2}, {-2, -4, -5});
+    assertCountingSort({-2, -1, 0}, {0, -1, -2});
+    assertCountingSort({-7, -2, 3}, {-2, -7, 3});
 }
 TEST_F(CountingSortIntTest, minMax) {
     assertMinMax({1}, 1, 1);

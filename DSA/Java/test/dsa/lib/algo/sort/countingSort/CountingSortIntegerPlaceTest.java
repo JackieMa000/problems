@@ -5,6 +5,15 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 public class CountingSortIntegerPlaceTest {
+    private void assertCountingSortPlace(Integer[] nums, int place, Integer[] expected) {
+        countingSort(nums, place);
+        assertArrayEquals(expected, nums);
+    }
+
+    private static void countingSort(Integer[] nums, int place) {
+        new CountingSortIntegerPlace(nums, place).sort();
+    }
+
     @Test
     public void emptyArray() {
         assertCountingSortPlace(new Integer[]{}, 1, new Integer[]{});
@@ -47,12 +56,4 @@ public class CountingSortIntegerPlaceTest {
                 new Integer[]{1, 23, 45, 121, 432, 564, 788});
     }
 
-    private void assertCountingSortPlace(Integer[] ary, int place, Integer[] expected) {
-        countingSort(ary, place);
-        assertArrayEquals(expected, ary);
-    }
-
-    private static void countingSort(Integer[] ary, int place) {
-        new CountingSortIntegerPlace(ary, place).sort();
-    }
 }

@@ -10,7 +10,9 @@
 namespace dsa::lib::algo::sort {
 
 class CountingSortInt : public CountingSortIntAbstract {
+#ifdef DSA_TEST
     friend class CountingSortIntTest;
+#endif
 
  public:
     explicit CountingSortInt(std::vector<int> &nums) : CountingSortIntAbstract(nums) {}

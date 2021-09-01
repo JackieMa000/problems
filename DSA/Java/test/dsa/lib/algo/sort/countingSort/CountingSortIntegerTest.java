@@ -6,7 +6,7 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class CountingSortIntegerTest {
-    private void assertCountingSort(Integer[] nums, Integer[] expected) {
+    private void assertCountingSort(Integer[] expected, Integer[] nums) {
         countingSort(nums);
         assertArrayEquals(expected, nums);
     }
@@ -26,7 +26,7 @@ public class CountingSortIntegerTest {
     private void assertCountsSize(Integer[] nums, int size) {
         CountingSortInteger cs = new CountingSortInteger(nums);
         cs.initFields();
-        assertEquals(size, cs.counts.length);
+        assertEquals(size, cs.COUNTS_SIZE);
     }
 
     private void assertStoreCounts(Integer[] nums, int[] expected) {
@@ -64,17 +64,17 @@ public class CountingSortIntegerTest {
 
     @Test
     public void sorts() {
-        assertCountingSort(new Integer[]{2, 1}, new Integer[]{1, 2});
-        assertCountingSort(new Integer[]{1, 1, 0}, new Integer[]{0, 1, 1});
-        assertCountingSort(new Integer[]{3, 2, 1}, new Integer[]{1, 2, 3});
-        assertCountingSort(new Integer[]{4, 5, 6, 3, 2, 1}, new Integer[]{1, 2, 3, 4, 5, 6});
-        assertCountingSort(new Integer[]{12, 11, 13, 5, 6, 7}, new Integer[]{5, 6, 7, 11, 12, 13});
-        assertCountingSort(new Integer[]{2, 5, 3, 0, 2, 3, 0, 3}, new Integer[]{0, 0, 2, 2, 3, 3, 3, 5});
+        assertCountingSort(new Integer[]{1, 2}, new Integer[]{2, 1});
+        assertCountingSort(new Integer[]{0, 1, 1}, new Integer[]{1, 1, 0});
+        assertCountingSort(new Integer[]{1, 2, 3}, new Integer[]{3, 2, 1});
+        assertCountingSort(new Integer[]{1, 2, 3, 4, 5, 6}, new Integer[]{4, 5, 6, 3, 2, 1});
+        assertCountingSort(new Integer[]{5, 6, 7, 11, 12, 13}, new Integer[]{12, 11, 13, 5, 6, 7});
+        assertCountingSort(new Integer[]{0, 0, 2, 2, 3, 3, 3, 5}, new Integer[]{2, 5, 3, 0, 2, 3, 0, 3});
 
-        assertCountingSort(new Integer[]{-1, -2}, new Integer[]{-2, -1});
-        assertCountingSort(new Integer[]{-2, -4, -5}, new Integer[]{-5, -4, -2});
-        assertCountingSort(new Integer[]{0, -1, -2}, new Integer[]{-2, -1, 0});
-        assertCountingSort(new Integer[]{-2, -7, 3}, new Integer[]{-7, -2, 3});
+        assertCountingSort(new Integer[]{-2, -1}, new Integer[]{-1, -2});
+        assertCountingSort(new Integer[]{-5, -4, -2}, new Integer[]{-2, -4, -5});
+        assertCountingSort(new Integer[]{-2, -1, 0}, new Integer[]{0, -1, -2});
+        assertCountingSort(new Integer[]{-7, -2, 3}, new Integer[]{-2, -7, 3});
     }
 
     @Test

@@ -10,7 +10,9 @@ namespace dsa::lib::algo::sort {
 
 template<class T>
 class CountingSortAbstract {
+#ifdef DSA_TEST
     friend class CountingSortIntTest;
+#endif
 
  protected:
     std::vector<T> &ary;

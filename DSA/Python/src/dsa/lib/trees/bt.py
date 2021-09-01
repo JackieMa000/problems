@@ -1,9 +1,8 @@
-import collections
-from typing import List, Optional, Deque
+from typing import List, Optional
 
 from dsa.container.lists.queues import Queue
 from dsa.lib.trees.tree import Tree
-from dsa.lib.utils import array_rstrip
+from dsa.lib.utils import arrays
 from dsa.nodes import BinaryTreeNode
 
 
@@ -16,7 +15,7 @@ class BinaryTree(Tree):
         if not self._root: return None
         array: List[int] = [0] * (self._get_array_size_for_tree(self._root))
         self._generate_array_from_tree(self._root, 0, array)
-        return array_rstrip(array)
+        return arrays.rstrip(array)
 
     def depth(self) -> int:
         if not self._root: return 0

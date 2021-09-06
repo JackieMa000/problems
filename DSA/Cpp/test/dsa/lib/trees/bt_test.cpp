@@ -25,15 +25,15 @@ TEST_F(ToArrayTest, nullTree) {
 }
 TEST_F(ToArrayTest, case1) {
     int ary[] = {1, 2, 3};
-    run(ary, aryLength(ary));
+    run(ary, arylen(ary));
 }
 TEST_F(ToArrayTest, case2) {
     int ary[] = {3, 1, 5, 0, 2};
-    run(ary, aryLength(ary));
+    run(ary, arylen(ary));
 }
 TEST_F(ToArrayTest, case3) {
     int ary[] = {5, 1, 4, 0, 6, 3, 6};
-    run(ary, aryLength(ary));
+    run(ary, arylen(ary));
 }
 
 class DepthTest : public BinaryTreeTest {
@@ -51,15 +51,15 @@ class DepthTest : public BinaryTreeTest {
 };
 TEST_F(DepthTest, case1) {
     int ary[] = {1};
-    run(ary, aryLength(ary), 1);
+    run(ary, arylen(ary), 1);
 }
 TEST_F(DepthTest, case2) {
     int ary[] = {1, 2, 3};
-    run(ary, aryLength(ary), 2);
+    run(ary, arylen(ary), 2);
 }
 TEST_F(DepthTest, case3) {
     int ary[] = {5, 1, 4, 0, 0, 3, 6};
-    run(ary, aryLength(ary), 3);
+    run(ary, arylen(ary), 3);
 }
 
 class GetArraySizeForBinaryTreeTest : public BinaryTreeTest {
@@ -73,19 +73,19 @@ class GetArraySizeForBinaryTreeTest : public BinaryTreeTest {
 };
 TEST_F(GetArraySizeForBinaryTreeTest, case1) {
     int ary[] = {1};
-    run(ary, aryLength(ary), 1);
+    run(ary, arylen(ary), 1);
 }
 TEST_F(GetArraySizeForBinaryTreeTest, case2) {
     int ary[] = {1, 2};
-    run(ary, aryLength(ary), 3);
+    run(ary, arylen(ary), 3);
 }
 TEST_F(GetArraySizeForBinaryTreeTest, case3) {
     int ary[] = {1, 2, 3};
-    run(ary, aryLength(ary), 3);
+    run(ary, arylen(ary), 3);
 }
 TEST_F(GetArraySizeForBinaryTreeTest, case4) {
     int ary[] = {3, 1, 5, 0, 2};
-    run(ary, aryLength(ary), 7);
+    run(ary, arylen(ary), 7);
 }
 
 class GetNodeByIndexTest : public BinaryTreeTest {
@@ -105,7 +105,7 @@ TEST_F(GetNodeByIndexTest, case2) {
 }
 TEST_F(GetNodeByIndexTest, case3) {
     int ary[] = {1};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     BinaryTreeNode *actual = getNodeByIndex(root, 1);
 
     EXPECT_EQ(nullptr, actual);
@@ -113,7 +113,7 @@ TEST_F(GetNodeByIndexTest, case3) {
 }
 TEST_F(GetNodeByIndexTest, case4) {
     int ary[] = {1, 0, 3};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     BinaryTreeNode *actual = getNodeByIndex(root, 1);
 
     EXPECT_EQ(nullptr, actual);
@@ -121,7 +121,7 @@ TEST_F(GetNodeByIndexTest, case4) {
 }
 TEST_F(GetNodeByIndexTest, case5) {
     int ary[] = {1};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     BinaryTreeNode *actual = getNodeByIndex(root, 0);
 
     EXPECT_EQ(1, actual->val);
@@ -129,7 +129,7 @@ TEST_F(GetNodeByIndexTest, case5) {
 }
 TEST_F(GetNodeByIndexTest, case6) {
     int ary[] = {1, 2, 3};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     BinaryTreeNode *actual = getNodeByIndex(root, 2);
 
     EXPECT_EQ(3, actual->val);
@@ -137,7 +137,7 @@ TEST_F(GetNodeByIndexTest, case6) {
 }
 TEST_F(GetNodeByIndexTest, case7) {
     int ary[] = {3, 1, 5, 0, 2};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     BinaryTreeNode *actual = getNodeByIndex(root, 4);
 
     EXPECT_EQ(2, actual->val);
@@ -157,35 +157,35 @@ TEST_F(GetNodeByValueTest, emptyTree) {
 }
 TEST_F(GetNodeByValueTest, valueNotExist) {
     int ary[] = {1};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     BinaryTreeNode *actual = getNodeByValue(root, 2);
     EXPECT_EQ(nullptr, actual);
     BinaryTree::destroy(root);
 }
 TEST_F(GetNodeByValueTest, case1) {
     int ary[] = {1};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     BinaryTreeNode *actual = getNodeByValue(root, 1);
     EXPECT_EQ(1, actual->val);
     BinaryTree::destroy(root);
 }
 TEST_F(GetNodeByValueTest, case2) {
     int ary[] = {1, 2, 3};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     BinaryTreeNode *actual = getNodeByValue(root, 3);
     EXPECT_EQ(3, actual->val);
     BinaryTree::destroy(root);
 }
 TEST_F(GetNodeByValueTest, case3) {
     int ary[] = {1, 2, 3};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     BinaryTreeNode *actual = getNodeByValue(root, 2);
     EXPECT_EQ(2, actual->val);
     BinaryTree::destroy(root);
 }
 TEST_F(GetNodeByValueTest, case4) {
     int ary[] = {3, 1, 5, 0, 2};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     BinaryTreeNode *actual = getNodeByValue(root, 2);
     EXPECT_EQ(2, actual->val);
     BinaryTree::destroy(root);
@@ -200,7 +200,7 @@ class LowestCommonAncestorTestBT : public BinaryTreeTest {
 };
 TEST_F(LowestCommonAncestorTestBT, case1) {
     int ary[] = {3, 5, 1, 6, 2, 0, 8, 0, 0, 7, 4};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     BinaryTreeNode *p = getTreeNodeByValue(root, 5);
     BinaryTreeNode *q = getTreeNodeByValue(root, 1);
 
@@ -211,7 +211,7 @@ TEST_F(LowestCommonAncestorTestBT, case1) {
 }
 TEST_F(LowestCommonAncestorTestBT, case2) {
     int ary[] = {3, 5, 1, 6, 2, 0, 8, 0, 0, 7, 4};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     BinaryTreeNode *p = getTreeNodeByValue(root, 5);
     BinaryTreeNode *q = getTreeNodeByValue(root, 4);
 
@@ -222,7 +222,7 @@ TEST_F(LowestCommonAncestorTestBT, case2) {
 }
 TEST_F(LowestCommonAncestorTestBT, case3) {
     int ary[] = {1, 2};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     BinaryTreeNode *p = getTreeNodeByValue(root, 1);
     BinaryTreeNode *q = getTreeNodeByValue(root, 2);
 
@@ -246,7 +246,7 @@ TEST_F(PreOrderTest, emptyTree) {
 }
 TEST_F(PreOrderTest, oneNodeTree) {
     int ary[] = {1};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     std::vector<int> expected = {1};
     std::vector<int> actual = preorder(root);
     EXPECT_EQ(expected, actual);
@@ -254,7 +254,7 @@ TEST_F(PreOrderTest, oneNodeTree) {
 }
 TEST_F(PreOrderTest, case1) {
     int ary[] = {1, 0, 2};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     std::vector<int> expected = {1, 2};
     std::vector<int> actual = preorder(root);
     EXPECT_EQ(expected, actual);
@@ -262,7 +262,7 @@ TEST_F(PreOrderTest, case1) {
 }
 TEST_F(PreOrderTest, case2) {
     int ary[] = {1, 2};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     std::vector<int> expected = {1, 2};
     std::vector<int> actual = preorder(root);
     EXPECT_EQ(expected, actual);
@@ -270,7 +270,7 @@ TEST_F(PreOrderTest, case2) {
 }
 TEST_F(PreOrderTest, case3) {
     int ary[] = {1, 0, 2, 0, 0, 3};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     std::vector<int> expected = {1, 2, 3};
     std::vector<int> actual = preorder(root);
     EXPECT_EQ(expected, actual);
@@ -291,7 +291,7 @@ TEST_F(InOrderTest, emptyTree) {
 }
 TEST_F(InOrderTest, oneNodeTree) {
     int ary[] = {1};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     std::vector<int> expected = {1};
     std::vector<int> actual = inorder(root);
     EXPECT_EQ(expected, actual);
@@ -299,7 +299,7 @@ TEST_F(InOrderTest, oneNodeTree) {
 }
 TEST_F(InOrderTest, case1) {
     int ary[] = {1, 0, 2};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     std::vector<int> expected = {1, 2};
     std::vector<int> actual = inorder(root);
     EXPECT_EQ(expected, actual);
@@ -307,7 +307,7 @@ TEST_F(InOrderTest, case1) {
 }
 TEST_F(InOrderTest, case2) {
     int ary[] = {1, 2};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     std::vector<int> expected = {2, 1};
     std::vector<int> actual = inorder(root);
     EXPECT_EQ(expected, actual);
@@ -315,7 +315,7 @@ TEST_F(InOrderTest, case2) {
 }
 TEST_F(InOrderTest, case3) {
     int ary[] = {1, 0, 2, 0, 0, 3};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     std::vector<int> expected = {1, 3, 2};
     std::vector<int> actual = inorder(root);
     EXPECT_EQ(expected, actual);
@@ -336,7 +336,7 @@ TEST_F(PostOrderTest, emptyTree) {
 }
 TEST_F(PostOrderTest, oneNodeTree) {
     int ary[] = {1};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     std::vector<int> expected = {1};
     std::vector<int> actual = postorder(root);
     EXPECT_EQ(expected, actual);
@@ -344,7 +344,7 @@ TEST_F(PostOrderTest, oneNodeTree) {
 }
 TEST_F(PostOrderTest, case1) {
     int ary[] = {1, 0, 2};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     std::vector<int> expected = {2, 1};
     std::vector<int> actual = postorder(root);
     EXPECT_EQ(expected, actual);
@@ -352,7 +352,7 @@ TEST_F(PostOrderTest, case1) {
 }
 TEST_F(PostOrderTest, case2) {
     int ary[] = {1, 2};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     std::vector<int> expected = {2, 1};
     std::vector<int> actual = postorder(root);
     EXPECT_EQ(expected, actual);
@@ -360,7 +360,7 @@ TEST_F(PostOrderTest, case2) {
 }
 TEST_F(PostOrderTest, case3) {
     int ary[] = {1, 0, 2, 0, 0, 3};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     std::vector<int> expected = {3, 2, 1};
     std::vector<int> actual = postorder(root);
     EXPECT_EQ(expected, actual);
@@ -381,7 +381,7 @@ TEST_F(LevelOrderTest, emptyTree) {
 }
 TEST_F(LevelOrderTest, case1) {
     int ary[] = {3, 9, 20, 0, 0, 15, 7};
-    BinaryTreeNode *root = arrayToBinaryTree(ary, aryLength(ary));
+    BinaryTreeNode *root = arrayToBinaryTree(ary, arylen(ary));
     std::vector<std::vector<int>> expected = {{3}, {9, 20}, {15, 7}};
     std::vector<std::vector<int>> actual = levelOrder(root);
     EXPECT_EQ(expected, actual);

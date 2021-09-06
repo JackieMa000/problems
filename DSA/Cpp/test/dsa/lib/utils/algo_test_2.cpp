@@ -17,7 +17,7 @@ struct for_each_test {
 };
 TEST(ForEachTest, case1) {
     int nums[] = {0, 1, 2, 3, 4, 5};
-    size_t s = aryLength(nums);
+    size_t s = arylen(nums);
     for_each_test f = dsa::for_each(nums, nums + s, for_each_test(0));
 
     EXPECT_EQ(s, f.count);
@@ -35,7 +35,7 @@ TEST(ForEachTest, staticAssert) {
 #endif
 TEST(ForEachNTest, case1) {
     int nums[] = {0, 1, 2, 3, 4, 5};
-    size_t s = aryLength(nums);
+    size_t s = arylen(nums);
 
     auto f = for_each_test(0);
     auto it = dsa::for_each_n(nums, 0, f);
@@ -57,12 +57,12 @@ TEST(ForEachNTest, staticAssert) {
 
 TEST(AllOfTest, case1) {
     int nums[] = {2, 4, 6, 8};
-    EXPECT_TRUE(dsa::all_of(nums, nums + aryLength(nums), isEven));
+    EXPECT_TRUE(dsa::all_of(nums, nums + arylen(nums), isEven));
     EXPECT_TRUE(dsa::all_of(nums, nums, isEven));
 }
 TEST(AllOfTest, case2) {
     int nums[] = {2, 4, 5, 8};
-    EXPECT_FALSE(dsa::all_of(nums, nums + aryLength(nums), isEven));
+    EXPECT_FALSE(dsa::all_of(nums, nums + arylen(nums), isEven));
     EXPECT_TRUE(dsa::all_of(nums, nums, isEven));
 }
 TEST(AllOfTest, statisAssert) {
@@ -75,17 +75,17 @@ TEST(AllOfTest, statisAssert) {
 
 TEST(AnyOfTest, case1) {
     int nums[] = {2, 4, 6, 8};
-    EXPECT_TRUE(dsa::any_of(nums, nums + aryLength(nums), isEven));
+    EXPECT_TRUE(dsa::any_of(nums, nums + arylen(nums), isEven));
     EXPECT_FALSE(dsa::any_of(nums, nums, isEven));
 }
 TEST(AnyOfTest, case2) {
     int nums[] = {2, 4, 5, 8};
-    EXPECT_TRUE(dsa::any_of(nums, nums + aryLength(nums), isEven));
+    EXPECT_TRUE(dsa::any_of(nums, nums + arylen(nums), isEven));
     EXPECT_FALSE(dsa::any_of(nums, nums, isEven));
 }
 TEST(AnyOfTest, case3) {
     int nums[] = {1, 3, 5, 7};
-    EXPECT_FALSE(dsa::any_of(nums, nums + aryLength(nums), isEven));
+    EXPECT_FALSE(dsa::any_of(nums, nums + arylen(nums), isEven));
     EXPECT_FALSE(dsa::any_of(nums, nums, isEven));
 }
 TEST(AnyOfTest, statisAssert) {
@@ -98,12 +98,12 @@ TEST(AnyOfTest, statisAssert) {
 
 TEST(NoneOfTest, case1) {
     int nums[] = {2, 4, 6, 8};
-    EXPECT_FALSE(dsa::none_of(nums, nums + aryLength(nums), isEven));
+    EXPECT_FALSE(dsa::none_of(nums, nums + arylen(nums), isEven));
     EXPECT_TRUE(dsa::none_of(nums, nums, isEven));
 }
 TEST(NoneOfTest, case2) {
     int nums[] = {2, 4, 5, 8};
-    EXPECT_FALSE(dsa::none_of(nums, nums + aryLength(nums), isEven));
+    EXPECT_FALSE(dsa::none_of(nums, nums + arylen(nums), isEven));
     EXPECT_TRUE(dsa::none_of(nums, nums, isEven));
 }
 TEST(NoneOfTest, statisAssert) {

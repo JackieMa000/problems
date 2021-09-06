@@ -12,24 +12,24 @@ class HasCycleTest : public LinkedListTest {
 };
 TEST_F(HasCycleTest, case1) {
     int ary[] = {1};
-    ListNode *head = arrayToSinglyLinkedlist(ary, aryLength(ary));
+    ListNode *head = arrayToSinglyLinkedlist(ary, arylen(ary));
     bool actual = hasCycle(head);
     EXPECT_FALSE(actual);
     LinkedList::destroy(head);
 }
 TEST_F(HasCycleTest, case2) {
     int ary[] = {1, 2};
-    ListNode *head = arrayToCyclicSinglyLinkedlist(ary, aryLength(ary), 0);
+    ListNode *head = arrayToCyclicSinglyLinkedlist(ary, arylen(ary), 0);
     bool actual = hasCycle(head);
     EXPECT_TRUE(actual);
-    LinkedList::destroyCycle(head, aryLength(ary));
+    LinkedList::destroyCycle(head, arylen(ary));
 }
 TEST_F(HasCycleTest, case3) {
     int ary[] = {3, 2, 0, 4};
-    ListNode *head = arrayToCyclicSinglyLinkedlist(ary, aryLength(ary), 1);
+    ListNode *head = arrayToCyclicSinglyLinkedlist(ary, arylen(ary), 1);
     bool actual = hasCycle(head);
     EXPECT_TRUE(actual);
-    LinkedList::destroyCycle(head, aryLength(ary));
+    LinkedList::destroyCycle(head, arylen(ary));
 }
 
 class DetectCycleTest : public LinkedListTest {
@@ -41,7 +41,7 @@ class DetectCycleTest : public LinkedListTest {
 };
 TEST_F(DetectCycleTest, case1) {
     int ary[] = {1};
-    ListNode *head = arrayToSinglyLinkedlist(ary, aryLength(ary));
+    ListNode *head = arrayToSinglyLinkedlist(ary, arylen(ary));
 
     ListNode *actual = detectCycle(head);
 
@@ -50,23 +50,23 @@ TEST_F(DetectCycleTest, case1) {
 }
 TEST_F(DetectCycleTest, case2) {
     int ary[] = {1, 2};
-    ListNode *head = arrayToCyclicSinglyLinkedlist(ary, aryLength(ary), 0);
+    ListNode *head = arrayToCyclicSinglyLinkedlist(ary, arylen(ary), 0);
     ListNode *expected = getLinkedListNodeByIndex(head, 0);
 
     ListNode *actual = detectCycle(head);
 
     EXPECT_EQ(expected, actual);
-    LinkedList::destroyCycle(head, aryLength(ary));
+    LinkedList::destroyCycle(head, arylen(ary));
 }
 TEST_F(DetectCycleTest, case3) {
     int ary[] = {3, 2, 0, -4};
-    ListNode *head = arrayToCyclicSinglyLinkedlist(ary, aryLength(ary), 1);
+    ListNode *head = arrayToCyclicSinglyLinkedlist(ary, arylen(ary), 1);
     ListNode *expected = getLinkedListNodeByIndex(head, 1);
 
     ListNode *actual = detectCycle(head);
 
     EXPECT_EQ(expected, actual);
-    LinkedList::destroyCycle(head, aryLength(ary));
+    LinkedList::destroyCycle(head, arylen(ary));
 }
 
 class SwapPairsTest : public LinkedListTest {
@@ -79,22 +79,22 @@ class SwapPairsTest : public LinkedListTest {
 TEST_F(SwapPairsTest, emptyList) {
     int ary[] = {};
     int expected[] = {};
-    ListNode *actual = swapPairs(arrayToSinglyLinkedlist(ary, aryLength(ary)));
-    EXPECT_ARRAY_EQ_LINKEDLIST(expected, aryLength(expected), actual);
+    ListNode *actual = swapPairs(arrayToSinglyLinkedlist(ary, arylen(ary)));
+    EXPECT_ARRAY_EQ_LINKEDLIST(expected, arylen(expected), actual);
     LinkedList::destroy(actual);
 }
 TEST_F(SwapPairsTest, oneNode) {
     int ary[] = {1};
     int expected[] = {1};
-    ListNode *actual = swapPairs(arrayToSinglyLinkedlist(ary, aryLength(ary)));
-    EXPECT_ARRAY_EQ_LINKEDLIST(expected, aryLength(expected), actual);
+    ListNode *actual = swapPairs(arrayToSinglyLinkedlist(ary, arylen(ary)));
+    EXPECT_ARRAY_EQ_LINKEDLIST(expected, arylen(expected), actual);
     LinkedList::destroy(actual);
 }
 TEST_F(SwapPairsTest, case1) {
     int ary[] = {1, 2, 3, 4};
     int expected[] = {2, 1, 4, 3};
-    ListNode *actual = swapPairs(arrayToSinglyLinkedlist(ary, aryLength(ary)));
-    EXPECT_ARRAY_EQ_LINKEDLIST(expected, aryLength(expected), actual);
+    ListNode *actual = swapPairs(arrayToSinglyLinkedlist(ary, arylen(ary)));
+    EXPECT_ARRAY_EQ_LINKEDLIST(expected, arylen(expected), actual);
     LinkedList::destroy(actual);
 }
 
@@ -108,29 +108,29 @@ class ReverseKGroupTest : public LinkedListTest {
 TEST_F(ReverseKGroupTest, case1) {
     int ary[] = {1};
     int expected[] = {1};
-    ListNode *actual = reverseKGroup(arrayToSinglyLinkedlist(ary, aryLength(ary)), 1);
-    EXPECT_ARRAY_EQ_LINKEDLIST(expected, aryLength(expected), actual);
+    ListNode *actual = reverseKGroup(arrayToSinglyLinkedlist(ary, arylen(ary)), 1);
+    EXPECT_ARRAY_EQ_LINKEDLIST(expected, arylen(expected), actual);
     LinkedList::destroy(actual);
 }
 TEST_F(ReverseKGroupTest, case2) {
     int ary[] = {1, 2, 3, 4, 5};
     int expected[] = {1, 2, 3, 4, 5};
-    ListNode *actual = reverseKGroup(arrayToSinglyLinkedlist(ary, aryLength(ary)), 1);
-    EXPECT_ARRAY_EQ_LINKEDLIST(expected, aryLength(expected), actual);
+    ListNode *actual = reverseKGroup(arrayToSinglyLinkedlist(ary, arylen(ary)), 1);
+    EXPECT_ARRAY_EQ_LINKEDLIST(expected, arylen(expected), actual);
     LinkedList::destroy(actual);
 }
 TEST_F(ReverseKGroupTest, case3) {
     int ary[] = {1, 2, 3, 4, 5};
     int expected[] = {2, 1, 4, 3, 5};
-    ListNode *actual = reverseKGroup(arrayToSinglyLinkedlist(ary, aryLength(ary)), 2);
-    EXPECT_ARRAY_EQ_LINKEDLIST(expected, aryLength(expected), actual);
+    ListNode *actual = reverseKGroup(arrayToSinglyLinkedlist(ary, arylen(ary)), 2);
+    EXPECT_ARRAY_EQ_LINKEDLIST(expected, arylen(expected), actual);
     LinkedList::destroy(actual);
 }
 TEST_F(ReverseKGroupTest, case4) {
     int ary[] = {1, 2, 3, 4, 5};
     int expected[] = {3, 2, 1, 4, 5};
-    ListNode *actual = reverseKGroup(arrayToSinglyLinkedlist(ary, aryLength(ary)), 3);
-    EXPECT_ARRAY_EQ_LINKEDLIST(expected, aryLength(expected), actual);
+    ListNode *actual = reverseKGroup(arrayToSinglyLinkedlist(ary, arylen(ary)), 3);
+    EXPECT_ARRAY_EQ_LINKEDLIST(expected, arylen(expected), actual);
     LinkedList::destroy(actual);
 }
 

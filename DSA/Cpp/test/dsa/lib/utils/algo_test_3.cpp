@@ -6,34 +6,80 @@
 namespace dsa {
 namespace {
 
-template<class ForwardIterator, class ValueType>
-void expectMaxSizeElement(ValueType expected, ForwardIterator first, ForwardIterator last) {
-    EXPECT_EQ(expected, *dsa::maxSizeElement(first, last));
+template<class ForwardIterator>
+void expectMaxSizeElement(ForwardIterator expected, ForwardIterator first, ForwardIterator last) {
+    EXPECT_EQ(expected, dsa::maxSizeElement(first, last));
+    EXPECT_EQ(*expected, *dsa::maxSizeElement(first, last));
+}
+TEST(MaxSizeElementTest, empty) {
+    std::vector<std::vector<int>> v = {};
+    EXPECT_EQ(v.begin(), dsa::maxSizeElement(v.begin(), v.end()));
+}
+TEST(MaxSizeElementTest, oneElement) {
+    std::vector<std::vector<int>> v = {{0}};
+    expectMaxSizeElement(v.begin(), v.begin(), v.end());
+}
+TEST(MaxSizeElementTest, multResults_returnFirst) {
+    std::vector<std::vector<int>> v = {{0}, {1}};
+    expectMaxSizeElement(v.begin(), v.begin(), v.end());
 }
 TEST(MaxSizeElementTest, stringElement) {
     std::vector<std::string> v = {"a", "ab", "abc"};
-    std::string expected = "abc";
-    expectMaxSizeElement(expected, v.begin(), v.end());
+    expectMaxSizeElement(v.begin() + 2, v.begin(), v.end());
 }
 TEST(MaxSizeElementTest, stringArrayElement) {
     std::string ss[] = {"a", "ab", "abc"};
-    std::string expected = "abc";
-    expectMaxSizeElement(expected, ss, ss + aryLength(ss));
+    expectMaxSizeElement(ss + 2, ss, ss + arylen(ss));
 }
 TEST(MaxSizeElementTest, intListElement) {
     std::vector<std::list<int>> v = {{1}, {1, 2}, {1, 2, 3}};
-    std::list<int> expected = {1, 2, 3};
-    expectMaxSizeElement(expected, v.begin(), v.end());
+    expectMaxSizeElement(v.begin() + 2, v.begin(), v.end());
 }
 TEST(MaxSizeElementTest, charListElement) {
     std::vector<std::list<char>> v = {{'a'}, {'a', 'b'}, {'a', 'b', 'c'}};
-    std::list<char> expected = {'a', 'b', 'c'};
-    expectMaxSizeElement(expected, v.begin(), v.end());
+    expectMaxSizeElement(v.begin() + 2, v.begin(), v.end());
 }
 TEST(MaxSizeElementTest, charArrayElement) {
     std::vector<std::vector<char>> v = {{'a'}, {'a', 'b'}, {'a', 'b', 'c'}};
-    std::vector<char> expected = {'a', 'b', 'c'};
-    expectMaxSizeElement(expected, v.begin(), v.end());
+    expectMaxSizeElement(v.begin() + 2, v.begin(), v.end());
+}
+
+template<class ForwardIterator>
+void expectMinSizeElement(ForwardIterator expected, ForwardIterator first, ForwardIterator last) {
+    EXPECT_EQ(expected, dsa::minSizeElement(first, last));
+    EXPECT_EQ(*expected, *dsa::minSizeElement(first, last));
+}
+TEST(MinSizeElementTest, empty) {
+    std::vector<std::vector<int>> v = {};
+    EXPECT_EQ(v.begin(), dsa::minSizeElement(v.begin(), v.end()));
+}
+TEST(MinSizeElementTest, oneElement) {
+    std::vector<std::vector<int>> v = {{0}};
+    expectMinSizeElement(v.begin(), v.begin(), v.end());
+}
+TEST(MinSizeElementTest, multResults_returnFirst) {
+    std::vector<std::vector<int>> v = {{0}, {1}};
+    expectMinSizeElement(v.begin(), v.begin(), v.end());
+}
+TEST(MinSizeElementTest, stringElement) {
+    std::vector<std::string> v = {"a", "ab", "abc"};
+    expectMinSizeElement(v.begin(), v.begin(), v.end());
+}
+TEST(MinSizeElementTest, stringArrayElement) {
+    std::string ss[] = {"a", "ab", "abc"};
+    expectMinSizeElement(ss, ss, ss + arylen(ss));
+}
+TEST(MinSizeElementTest, intListElement) {
+    std::vector<std::list<int>> v = {{1}, {1, 2}, {1, 2, 3}};
+    expectMinSizeElement(v.begin(), v.begin(), v.end());
+}
+TEST(MinSizeElementTest, charListElement) {
+    std::vector<std::list<char>> v = {{'a'}, {'a', 'b'}, {'a', 'b', 'c'}};
+    expectMinSizeElement(v.begin(), v.begin(), v.end());
+}
+TEST(MinSizeElementTest, charArrayElement) {
+    std::vector<std::vector<char>> v = {{'a'}, {'a', 'b'}, {'a', 'b', 'c'}};
+    expectMinSizeElement(v.begin(), v.begin(), v.end());
 }
 
 TEST(EqualTest, inputIterator) {

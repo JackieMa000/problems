@@ -116,7 +116,7 @@ TEST(MinMaxInitListCompTest, staticAssert) {
 
 TEST(MinMaxElementTest, array) {
     int nums[] = {2, 4, 6, 8, 7, 5, 3, 1};
-    auto actual = dsa::minmax_element(nums, nums + aryLength(nums));
+    auto actual = dsa::minmax_element(nums, nums + arylen(nums));
     EXPECT_EQ(1, *actual.first);
     EXPECT_EQ(8, *actual.second);
 }
@@ -134,14 +134,14 @@ TEST(MinMaxElementTest, vector) {
 }
 TEST(MinMaxElementTest, staticAssert) {
     static constexpr int nums[] = {2, 4, 6, 8, 7, 5, 3, 1};
-    constexpr auto actual = dsa::minmax_element(nums, nums + aryLength(nums));
+    constexpr auto actual = dsa::minmax_element(nums, nums + arylen(nums));
     static_assert(*actual.first == 1);
     static_assert(*actual.second == 8);
 }
 
 TEST(MinMaxElementCompTest, array) {
     int nums[] = {2, 4, 6, 8, 7, 5, 3, 1};
-    auto p = dsa::minmax_element(nums, nums + aryLength(nums), std::greater<>());
+    auto p = dsa::minmax_element(nums, nums + arylen(nums), std::greater<>());
     EXPECT_EQ(8, *p.first);
     EXPECT_EQ(1, *p.second);
 }

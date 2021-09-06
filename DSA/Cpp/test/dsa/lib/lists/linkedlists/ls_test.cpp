@@ -26,15 +26,15 @@ TEST_F(ToArrayTest, nullList) {
 }
 TEST_F(ToArrayTest, case1) {
     int ary[] = {1};
-    run(ary, aryLength(ary));
+    run(ary, arylen(ary));
 }
 TEST_F(ToArrayTest, case2) {
     int ary[] = {1, 2};
-    run(ary, aryLength(ary));
+    run(ary, arylen(ary));
 }
 TEST_F(ToArrayTest, case3) {
     int ary[] = {1, 2, 3};
-    run(ary, aryLength(ary));
+    run(ary, arylen(ary));
 }
 
 class ReverseTest : public LinkedListTest {
@@ -51,11 +51,11 @@ class ReverseTest : public LinkedListTest {
 };
 TEST_F(ReverseTest, case1) {
     int ary[] = {1}, expected[] = {1};
-    run(ary, aryLength(ary), expected, aryLength(expected));
+    run(ary, arylen(ary), expected, arylen(expected));
 }
 TEST_F(ReverseTest, case2) {
     int ary[] = {1, 2, 3}, expected[] = {3, 2, 1};
-    run(ary, aryLength(ary), expected, aryLength(expected));
+    run(ary, arylen(ary), expected, arylen(expected));
 }
 TEST_F(ReverseTest, nullList) {
     ListNode *actual = reverse(nullptr);
@@ -77,11 +77,11 @@ class ReverseBeforeTest : public LinkedListTest {
 };
 TEST_F(ReverseBeforeTest, case1) {
     int ary[] = {1, 2, 3}, expected[] = {1, 2, 3};
-    run(ary, aryLength(ary), expected, aryLength(expected), 0);
+    run(ary, arylen(ary), expected, arylen(expected), 0);
 }
 TEST_F(ReverseBeforeTest, case2) {
     int ary[] = {1, 2, 3}, expected[] = {2, 1, 3};
-    run(ary, aryLength(ary), expected, aryLength(expected), 2);
+    run(ary, arylen(ary), expected, arylen(expected), 2);
 }
 TEST_F(ReverseBeforeTest, nullList) {
     ListNode *actual = reverseBefore(nullptr, 0);
@@ -103,15 +103,15 @@ class ReverseFromToTest : public LinkedListTest {
 };
 TEST_F(ReverseFromToTest, case1) {
     int ary[] = {1, 2}, expected[] = {1, 2};
-    run(ary, aryLength(ary), expected, aryLength(ary), 0, 0);
+    run(ary, arylen(ary), expected, arylen(ary), 0, 0);
 }
 TEST_F(ReverseFromToTest, case2) {
     int ary[] = {1, 2, 3, 4, 5}, expected[] = {4, 3, 2, 1, 5};
-    run(ary, aryLength(ary), expected, aryLength(ary), 0, 4);
+    run(ary, arylen(ary), expected, arylen(ary), 0, 4);
 }
 TEST_F(ReverseFromToTest, case3) {
     int ary[] = {1, 2, 3, 4, 5}, expected[] = {1, 4, 3, 2, 5};
-    run(ary, aryLength(ary), expected, aryLength(ary), 1, 4);
+    run(ary, arylen(ary), expected, arylen(ary), 1, 4);
 }
 
 class LengthTest : public LinkedListTest {
@@ -157,19 +157,19 @@ class GetNodeByIndexTest : public LinkedListTest {
 };
 TEST_F(GetNodeByIndexTest, case1) {
     int ary[] = {1, 2, 3};
-    run(ary, aryLength(ary), 0, 1);
+    run(ary, arylen(ary), 0, 1);
 }
 TEST_F(GetNodeByIndexTest, case2) {
     int ary[] = {1, 2, 3};
-    run(ary, aryLength(ary), 2, 3);
+    run(ary, arylen(ary), 2, 3);
 }
 TEST_F(GetNodeByIndexTest, case3) {
     int ary[] = {1};
-    run(ary, aryLength(ary), 0, 1);
+    run(ary, arylen(ary), 0, 1);
 }
 TEST_F(GetNodeByIndexTest, indexNotExist) {
     int ary[] = {1};
-    ListNode *head = arrayToSinglyLinkedlist(ary, aryLength(ary));
+    ListNode *head = arrayToSinglyLinkedlist(ary, arylen(ary));
     ListNode *actual = getNode(2, head);
     EXPECT_EQ(nullptr, actual);
     LinkedList::destroy(head);
@@ -191,15 +191,15 @@ class GetNodeByValueTest : public LinkedListTest {
 };
 TEST_F(GetNodeByValueTest, case1) {
     int ary[] = {1};
-    run(ary, aryLength(ary), 1, 1);
+    run(ary, arylen(ary), 1, 1);
 }
 TEST_F(GetNodeByValueTest, case2) {
     int ary[] = {1, 2, 3};
-    run(ary, aryLength(ary), 3, 3);
+    run(ary, arylen(ary), 3, 3);
 }
 TEST_F(GetNodeByValueTest, valueNotExist) {
     int ary[] = {1};
-    ListNode *head = arrayToSinglyLinkedlist(ary, aryLength(ary));
+    ListNode *head = arrayToSinglyLinkedlist(ary, arylen(ary));
     ListNode *actual = getNode(2, head);
     EXPECT_EQ(nullptr, actual);
     LinkedList::destroy(head);

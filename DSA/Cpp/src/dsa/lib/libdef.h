@@ -4,7 +4,8 @@
 #include <dsa/dsadef.h>
 #include <dsa/nodes/nodes.h>
 
-#define aryLength(ary) sizeof(ary)/sizeof(ary[0])
+// Array Length
+#define arylen(ary) sizeof(ary)/sizeof(ary[0])
 
 namespace dsa::lib {
 

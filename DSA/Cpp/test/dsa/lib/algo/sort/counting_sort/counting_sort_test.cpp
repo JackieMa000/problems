@@ -62,7 +62,7 @@ TEST(CountingSortIntTest_fl, sorts) {
 TEST(CountingSortIntTest_a, sorts) {
     int nums[] = {2, 5, 3, 0, 2, 3, 0, 3};
     int expected[] = {0, 0, 2, 2, 3, 3, 3, 5};
-    size_t n = aryLength(nums);
+    size_t n = arylen(nums);
 
     cs::sort(nums, nums + n);
     EXPECT_LIST_EQ(expected, nums, nums + n);
@@ -70,7 +70,7 @@ TEST(CountingSortIntTest_a, sorts) {
 TEST(CountingSortIntTest_a, sorts1) {
     int nums[] = {-2, -7, 3};
     int expected[] = {-7, -2, 3};
-    size_t n = aryLength(nums);
+    size_t n = arylen(nums);
 
     cs::sort(nums, nums + n);
     EXPECT_LIST_EQ(expected, nums, nums + n);

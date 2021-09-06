@@ -10,27 +10,27 @@ namespace {
 
 TEST(rStripTest, empty_array) {
     int ary[] = {}, expected[] = {};
-    length_t actLen = rStrip(ary, aryLength(ary));
+    length_t actLen = rStrip(ary, arylen(ary));
     EXPECT_LIST_EQ(expected, ary, ary + actLen);
 }
 TEST(rStripTest, length1_element0) {
     int ary[] = {0}, expected[] = {};
-    length_t actLen = rStrip(ary, aryLength(ary));
+    length_t actLen = rStrip(ary, arylen(ary));
     EXPECT_LIST_EQ(expected, ary, ary + actLen);
 }
 TEST(rStripTest, last_element_not0) {
     int ary[] = {1, 2}, expected[] = {1, 2};
-    length_t actLen = rStrip(ary, aryLength(ary));
+    length_t actLen = rStrip(ary, arylen(ary));
     EXPECT_LIST_EQ(expected, ary, ary + actLen);
 }
 TEST(rStripTest, last_element0_case1) {
     int ary[] = {1, 2, 0}, expected[] = {1, 2};
-    length_t actLen = rStrip(ary, aryLength(ary));
+    length_t actLen = rStrip(ary, arylen(ary));
     EXPECT_LIST_EQ(expected, ary, ary + actLen);
 }
 TEST(rStripTest, last_element0_case2) {
     int ary[] = {1, 0, 2, 0, 0}, expected[] = {1, 0, 2};
-    length_t actLen = rStrip(ary, aryLength(ary));
+    length_t actLen = rStrip(ary, arylen(ary));
     EXPECT_LIST_EQ(expected, ary, ary + actLen);
 }
 
@@ -80,14 +80,14 @@ TEST(FillNTest, case1) {
     int nums[] = {0, 0, 0};
     int expected[] = {1, 1, 0};
     dsa::fill_n(nums, 2, 1);
-    EXPECT_LIST_EQ(expected, nums, nums + aryLength(nums));
+    EXPECT_LIST_EQ(expected, nums, nums + arylen(nums));
 }
 
 TEST(SwapTest, arrayPos) {
     int ary[] = {1, 2, 3};
     int expected[] = {3, 2, 1};
     dsa::swap(ary, 0, 2);
-    EXPECT_LIST_EQ(expected, ary, ary + aryLength(ary));
+    EXPECT_LIST_EQ(expected, ary, ary + arylen(ary));
 }
 TEST(SwapTest, vectorPos) {
     std::vector<int> v = {1, 2, 3};
@@ -108,7 +108,7 @@ TEST(SwapTest, array) {
     int bar[] = {10, 20, 30, 40};
     int expected[] = {10, 20, 30, 40};
     dsa::swap(foo, bar);
-    EXPECT_LIST_EQ(expected, foo, foo + aryLength(foo));
+    EXPECT_LIST_EQ(expected, foo, foo + arylen(foo));
 }
 
 TEST(CopyTest, array) {
@@ -116,7 +116,7 @@ TEST(CopyTest, array) {
     int des[3];
 
     dsa::copy(src, src + 3, des);
-    EXPECT_LIST_EQ(src, des, des + aryLength(des));
+    EXPECT_LIST_EQ(src, des, des + arylen(des));
 }
 TEST(CopyTest, vector) {
     std::vector<int> src = {1, 2, 3};
@@ -131,7 +131,7 @@ TEST(CopyIfTest, array) {
     int expected[] = {1};
 
     dsa::copy_if(src, src + 3, des, [](int x) { return x > 0; });
-    EXPECT_LIST_EQ(expected, des, des + aryLength(des));
+    EXPECT_LIST_EQ(expected, des, des + arylen(des));
 }
 TEST(CopyIfTest, vector) {
     std::vector<int> src = {1, -2, -3};
@@ -147,7 +147,7 @@ TEST(CopyNTest, array) {
     int expected[] = {1, 2};
 
     dsa::copy_n(src, 2, des);
-    EXPECT_LIST_EQ(expected, des, des + aryLength(des));
+    EXPECT_LIST_EQ(expected, des, des + arylen(des));
 }
 TEST(CopyNTest, vector) {
     std::vector<int> src = {1, 2, 3};
@@ -163,7 +163,7 @@ TEST(CopyBackwardTest, array) {
     int expected[] = {1, 2, 3};
 
     dsa::copy_backward(src, src + 3, des + 3);
-    EXPECT_LIST_EQ(expected, des, des + aryLength(des));
+    EXPECT_LIST_EQ(expected, des, des + arylen(des));
 }
 TEST(CopyBackwardTest, vector) {
     std::vector<int> src = {1, 2, 3};
@@ -179,7 +179,7 @@ TEST(ReverseCopyTest, array) {
     int expected[] = {3, 2, 1};
 
     dsa::reverse_copy(src, src + 3, des);
-    EXPECT_LIST_EQ(expected, des, des + aryLength(des));
+    EXPECT_LIST_EQ(expected, des, des + arylen(des));
 }
 TEST(ReverseCopyTest, vector) {
     std::vector<int> src = {1, 2, 3};

@@ -20,12 +20,12 @@ namespace dsa {
  * 4. array length is bigger than 1, last element is 0 -> remove the trailing 0s by loop
  */
 INTERN CONSTEXPR
-length_t rStrip(const int *ary, const length_t length) {
-    if (!length || (length == 1 && *(ary) == 0)) return 0;
-    if (*(ary + (length - 1)) != 0) return length;
+length_t rStrip(const int *nums, const length_t n) {
+    if (!n || (n == 1 && *(nums) == 0)) return 0;
+    if (*(nums + (n - 1)) != 0) return n;
 
-    auto newLength = length - 1;
-    while (newLength > 0 && *(ary + (newLength - 1)) == 0) --newLength;
+    auto newLength = n - 1;
+    while (newLength > 0 && *(nums + (newLength - 1)) == 0) --newLength;
     return newLength;
 }
 /**
@@ -176,8 +176,8 @@ template<class InputIterator>
 CONSTEXPR
 typename std::iterator_traits<InputIterator>::difference_type
 distance(InputIterator first, InputIterator last) {
-    auto c = typename std::iterator_traits<InputIterator>::iterator_category();
-    return dsa::distance(first, last, typename std::iterator_traits<InputIterator>::iterator_category());
+    auto it = typename std::iterator_traits<InputIterator>::iterator_category();
+    return dsa::distance(first, last, it);
 }
 
 template<class ForwardIterator, class T>
@@ -199,7 +199,8 @@ ForwardIterator remove(ForwardIterator first, ForwardIterator last, const T &val
 template<class ForwardIterator, class UnaryPredicate>
 NODISCARD inline CONSTEXPR
 ForwardIterator remove_if(ForwardIterator first, ForwardIterator last, UnaryPredicate pred) {
-    first = std::find_if<ForwardIterator, typename std::add_lvalue_reference<UnaryPredicate>::type>(first, last, pred);
+    typedef typename std::add_lvalue_reference<UnaryPredicate>::type ref;
+    first = std::find_if<ForwardIterator, ref>(first, last, pred);
     if (first != last) {
         ForwardIterator i = first;
         while (++i != last) {
@@ -275,7 +276,8 @@ void reverse(RandomAccessIterator first, RandomAccessIterator last, std::random_
 }
 template<class BidirectionalIterator>
 void reverse(BidirectionalIterator first, BidirectionalIterator last) {
-    dsa::reverse(first, last, typename std::iterator_traits<BidirectionalIterator>::iterator_category());
+    auto it = typename std::iterator_traits<BidirectionalIterator>::iterator_category();
+    dsa::reverse(first, last, it);
 }
 
 // min
@@ -308,7 +310,15 @@ ForwardIterator min_element(ForwardIterator first, ForwardIterator last, Compare
 template<class ForwardIterator>
 NODISCARD inline CONSTEXPR
 ForwardIterator min_element(ForwardIterator first, ForwardIterator last) {
-    return DSA::min_element(first, last, std::less<typename std::iterator_traits<ForwardIterator>::value_type>());
+    typedef typename std::iterator_traits<ForwardIterator>::value_type v;
+    return DSA::min_element(first, last, std::less<v>());
+}
+
+template<class ForwardIterator>
+NODISCARD inline CONSTEXPR
+ForwardIterator minSizeElement(ForwardIterator first, ForwardIterator last) {
+    typedef typename std::iterator_traits<ForwardIterator>::value_type v;
+    return DSA::min_element(first, last, DSA::lessSize<v>());
 }
 
 template<class T, class Compare>
@@ -342,15 +352,15 @@ ForwardIterator max_element(ForwardIterator first, ForwardIterator last, Compare
 template<class ForwardIterator>
 NODISCARD inline CONSTEXPR
 ForwardIterator max_element(ForwardIterator first, ForwardIterator last) {
-    return DSA::max_element(first, last,
-                            std::less<typename std::iterator_traits<ForwardIterator>::value_type>());
+    typedef typename std::iterator_traits<ForwardIterator>::value_type v;
+    return DSA::max_element(first, last, std::less<v>());
 }
 
 template<class ForwardIterator>
 NODISCARD inline CONSTEXPR
 ForwardIterator maxSizeElement(ForwardIterator first, ForwardIterator last) {
-    typedef typename std::iterator_traits<ForwardIterator>::value_type vt;
-    return DSA::max_element(first, last, DSA::lessSize<vt>());
+    typedef typename std::iterator_traits<ForwardIterator>::value_type v;
+    return DSA::max_element(first, last, DSA::lessSize<v>());
 }
 
 // max
@@ -478,7 +488,8 @@ std::pair<ForwardIterator, ForwardIterator> minmax_element(ForwardIterator first
 template<class ForwardIterator>
 NODISCARD inline CONSTEXPR
 std::pair<ForwardIterator, ForwardIterator> minmax_element(ForwardIterator first, ForwardIterator last) {
-    return DSA::minmax_element(first, last, std::less<typename std::iterator_traits<ForwardIterator>::value_type>());
+    typedef typename std::iterator_traits<ForwardIterator>::value_type v;
+    return DSA::minmax_element(first, last, std::less<v>());
 }
 
 
@@ -577,18 +588,18 @@ bool equal(RandomAccessIterator1 first1, RandomAccessIterator1 last1,
            std::random_access_iterator_tag, std::random_access_iterator_tag) {
     if (DSA::distance(first1, last1) != DSA::distance(first2, last2))
         return false;
-    return DSA::equal<RandomAccessIterator1, RandomAccessIterator2,
-                      typename std::add_lvalue_reference<BinaryPredicate>::type>(first1, last1, first2, pred);
+    typedef typename std::add_lvalue_reference<BinaryPredicate>::type ref;
+    return DSA::equal<RandomAccessIterator1, RandomAccessIterator2, ref>(first1, last1, first2, pred);
 }
 
 template<class InputIterator1, class InputIterator2, class BinaryPredicate>
 NODISCARD inline CONSTEXPR
 bool equal(InputIterator1 first1, InputIterator1 last1,
            InputIterator2 first2, InputIterator2 last2, BinaryPredicate pred) {
-    return DSA::equal<typename std::add_lvalue_reference<BinaryPredicate>::type>(
-        first1, last1, first2, last2, pred,
-        typename std::iterator_traits<InputIterator1>::iterator_category(),
-        typename std::iterator_traits<InputIterator2>::iterator_category());
+    typedef typename std::add_lvalue_reference<BinaryPredicate>::type ref;
+    auto it1 = typename std::iterator_traits<InputIterator1>::iterator_category();
+    auto it2 = typename std::iterator_traits<InputIterator2>::iterator_category();
+    return DSA::equal<ref>(first1, last1, first2, last2, pred, it1, it2);
 }
 
 template<class InputIterator1, class InputIterator2>
@@ -597,9 +608,9 @@ bool equal(InputIterator1 first1, InputIterator1 last1,
            InputIterator2 first2, InputIterator2 last2) {
     typedef typename std::iterator_traits<InputIterator1>::value_type v1;
     typedef typename std::iterator_traits<InputIterator2>::value_type v2;
-    return DSA::equal(first1, last1, first2, last2, std::__equal_to<v1, v2>(),
-                      typename std::iterator_traits<InputIterator1>::iterator_category(),
-                      typename std::iterator_traits<InputIterator2>::iterator_category());
+    auto it1 = typename std::iterator_traits<InputIterator1>::iterator_category();
+    auto it2 = typename std::iterator_traits<InputIterator2>::iterator_category();
+    return DSA::equal(first1, last1, first2, last2, std::__equal_to<v1, v2>(), it1, it2);
 }
 
 }

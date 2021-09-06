@@ -68,7 +68,7 @@ TEST(MinInitListCompTest, case1) {
 
 TEST(MinElementTest, array) {
     int nums[] = {2, 4, 6, 8, 7, 5, 3, 1};
-    int *actual = dsa::min_element(nums, nums + aryLength(nums));
+    int *actual = dsa::min_element(nums, nums + arylen(nums));
     EXPECT_EQ(1, *actual);
 }
 TEST(MinElementTest, list) {
@@ -88,8 +88,8 @@ TEST(MinElementTest, staticAssert) {
 
 TEST(MinElementCompTest, array) {
     int nums[] = {2, 4, 6, 8, 7, 5, 3, 1};
-    EXPECT_EQ(1, *dsa::min_element(nums, nums + aryLength(nums), std::less<>()));
-    EXPECT_EQ(8, *dsa::min_element(nums, nums + aryLength(nums), std::greater<>()));
+    EXPECT_EQ(1, *dsa::min_element(nums, nums + arylen(nums), std::less<>()));
+    EXPECT_EQ(8, *dsa::min_element(nums, nums + arylen(nums), std::greater<>()));
 }
 TEST(MinElementCompTest, list) {
     std::list<int> nums = {2, 4, 6, 8, 7, 5, 3, 1};

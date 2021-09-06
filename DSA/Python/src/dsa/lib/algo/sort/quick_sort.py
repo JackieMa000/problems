@@ -1,6 +1,6 @@
 from typing import List
 
-from dsa.lib import utils
+from dsa.lib.utils import arrays
 
 
 class QuickSort:
@@ -37,8 +37,8 @@ class QuickSort:
         i: int = low
         for j in range(low, high):
             if ary[j] < ary[high]:
-                utils.array_swap(ary, i, j)
+                arrays.swap(ary, i, j)
                 i += 1
-        utils.array_swap(ary, i, high)
+        arrays.swap(ary, i, high)
 
         return i

@@ -1,6 +1,6 @@
 from typing import List
 
-from dsa.lib import utils
+from dsa.lib.utils import arrays
 
 
 class SelectionSort:
@@ -8,7 +8,7 @@ class SelectionSort:
         n = len(ary)
         for i in range(n - 1):
             min_idx = self.array_min_pos(ary, i, n)
-            utils.array_swap(ary, i, min_idx)
+            arrays.swap(ary, i, min_idx)
 
     @staticmethod
     def array_min_pos(ary: List[int], st: int, end: int) -> int:

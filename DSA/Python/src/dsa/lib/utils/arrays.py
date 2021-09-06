@@ -1,7 +1,7 @@
-from typing import List
+from typing import List, Optional
 
 
-def rstrip(ary: List[int]) -> List[int]:
+def rStrip(nums: List[int]) -> List[int]:
     """
     Remove the trailing 0s from an array
     Rule:
@@ -10,24 +10,41 @@ def rstrip(ary: List[int]) -> List[int]:
     3. Array last element is not 0 -> return array
     4. Array length is bigger than 1, last element is 0 -> remove the trailing 0s by loop.
     """
-    return rstrip_it(ary)
+    return rStrip_it(nums)
 
 
-def rstrip_it(ary: List[int]) -> List[int]:
-    if not len(ary) or (len(ary) == 1 and ary[0] == 0): return []
-    while not ary[(-1)]: ary.pop(-1)
-    return ary
+def rStrip_it(nums: List[int]) -> List[int]:
+    n: int = len(nums)
+    if not n or (n == 1 and nums[0] == 0): return []
+    while not nums[-1]: nums.pop(-1)
+    return nums
 
 
-def rstrip_dfs(ary: List[int]) -> List[int]:
-    if not len(ary) or (len(ary) == 1 and ary[0] == 0): return []
-    if ary[-1] != 0: return ary
-    return rstrip_dfs(ary[:-1])
+def rStrip_dfs(nums: List[int]) -> List[int]:
+    if not len(nums) or (len(nums) == 1 and nums[0] == 0): return []
+    if nums[-1] != 0: return nums
+    return rStrip_dfs(nums[:-1])
 
 
-def copy(src: List[int], src_pos, des: List[int], des_pos, length) -> None:
-    for i in range(length): des[des_pos + i] = src[src_pos + i]
+def copy(src, src_pos, des, des_pos, n: int) -> None:
+    for i in range(n): des[des_pos + i] = src[src_pos + i]
 
 
 def swap(ary, i: int, j: int) -> None:
     ary[i], ary[j] = ary[j], ary[i]
+
+
+def maxSizeElement(lists: List[List[any]]) -> Optional[list]:
+    if not len(lists): return None
+    r = lists[0]
+    for l_ in lists:
+        if len(l_) > len(r): r = l_
+    return r
+
+
+def minSizeElement(lists: List[List[any]]) -> Optional[list]:
+    if not len(lists): return None
+    r = lists[0]
+    for l_ in lists:
+        if len(l_) < len(r): r = l_
+    return r

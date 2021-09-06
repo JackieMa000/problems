@@ -1,6 +1,6 @@
 from typing import List
 
-from dsa.lib.utils import array_copy
+from dsa.lib.utils import arrays
 
 
 class MergeSort:
@@ -53,4 +53,4 @@ class MergeSort:
                 result[k] = ary[j]
                 j += 1
 
-        array_copy(result, 0, ary, st, n)
+        arrays.copy(result, 0, ary, st, n)

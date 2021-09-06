@@ -15,7 +15,7 @@ class BinaryTree(Tree):
         if not self._root: return None
         array: List[int] = [0] * (self._get_array_size_for_tree(self._root))
         self._generate_array_from_tree(self._root, 0, array)
-        return arrays.rstrip(array)
+        return arrays.rStrip(array)
 
     def depth(self) -> int:
         if not self._root: return 0

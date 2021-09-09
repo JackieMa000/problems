@@ -1,8 +1,8 @@
-package dsa.lib.utils;
+package dsa.lib.utils.Algorithm;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class NumsTest {
     @Test

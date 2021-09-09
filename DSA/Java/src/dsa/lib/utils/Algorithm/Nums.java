@@ -1,4 +1,4 @@
-package dsa.lib.utils;
+package dsa.lib.utils.Algorithm;
 
 public class Nums {
     /**

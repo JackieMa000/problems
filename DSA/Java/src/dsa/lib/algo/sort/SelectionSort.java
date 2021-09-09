@@ -1,13 +1,13 @@
 package dsa.lib.algo.sort;
 
-import dsa.lib.utils.Arrays;
+import dsa.lib.utils.Range;
 
 public class SelectionSort {
     public static void sort(int[] ary) {
         int n = ary.length;
         for (int i = 0; i < n - 1; i++) {
             int minPos = arrayMinPos(ary, i, n);
-            Arrays.swap(ary, i, minPos);
+            Range.swap(ary, i, minPos);
         }
     }
 

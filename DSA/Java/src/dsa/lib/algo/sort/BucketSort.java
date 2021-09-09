@@ -1,6 +1,6 @@
 package dsa.lib.algo.sort;
 
-import dsa.lib.utils.Arrays;
+import dsa.lib.utils.Range;
 
 class BucketSort {
     private int[] nums;
@@ -81,7 +81,7 @@ class BucketSort {
     private void resizeBucket(int index, int newSize) {
         int[] newBucket = new int[newSize];
         int[] oldBucket = buckets[index];
-        Arrays.copy(oldBucket, 0, newBucket, 0, oldBucket.length);
+        Range.copy(oldBucket, 0, newBucket, 0, oldBucket.length);
         buckets[index] = newBucket;
     }
 
@@ -94,7 +94,7 @@ class BucketSort {
             if (size == 0) continue;
 
             quickSort(bucket, size);
-            Arrays.copy(bucket, 0, nums, k, size);
+            Range.copy(bucket, 0, nums, k, size);
             k += size;
         }
     }

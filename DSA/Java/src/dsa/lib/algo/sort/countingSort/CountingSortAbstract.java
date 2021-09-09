@@ -1,6 +1,6 @@
 package dsa.lib.algo.sort.countingSort;
 
-import dsa.lib.utils.Arrays;
+import dsa.lib.utils.Range;
 
 abstract class CountingSortAbstract<T> {
     protected T[] ary;
@@ -36,7 +36,7 @@ abstract class CountingSortAbstract<T> {
 
     protected void initCounts() {
         counts = new int[COUNTS_SIZE];
-        Arrays.fill(counts, 0);
+        Range.fill(counts, 0);
     }
 
     protected void storeCounts() {
@@ -50,7 +50,7 @@ abstract class CountingSortAbstract<T> {
     private void produceSorted() {
         Object[] r = new Object[size];
         generateResult(r);
-        Arrays.copy(r, 0, ary, 0, size);
+        Range.copy(r, 0, ary, 0, size);
     }
 
     protected void generateResult(Object[] res) {

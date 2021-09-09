@@ -1,9 +1,11 @@
 package dsa.lib.trees;
 
-import dsa.lib.utils.Arrays;
+import dsa.lib.utils.Range;
 import dsa.nodes.BinaryTreeNode;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 import static java.lang.Math.max;
 import static java.lang.Math.pow;
@@ -21,7 +23,7 @@ public class BinaryTree implements Tree {
         int arraySize = getArraySizeForBinaryTree(this.root);
         int[] array = new int[arraySize];
         generateArrayFromTree(this.root, 0, array);
-        return Arrays.rStrip(array);
+        return Range.rstrip(array);
     }
 
     private static void generateArrayFromTree(BinaryTreeNode root, int i, int[] array) {

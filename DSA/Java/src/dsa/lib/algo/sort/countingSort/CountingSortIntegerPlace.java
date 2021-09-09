@@ -1,6 +1,6 @@
 package dsa.lib.algo.sort.countingSort;
 
-import dsa.lib.utils.Nums;
+import dsa.lib.utils.Algorithm.Nums;
 
 class CountingSortIntegerPlace extends CountingSortIntegerAbstract {
     private final int place;

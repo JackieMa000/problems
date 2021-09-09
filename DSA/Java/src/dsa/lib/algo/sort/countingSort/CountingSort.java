@@ -1,12 +1,12 @@
 package dsa.lib.algo.sort.countingSort;
 
-import dsa.lib.utils.Arrays;
+import dsa.lib.utils.Range;
 
 public class CountingSort {
     public static void sort(int[] nums) {
-        Integer[] a = Arrays.integerValueOf(nums);
+        Integer[] a = Range.integerValueOf(nums);
         new CountingSortInteger(a).sort();
-        Arrays.copy(a, 0, nums, 0, nums.length);
+        Range.copy(a, 0, nums, 0, nums.length);
     }
 
     public static void sort(Integer[] nums) {
@@ -14,9 +14,9 @@ public class CountingSort {
     }
 
     public static void sort(int[] nums, int place) {
-        Integer[] a = Arrays.integerValueOf(nums);
+        Integer[] a = Range.integerValueOf(nums);
         new CountingSortIntegerPlace(a, place).sort();
-        Arrays.copy(a, 0, nums, 0, nums.length);
+        Range.copy(a, 0, nums, 0, nums.length);
     }
 
     public static void sort(Integer[] nums, int place) {

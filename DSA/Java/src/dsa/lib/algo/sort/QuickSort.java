@@ -1,6 +1,6 @@
 package dsa.lib.algo.sort;
 
-import dsa.lib.utils.Arrays;
+import dsa.lib.utils.Range;
 
 public class QuickSort {
     public void sort(int[] ary, int length) {
@@ -35,9 +35,9 @@ public class QuickSort {
     private int partition(int[] ary, int low, int high) {
         int i = low;
         for (int j = low; j < high; ++j) {
-            if (ary[j] < ary[high]) Arrays.swap(ary, i++, j);
+            if (ary[j] < ary[high]) Range.swap(ary, i++, j);
         }
-        Arrays.swap(ary, i, high);
+        Range.swap(ary, i, high);
 
         return i;
     }

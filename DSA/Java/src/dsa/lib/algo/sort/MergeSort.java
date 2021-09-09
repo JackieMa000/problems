@@ -1,6 +1,6 @@
 package dsa.lib.algo.sort;
 
-import dsa.lib.utils.Arrays;
+import dsa.lib.utils.Range;
 
 public class MergeSort {
     public void sort(int[] ary, int n) {
@@ -46,6 +46,6 @@ public class MergeSort {
             } else result[k] = ary[j++];
         }
 
-        Arrays.copy(result, 0, ary, st, end - st + 1);
+        Range.copy(result, 0, ary, st, end - st + 1);
     }
 }

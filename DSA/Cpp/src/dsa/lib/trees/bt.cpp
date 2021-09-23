@@ -41,7 +41,7 @@ array_s BinaryTree::toArray() {
         for (int i = 0; i < length; ++i) *(ary + i) = 0;
 
         generateArrayFromTree(root, 0, ary, length);
-        as = {ary, dsa::rStrip(ary, length)};
+        as = {ary, static_cast<length_t>(dsa::rstrip(ary, ary + length) - ary)};
     }
     return as;
 }

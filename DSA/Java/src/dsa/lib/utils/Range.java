@@ -1,7 +1,7 @@
 package dsa.lib.utils;
 
 import dsa.lib.utils.Algorithm.Comp;
-import dsa.lib.utils.Algorithm.Strip;
+import dsa.lib.utils.Algorithm.Stripper;
 
 import java.util.Comparator;
 import java.util.Iterator;
@@ -9,27 +9,31 @@ import java.util.List;
 import java.util.Objects;
 
 public class Range {
+
     // strip
 
     /**
      * Remove all the leading 0s from the given array
      */
     public static int[] lstrip(int[] nums) {
-        return Strip.lstripIt(nums);
+        return Stripper.lstripIt(nums);
+//        return Stripper.lstripDfs(nums);
     }
 
     /**
      * Remove all the trailing 0s from the given array
      */
     public static int[] rstrip(int[] nums) {
-        return Strip.rstripIt(nums);
+//        return Stripper.rstripIt(nums);
+        return Stripper.rstripDfs(nums);
     }
 
     /**
      * Remove all the leading and trailing 0s from the given array
      */
     public static int[] strip(int[] nums) {
-        return Strip.stripIt(nums);
+//        return Stripper.stripIt(nums);
+        return Stripper.stripDfs(nums);
     }
 
     /**

@@ -1,5 +1,4 @@
-#ifndef DSA_SRC_DSA_LIB_UTILS_ALGORITHM_HPP_
-#define DSA_SRC_DSA_LIB_UTILS_ALGORITHM_HPP_
+#pragma once
 
 // Algorithms to be used on ranges of elements.
 
@@ -12,34 +11,50 @@
 namespace dsa {
 
 /**
- * Remove all the trailing 0s from an array
- * Rule:
- * 1. array length is 0 -> return empty array
- * 2. array length is 1, the element is 0 -> return empty array
- * 3. array last element is not 0 -> return array
- * 4. array length is bigger than 1, last element is 0 -> remove the trailing 0s by loop
- */
-INTERN CONSTEXPR
-length_t rStrip(const int *nums, const length_t n) {
-    if (!n || (n == 1 && *(nums) == 0)) return 0;
-    if (*(nums + (n - 1)) != 0) return n;
-
-    auto newLength = n - 1;
-    while (newLength > 0 && *(nums + (newLength - 1)) == 0) --newLength;
-    return newLength;
-}
-/**
- * Remove all the trailing 0s from an iterator
+ * Remove all leading 0s from an iterator
+ *
+ * @tparam RandomAccessIterator
+ * @param first
+ * @param last
+ * @return  The new first iterator.
  */
 template<class RandomAccessIterator>
 CONSTEXPR
-RandomAccessIterator rStrip(const RandomAccessIterator first, RandomAccessIterator last) {
-    int n = last - first;
-    if (!n || n == 1 && *first == 0) { return first; }
-    if (*(last - 1) != 0) { return last; }
+RandomAccessIterator lstrip(RandomAccessIterator first, const RandomAccessIterator last) {
+    while (first != last && *first == 0) ++first;
+    return first;
+}
 
-    while (last > first && *(last - 1) == 0) { --last; }
+/**
+ * Remove all trailing 0s from an iterator
+ *
+ * @tparam RandomAccessIterator
+ * @param first
+ * @param last
+ * @return  The new last iterator.
+ */
+template<class RandomAccessIterator>
+CONSTEXPR
+RandomAccessIterator rstrip(const RandomAccessIterator first, RandomAccessIterator last) {
+    while (first != last && *(last - 1) == 0) --last;
     return last;
+}
+
+/**
+ * Remove all leading and trailing 0s from an iterator.
+ *
+ * @tparam RandomAccessIterator
+ * @param first
+ * @param last
+ * @return  A pair of new first and last iterator.
+ */
+template<class RandomAccessIterator>
+CONSTEXPR
+std::pair<RandomAccessIterator, RandomAccessIterator>
+strip(RandomAccessIterator first, RandomAccessIterator last) {
+    while (first != last && *first == 0) ++first;
+    while (first != last && *(last - 1) == 0) --last;
+    return {first, last};
 }
 
 template<class RandomAccessIterator>
@@ -614,4 +629,3 @@ bool equal(InputIterator1 first1, InputIterator1 last1,
 }
 
 }
-#endif //DSA_SRC_DSA_LIB_UTILS_ALGORITHM_HPP_

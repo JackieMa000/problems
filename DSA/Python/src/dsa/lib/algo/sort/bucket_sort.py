@@ -1,7 +1,7 @@
 from typing import List
 
 from dsa.lib.algo.sort.quick_sort import QuickSort
-from dsa.lib.utils import arrays
+from dsa.lib.utils import lists
 
 
 class BucketSort:
@@ -63,7 +63,7 @@ class BucketSort:
         for bucket in self.buckets:
             self.quick_sort(bucket)
             size: int = len(bucket)
-            arrays.copy(bucket, 0, self.nums, k, size)
+            lists.copy(bucket, 0, self.nums, k, size)
             k += size
 
     @staticmethod

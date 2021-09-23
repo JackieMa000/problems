@@ -52,7 +52,7 @@ public class RangeTest {
         }
     }
 
-    public static class MaxSizeElementTest {
+    public static class MaxSizeTest {
         @Test
         public void charArrayElement() {
             Character[][] ss = {{'a'}, {'a', 'b'}, {'a', 'b', 'c'}};
@@ -69,7 +69,7 @@ public class RangeTest {
             Integer[][] nums = {{1}, {1, 2}, {1, 2, 3}};
             Integer[] expected = nums[2];
 
-            final Integer[] actual = maxSizeElement(nums);
+            final Integer[] actual = maxSize(nums);
 
             assertSame(expected, actual);
             assertArrayEquals(expected, actual);
@@ -108,20 +108,20 @@ public class RangeTest {
             assertSame(expected, actual1);
         }
 
-        private Integer[] maxSizeElement(Integer[][] nums) {
+        private Integer[] maxSize(Integer[][] nums) {
             return Range.maxSize(nums);
         }
 
         @Test
         public void empty() {
             Integer[][] a = {};
-            assertNull(maxSizeElement(a));
+            assertNull(maxSize(a));
         }
 
         @Test
         public void oneElement() {
             Integer[][] a = {{0}};
-            var actual = maxSizeElement(a);
+            var actual = maxSize(a);
             assertSame(a[0], actual);
             assertArrayEquals(a[0], actual);
         }
@@ -129,27 +129,27 @@ public class RangeTest {
         @Test
         public void multiResults_returnFirst() {
             Integer[][] a = {{0}, {1}};
-            var actual = maxSizeElement(a);
+            var actual = maxSize(a);
             assertSame(a[0], actual);
             assertArrayEquals(a[0], actual);
         }
     }
 
-    public static class MinSizeElement {
-        private Integer[] minSizeElement(Integer[][] nums) {
+    public static class MinSize {
+        private Integer[] minSize(Integer[][] nums) {
             return Range.minSize(nums);
         }
 
         @Test
         public void empty() {
             Integer[][] a = {};
-            assertNull(minSizeElement(a));
+            assertNull(minSize(a));
         }
 
         @Test
         public void oneElement() {
             Integer[][] a = {{0}};
-            var actual = minSizeElement(a);
+            var actual = minSize(a);
             assertSame(a[0], actual);
             assertArrayEquals(a[0], actual);
         }
@@ -157,7 +157,7 @@ public class RangeTest {
         @Test
         public void multiResults_returnFirst() {
             Integer[][] a = {{0}, {1}};
-            var actual = minSizeElement(a);
+            var actual = minSize(a);
             assertSame(a[0], actual);
             assertArrayEquals(a[0], actual);
         }
@@ -165,7 +165,7 @@ public class RangeTest {
         @Test
         public void case1() {
             Integer[][] a = {{0, 0}, {1}};
-            var actual = minSizeElement(a);
+            var actual = minSize(a);
             assertSame(a[1], actual);
             assertArrayEquals(a[1], actual);
         }
@@ -224,100 +224,6 @@ public class RangeTest {
         assertEquals(expected, actual);
         assertSame(expected, actual1);
         assertEquals(expected, actual1);
-    }
-
-    public static class ArrayRStripTest {
-        private int[] rstrip(int[] nums) {
-            return Range.rstrip(nums);
-        }
-
-        @Test
-        public void emptyArray_returnEmpty() {
-            assertArrayEquals(new int[]{}, rstrip(new int[]{}));
-        }
-
-        @Test
-        public void all0_returnEmpty() {
-            assertArrayEquals(new int[]{}, rstrip(new int[]{0}));
-            assertArrayEquals(new int[]{}, rstrip(new int[]{0, 0}));
-        }
-
-        @Test
-        public void lastElementNot0() {
-            assertArrayEquals(new int[]{1}, rstrip(new int[]{1}));
-            assertArrayEquals(new int[]{1, 2}, rstrip(new int[]{1, 2}));
-        }
-
-        @Test
-        public void lastElement0() {
-            assertArrayEquals(new int[]{1}, rstrip(new int[]{1, 0}));
-            assertArrayEquals(new int[]{1}, rstrip(new int[]{1, 0, 0}));
-            assertArrayEquals(new int[]{1, 2}, rstrip(new int[]{1, 2, 0, 0}));
-            assertArrayEquals(new int[]{1, 0, 2}, rstrip(new int[]{1, 0, 2, 0, 0}));
-        }
-    }
-
-    public static class ArrayLStripTest {
-        private int[] lstrip(int[] nums) {
-            return Range.lstrip(nums);
-        }
-
-        @Test
-        public void emptyArray_returnEmpty() {
-            assertArrayEquals(new int[]{}, lstrip(new int[]{}));
-        }
-
-        @Test
-        public void all0_returnEmpty() {
-            assertArrayEquals(new int[]{}, lstrip(new int[]{0}));
-        }
-
-        @Test
-        public void lastElementNot0() {
-            assertArrayEquals(new int[]{1}, lstrip(new int[]{1}));
-            assertArrayEquals(new int[]{1, 2}, lstrip(new int[]{1, 2}));
-        }
-
-        @Test
-        public void lastElement0() {
-            assertArrayEquals(new int[]{1}, lstrip(new int[]{0, 1}));
-            assertArrayEquals(new int[]{1}, lstrip(new int[]{0, 0, 1}));
-            assertArrayEquals(new int[]{1, 2}, lstrip(new int[]{0, 0, 1, 2}));
-            assertArrayEquals(new int[]{1, 0, 2}, lstrip(new int[]{0, 0, 1, 0, 2}));
-        }
-    }
-
-    public static class ArrayStripTest {
-        private int[] strip(int[] nums) {
-            return Range.strip(nums);
-        }
-
-        @Test
-        public void emptyArray_returnEmpty() {
-            assertArrayEquals(new int[]{}, strip(new int[]{}));
-        }
-
-        @Test
-        public void all0_returnEmpty() {
-            assertArrayEquals(new int[]{}, strip(new int[]{0}));
-            assertArrayEquals(new int[]{}, strip(new int[]{0, 0}));
-        }
-
-        @Test
-        public void no0s() {
-            assertArrayEquals(new int[]{1}, strip(new int[]{1}));
-            assertArrayEquals(new int[]{1, 2}, strip(new int[]{1, 2}));
-        }
-
-        @Test
-        public void has0s() {
-            assertArrayEquals(new int[]{1}, strip(new int[]{0, 1, 0}));
-            assertArrayEquals(new int[]{1}, strip(new int[]{0, 0, 1, 0}));
-            assertArrayEquals(new int[]{1, 2}, strip(new int[]{0, 0, 1, 2}));
-            assertArrayEquals(new int[]{1, 2}, strip(new int[]{0, 0, 1, 2, 0, 0}));
-            assertArrayEquals(new int[]{1, 0, 2}, strip(new int[]{0, 0, 1, 0, 2}));
-            assertArrayEquals(new int[]{1, 0, 2}, strip(new int[]{0, 0, 1, 0, 2, 0, 0}));
-        }
     }
 
     public static class SwapTest {

@@ -1,6 +1,9 @@
 ######### Utils Test ##############
 add_test(NAME UtilsTest COMMAND utils_test)
 
+######### Algorithms Test ##############
+add_test(NAME AlgorithmsTest COMMAND algorithms_test)
+
 ######### Arrays Test #############
 add_test(NAME ArrayTest COMMAND array_test)
 

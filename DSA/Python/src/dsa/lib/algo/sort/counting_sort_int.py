@@ -1,6 +1,6 @@
 from typing import List
 
-from dsa.lib.utils import arrays
+from dsa.lib.utils import lists
 
 
 class CountingSortInt:
@@ -52,7 +52,7 @@ class CountingSortInt:
     def produceSorted(self):
         r = [0] * self.size
         self.generate_result(r)
-        arrays.copy(r, 0, self.nums, 0, self.size)
+        lists.copy(r, 0, self.nums, 0, self.size)
 
     def generate_result(self, res: List[int]) -> None:
         for i in range(self.size - 1, -1, -1):

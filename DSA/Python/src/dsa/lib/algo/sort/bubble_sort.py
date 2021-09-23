@@ -1,6 +1,6 @@
 from typing import List
 
-from dsa.lib.utils import arrays
+from dsa.lib.utils import lists
 
 
 class BubbleSort:
@@ -24,5 +24,5 @@ class BubbleSort:
         """
         for i in range(st, end - 1):
             if ary[i] > ary[i + 1]:
-                arrays.swap(ary, i, i + 1)
+                lists.swap(ary, i, i + 1)
             self.swapped = True

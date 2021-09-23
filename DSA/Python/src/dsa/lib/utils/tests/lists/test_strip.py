@@ -1,16 +1,16 @@
 from unittest import TestCase
 
-from dsa.lib.utils.algorithm import stripper
+from dsa.lib.utils import lists
 
 
 class LStripTest(TestCase):
     @staticmethod
     def lstripIt(nums):
-        return stripper.lstripIt(nums)
+        return lists.lstripIt(nums)
 
     @staticmethod
     def lstripDfs(nums):
-        return stripper.lstripDfs(nums)
+        return lists.lstripDfs(nums)
 
     def assertLStrip(self, expected, nums):
         self.assertEqual(expected, self.lstripIt(nums))
@@ -37,11 +37,11 @@ class LStripTest(TestCase):
 class RStripTest(TestCase):
     @staticmethod
     def rstripIt(nums):
-        return stripper.rstripIt(nums)
+        return lists.rstripIt(nums)
 
     @staticmethod
     def rstripDfs(nums):
-        return stripper.rstripDfs(nums)
+        return lists.rstripDfs(nums)
 
     def assertRStrip(self, expected, nums):
         self.assertEqual(expected, self.rstripIt(nums))
@@ -68,11 +68,11 @@ class RStripTest(TestCase):
 class StripTest(TestCase):
     @staticmethod
     def stripIt(nums):
-        return stripper.stripIt(nums)
+        return lists.stripIt(nums)
 
     @staticmethod
     def stripDfs(nums):
-        return stripper.stripDfs(nums)
+        return lists.stripDfs(nums)
 
     def assertStrip(self, expected, nums):
         self.assertEqual(expected, self.stripIt(nums))

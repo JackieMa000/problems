@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from dsa.lib.utils.algorithm import minMax
+from dsa.lib.utils import lists
 
 
 class MaxSizeTest(TestCase):
@@ -27,7 +27,7 @@ class MaxSizeTest(TestCase):
 
     @staticmethod
     def maxSize(nums):
-        return minMax.maxSize(nums)
+        return lists.maxSize(nums)
 
 
 class MinSizeTest(TestCase):
@@ -54,4 +54,4 @@ class MinSizeTest(TestCase):
 
     @staticmethod
     def minSize(nums):
-        return minMax.minSize(nums)
+        return lists.minSize(nums)

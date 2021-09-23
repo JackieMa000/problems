@@ -1,39 +1,74 @@
 package dsa.lib.utils;
 
-import dsa.lib.utils.Algorithm.Comp;
-import dsa.lib.utils.Algorithm.Stripper;
-
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+import java.util.function.BiPredicate;
 
 public class Range {
 
     // strip
 
+    public static int[] lstripIt(int[] nums) {
+        int i = 0;
+        while (i < nums.length && nums[i] == 0) ++i;
+        return i == 0 ? nums : Arrays.copyOfRange(nums, i, nums.length);
+    }
+
+    public static int[] lstripDfs(int[] nums) {
+        if (nums.length == 0) return nums;
+        return nums[0] != 0 ? nums : lstripDfs(Arrays.copyOfRange(nums, 1, nums.length));
+    }
+
+    public static int[] rstripIt(int[] nums) {
+        int n = nums.length, i = n;
+        while (i > 0 && nums[i - 1] == 0) --i;
+        return i == n ? nums : Arrays.copyOfRange(nums, 0, i);
+    }
+
+    public static int[] rstripDfs(int[] nums) {
+        final int n = nums.length;
+        if (n == 0) return nums;
+        return nums[n - 1] != 0 ? nums : rstripDfs(Arrays.copyOf(nums, n - 1));
+    }
+
+    public static int[] stripIt(int[] nums) {
+        int n = nums.length;
+
+        int i = 0, j = n;
+        while (i < j && nums[i] == 0) ++i;
+        while (i < j && nums[j - 1] == 0) --j;
+        return i == 0 && j == n ? nums : Arrays.copyOfRange(nums, i, j);
+    }
+
+    public static int[] stripDfs(int[] nums) {
+        int n = nums.length;
+        if (n == 0) return nums;
+
+        final boolean isFirst0 = nums[0] == 0;
+        final boolean isLast0 = nums[n - 1] == 0;
+        int i = isFirst0 ? 1 : 0;
+        int j = (isLast0 && n > 1) ? n - 1 : n;
+        return (!isFirst0 && !isLast0) ? nums : stripDfs(Arrays.copyOfRange(nums, i, j));
+    }
+
     /**
      * Remove all the leading 0s from the given array
      */
     public static int[] lstrip(int[] nums) {
-        return Stripper.lstripIt(nums);
-//        return Stripper.lstripDfs(nums);
+        return lstripIt(nums);
     }
 
     /**
      * Remove all the trailing 0s from the given array
      */
     public static int[] rstrip(int[] nums) {
-//        return Stripper.rstripIt(nums);
-        return Stripper.rstripDfs(nums);
+        return rstripIt(nums);
     }
 
     /**
      * Remove all the leading and trailing 0s from the given array
      */
     public static int[] strip(int[] nums) {
-//        return Stripper.stripIt(nums);
-        return Stripper.stripDfs(nums);
+        return stripIt(nums);
     }
 
     /**
@@ -136,10 +171,36 @@ public class Range {
         for (int i = 0; i < ls.size(); ++i) ls.set(i, v);
     }
 
+    // comp
+    public static <T> T comp(T[] ary, BiPredicate<T, T> pred) {
+        if (ary.length == 0) return null;
+        T r = ary[0];
+        for (final T e : ary) if (pred.test(e, r)) r = e;
+        return r;
+    }
+
+    public static <E> List<E> compSize(List<List<E>> ls, BiPredicate<List<E>, List<E>> pred) {
+        if (ls.size() == 0) return null;
+        List<E> r = ls.get(0);
+        for (final List<E> e : ls) if (pred.test(e, r)) r = e;
+        return r;
+    }
+
+    public static <E> List<E> compSize(Iterator<List<E>> it, BiPredicate<List<E>, List<E>> pred) {
+        if (!it.hasNext()) return null;
+
+        List<E> res = it.next();
+        while (it.hasNext()) {
+            List<E> e = it.next();
+            if (pred.test(e, res)) res = e;
+        }
+        return res;
+    }
+
     // max
 
     public static <T> T max(T[] ary, Comparator<T> comp) {
-        return Comp.comp(ary, (x, y) -> comp.compare(x, y) > 0);
+        return comp(ary, (x, y) -> comp.compare(x, y) > 0);
     }
 
     public static int max(int[] nums) {
@@ -165,7 +226,7 @@ public class Range {
     }
 
     public static <E> List<E> maxSize(List<List<E>> ls, Comparator<List<E>> comp) {
-        return Comp.compSize(ls, (x, y) -> comp.compare(x, y) > 0);
+        return compSize(ls, (x, y) -> comp.compare(x, y) > 0);
     }
 
     public static <E> List<E> maxSize(List<List<E>> ls) {
@@ -173,7 +234,7 @@ public class Range {
     }
 
     public static <E> List<E> maxSize(Iterator<List<E>> it, Comparator<List<E>> comp) {
-        return Comp.compSize(it, (x, y) -> comp.compare(x, y) > 0);
+        return compSize(it, (x, y) -> comp.compare(x, y) > 0);
     }
 
     public static <E> List<E> maxSize(Iterator<List<E>> it) {
@@ -183,7 +244,7 @@ public class Range {
     // min
 
     public static <T> T min(T[] ary, Comparator<T> comp) {
-        return Comp.comp(ary, (x, y) -> comp.compare(x, y) < 0);
+        return comp(ary, (x, y) -> comp.compare(x, y) < 0);
     }
 
     public static int min(int[] nums) {
@@ -209,7 +270,7 @@ public class Range {
     }
 
     public static <E> List<E> minSize(List<List<E>> ls, Comparator<List<E>> comp) {
-        return Comp.compSize(ls, (x, y) -> comp.compare(x, y) < 0);
+        return compSize(ls, (x, y) -> comp.compare(x, y) < 0);
     }
 
     public static <E> List<E> minSize(List<List<E>> lists) {
@@ -217,7 +278,7 @@ public class Range {
     }
 
     public static <E> List<E> minSize(Iterator<List<E>> it, Comparator<List<E>> comp) {
-        return Comp.compSize(it, (x, y) -> comp.compare(x, y) < 0);
+        return compSize(it, (x, y) -> comp.compare(x, y) < 0);
     }
 
     public static <E> List<E> minSize(Iterator<List<E>> it) {

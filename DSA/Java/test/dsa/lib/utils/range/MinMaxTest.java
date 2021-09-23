@@ -1,15 +1,15 @@
-package dsa.lib.utils;
+package dsa.lib.utils.range;
 
+import dsa.lib.utils.Range;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class RangeTest {
+public class MinMaxTest {
     public static class MinTest {
         @Test
         public void min() {
@@ -135,7 +135,7 @@ public class RangeTest {
         }
     }
 
-    public static class MinSize {
+    public static class MinSizeTest {
         private Integer[] minSize(Integer[][] nums) {
             return Range.minSize(nums);
         }
@@ -169,108 +169,60 @@ public class RangeTest {
             assertSame(a[1], actual);
             assertArrayEquals(a[1], actual);
         }
-    }
 
-    @Test
-    public void charArrayElement() {
-        Character[][] ss = {{'a'}, {'a', 'b'}, {'a', 'b', 'c'}};
-        final Character[] expected = ss[0];
-
-        final Character[] actual = Range.minSize(ss);
-
-        assertSame(expected, actual);
-        assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void intArrayElement() {
-        Integer[][] nums = {{1}, {1, 2}, {1, 2, 3}};
-        Integer[] expected = nums[0];
-
-        final Integer[] actual = Range.minSize(nums);
-
-        assertSame(expected, actual);
-        assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void stringArrayElement() {
-        String[] ss = {"a", "ab", "abc"};
-        String expected = ss[0];
-
-        final String actual = Range.minSize(ss);
-
-        assertSame(expected, actual);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void charListElement() {
-        final List<Character> l1 = List.of('a');
-        final List<Character> l2 = Arrays.asList('a', 'b');
-        final List<Character> l3 = Arrays.asList('a', 'b', 'c');
-
-        List<List<Character>> ss = new ArrayList<>();
-        ss.add(new ArrayList<>(l1));
-        ss.add(new ArrayList<>(l2));
-        ss.add(new ArrayList<>(l3));
-
-        List<Character> expected = ss.get(0);
-
-        final List<Character> actual = Range.minSize(ss);
-        final List<Character> actual1 = Range.minSize(ss.iterator());
-
-        assertSame(expected, actual);
-        assertEquals(expected, actual);
-        assertSame(expected, actual1);
-        assertEquals(expected, actual1);
-    }
-
-    public static class SwapTest {
         @Test
-        public void integerArray() {
-            int[] nums = {1, 2};
-            Range.swap(nums, 0, 1);
-            assertArrayEquals(new int[]{2, 1}, nums);
+        public void charArrayElement() {
+            Character[][] ss = {{'a'}, {'a', 'b'}, {'a', 'b', 'c'}};
+            final Character[] expected = ss[0];
+
+            final Character[] actual = Range.minSize(ss);
+
+            assertSame(expected, actual);
+            assertArrayEquals(expected, actual);
         }
 
         @Test
-        public void genericArray() {
-            Character[] s = {'a', 'b'};
-            Range.swap(s, 0, 1);
-            assertArrayEquals(new Character[]{'b', 'a'}, s);
+        public void intArrayElement() {
+            Integer[][] nums = {{1}, {1, 2}, {1, 2, 3}};
+            Integer[] expected = nums[0];
+
+            final Integer[] actual = Range.minSize(nums);
+
+            assertSame(expected, actual);
+            assertArrayEquals(expected, actual);
         }
 
         @Test
-        public void genericList() {
-            List<Character> in = new LinkedList<>(Arrays.asList('a', 'b'));
-            List<Character> want = new LinkedList<>(Arrays.asList('b', 'a'));
-            Range.swap(in, 0, 1);
-            assertEquals(want, in);
-        }
-    }
+        public void stringArrayElement() {
+            String[] ss = {"a", "ab", "abc"};
+            String expected = ss[0];
 
-    public static class FillTest {
-        @Test
-        public void integerArray() {
-            int[] nums = new int[2];
-            Range.fill(nums, 1);
-            assertArrayEquals(new int[]{1, 1}, nums);
+            final String actual = Range.minSize(ss);
+
+            assertSame(expected, actual);
+            assertEquals(expected, actual);
         }
 
         @Test
-        public void genericArray() {
-            Character[] s = new Character[2];
-            Range.fill(s, 'a');
-            assertArrayEquals(new Character[]{'a', 'a'}, s);
-        }
+        public void charListElement() {
+            final List<Character> l1 = List.of('a');
+            final List<Character> l2 = Arrays.asList('a', 'b');
+            final List<Character> l3 = Arrays.asList('a', 'b', 'c');
 
-        @Test
-        public void genericList() {
-            List<Character> in = new ArrayList<>(Arrays.asList('0', '0'));
-            List<Character> want = new ArrayList<>(Arrays.asList('a', 'a'));
-            Range.fill(in, 'a');
-            assertEquals(want, in);
+            List<List<Character>> ss = new ArrayList<>();
+            ss.add(new ArrayList<>(l1));
+            ss.add(new ArrayList<>(l2));
+            ss.add(new ArrayList<>(l3));
+
+            List<Character> expected = ss.get(0);
+
+            final List<Character> actual = Range.minSize(ss);
+            final List<Character> actual1 = Range.minSize(ss.iterator());
+
+            assertSame(expected, actual);
+            assertEquals(expected, actual);
+            assertSame(expected, actual1);
+            assertEquals(expected, actual1);
         }
     }
 }

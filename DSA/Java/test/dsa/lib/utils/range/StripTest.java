@@ -1,5 +1,6 @@
-package dsa.lib.utils.Algorithm;
+package dsa.lib.utils.range;
 
+import dsa.lib.utils.Range;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
@@ -7,11 +8,11 @@ import static org.junit.Assert.assertArrayEquals;
 public class StripTest {
     public static class LStripTest {
         private int[] lstripIt(int[] nums) {
-            return Stripper.lstripIt(nums);
+            return Range.lstripIt(nums);
         }
 
         private int[] lstripDfs(int[] nums) {
-            return Stripper.lstripDfs(nums);
+            return Range.lstripDfs(nums);
         }
 
         @Test
@@ -47,11 +48,11 @@ public class StripTest {
 
     public static class RStripTest {
         private int[] rstripIt(int[] nums) {
-            return Stripper.rstripIt(nums);
+            return Range.rstripIt(nums);
         }
 
         private int[] rstripDfs(int[] nums) {
-            return Stripper.rstripDfs(nums);
+            return Range.rstripDfs(nums);
         }
 
         private void assertRStrip(int[] expected, int[] nums) {
@@ -88,11 +89,11 @@ public class StripTest {
 
     public static class _StripTest {
         private int[] stripIt(int[] nums) {
-            return Stripper.stripIt(nums);
+            return Range.stripIt(nums);
         }
 
         private int[] stripDfs(int[] nums) {
-            return Stripper.stripDfs(nums);
+            return Range.stripDfs(nums);
         }
 
         private void assertStrip(int[] expected, int[] nums) {

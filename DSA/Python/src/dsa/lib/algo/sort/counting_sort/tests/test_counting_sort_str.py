@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from dsa.lib.algo.sort.counting_sort_str import CountingSortStr
+from dsa.lib.algo.sort.counting_sort.counting_sort_str import CountingSortStr
 
 
 class CountingSortStringTest(TestCase):

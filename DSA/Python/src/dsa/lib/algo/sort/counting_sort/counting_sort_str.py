@@ -1,6 +1,6 @@
 from typing import List, AnyStr
 
-from dsa.lib.algo.sort.counting_sort_abstract import CountingSortAbstract
+from dsa.lib.algo.sort.counting_sort.counting_sort_abstract import CountingSortAbstract
 
 
 class CountingSortStr(CountingSortAbstract):

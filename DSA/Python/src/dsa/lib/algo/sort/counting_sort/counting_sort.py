@@ -1,7 +1,7 @@
 from typing import List, AnyStr
 
-from dsa.lib.algo.sort.counting_sort_int import CountingSortInt, CountingSortIntPlace
-from dsa.lib.algo.sort.counting_sort_str import CountingSortStr
+from dsa.lib.algo.sort.counting_sort.counting_sort_int import CountingSortInt, CountingSortIntPlace
+from dsa.lib.algo.sort.counting_sort.counting_sort_str import CountingSortStr
 
 
 def sortInt(nums: List[int]) -> None:

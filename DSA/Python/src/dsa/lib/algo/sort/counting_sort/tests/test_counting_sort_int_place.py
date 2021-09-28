@@ -1,7 +1,7 @@
 from typing import List
 from unittest import TestCase
 
-from dsa.lib.algo.sort.counting_sort_int import CountingSortIntPlace
+from dsa.lib.algo.sort.counting_sort.counting_sort_int import CountingSortIntPlace
 
 
 class CountingSortIntPlaceTestCase(TestCase):

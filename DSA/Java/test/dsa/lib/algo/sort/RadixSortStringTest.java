@@ -26,7 +26,7 @@ public class RadixSortStringTest {
         assertArrayEquals(expected, ss);
     }
 
-    private static void radixSort(String[] ary) {
-        RadixSortString.sort(ary);
+    private static void radixSort(String[] ss) {
+        RadixSortString.sort(ss);
     }
 }

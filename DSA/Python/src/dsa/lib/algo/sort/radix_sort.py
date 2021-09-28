@@ -1,6 +1,6 @@
 from typing import List, AnyStr
 
-from dsa.lib.algo.sort import counting_sort
+from dsa.lib.algo.sort.counting_sort import counting_sort
 from dsa.lib.utils import lists
 
 

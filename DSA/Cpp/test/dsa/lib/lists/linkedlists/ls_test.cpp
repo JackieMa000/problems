@@ -6,21 +6,15 @@ namespace {
 class ToArrayTest : public LinkedListTest {
  protected:
     static void run(int *ary, length_t length) {
-        ListNode *head = arrayToSinglyLinkedlist(ary, length);
-        auto actual = toArray(head);
-        EXPECT_ARRAY_EQ(ary, length, actual.ary, actual.length);
-
-        LinkedList::destroy(head);
-        delete[] actual.ary;
-    }
-
-    static array_s toArray(ListNode *head) {
-        LinkedList ls(head);
-        return ls.toArray();
+        std::unique_ptr<ListNode, LinkedList::Deleter>
+            head_p(arrayToSinglyLinkedlist(ary, length), LinkedList::Deleter());
+        auto[actAry, actLength] = singlyLinkedListToArray(head_p.get());
+        std::unique_ptr<int[]> _(actAry);
+        EXPECT_ARRAY_EQ(ary, length, actAry, actLength);
     }
 };
 TEST_F(ToArrayTest, nullList) {
-    auto actual = toArray(nullptr);
+    auto actual = singlyLinkedListToArray(nullptr);
     EXPECT_EQ(0, actual.length);
     EXPECT_EQ(nullptr, actual.ary);
 }

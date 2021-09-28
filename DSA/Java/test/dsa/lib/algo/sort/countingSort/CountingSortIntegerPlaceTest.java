@@ -36,7 +36,6 @@ public class CountingSortIntegerPlaceTest {
     @Test
     public void unitPlace() {
         assertCountingSortPlace(new Integer[]{2, 1, 3}, 1, new Integer[]{1, 2, 3});
-
         assertCountingSortPlace(new Integer[]{22, 11, 31}, 1, new Integer[]{11, 31, 22});
         assertCountingSortPlace(new Integer[]{121, 432, 564, 23, 1, 45, 788}, 1,
                 new Integer[]{121, 1, 432, 23, 564, 45, 788});

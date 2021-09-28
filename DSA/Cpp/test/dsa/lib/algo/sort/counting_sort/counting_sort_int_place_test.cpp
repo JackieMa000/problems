@@ -30,7 +30,6 @@ TEST_F(CountingSortIntPlaceTest, placeExceeds_noSort) {
 }
 TEST_F(CountingSortIntPlaceTest, unitPlace) {
     assertCountingSortPlace({2, 1, 3}, 1, {1, 2, 3});
-
     assertCountingSortPlace({22, 11, 31}, 1, {11, 31, 22});
     assertCountingSortPlace({121, 432, 564, 23, 1, 45, 788}, 1, {121, 1, 432, 23, 564, 45, 788});
 }

@@ -2,29 +2,29 @@ from typing import List, Any, Callable, Optional
 from copy import deepcopy
 
 
-def lstripIt(nums: List[int]) -> List[int]:
+def _lstripIt(nums: List[int]) -> List[int]:
     i = 0
     while i < len(nums) and nums[i] == 0: i += 1
     return nums if i == 0 else nums[i:]
 
 
-def lstripDfs(nums: List[int]) -> List[int]:
+def _lstripDfs(nums: List[int]) -> List[int]:
     if not len(nums): return nums
-    return nums if nums[0] != 0 else lstripDfs(nums[1:])
+    return nums if nums[0] != 0 else _lstripDfs(nums[1:])
 
 
-def rstripIt(nums: List[int]) -> List[int]:
+def _rstripIt(nums: List[int]) -> List[int]:
     n = i = len(nums)
     while i > 0 and nums[i - 1] == 0: i -= 1
     return nums if i == n else nums[:i]
 
 
-def rstripDfs(nums: List[int]) -> List[int]:
+def _rstripDfs(nums: List[int]) -> List[int]:
     if not len(nums): return nums
-    return nums if nums[-1] != 0 else rstripDfs(nums[:-1])
+    return nums if nums[-1] != 0 else _rstripDfs(nums[:-1])
 
 
-def stripIt(nums: List[int]) -> List[int]:
+def _stripIt(nums: List[int]) -> List[int]:
     n = len(nums)
     i = 0
     j = n
@@ -33,7 +33,7 @@ def stripIt(nums: List[int]) -> List[int]:
     return nums if (i == 0 and j == n) else nums[i:j]
 
 
-def stripDfs(nums: List[int]) -> List[int]:
+def _stripDfs(nums: List[int]) -> List[int]:
     n = len(nums)
     if not n: return nums
 
@@ -41,7 +41,7 @@ def stripDfs(nums: List[int]) -> List[int]:
     is_last0 = nums[-1] == 0
     i = 1 if is_first0 else 0
     j = n - 1 if is_last0 and n > 1 else n
-    return nums if (nums[0] != 0 and nums[-1] != 0) else stripDfs(nums[i:j])
+    return nums if (nums[0] != 0 and nums[-1] != 0) else _stripDfs(nums[i:j])
 
 
 def lstrip(nums: List[int]) -> List[int]:
@@ -50,7 +50,7 @@ def lstrip(nums: List[int]) -> List[int]:
     :param nums:
     :return:
     """
-    return lstripIt(nums)
+    return _lstripIt(nums)
 
 
 def rstrip(nums: List[int]) -> List[int]:
@@ -59,7 +59,7 @@ def rstrip(nums: List[int]) -> List[int]:
     :param nums:
     :return:
     """
-    return rstripIt(nums)
+    return _rstripIt(nums)
 
 
 def strip(nums: List[int]) -> List[int]:
@@ -68,7 +68,7 @@ def strip(nums: List[int]) -> List[int]:
     :param nums:
     :return:
     """
-    return stripIt(nums)
+    return _stripIt(nums)
 
 
 def trim(nums: List[int]) -> List[int]:

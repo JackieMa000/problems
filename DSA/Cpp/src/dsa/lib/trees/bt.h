@@ -28,6 +28,10 @@ class BinaryTree : public Tree {
     BinaryTreeNode *root;
 
  public:
+    typedef void(&destroy_t)(BinaryTreeNode *);
+    struct Deleter { void operator()(BinaryTreeNode *p_root); };
+
+ public:
     explicit BinaryTree(BinaryTreeNode *root);
 
     static void destroy(BinaryTreeNode *root);

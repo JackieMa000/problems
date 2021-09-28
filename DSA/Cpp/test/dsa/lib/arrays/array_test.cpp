@@ -45,7 +45,7 @@ class ToCyclicSinglyLinkedListTest : public ArrayTest {
     static void run(int *ary, length_t length, int pos, int expected, int idx) {
         ListNode *actual = toCyclicSingyLinkedList(ary, length, pos);
         EXPECT_EQ(expected, getLinkedListNodeByIndex(actual, idx)->val);
-        lists::linkedlists::LinkedList::destroyCycle(actual, length);
+        lists::linkedlists::LinkedList::destroy(actual, length);
     }
     static ListNode *toCyclicSingyLinkedList(int *ary, length_t length, int pos) {
         Array array(ary, length);
@@ -54,7 +54,7 @@ class ToCyclicSinglyLinkedListTest : public ArrayTest {
     static void runPosMinus(int *ary, length_t length, int pos) {
         ListNode *actual = toCyclicSingyLinkedList(ary, length, pos);
         EXPECT_ARRAY_EQ_LINKEDLIST(ary, length, actual);
-        lists::linkedlists::LinkedList::destroyCycle(actual, length);
+        lists::linkedlists::LinkedList::destroy(actual, length);
     }
 };
 TEST_F(ToCyclicSinglyLinkedListTest, posMinus) {

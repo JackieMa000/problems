@@ -6,6 +6,12 @@
 namespace dsa::lib::lists::linkedlists {
 
 class Base : public List {
+ public:
+    typedef void(&destroy_t)(ListNode *);
+    struct Deleter { void operator()(ListNode *p_head); };
+
+    typedef void(&destroyCycle_lref)(ListNode *, length_t);
+    struct DeleterCycle { void operator()(ListNode *p_head, length_t length); };
 
  public:
     ListNode *head;
@@ -13,7 +19,7 @@ class Base : public List {
 
     static void destroy(ListNode *head);
 //    Destroy the a cyclic LinkedList. length: the length of the LinkedList
-    static void destroyCycle(ListNode *head, length_t length);
+    static void destroy(ListNode *head, length_t length);
 
     length_t length() final;
     [[nodiscard]] virtual array_s toArray() final;

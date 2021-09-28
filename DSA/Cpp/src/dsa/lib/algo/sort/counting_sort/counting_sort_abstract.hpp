@@ -61,10 +61,13 @@ class CountingSortAbstract {
     };
 
     void produceSorted() {
-        T *r = new T[size];
-        generateResult(r);
-        dsa::copy(r, r + size, ary.begin());
-        delete[] r;
+//        std::unique_ptr<T[]> p(new T[size]);
+//        auto first = p.get();
+
+        auto first = new T[size];
+
+        generateResult(first);
+        dsa::copy(first, first + size, ary.begin());
     }
 
     void generateResult(T *res) {
@@ -83,4 +86,5 @@ class CountingSortIntAbstract : public CountingSortAbstract<int> {
  public:
     explicit CountingSortIntAbstract(std::vector<int> &nums) : CountingSortAbstract(nums) {}
 };
+
 }

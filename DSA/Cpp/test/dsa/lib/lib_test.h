@@ -15,7 +15,7 @@ class LibTest : public testing::DSATest {
         arrays::Array array(ary, length);
         return array.toBinaryTree();
     }
-    static ListNode *arrayToSinglyLinkedlist(int *ary, length_t length) {
+    NODISCARD static ListNode *arrayToSinglyLinkedlist(int *ary, length_t length) {
         arrays::Array array(ary, length);
         return array.toSinglyLinkedList();
     }
@@ -38,6 +38,9 @@ class LibTest : public testing::DSATest {
     static BinaryTreeNode *getTreeNodeByValue(BinaryTreeNode *root, int val) {
         trees::BinaryTree bt(root);
         return bt.getNodeByValue(val);
+    }
+    static array_s singlyLinkedListToArray(ListNode *head) {
+        return lists::linkedlists::LinkedList(head).toArray();
     }
 };
 

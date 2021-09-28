@@ -3,13 +3,14 @@ cmake_minimum_required(VERSION 3.15)
 # set the project name and version
 project(DSA, VERSION 1.0)
 
-##### specify the C++ standard
+##### specify the C/C++ standard
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
 # Turn on sanitizer for debugging
-#include(sanitizer.cmake)
+include(sanitizer.cmake)
 
+# Enable boost library
 #include(boost.cmake)
 
 # Enable cMake's CTest

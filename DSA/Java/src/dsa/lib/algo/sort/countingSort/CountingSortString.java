@@ -1,8 +1,9 @@
 package dsa.lib.algo.sort.countingSort;
 
-//Only handles small case letters
+/**
+ * Only handles small case letters
+ */
 class CountingSortString extends CountingSortAbstract<String> {
-    private final int FIRST_OF_ALPHABET = 97, LAST_OF_ALPHABET = 122;
     private final int index;
 
     public CountingSortString(String[] ss, int index) {
@@ -12,8 +13,8 @@ class CountingSortString extends CountingSortAbstract<String> {
 
     @Override
     protected void initMinMax() {
-        min = FIRST_OF_ALPHABET;
-        max = LAST_OF_ALPHABET;
+        min = 'a';
+        max = 'z';
     }
 
     @Override

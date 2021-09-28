@@ -6,9 +6,11 @@
 
 namespace dsa::lib::algo::sort {
 
+/**
+ * Only handles small case letters
+ */
 class CountingSortString : public CountingSortAbstract<std::string> {
  private:
-    const int FIRST_OF_ALPHABET = 97, LAST_OF_ALPHABET = 122;
     const pos_t index;
 
  public:
@@ -17,8 +19,8 @@ class CountingSortString : public CountingSortAbstract<std::string> {
 
  protected:
     void initMinMax() override {
-        min = FIRST_OF_ALPHABET;
-        max = LAST_OF_ALPHABET;
+        min = 'a';
+        max = 'z';
     }
 
     pos_t countsIndexOf(std::string e) override {

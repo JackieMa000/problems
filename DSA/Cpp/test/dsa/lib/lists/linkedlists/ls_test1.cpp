@@ -22,14 +22,14 @@ TEST_F(HasCycleTest, case2) {
     ListNode *head = arrayToCyclicSinglyLinkedlist(ary, arylen(ary), 0);
     bool actual = hasCycle(head);
     EXPECT_TRUE(actual);
-    LinkedList::destroyCycle(head, arylen(ary));
+    LinkedList::destroy(head, arylen(ary));
 }
 TEST_F(HasCycleTest, case3) {
     int ary[] = {3, 2, 0, 4};
     ListNode *head = arrayToCyclicSinglyLinkedlist(ary, arylen(ary), 1);
     bool actual = hasCycle(head);
     EXPECT_TRUE(actual);
-    LinkedList::destroyCycle(head, arylen(ary));
+    LinkedList::destroy(head, arylen(ary));
 }
 
 class DetectCycleTest : public LinkedListTest {
@@ -56,7 +56,7 @@ TEST_F(DetectCycleTest, case2) {
     ListNode *actual = detectCycle(head);
 
     EXPECT_EQ(expected, actual);
-    LinkedList::destroyCycle(head, arylen(ary));
+    LinkedList::destroy(head, arylen(ary));
 }
 TEST_F(DetectCycleTest, case3) {
     int ary[] = {3, 2, 0, -4};
@@ -66,7 +66,7 @@ TEST_F(DetectCycleTest, case3) {
     ListNode *actual = detectCycle(head);
 
     EXPECT_EQ(expected, actual);
-    LinkedList::destroyCycle(head, arylen(ary));
+    LinkedList::destroy(head, arylen(ary));
 }
 
 class SwapPairsTest : public LinkedListTest {

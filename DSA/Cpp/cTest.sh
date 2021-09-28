@@ -1,7 +1,9 @@
-cd /Users/Jackie/Dev/DSA/problems/DSA/Cpp/cmake-build-debug
+cd /Users/Jackie/Dev/DSA/problems/DSA/Cpp/cmake-build-debug-coverage/
 
 #### Build All Targets ###
-/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --build /Users/jackie/Dev/DSA/problems/DSA/Cpp/cmake-build-debug --target all -- -j 8
+/opt/homebrew/bin/cmake \
+--build /Users/jackie/Dev/DSA/problems/DSA/Cpp/cmake-build-debug-coverage/ --target all -- -j 8
 
 ###### Run CTest   #####
-/opt/homebrew/bin/ctest -j8 -C Debug -T test --output-on-failure
+/opt/homebrew/bin/ctest \
+-j8 -C Debug -T test --output-on-failure

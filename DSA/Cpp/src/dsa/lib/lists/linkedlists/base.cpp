@@ -3,6 +3,10 @@
 namespace dsa::lib::lists::linkedlists {
 
 Base::Base(ListNode *head) : head(head) {}
+void Base::Deleter::operator()(ListNode *p_head) { destroy(p_head); }
+void Base::DeleterCycle::operator()(ListNode *p_head, length_t length) {
+    destroy(p_head, length);
+}
 void Base::destroy(ListNode *head) {
     ListNode *cur, *next;
     cur = head;
@@ -12,7 +16,7 @@ void Base::destroy(ListNode *head) {
         cur = next;
     }
 }
-void Base::destroyCycle(ListNode *head, length_t length) {
+void Base::destroy(ListNode *head, length_t length) {
     ListNode *cur, *next;
     cur = head;
     for (int i = 0; cur && i < length; ++i) {

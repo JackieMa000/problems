@@ -2,7 +2,6 @@
 #include <list>
 #include <forward_list>
 
-#include <dsa/testing/dsatest.h>
 #include <dsa/lib/algo/sort/radix_sort.hpp>
 
 namespace dsa::lib::algo::sort::rs {

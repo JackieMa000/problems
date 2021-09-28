@@ -7,6 +7,7 @@
 namespace dsa::lib::trees {
 
 BinaryTree::BinaryTree(BinaryTreeNode *root) : root(root) {}
+void BinaryTree::Deleter::operator()(BinaryTreeNode *p_root) { destroy(p_root); }
 void BinaryTree::destroy(BinaryTreeNode *root) {
     if (!root) return;
     if (root->left) destroy(root->left);

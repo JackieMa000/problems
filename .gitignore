@@ -3,10 +3,8 @@ info.md
 info.txt
 .DS_Store
 locals.cpp
-target/
-out/
 *.pyc
-build/
+
 experiment/
 /DSA/Python/.tox/
 /DSA/Python/venv/
@@ -14,3 +12,15 @@ experiment/
 /DSA/Java/.settings/
 /DSA/Java/.project
 /DSA/Java/.classpath
+
+# Java build
+target/
+out/
+
+# cmake build
+build*
+cmake-build-*
+experiment/
+
+# IDE files
+.idea/workspace.xml

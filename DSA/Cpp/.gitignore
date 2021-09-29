@@ -1,4 +1,4 @@
-/build*
-/cmake-build-*
+build*
+cmake-build-*
 experiment/
-/.idea/workspace.xml
+.idea/workspace.xml

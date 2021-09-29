@@ -6,7 +6,7 @@ locals.cpp
 target/
 out/
 *.pyc
-/build/
+build/
 experiment/
 /DSA/Python/.tox/
 /DSA/Python/venv/

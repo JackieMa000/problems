@@ -1,4 +1,3 @@
-# https://developer.apple.com/documentation/xcode/diagnosing-memory-thread-and-crash-issues-early
 # Address Sanitizers
 # The ASan tool identifies potential memory-related corruption issues.
 # Overlaps with Valgrind

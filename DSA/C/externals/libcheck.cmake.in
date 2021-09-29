@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.18)
+
+project(libcheck-download NONE)
+
+include(ExternalProject)
+ExternalProject_Add(libcheck
+  GIT_REPOSITORY    https://github.com/libcheck/check.git
+  GIT_TAG           0.15.2
+  UPDATE_DISCONNECTED 1
+  SOURCE_DIR        "${CMAKE_BINARY_DIR}/libcheck-src"
+  BINARY_DIR        "${CMAKE_BINARY_DIR}/libcheck-build"
+  CONFIGURE_COMMAND ""
+  BUILD_COMMAND     ""
+  INSTALL_COMMAND   ""
+  TEST_COMMAND      ""
+)

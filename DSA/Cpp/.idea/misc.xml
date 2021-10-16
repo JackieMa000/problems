@@ -14,6 +14,7 @@
       <file path="$PROJECT_DIR$/cmake-build-debug-coverage" />
       <file path="$PROJECT_DIR$/cmake-build-debug-gcc" />
       <file path="$PROJECT_DIR$/cmake-build-debugremote" />
+      <file path="$PROJECT_DIR$/cmake-build-llvm-build" />
       <file path="$PROJECT_DIR$/cmake-build-remotecppenv" />
       <file path="$PROJECT_DIR$/cmake-build-removecppenv" />
       <file path="$PROJECT_DIR$/experiment" />

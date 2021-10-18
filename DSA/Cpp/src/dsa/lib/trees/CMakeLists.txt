@@ -2,4 +2,4 @@ add_library(trees
         bt.cpp
         bst.cpp)
 
-target_precompile_headers(trees PRIVATE pch.h)
+pch_for_debug(trees PRIVATE pch.h)

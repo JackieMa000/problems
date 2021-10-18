@@ -61,11 +61,8 @@ class CountingSortAbstract {
     };
 
     void produceSorted() {
-//        std::unique_ptr<T[]> p(new T[size]);
-//        auto first = p.get();
-
-        auto first = new T[size];
-
+        std::unique_ptr<T[]> p(new T[size]);
+        auto first = p.get();
         generateResult(first);
         dsa::copy(first, first + size, ary.begin());
     }

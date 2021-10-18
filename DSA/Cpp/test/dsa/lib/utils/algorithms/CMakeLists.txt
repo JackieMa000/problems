@@ -11,4 +11,4 @@ add_executable(algorithms_test
         )
 target_link_libraries(algorithms_test
         test_main)
-target_precompile_headers(algorithms_test PRIVATE pch.h)
+pch_for_debug(algorithms_test PRIVATE pch.h)

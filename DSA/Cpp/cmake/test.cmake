@@ -5,4 +5,4 @@ include(CTest)
 include(${EXTERNAL_DIR}/gtest.cmake)
 
 include_directories(${CMAKE_SOURCE_DIR}/test)
-add_subdirectory(test)
+add_subdirectory(${CMAKE_SOURCE_DIR}/test)

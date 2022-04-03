@@ -2,6 +2,13 @@
 <project version="4">
   <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
+      <paths name="RemoteCPPEnv (62387b61-daac-41b3-846b-b9cfc23f7b85)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/Cpp" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="RemoteCPPEnv (8d5644be-b18a-4923-b991-59972a3d27e7)">
         <serverdata>
           <mappings>

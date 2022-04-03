@@ -10,3 +10,7 @@ void dsa_mem_compare();
 void dsa_mem_swap();
 
 void *dsa_mem_search();
+
+int plus(int x, int y) {
+    return x + y;
+}

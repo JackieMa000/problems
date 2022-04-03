@@ -1,20 +1,14 @@
 cmake_minimum_required(VERSION 3.19)
-project(DSA-c C)
+
+project(DSA-c VERSION 1.0)
 
 set(CMAKE_C_STANDARD 11)
 
-# Turn on sanitizer for debugging
-include(sanitizer.cmake)
-
-# Enable cMake's CTest
-include(CTest)
-
+set(CMAKE_DIR "${CMAKE_SOURCE_DIR}/cmake")
 # Dependencies: Solving external package dependencies
 set(EXTERNAL_DIR ${CMAKE_SOURCE_DIR}/externals)
-include(${EXTERNAL_DIR}/libcheck.cmake)
 
-include_directories(${CMAKE_SOURCE_DIR}/src)
-include_directories(${CMAKE_SOURCE_DIR}/test)
+# Unit Test Flag
+set(TEST ON)
 
-add_subdirectory(src)
-add_subdirectory(test)
+include(${CMAKE_DIR}/includes.cmake)

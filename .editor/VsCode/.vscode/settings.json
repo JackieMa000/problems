@@ -14,5 +14,14 @@
                 "engineLogging": true,
                 "traceResponse": true
         }
-    }
+    },
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./DSA",
+        "-p",
+        "test_*.py"
+    ],
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": true
 }

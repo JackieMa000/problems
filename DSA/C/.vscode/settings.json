@@ -5,7 +5,7 @@
         "includes": "cpp"
     },
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
-    "cmake.sourceDirectory": "${workspaceFolder:Cpp}",
+    "cmake.sourceDirectory": "${workspaceFolder:C}",
     "cmake.debugConfig": {
         "stopAtEntry": false,
         "MIMode": "lldb",
@@ -16,5 +16,5 @@
         }
     },
     "cmake.parallelJobs": 8,
-    "cmake.buildDirectory": "${workspaceFolder:Cpp}/cmake-build-vscode"
+    "cmake.buildDirectory": "${workspaceFolder:C}/cmake-build-vscode"
 }

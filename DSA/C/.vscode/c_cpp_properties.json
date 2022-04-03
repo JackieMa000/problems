@@ -13,7 +13,7 @@
             "cppStandard": "c++17",
             "intelliSenseMode": "clang-arm64",
             "configurationProvider": "ms-vscode.cmake-tools",
-            "compileCommands": "${workspaceFolder:Cpp}/cmake-build-vscode/compile_commands.json"
+            "compileCommands": "${workspaceFolder:C}/cmake-build-vscode/compile_commands.json"
         }
     ],
     "version": 4

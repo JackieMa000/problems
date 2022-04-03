@@ -1,0 +1,1 @@
+add_test(NAME MemSetTest COMMAND mem_set_test)

@@ -1,0 +1,12 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        // How can I know a variable's actual value? -- By running an echo task.
+        "label": "echo",
+        "type": "shell",
+        // "command": "echo ${workspaceFolder}"
+        "command": "echo ${command:cmake.buildDirectory}/compile_commands.json"
+      }
+    ]
+  }

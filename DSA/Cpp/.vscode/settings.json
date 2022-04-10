@@ -5,7 +5,9 @@
         "includes": "cpp"
     },
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
-    "cmake.sourceDirectory": "${workspaceFolder:Cpp}",
+    // Used for multiple folders in a workspace.
+    // "cmake.sourceDirectory": "${workspaceFolder:C}",
+    "cmake.sourceDirectory": "${workspaceFolder}",
     "cmake.debugConfig": {
         "stopAtEntry": false,
         "MIMode": "lldb",
@@ -16,5 +18,8 @@
         }
     },
     "cmake.parallelJobs": 8,
-    "cmake.buildDirectory": "${workspaceFolder:Cpp}/cmake-build-vscode"
+    "cmake.generator": "Ninja",
+    // Used for multiple folders in a workspace.
+    // "cmake.buildDirectory": "${workspaceFolder:C}/cmake-build-vscode"
+    "cmake.buildDirectory": "${workspaceFolder}/cmake-build-vscode"
 }

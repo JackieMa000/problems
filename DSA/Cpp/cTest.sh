@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 cd /Users/Jackie/Dev/DSA/problems/DSA/Cpp/cmake-build-debug/
 
 #### Build All Targets ###

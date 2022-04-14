@@ -25,3 +25,8 @@ experiment/
 # IDE files
 #.idea/workspace.xml
 .idea/
+.vscode/
+*.code-workspace
+
+# Log files
+*.log

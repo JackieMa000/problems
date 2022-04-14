@@ -15,6 +15,7 @@
       <file path="$PROJECT_DIR$/cmake-build-debug-coverage" />
       <file path="$PROJECT_DIR$/cmake-build-debug-gcc" />
       <file path="$PROJECT_DIR$/cmake-build-debug-gcc-docker" />
+      <file path="$PROJECT_DIR$/cmake-build-debug-gcc-remote" />
       <file path="$PROJECT_DIR$/cmake-build-debug-llvm" />
       <file path="$PROJECT_DIR$/cmake-build-debugremote" />
       <file path="$PROJECT_DIR$/cmake-build-llvm-build" />

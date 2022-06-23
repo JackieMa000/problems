@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
-cd /Users/Jackie/Dev/DSA/problems/DSA/Cpp/cmake-build-debug/
+cd /Users/Jackie/Dev/DSA/problems/DSA/Cpp/cmake-build-debug-llvm/
 
 #### Build All Targets ###
 /opt/homebrew/bin/cmake \
---build /Users/jackie/Dev/DSA/problems/DSA/Cpp/cmake-build-debug/ --target all -- -j 8
+--build /Users/jackie/Dev/DSA/problems/DSA/Cpp/cmake-build-debug-llvm/ --target all -- -j 8
 
 ###### Run CTest   #####
 /opt/homebrew/bin/ctest \

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" serverName="DSA" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
-      <paths name="remote-clang (1b188e9c-6041-4960-b0f6-4856fee06fbe)">
+      <paths name="Alpine-clang (1b188e9c-6041-4960-b0f6-4856fee06fbe)">
         <serverdata>
           <mappings>
             <mapping deploy="/tmp/tmp.JEcDkH" local="$PROJECT_DIR$" />
@@ -29,29 +29,11 @@
           </excludedPaths>
         </serverdata>
       </paths>
-      <paths name="remote-gcc (62387b61-daac-41b3-846b-b9cfc23f7b85)">
+      <paths name="DSA">
         <serverdata>
           <mappings>
-            <mapping deploy="/tmp/Cpp" local="$PROJECT_DIR$" />
+            <mapping deploy="/opt/DSA" local="$PROJECT_DIR$" web="/" />
           </mappings>
-          <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-vscode" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release-llvm" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debugremote" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-gcc-remote" />
-            <excludedPath local="true" path="$PROJECT_DIR$/.vscode" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-clang-remote" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-gcc-docker" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-gcc" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-llvm-build" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-remotecppenv" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-removecppenv" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-llvm" />
-            <excludedPath local="true" path="$PROJECT_DIR$/experiment" />
-            <excludedPath local="true" path="$PROJECT_DIR$/build" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-coverage" />
-          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>

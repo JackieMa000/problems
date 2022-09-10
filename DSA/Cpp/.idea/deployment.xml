@@ -36,6 +36,32 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="Debian-gcc (77a420d4-8a20-444a-aea1-feb78a3f18cb)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/tmp.IbzJ3zCezG" local="$PROJECT_DIR$" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-debian-gcc" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-vscode" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release-llvm" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debugremote" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
+            <excludedPath local="true" path="$PROJECT_DIR$/.vscode" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-gcc-remote" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-clang-remote" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-gcc-docker" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-gcc" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-llvm-build" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-remotecppenv" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-removecppenv" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-llvm" />
+            <excludedPath local="true" path="$PROJECT_DIR$/experiment" />
+            <excludedPath local="true" path="$PROJECT_DIR$/build" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-coverage" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
     </serverData>
   </component>
 </project>

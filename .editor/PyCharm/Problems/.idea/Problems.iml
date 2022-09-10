@@ -11,6 +11,14 @@
       <excludeFolder url="file://$MODULE_DIR$/../../../DSA/Java" />
       <excludeFolder url="file://$MODULE_DIR$/../../../DSA/Java/target" />
       <excludeFolder url="file://$MODULE_DIR$/../../../build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../.idea/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../DSA/C/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../DSA/C/cmake-build-debug-gcc" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../DSA/C/cmake-build-debug-llvm" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../DSA/C/cmake-build-vscode" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../DSA/Go/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../DSA/Python/src/experiment" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../out" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.8(venv)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

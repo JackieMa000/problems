@@ -27,6 +27,7 @@ experiment/
 .idea/
 .vscode/
 *.code-workspace
+.editor/
 
 # Log files
 *.log

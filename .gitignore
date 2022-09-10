@@ -28,6 +28,8 @@ experiment/
 .vscode/
 *.code-workspace
 .editor/
+.vscode
+DSA.iml
 
 # Log files
 *.log

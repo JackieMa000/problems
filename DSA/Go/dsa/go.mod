@@ -1,3 +1,3 @@
-module DSA
+module dsa
 
 go 1.18

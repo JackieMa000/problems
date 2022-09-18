@@ -1,4 +1,4 @@
-package sortedarrays
+package ds
 
 import "testing"
 

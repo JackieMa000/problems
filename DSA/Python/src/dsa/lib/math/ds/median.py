@@ -1,8 +1,8 @@
-# LeetCode4
 from typing import List
 
 
-class Solution:
+class Median:
+    # LeetCode4
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
         nums = self.merge(nums1, nums2)
         n = len(nums)

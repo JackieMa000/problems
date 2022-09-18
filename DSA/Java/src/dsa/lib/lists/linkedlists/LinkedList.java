@@ -273,7 +273,7 @@ public class LinkedList extends Base {
 
 //        3. Reverse the nodes for the next group;
 //        4. Append the next group to the current group tail
-        head.next = reverseKGroup2(cur, k);
+        head.next = reverseKGroup3(cur, k);
 
         return newHead;
     }

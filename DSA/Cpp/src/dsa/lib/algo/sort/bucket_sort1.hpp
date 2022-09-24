@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+
 #include "quick_sort.hpp"
 #include <dsa/lib/utils/algorithm.hpp>
 
@@ -48,7 +50,7 @@ class BucketSort {
         if (!this->size) { return; }
 
         min = max = nums[0];
-        for (const int &num : nums) {
+        for (const int &num: nums) {
             if (num < min) { min = num; }
             else if (num > max) { max = num; }
         }
@@ -61,7 +63,7 @@ class BucketSort {
     void initBucketSizes() { bucketSizes = new std::vector<size_t>(bucketCount, 0); }
 
     void scatterToEachBucket() {
-        for (const int &num : nums) {
+        for (const int &num: nums) {
             pos_t index = bucketIndexOf(num);
             bucket_t &bucket = (*buckets)[index];
             size_t size = (*bucketSizes)[index];

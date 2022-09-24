@@ -1,9 +1,9 @@
 package dsa
 
-func CreateMatrix(n int) [][]bool {
-	s := make([][]bool, n)
+func CreateMatrix[T any](m, n int) [][]T {
+	s := make([][]T, m)
 	for i := range s {
-		s[i] = make([]bool, n)
+		s[i] = make([]T, n)
 	}
 	return s
 }

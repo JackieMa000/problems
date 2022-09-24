@@ -27,3 +27,6 @@ add_test(NAME SortTest COMMAND sort_test)
 
 ######## Testing Test #####
 add_test(NAME TestingTest COMMAND testing_test)
+
+######## Strings Test #####
+add_test(NAME StringsTest COMMAND strings_test)

@@ -1,15 +1,27 @@
 package dsa
 
-func Max(a, b int) int {
-	if a >= b {
-		return a
+func Max(nums ...int) int {
+	max := nums[0]
+
+	n := len(nums)
+	for i := 1; i < n; i++ {
+		if nums[i] > max {
+			max = nums[i]
+		}
 	}
-	return b
+
+	return max
 }
 
-func Min(a, b int) int {
-	if a <= b {
-		return a
+func Min(nums ...int) int {
+	min := nums[0]
+
+	n := len(nums)
+	for i := 1; i < n; i++ {
+		if nums[i] < min {
+			min = nums[i]
+		}
 	}
-	return b
+
+	return min
 }

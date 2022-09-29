@@ -7,18 +7,18 @@ import (
 )
 
 func TestEditDistance_emptyString(t *testing.T) {
-	dsatest.CheckEqual(t, 0, getDistance("", ""))
-	dsatest.CheckEqual(t, 1, getDistance("", "a"))
-	dsatest.CheckEqual(t, 1, getDistance("a", ""))
+	dsatest.CheckEqual(0, getDistance("", ""), t)
+	dsatest.CheckEqual(1, getDistance("", "a"), t)
+	dsatest.CheckEqual(1, getDistance("a", ""), t)
 }
 
 func TestEditDistance_equalString(t *testing.T) {
-	dsatest.CheckEqual(t, 0, getDistance("abc", "abc"))
+	dsatest.CheckEqual(0, getDistance("abc", "abc"), t)
 }
 
 func TestEditDistance_case1(t *testing.T) {
-	dsatest.CheckEqual(t, 3, getDistance("horse", "ros"))
-	dsatest.CheckEqual(t, 5, getDistance("intention", "execution"))
+	dsatest.CheckEqual(3, getDistance("horse", "ros"), t)
+	dsatest.CheckEqual(5, getDistance("intention", "execution"), t)
 }
 
 func getDistance(w1, w2 string) int {

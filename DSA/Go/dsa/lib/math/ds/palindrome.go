@@ -13,8 +13,7 @@ func longestPalindrome(s string) string {
 	}
 
 	// Filling in dp table and get the range of the longest palindrome substring.
-	start := 0
-	end := 0
+	start, end := 0, 0
 	dp := createMatrix(n)
 	for i := n - 1; i >= 0; i-- {
 		for j := i; j < n; j++ {
@@ -47,8 +46,7 @@ func longestPalindrome1(s string) string {
 		return s
 	}
 
-	start := 0
-	end := 0
+	start, end := 0, 0
 	for i := 0; i < n; i++ {
 		lenOdd := expandAroundCenter(s, i, i)
 		lenEven := expandAroundCenter(s, i, i+1)

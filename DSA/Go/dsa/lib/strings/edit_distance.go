@@ -35,8 +35,7 @@ func minDistance(word1 string, word2 string) int {
 
 // Brutal Force. Redundant computation without caching.
 func minDistance1(word1 string, word2 string) int {
-	m := len(word1)
-	n := len(word2)
+	m, n := len(word1), len(word2)
 
 	if m == 0 {
 		return n

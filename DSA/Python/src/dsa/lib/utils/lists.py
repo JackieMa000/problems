@@ -129,3 +129,21 @@ def maxSize(lists: List[List[Any]]) -> Optional[list]:
 
 def minSize(lists: List[List[Any]]) -> Optional[list]:
     return comp(lists, lambda x, y: len(x) < len(y))
+
+
+def binary_search(nums: List[int], target: int) -> int:
+    """
+    :param nums:
+    :param target:
+    :return: the index of target in nums. -1 means did not find the target.
+    """
+    left, right = 0, len(nums) - 1
+    while left <= right:
+        mid = left + (right - left) // 2
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1

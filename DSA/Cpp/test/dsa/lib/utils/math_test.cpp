@@ -1,4 +1,5 @@
 #include "dsa/lib/utils/math.hpp"
+#include <gtest/gtest.h>
 
 namespace dsa {
 namespace {
@@ -54,6 +55,82 @@ TEST(MatrixTest, size) {
 
     CONSTEXPR MatrixStack<int, 3, 2> m1{};
     static_assert(m1.size() == 6);
+}
+TEST(MatrixStackTest, ConstructorWithInitialValue) {
+    CONSTEXPR const int m = 2, n = 2;
+
+    MatrixStack<int, m, n> m1(1);
+    const MatrixStack<int, m, n> m3(1);
+
+    int expected[m][n] = {{1, 1}, {1, 1}};
+
+    for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < n; ++j) {
+            EXPECT_EQ(expected[i][j], m1[i][j]);
+            EXPECT_EQ(expected[i][j], m3[i][j]);
+        }
+    }
+}
+TEST(MatrixHeapTest, ConstructorWithInitialValue) {
+    const int m = 2, n = 2;
+
+    MatrixHeap<int> m1(m, n, 1);
+    const MatrixHeap<int> m2(m, n, 1);
+
+    int expected[m][n] = {{1, 1}, {1, 1}};
+
+    for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < n; ++j) {
+            EXPECT_EQ(expected[i][j], m1[i][j]);
+            EXPECT_EQ(expected[i][j], m2[i][j]);
+        }
+    }
+}
+TEST(MatrixTest, DefaultMatrix) {
+    const int m = 2, n = 2;
+    Matrix<int, m, n> m1{};
+    const Matrix<int, m, n> m2(1);
+}
+TEST(MatrixStackTest, CopyConstructor) {
+    const int m = 1, n = 1;
+
+    MatrixStack<int, m, n> m1(1);
+    MatrixStack<int, m, n> m2(m1);
+
+    for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < n; ++j) {
+            EXPECT_EQ(m1[i][j], m2[i][j]);
+            EXPECT_NE(&m1[i][j], &m2[i][j]);
+        }
+    }
+}
+TEST(MatrixHeapTest, CopyConstructor) {
+    const int m = 1, n = 1;
+
+    MatrixHeap<int> m1(m, n, 1);
+    MatrixHeap<int> m2(m1);
+
+    for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < n; ++j) {
+            EXPECT_EQ(m1[i][j], m2[i][j]);
+            EXPECT_NE(&m1[i][j], &m2[i][j]);
+        }
+    }
+}
+TEST(MatrixHeapTest, MoveConstructor) {
+    const int m = 1, n = 1;
+
+    MatrixHeap<int> m1(m, n, 1);
+    MatrixHeap<int> m2(std::move(m1));
+
+    EXPECT_EQ(nullptr, m1.begin());
+    EXPECT_EQ(0, m1.size());
+
+    for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < n; ++j) {
+            EXPECT_EQ(1, m2[i][j]);
+        }
+    }
 }
 
 }

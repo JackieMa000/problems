@@ -5,6 +5,7 @@
 #include <dsa/config.h>
 #include <dsa/type_traits.h>
 #include "dsa/dsadef.h"
+#include <functional>
 
 #include "funcs.hpp"
 
@@ -311,8 +312,8 @@ const T &min(const T &a, const T &b) {
 template<class ForwardIterator, class Compare>
 NODISCARD inline CONSTEXPR
 ForwardIterator min_element(ForwardIterator first, ForwardIterator last, Compare comp) {
-    static_assert(std::__is_cpp17_forward_iterator<ForwardIterator>::value,
-                  "std::min_element requires a ForwardIterator");
+//    static_assert(std::__is_cpp17_forward_iterator<ForwardIterator>::value,
+//                  "std::min_element requires a ForwardIterator");
     if (first != last) {
         ForwardIterator i = first;
         while (++i != last)
@@ -353,8 +354,8 @@ T min(std::initializer_list<T> t) {
 template<class ForwardIterator, class Compare>
 NODISCARD inline CONSTEXPR
 ForwardIterator max_element(ForwardIterator first, ForwardIterator last, Compare comp) {
-    static_assert(std::__is_cpp17_forward_iterator<ForwardIterator>::value,
-                  "std::max_element requires a ForwardIterator");
+//    static_assert(std::__is_cpp17_forward_iterator<ForwardIterator>::value,
+//                  "std::max_element requires a ForwardIterator");
     if (first != last) {
         ForwardIterator i = first;
         while (++i != last)
@@ -464,8 +465,8 @@ NODISCARD CONSTEXPR
 std::pair<ForwardIterator, ForwardIterator> minmax_element(ForwardIterator first,
                                                            ForwardIterator last,
                                                            Compare comp) {
-    static_assert(std::__is_cpp17_forward_iterator<ForwardIterator>::value,
-                  "std::minmax_element requires a ForwardIterator");
+//    static_assert(std::__is_cpp17_forward_iterator<ForwardIterator>::value,
+//                  "std::minmax_element requires a ForwardIterator");
     std::pair<ForwardIterator, ForwardIterator> result(first, first);
     if (first != last) {
         if (++first != last) {
@@ -520,10 +521,13 @@ Function for_each(InputIterator first, InputIterator last, Function f) {
 
 // for_each_n
 
+inline CONSTEXPR
+int __convert_to_integral(int __val) { return __val; }
+
 template<class InputIterator, class Size, class Function>
 CONSTEXPR
 InputIterator for_each_n(InputIterator first, Size orig_n, Function f) {
-    typedef decltype(std::__convert_to_integral(orig_n)) IntegralSize;
+    typedef decltype(__convert_to_integral(orig_n)) IntegralSize;
     IntegralSize n = orig_n;
     while (n > 0) {
         f(*first);
@@ -582,7 +586,8 @@ NODISCARD inline CONSTEXPR
 bool equal(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2) {
     typedef typename std::iterator_traits<InputIterator1>::value_type v1;
     typedef typename std::iterator_traits<InputIterator2>::value_type v2;
-    return DSA::equal(first1, last1, first2, std::__equal_to<v1, v2>());
+//    return DSA::equal(first1, last1, first2, std::__equal_to<v1, v2>());
+    return DSA::equal(first1, last1, first2, std::equal_to<void>());
 }
 
 template<class BinaryPredicate, class InputIterator1, class InputIterator2>
@@ -625,7 +630,8 @@ bool equal(InputIterator1 first1, InputIterator1 last1,
     typedef typename std::iterator_traits<InputIterator2>::value_type v2;
     auto it1 = typename std::iterator_traits<InputIterator1>::iterator_category();
     auto it2 = typename std::iterator_traits<InputIterator2>::iterator_category();
-    return DSA::equal(first1, last1, first2, last2, std::__equal_to<v1, v2>(), it1, it2);
+//    return DSA::equal(first1, last1, first2, last2, std::__equal_to<v1, v2>(), it1, it2);
+    return DSA::equal(first1, last1, first2, last2, std::equal_to<void>(), it1, it2);
 }
 
 }

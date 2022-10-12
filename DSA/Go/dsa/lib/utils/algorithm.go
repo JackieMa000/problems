@@ -25,3 +25,10 @@ func Min(nums ...int) int {
 
 	return min
 }
+
+// Fill in a slice with a value
+func Fill[T any](s []T, v T) {
+	for i := range s {
+		s[i] = v
+	}
+}

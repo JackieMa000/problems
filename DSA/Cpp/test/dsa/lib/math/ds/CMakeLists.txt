@@ -3,7 +3,7 @@ add_executable(math.ds_test
         anagram_test.cpp
         palindrome_test.cpp
         matrix_test.cpp
-        )
+        triangle_test.cpp)
 target_link_libraries(math.ds_test
         math.ds
         test_main)

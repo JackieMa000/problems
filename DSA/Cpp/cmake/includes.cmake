@@ -1,7 +1,8 @@
 # Turn on sanitizer for debugging
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+#if (CMAKE_BUILD_TYPE STREQUAL "Debug" AND
+#        ${CMAKE_HOST_SYSTEM_NAME} STREQUAL "Linux" )
 #    include(${CMAKE_DIR}/sanitizer.cmake)
-endif ()
+#endif ()
 
 # utility macros, functions
 include(${CMAKE_DIR}/utils.cmake)

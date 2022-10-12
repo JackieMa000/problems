@@ -81,6 +81,15 @@ def trim(nums: List[int]) -> List[int]:
 
 
 def copy(src: List[Any], src_pos: int, des: List[Any], des_pos: int, n: int) -> None:
+    """
+    Recursive Copy is supported.
+    :param src:
+    :param src_pos:
+    :param des:
+    :param des_pos:
+    :param n:
+    :return:
+    """
     for i in range(n):
         if isinstance(src[src_pos + i], list) and isinstance(des[des_pos + i], list):
             copy(src[src_pos + i], 0, des[des_pos + i], 0, len(src[src_pos + i]))

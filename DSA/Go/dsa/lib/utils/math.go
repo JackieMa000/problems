@@ -1,9 +1,17 @@
 package dsa
 
 func CreateMatrix[T any](m, n int) [][]T {
-	s := make([][]T, m)
-	for i := range s {
-		s[i] = make([]T, n)
+	matrix := make([][]T, m)
+	for i := range matrix {
+		matrix[i] = make([]T, n)
 	}
-	return s
+	return matrix
+}
+
+func FillMatrix[T any](m [][]T, v T) {
+	for i := range m {
+		for j := range m[i] {
+			m[i][j] = v
+		}
+	}
 }

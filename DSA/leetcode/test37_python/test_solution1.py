@@ -21,6 +21,7 @@ class Solution:
         # Recursive
         if j == self.n: return self.solveDFS(board, i + 1, 0)
         if board[i][j] != '.': return self.solveDFS(board, i, j + 1)
+        # Back
         # fill in the board
         # loop 1~9
         for c in range(1, 10):

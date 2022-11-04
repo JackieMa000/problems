@@ -1,7 +1,7 @@
 import unittest
 from typing import List
 
-from test547_python.quickUF import UnionFind
+from DSA.leetcode.test547_python.quickUF import UnionFind
 
 
 class Solution:

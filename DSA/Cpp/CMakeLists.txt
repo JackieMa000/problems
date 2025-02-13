@@ -17,4 +17,10 @@ set(BOOST OFF)
 # Unit Test Flag
 set(TEST ON)
 
+
+if (MAKE_BUILD_TYPE STREQUAL "Debug")
+# Add the following line to enable exception handling
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fexceptions")
+endif ()
+
 include(${CMAKE_DIR}/includes.cmake)

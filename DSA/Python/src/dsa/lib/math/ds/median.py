@@ -8,8 +8,9 @@ class Median:
         n = len(nums)
 
         is_odd: bool = (n & 1 == 1)
-        return float(nums[n // 2]) if is_odd else \
-            float((nums[(n - 1) // 2] + nums[n // 2]) / 2)
+        mid: int = n // 2
+        return float(nums[mid]) if is_odd else \
+            float((nums[mid - 1] + nums[mid]) / 2)
 
     def merge(self, nums1, nums2):
         """

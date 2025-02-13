@@ -6,10 +6,11 @@ func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 
 	n := len(nums)
 	is_odd := (n&1 == 1)
+	mid := n / 2
 	if is_odd {
-		return float64(nums[n/2])
+		return float64(nums[mid])
 	} else {
-		return float64((nums[(n-1)/2] + nums[n/2])) / 2.0
+		return float64(nums[mid-1]+nums[mid]) / 2.0
 	}
 }
 

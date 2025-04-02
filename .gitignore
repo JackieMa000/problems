@@ -33,3 +33,5 @@ DSA.iml
 
 # Log files
 *.log
+
+.cache/

@@ -2,6 +2,20 @@
 
 #include <dsa/config.h>
 
+#include <functional>  // 确保包含基础功能头文件
+
+// 兼容 C++17+：手动定义 binary_function（与旧版 std::binary_function 完全一致）
+#if __cplusplus >= 201703L  // 检测是否为 C++17 及以上标准
+namespace std {
+template <class Arg1, class Arg2, class Result>
+struct binary_function {
+    using first_argument_type = Arg1;
+    using second_argument_type = Arg2;
+    using result_type = Result;
+};
+}
+#endif
+
 namespace dsa {
 
 //Compare the equality of two objects
